@@ -1,0 +1,100 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/event-checklist-archive",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/cron/sync-event-packets",
+      "schedule": "0 11 * * *"
+    },
+    {
+      "path": "/api/cron/sync-sheet-reviews",
+      "schedule": "10 11 * * *"
+    },
+    {
+      "path": "/api/cron/remind-overdue-packets",
+      "schedule": "15 11 * * *"
+    },
+    {
+      "path": "/api/cron/remind-overdue-action-items",
+      "schedule": "30 11 * * *"
+    },
+    {
+      "path": "/api/cron/remind-overdue-invoices",
+      "schedule": "45 11 * * *"
+    },
+    {
+      "path": "/api/cron/av-portal-checkins",
+      "schedule": "30 12 * * *"
+    },
+    {
+      "path": "/api/cron/send-field-digest",
+      "schedule": "0 12 * * *"
+    },
+    {
+      "path": "/api/cron/foryou-clean-streak",
+      "schedule": "0 5 * * *"
+    },
+    {
+      "path": "/api/cron/monthly-hub-awards",
+      "schedule": "0 9 1 * *"
+    },
+    {
+      "path": "/api/cron/publish-due-social",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/publish-due-social",
+      "schedule": "0 4 * * *"
+    },
+    {
+      "path": "/api/cron/publish-due-social",
+      "schedule": "0 8 * * *"
+    },
+    {
+      "path": "/api/cron/publish-due-social",
+      "schedule": "0 12 * * *"
+    },
+    {
+      "path": "/api/cron/publish-due-social",
+      "schedule": "0 16 * * *"
+    },
+    {
+      "path": "/api/cron/publish-due-social",
+      "schedule": "0 20 * * *"
+    },
+    {
+      "path": "/api/cron/huddle-reminders",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/sync-drive-kb",
+      "schedule": "20 11 * * *"
+    },
+    {
+      "path": "/api/cron/inquiry-forms-sweep",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/event-checklist-alerts",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/how-to-pending",
+      "schedule": "40 13 * * *"
+    },
+    {
+      "path": "/api/cron/honeybook-gmail-sync",
+      "schedule": "*/10 * * * *"
+    },
+    {
+      "path": "/api/cron/honeybook-daily-update",
+      "schedule": "20 12 * * *"
+    },
+    {
+      "path": "/api/cron/honeybook-automations",
+      "schedule": "0 14 * * *"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+.apply-page {
+  --apply-ink: #12100e;
+  --apply-paper: #f1f2f4;
+  --apply-muted: #5c574f;
+  --apply-line: rgba(18, 16, 14, 0.12);
+  --apply-brand: #9a7340;
+  --apply-brand-deep: #7a5a30;
+  font-family: var(--font-apply-body), ui-sans-serif, system-ui, sans-serif;
+  color: var(--apply-ink);
+  background: var(--apply-paper);
+}
+
+.apply-display {
+  font-family: var(--font-apply-display), ui-sans-serif, system-ui, sans-serif;
+}
+
+.apply-hero-logo {
+  filter: brightness(0) invert(1);
+}
+
+@keyframes apply-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes apply-ken-burns {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1.14);
+  }
+}
+
+@keyframes apply-rise {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.apply-anim-fade-up {
+  animation: apply-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.apply-anim-fade-up-delay {
+  animation: apply-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+.apply-anim-fade-up-delay-2 {
+  animation: apply-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.34s both;
+}
+
+.apply-anim-ken {
+  animation: apply-ken-burns 18s ease-out forwards;
+}
+
+.apply-anim-rise {
+  animation: apply-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apply-anim-fade-up,
+  .apply-anim-fade-up-delay,
+  .apply-anim-fade-up-delay-2,
+  .apply-anim-ken,
+  .apply-anim-rise {
+    animation: none;
+  }
+}

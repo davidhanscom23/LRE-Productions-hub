@@ -1,0 +1,563 @@
+/*
+ * Holiday hub themes.
+ * AppShell sets [data-holiday="<id>"]; the atmosphere layer paints a full-bleed
+ * photo (public/holidays/<id>.jpg) under the nav + main, and these tokens
+ * recolour the chrome.
+ */
+
+/* ───────── Shared chrome (driven by the --hl-* tokens below) ───────── */
+
+[data-holiday] {
+  background-color: var(--background);
+}
+
+[data-holiday] aside,
+[data-holiday] header {
+  border-color: color-mix(in srgb, var(--hl-rim) 45%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+[data-holiday] .hl-dim {
+  background: var(--hl-dim);
+}
+
+[data-holiday] .hl-vignette {
+  background: radial-gradient(
+    ellipse 80% 74% at 50% 48%,
+    transparent 38%,
+    var(--hl-vig-mid) 80%,
+    var(--hl-vig) 100%
+  );
+}
+
+[data-holiday] aside.hub-sidebar {
+  background-color: transparent;
+  background-image:
+    linear-gradient(90deg, var(--hl-glass) 0%, var(--hl-glass-2) 100%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--hl-rim) 12%, transparent) 0%,
+      transparent 28%,
+      transparent 72%,
+      rgba(0, 0, 0, 0.22) 100%
+    );
+  border-right-width: 3px;
+  border-right-color: var(--hl-rim);
+  box-shadow:
+    inset 1px 0 0 color-mix(in srgb, var(--hl-rim) 45%, #fff 30%),
+    inset -2px 0 0 rgba(0, 0, 0, 0.35),
+    2px 0 0 color-mix(in srgb, var(--hl-rim) 35%, transparent),
+    14px 0 36px var(--hl-shadow),
+    4px 0 12px var(--hl-shadow);
+}
+
+[data-holiday] aside.hub-sidebar > div:first-child {
+  background: var(--hl-chrome);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom-color: color-mix(in srgb, var(--hl-rim) 40%, transparent);
+}
+
+[data-holiday] aside.hub-sidebar nav a:not([aria-current="page"]) {
+  background-color: var(--hl-nav);
+}
+
+[data-holiday] aside.hub-sidebar nav a[aria-current="page"] {
+  background-color: var(--hl-nav-active);
+}
+
+[data-holiday] .hub-main-column {
+  background: var(--hl-main);
+}
+
+[data-holiday] .hub-main-column header,
+[data-holiday] .hub-main-column .hub-motto-bar {
+  background-color: var(--hl-chrome);
+}
+
+[data-holiday] .brand-logo {
+  filter: var(--hl-logo);
+}
+
+[data-holiday] .hub-motto-bar {
+  box-shadow: inset 0 -2px 0 var(--hl-rim);
+}
+
+/* ───────── Per-holiday tokens ───────── */
+
+/* New Year's Day — sunrise over fresh hills */
+[data-holiday="new-years-day"] {
+  --background: #0c1238;
+  --foreground: #fff6e6;
+  --surface: rgba(14, 16, 48, 0.86);
+  --surface-hover: rgba(34, 30, 76, 0.92);
+  --sidebar: transparent;
+  --border: #5a4a8c;
+  --muted: #cbbde6;
+  --brand: #f5c15a;
+  --brand-soft: rgba(72, 54, 22, 0.9);
+  --banner: rgba(10, 10, 38, 0.78);
+  --banner-fg: #ffe08a;
+  --hl-rim: #f5c15a;
+  --hl-glass: rgba(10, 10, 38, 0.56);
+  --hl-glass-2: rgba(10, 10, 38, 0.4);
+  --hl-chrome: rgba(10, 10, 38, 0.7);
+  --hl-nav: rgba(10, 10, 38, 0.46);
+  --hl-nav-active: rgba(78, 58, 22, 0.88);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.04) 45%, rgba(0, 0, 0, 0.1));
+  --hl-dim: rgba(6, 6, 24, 0.22);
+  --hl-vig-mid: rgba(0, 0, 0, 0.18);
+  --hl-vig: rgba(0, 0, 0, 0.5);
+  --hl-shadow: rgba(0, 0, 0, 0.6);
+  --hl-logo: brightness(0) invert(1) sepia(1) saturate(100) hue-rotate(8deg) brightness(1.15);
+}
+
+/* Martin Luther King Jr. Day — dawn over the bridge */
+[data-holiday="mlk-day"] {
+  --background: #07122b;
+  --foreground: #f8f2e2;
+  --surface: rgba(9, 20, 50, 0.87);
+  --surface-hover: rgba(22, 40, 84, 0.92);
+  --sidebar: transparent;
+  --border: #35528a;
+  --muted: #b3c0da;
+  --brand: #f0b35a;
+  --brand-soft: rgba(70, 50, 20, 0.9);
+  --banner: rgba(6, 14, 36, 0.8);
+  --banner-fg: #ffd89a;
+  --hl-rim: #f0b35a;
+  --hl-glass: rgba(6, 14, 36, 0.6);
+  --hl-glass-2: rgba(6, 14, 36, 0.44);
+  --hl-chrome: rgba(6, 14, 36, 0.74);
+  --hl-nav: rgba(6, 14, 36, 0.5);
+  --hl-nav-active: rgba(72, 52, 20, 0.88);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.12));
+  --hl-dim: rgba(2, 6, 20, 0.28);
+  --hl-vig-mid: rgba(0, 0, 0, 0.2);
+  --hl-vig: rgba(0, 0, 0, 0.56);
+  --hl-shadow: rgba(0, 0, 0, 0.62);
+  --hl-logo: brightness(0) invert(1);
+}
+
+/* Valentine's Day — velvet, roses, hearts */
+[data-holiday="valentines-day"] {
+  --background: #14040c;
+  --foreground: #fff0f3;
+  --surface: rgba(42, 8, 24, 0.87);
+  --surface-hover: rgba(72, 14, 40, 0.92);
+  --sidebar: transparent;
+  --border: #7a1f3f;
+  --muted: #ecb0be;
+  --brand: #ff758f;
+  --brand-soft: rgba(80, 14, 38, 0.9);
+  --banner: rgba(30, 4, 14, 0.8);
+  --banner-fg: #ffc2d0;
+  --hl-rim: #ff758f;
+  --hl-glass: rgba(30, 4, 14, 0.58);
+  --hl-glass-2: rgba(30, 4, 14, 0.42);
+  --hl-chrome: rgba(30, 4, 14, 0.72);
+  --hl-nav: rgba(30, 4, 14, 0.48);
+  --hl-nav-active: rgba(96, 16, 46, 0.88);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.12));
+  --hl-dim: rgba(14, 2, 8, 0.28);
+  --hl-vig-mid: rgba(0, 0, 0, 0.2);
+  --hl-vig: rgba(0, 0, 0, 0.55);
+  --hl-shadow: rgba(0, 0, 0, 0.6);
+  --hl-logo: brightness(0) invert(1);
+}
+
+/* St. Patrick's Day — emerald, shamrocks, gold */
+[data-holiday="st-patricks-day"] {
+  --background: #031a0c;
+  --foreground: #f0fff3;
+  --surface: rgba(4, 38, 18, 0.87);
+  --surface-hover: rgba(10, 64, 32, 0.92);
+  --sidebar: transparent;
+  --border: #1b6b3a;
+  --muted: #a8dab6;
+  --brand: #ffd23f;
+  --brand-soft: rgba(60, 54, 10, 0.9);
+  --banner: rgba(2, 24, 10, 0.8);
+  --banner-fg: #ffe27a;
+  --hl-rim: #ffd23f;
+  --hl-glass: rgba(2, 22, 10, 0.6);
+  --hl-glass-2: rgba(2, 22, 10, 0.44);
+  --hl-chrome: rgba(2, 22, 10, 0.74);
+  --hl-nav: rgba(2, 22, 10, 0.5);
+  --hl-nav-active: rgba(20, 78, 38, 0.9);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.12));
+  --hl-dim: rgba(0, 12, 4, 0.28);
+  --hl-vig-mid: rgba(0, 0, 0, 0.2);
+  --hl-vig: rgba(0, 0, 0, 0.55);
+  --hl-shadow: rgba(0, 0, 0, 0.6);
+  --hl-logo: brightness(0) invert(1) sepia(1) saturate(100) hue-rotate(8deg) brightness(1.15);
+}
+
+/* Easter Sunday — pastel spring morning (light skin) */
+[data-holiday="easter-sunday"] {
+  --background: #f6ecff;
+  --foreground: #3a2a4f;
+  --surface: rgba(255, 255, 255, 0.86);
+  --surface-hover: rgba(255, 246, 255, 0.95);
+  --sidebar: transparent;
+  --border: #dcc9ec;
+  --muted: #6f5f8a;
+  --brand: #8b4fc0;
+  --brand-soft: #efe3fb;
+  --banner: rgba(255, 226, 242, 0.88);
+  --banner-fg: #6b2c7a;
+  --hl-rim: #c9a4e8;
+  --hl-glass: rgba(255, 255, 255, 0.58);
+  --hl-glass-2: rgba(255, 255, 255, 0.4);
+  --hl-chrome: rgba(255, 255, 255, 0.74);
+  --hl-nav: rgba(255, 255, 255, 0.55);
+  --hl-nav-active: rgba(232, 212, 250, 0.95);
+  --hl-main: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02) 45%, rgba(255, 255, 255, 0.08));
+  --hl-dim: rgba(255, 255, 255, 0.14);
+  --hl-vig-mid: rgba(255, 255, 255, 0);
+  --hl-vig: rgba(120, 90, 160, 0.18);
+  --hl-shadow: rgba(110, 80, 150, 0.28);
+  --hl-logo: brightness(0) opacity(0.78);
+}
+
+/* Cinco de Mayo — papel picado + desert sunset */
+[data-holiday="cinco-de-mayo"] {
+  --background: #2f0b46;
+  --foreground: #fff4e6;
+  --surface: rgba(44, 10, 52, 0.87);
+  --surface-hover: rgba(78, 18, 74, 0.92);
+  --sidebar: transparent;
+  --border: #8a2a62;
+  --muted: #f2bccb;
+  --brand: #ff9f1c;
+  --brand-soft: rgba(84, 36, 12, 0.9);
+  --banner: rgba(34, 6, 40, 0.8);
+  --banner-fg: #ffd27a;
+  --hl-rim: #ff9f1c;
+  --hl-glass: rgba(36, 6, 44, 0.58);
+  --hl-glass-2: rgba(36, 6, 44, 0.42);
+  --hl-chrome: rgba(36, 6, 44, 0.72);
+  --hl-nav: rgba(36, 6, 44, 0.48);
+  --hl-nav-active: rgba(110, 40, 20, 0.88);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.12));
+  --hl-dim: rgba(16, 2, 20, 0.26);
+  --hl-vig-mid: rgba(0, 0, 0, 0.18);
+  --hl-vig: rgba(0, 0, 0, 0.5);
+  --hl-shadow: rgba(0, 0, 0, 0.58);
+  --hl-logo: brightness(0) invert(1);
+}
+
+/* Mother's Day — plum velvet, peonies, gold frame */
+[data-holiday="mothers-day"] {
+  --background: #170713;
+  --foreground: #ffecf3;
+  --surface: rgba(44, 14, 42, 0.87);
+  --surface-hover: rgba(74, 24, 68, 0.92);
+  --sidebar: transparent;
+  --border: #7a2d62;
+  --muted: #eab8ce;
+  --brand: #f7a8c4;
+  --brand-soft: rgba(84, 28, 62, 0.9);
+  --banner: rgba(30, 8, 30, 0.8);
+  --banner-fg: #f7c6d9;
+  --hl-rim: #f5c15a;
+  --hl-glass: rgba(30, 8, 30, 0.58);
+  --hl-glass-2: rgba(30, 8, 30, 0.42);
+  --hl-chrome: rgba(30, 8, 30, 0.72);
+  --hl-nav: rgba(30, 8, 30, 0.48);
+  --hl-nav-active: rgba(100, 30, 76, 0.88);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.12));
+  --hl-dim: rgba(14, 2, 12, 0.26);
+  --hl-vig-mid: rgba(0, 0, 0, 0.18);
+  --hl-vig: rgba(0, 0, 0, 0.5);
+  --hl-shadow: rgba(0, 0, 0, 0.58);
+  --hl-logo: brightness(0) invert(1);
+}
+
+/* Memorial Day — flag at half-staff, poppies */
+[data-holiday="memorial-day"] {
+  --background: #071027;
+  --foreground: #f6f2ea;
+  --surface: rgba(10, 18, 40, 0.88);
+  --surface-hover: rgba(22, 34, 70, 0.92);
+  --sidebar: transparent;
+  --border: #3a4a78;
+  --muted: #b6bfd6;
+  --brand: #ef4452;
+  --brand-soft: rgba(80, 16, 24, 0.9);
+  --banner: rgba(6, 12, 30, 0.82);
+  --banner-fg: #f6f2ea;
+  --hl-rim: #e63946;
+  --hl-glass: rgba(6, 12, 30, 0.6);
+  --hl-glass-2: rgba(6, 12, 30, 0.44);
+  --hl-chrome: rgba(6, 12, 30, 0.76);
+  --hl-nav: rgba(6, 12, 30, 0.5);
+  --hl-nav-active: rgba(96, 18, 30, 0.88);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.12));
+  --hl-dim: rgba(2, 6, 18, 0.28);
+  --hl-vig-mid: rgba(0, 0, 0, 0.2);
+  --hl-vig: rgba(0, 0, 0, 0.56);
+  --hl-shadow: rgba(0, 0, 0, 0.62);
+  --hl-logo: brightness(0) invert(1);
+}
+
+/* Father's Day — leather, stitching, argyle */
+[data-holiday="fathers-day"] {
+  --background: #140d09;
+  --foreground: #f8eddc;
+  --surface: rgba(34, 22, 14, 0.88);
+  --surface-hover: rgba(58, 38, 22, 0.92);
+  --sidebar: transparent;
+  --border: #6b4a2a;
+  --muted: #d0b48e;
+  --brand: #e8962e;
+  --brand-soft: rgba(84, 52, 16, 0.9);
+  --banner: rgba(22, 14, 8, 0.82);
+  --banner-fg: #f1d9a0;
+  --hl-rim: #e8c88a;
+  --hl-glass: rgba(22, 14, 8, 0.6);
+  --hl-glass-2: rgba(22, 14, 8, 0.44);
+  --hl-chrome: rgba(22, 14, 8, 0.76);
+  --hl-nav: rgba(22, 14, 8, 0.5);
+  --hl-nav-active: rgba(90, 58, 22, 0.88);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.12));
+  --hl-dim: rgba(10, 6, 2, 0.28);
+  --hl-vig-mid: rgba(0, 0, 0, 0.2);
+  --hl-vig: rgba(0, 0, 0, 0.55);
+  --hl-shadow: rgba(0, 0, 0, 0.62);
+  --hl-logo: brightness(0) invert(1) sepia(1) saturate(100) hue-rotate(8deg) brightness(1.15);
+}
+
+/* Independence Day — fireworks over the skyline */
+[data-holiday="independence-day"] {
+  --background: #030818;
+  --foreground: #f6f8ff;
+  --surface: rgba(6, 14, 46, 0.87);
+  --surface-hover: rgba(16, 30, 84, 0.92);
+  --sidebar: transparent;
+  --border: #2a3f8a;
+  --muted: #b0bde8;
+  --brand: #ff4d5e;
+  --brand-soft: rgba(80, 14, 28, 0.9);
+  --banner: rgba(3, 8, 28, 0.8);
+  --banner-fg: #ffffff;
+  --hl-rim: #4d8dff;
+  --hl-glass: rgba(3, 8, 28, 0.58);
+  --hl-glass-2: rgba(3, 8, 28, 0.42);
+  --hl-chrome: rgba(3, 8, 28, 0.74);
+  --hl-nav: rgba(3, 8, 28, 0.5);
+  --hl-nav-active: rgba(90, 16, 34, 0.88);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.12));
+  --hl-dim: rgba(0, 4, 16, 0.26);
+  --hl-vig-mid: rgba(0, 0, 0, 0.2);
+  --hl-vig: rgba(0, 0, 0, 0.54);
+  --hl-shadow: rgba(0, 0, 0, 0.62);
+  --hl-logo: brightness(0) invert(1);
+}
+
+/* Halloween — haunted hill */
+[data-holiday="halloween"] {
+  --background: #12041c;
+  --foreground: #fdeede;
+  --surface: rgba(26, 8, 38, 0.88);
+  --surface-hover: rgba(50, 16, 72, 0.92);
+  --sidebar: transparent;
+  --border: #5a2a7a;
+  --muted: #d3ace4;
+  --brand: #ff7a1a;
+  --brand-soft: rgba(90, 36, 8, 0.9);
+  --banner: rgba(16, 4, 26, 0.82);
+  --banner-fg: #ffb347;
+  --hl-rim: #ff7a1a;
+  --hl-glass: rgba(16, 4, 26, 0.6);
+  --hl-glass-2: rgba(16, 4, 26, 0.44);
+  --hl-chrome: rgba(16, 4, 26, 0.76);
+  --hl-nav: rgba(16, 4, 26, 0.5);
+  --hl-nav-active: rgba(100, 40, 8, 0.88);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.12));
+  --hl-dim: rgba(8, 0, 14, 0.26);
+  --hl-vig-mid: rgba(0, 0, 0, 0.22);
+  --hl-vig: rgba(0, 0, 0, 0.58);
+  --hl-shadow: rgba(0, 0, 0, 0.64);
+  --hl-logo: brightness(0) invert(1) sepia(1) saturate(100) hue-rotate(-12deg) brightness(1.1);
+}
+
+/* Veterans Day — dusk, laurel, ribbon bars */
+[data-holiday="veterans-day"] {
+  --background: #060d22;
+  --foreground: #f6f2ea;
+  --surface: rgba(10, 20, 50, 0.88);
+  --surface-hover: rgba(22, 36, 76, 0.92);
+  --sidebar: transparent;
+  --border: #3a4a78;
+  --muted: #b6bfd6;
+  --brand: #e6c36a;
+  --brand-soft: rgba(76, 58, 18, 0.9);
+  --banner: rgba(6, 12, 32, 0.82);
+  --banner-fg: #f3d98a;
+  --hl-rim: #e6c36a;
+  --hl-glass: rgba(6, 12, 32, 0.6);
+  --hl-glass-2: rgba(6, 12, 32, 0.44);
+  --hl-chrome: rgba(6, 12, 32, 0.76);
+  --hl-nav: rgba(6, 12, 32, 0.5);
+  --hl-nav-active: rgba(78, 60, 20, 0.88);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.12));
+  --hl-dim: rgba(2, 6, 20, 0.28);
+  --hl-vig-mid: rgba(0, 0, 0, 0.2);
+  --hl-vig: rgba(0, 0, 0, 0.56);
+  --hl-shadow: rgba(0, 0, 0, 0.62);
+  --hl-logo: brightness(0) invert(1) sepia(1) saturate(100) hue-rotate(8deg) brightness(1.15);
+}
+
+/* Thanksgiving — golden-hour harvest */
+[data-holiday="thanksgiving"] {
+  --background: #26130a;
+  --foreground: #fff2de;
+  --surface: rgba(42, 22, 10, 0.88);
+  --surface-hover: rgba(72, 38, 16, 0.92);
+  --sidebar: transparent;
+  --border: #7a4a1a;
+  --muted: #dbb98e;
+  --brand: #f0a040;
+  --brand-soft: rgba(96, 52, 14, 0.9);
+  --banner: rgba(30, 14, 6, 0.82);
+  --banner-fg: #ffd9a0;
+  --hl-rim: #e07a1f;
+  --hl-glass: rgba(30, 14, 6, 0.6);
+  --hl-glass-2: rgba(30, 14, 6, 0.44);
+  --hl-chrome: rgba(30, 14, 6, 0.76);
+  --hl-nav: rgba(30, 14, 6, 0.5);
+  --hl-nav-active: rgba(104, 52, 14, 0.88);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.12));
+  --hl-dim: rgba(14, 6, 2, 0.28);
+  --hl-vig-mid: rgba(0, 0, 0, 0.2);
+  --hl-vig: rgba(0, 0, 0, 0.54);
+  --hl-shadow: rgba(0, 0, 0, 0.62);
+  --hl-logo: brightness(0) invert(1) sepia(1) saturate(100) hue-rotate(-4deg) brightness(1.15);
+}
+
+/* Christmas Eve — hushed snow, glowing windows */
+[data-holiday="christmas-eve"] {
+  --background: #040816;
+  --foreground: #f4f6ff;
+  --surface: rgba(8, 16, 46, 0.88);
+  --surface-hover: rgba(18, 32, 84, 0.92);
+  --sidebar: transparent;
+  --border: #2a4a8a;
+  --muted: #b2c2e4;
+  --brand: #ffc86b;
+  --brand-soft: rgba(74, 54, 18, 0.9);
+  --banner: rgba(4, 10, 30, 0.82);
+  --banner-fg: #ffe0a0;
+  --hl-rim: #ffc86b;
+  --hl-glass: rgba(4, 10, 30, 0.6);
+  --hl-glass-2: rgba(4, 10, 30, 0.44);
+  --hl-chrome: rgba(4, 10, 30, 0.76);
+  --hl-nav: rgba(4, 10, 30, 0.5);
+  --hl-nav-active: rgba(76, 56, 20, 0.88);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.12));
+  --hl-dim: rgba(0, 2, 12, 0.26);
+  --hl-vig-mid: rgba(0, 0, 0, 0.2);
+  --hl-vig: rgba(0, 0, 0, 0.54);
+  --hl-shadow: rgba(0, 0, 0, 0.62);
+  --hl-logo: brightness(0) invert(1);
+}
+
+/* Christmas Day — garland, tree, fireplace */
+[data-holiday="christmas-day"] {
+  --background: #1c0409;
+  --foreground: #fff4ec;
+  --surface: rgba(50, 8, 16, 0.88);
+  --surface-hover: rgba(84, 14, 26, 0.92);
+  --sidebar: transparent;
+  --border: #8a2a34;
+  --muted: #f2bab2;
+  --brand: #ffd23f;
+  --brand-soft: rgba(96, 58, 12, 0.9);
+  --banner: rgba(34, 4, 10, 0.82);
+  --banner-fg: #ffe9a6;
+  --hl-rim: #2e9a52;
+  --hl-glass: rgba(36, 4, 10, 0.6);
+  --hl-glass-2: rgba(36, 4, 10, 0.44);
+  --hl-chrome: rgba(36, 4, 10, 0.76);
+  --hl-nav: rgba(36, 4, 10, 0.5);
+  --hl-nav-active: rgba(20, 84, 40, 0.9);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.12));
+  --hl-dim: rgba(16, 0, 4, 0.24);
+  --hl-vig-mid: rgba(0, 0, 0, 0.2);
+  --hl-vig: rgba(0, 0, 0, 0.54);
+  --hl-shadow: rgba(0, 0, 0, 0.62);
+  --hl-logo: brightness(0) invert(1) sepia(1) saturate(100) hue-rotate(8deg) brightness(1.15);
+}
+
+/* New Year's Eve — black, gold, hot pink */
+[data-holiday="new-years-eve"] {
+  --background: #05050c;
+  --foreground: #fff6e2;
+  --surface: rgba(12, 8, 20, 0.88);
+  --surface-hover: rgba(30, 16, 40, 0.92);
+  --sidebar: transparent;
+  --border: #5a4620;
+  --muted: #d0bd8e;
+  --brand: #ff2e93;
+  --brand-soft: rgba(84, 12, 52, 0.9);
+  --banner: rgba(6, 4, 12, 0.84);
+  --banner-fg: #f3cf7a;
+  --hl-rim: #e8b84a;
+  --hl-glass: rgba(6, 4, 12, 0.6);
+  --hl-glass-2: rgba(6, 4, 12, 0.44);
+  --hl-chrome: rgba(6, 4, 12, 0.78);
+  --hl-nav: rgba(6, 4, 12, 0.5);
+  --hl-nav-active: rgba(100, 16, 62, 0.88);
+  --hl-main: linear-gradient(90deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.04) 45%, rgba(0, 0, 0, 0.1));
+  --hl-dim: rgba(0, 0, 0, 0.2);
+  --hl-vig-mid: rgba(0, 0, 0, 0.2);
+  --hl-vig: rgba(0, 0, 0, 0.56);
+  --hl-shadow: rgba(0, 0, 0, 0.66);
+  --hl-logo: brightness(0) invert(1) sepia(1) saturate(100) hue-rotate(8deg) brightness(1.15);
+}
+
+/* ───────── Home: greeting floats on the photo; panels below stay readable ───────── */
+
+[data-holiday] section.hl-home {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+[data-holiday] section.hl-home > :not(.hl-hero):not(.fixed) {
+  background-color: color-mix(in srgb, var(--surface) 90%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+[data-holiday] .hl-hero h1,
+[data-holiday] .hl-hero p {
+  text-shadow: var(--hl-text-shadow, 0 2px 22px rgba(0, 0, 0, 0.7), 0 0 3px rgba(0, 0, 0, 0.45));
+}
+
+[data-holiday] .hl-hero h1 {
+  color: var(--foreground);
+}
+
+[data-holiday] .hl-hero p {
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+[data-holiday="easter-sunday"] {
+  --hl-text-shadow: 0 1px 18px rgba(255, 255, 255, 0.95), 0 0 2px rgba(255, 255, 255, 0.7);
+}
+
+/* Photo layer */
+[data-holiday] .hl-art {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Holiday splash */
+.hl-popup-card {
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.75);
+}

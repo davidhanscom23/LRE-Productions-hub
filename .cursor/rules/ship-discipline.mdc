@@ -1,0 +1,73 @@
+---
+description: Ship discipline for agents — verify with evidence, debug with limits, clean dig artifacts
+alwaysApply: true
+---
+
+# Agent ship discipline
+
+Keep responses concise. Do not restate the user's question. Prefer doing the work over narrating it.
+
+## Verification = evidence
+
+Do not hand off with “it should work.”
+
+- Build/lint/tests: real command, exit 0
+- Tests: pass/fail counts (or note none exist)
+- UI: screenshot or concrete click path when the change is visual
+- Bug fix: same reproduction fails before, passes after
+- URL/API: hit it yourself before asking the user to test; report status and what you checked
+
+Bad: “Updated the code; should be fine.”  
+Good: “Tests/lint exit 0. Named the files changed and how you verified.”
+
+## Debugging: three strikes, then stop
+
+1. First failure → note what you tried and why it failed; try a **different** approach  
+2. Second → reassess whether the diagnosis is wrong  
+3. Third → **stop**. Summarize the three attempts, errors, revised root cause, and a new proposal. Do not attempt a fourth fix without explicit approval  
+
+Do not ship incremental variations of the same failed idea.
+
+## Reproduce before you fix
+
+Start every bug fix by watching a reproduction fail (curl, script, click steps, or query). Fix. Watch the same reproduction pass. Prefer a failing test when the area already has tests; otherwise leave a clear repro recipe in the PR/commit.
+
+## Plans
+
+For multi-step or multi-file work (not tiny one-file tweaks):
+
+- Write a short plan to disk under `.cursor/plans/` (or the repo’s usual plans location): goal, approach, files, verification, open questions  
+- If the user pastes a detailed plan into chat, save it to disk first before implementing  
+- Before claiming done: re-read the plan, check each step, and state any gaps out loud (“plan said X; I did not do Y”), then close them  
+
+## Dig artifacts
+
+When a test page, route, flag, seed user, or temporary copy has served its purpose: **rename/scrub to production identity or delete it in the same change**. Do not leave “I’ll clean it before go-live.” Read user-visible strings before handoff.
+
+## Keys and env
+
+If a feature needs a missing secret: ask immediately (which key, which service, where it will live). Do not silently skip or fake success. Prefer documenting required vars in the repo’s env example file when adding a new integration.
+
+## Delegation heuristic
+
+- Delegate / fan out: “read X and tell me Y”, broad search, logs, boilerplate, doc greps, mechanical rewrites  
+- Keep on the main agent: architecture, subtle cross-file bugs, planning, multi-step orchestration  
+
+## Session hygiene
+
+- Prefer not re-reading unchanged files already loaded this session (re-read if the file may have been edited)  
+- After a multi-step or debugging session, you may offer one line: `pattern worth remembering: …` — only write durable gotchas into `AGENTS.md` when the user agrees  
+- Never save session-only state, speculative one-off guesses, or things the user said not to remember  
+
+## Changelog (required for EVERY user-facing change)
+
+Any change users can see or feel (feature, UI change, fix, removal) MUST add a plain-English entry to `src/lib/changelog.ts` (`CHANGELOG`, newest first) in the same commit — category `new`/`improved`/`fixed`/`removed`, `area`, deploy `date`, and a `howTo` line when usage isn't obvious. Skip only purely internal changes users cannot perceive. Full spec in `AGENTS.md`.
+
+## Tools page (required for every new Hub module)
+
+New user-facing Hub modules must land on `/tools` in the right section: set `toolsCategory` on the `NAV_GROUPS` item in `src/components/layout/sidebar.tsx` (Tools groups by that field). Also add `EXTRA_DESCRIPTIONS` + search nav when needed. Vitest `src/lib/tools/catalog.test.ts` enforces no uncategorized nav items. Full rule: `.cursor/rules/tools-page-registration.mdc` and `AGENTS.md`.
+
+## Already required for this repo
+
+Also follow `AGENTS.md` for stack-specific setup, lint/test commands, and project gotchas.
+

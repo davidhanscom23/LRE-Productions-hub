@@ -1,0 +1,17 @@
+---
+description: New Hub modules must register on the Tools page via NavItem.toolsCategory
+alwaysApply: true
+---
+
+# Tools page registration (required for new Hub surfaces)
+
+Whenever you add or meaningfully expose a **user-facing Hub module** (new page staff open from the app, not a one-off API or public token link):
+
+1. **Add a `NAV_GROUPS` item** in `src/components/layout/sidebar.tsx` with the correct access flag (`adminOnly`, `videntAvAccess`, etc.).
+2. **Set `toolsCategory`** on that item to one of: `me` | `events` | `vident-av` | `quotes` | `staffing` | `people` | `learn` | `marketing` | `comms` | `admin`.  
+   Tools (`/tools`) groups by this field — there is no separate href list to update.
+3. **Add `EXTRA_DESCRIPTIONS[href]`** in `src/lib/tools/catalog.ts` (one staff-facing sentence) unless a home shortcut already describes it.
+4. **Add a search target** in `src/lib/search/nav-targets.ts` when staff should find it via top search.
+5. Run `npx vitest run src/lib/tools/catalog.test.ts` — it fails if any non-Home nav item lacks a known `toolsCategory`.
+
+Skip only: Home (`/`), public/token routes, pure API routes, and dig/temporary pages that must not ship.
