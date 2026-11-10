@@ -324,7 +324,7 @@ describe("brands", () => {
       privacyUrl: "https://lreproductions.com/privacy-policy",
       phone: "904-834-1216",
       email: "hello@lreproductions.com",
-      accentColor: "#9a7340",
+      accentColor: "#b01418",
       legalLine: "LRE Productions, Inc.",
     });
     expect(BRANDS[1]).toMatchObject({

@@ -5,33 +5,33 @@
 
 :root {
   --background: #f3f4f6;
-  --foreground: #111827;
+  --foreground: #111111;
   --surface: #ffffff;
   --surface-hover: #f9fafb;
   --sidebar: #f9fafb;
   --border: #e5e7eb;
   --muted: #737373;
-  /* LRE mark: charcoal + bronze (icon #252525 / #c19960). Brand deepened for white-on-brand buttons. */
-  --brand: #9a7340;
-  --brand-soft: #f3e9d8;
-  --banner: #252525;
+  /* LRE mark: black script + red dots (logo red #a91416, deepened slightly for white-on-brand buttons). */
+  --brand: #b01418;
+  --brand-soft: #fbeaea;
+  --banner: #111111;
   --banner-fg: #f5f5f5;
   --panel-radius: 1rem;
 }
 
 .dark {
   --background: #121212;
-  --foreground: #eeeae3;
+  --foreground: #f2f2f2;
   --surface: #1a1a1a;
   --surface-hover: #242424;
   --sidebar: #161616;
   --border: #2e2e2e;
-  --muted: #a89f92;
-  /* Icon bronze on charcoal surfaces. */
-  --brand: #c19960;
-  --brand-soft: #3a2c1a;
-  --banner: #0f0f0f;
-  --banner-fg: #eeeae3;
+  --muted: #a3a3a3;
+  /* Brighter red so it reads on near-black surfaces. */
+  --brand: #e0393e;
+  --brand-soft: #3a1517;
+  --banner: #0a0a0a;
+  --banner-fg: #f2f2f2;
 }
 
 @theme inline {
@@ -69,15 +69,6 @@ body {
   select {
     font-size: 16px !important;
   }
-}
-
-/* Wordmark is white artwork: render black in light mode, white in dark mode. */
-.brand-logo {
-  filter: brightness(0);
-}
-
-.dark .brand-logo {
-  filter: brightness(0) invert(1);
 }
 
 /* Home Hub points leaderboard marquee */

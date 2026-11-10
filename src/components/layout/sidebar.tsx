@@ -884,7 +884,7 @@ export function Sidebar({
         <div className="flex h-14 shrink-0 items-center gap-2.5 border-b border-[var(--border)] px-4">
           <BrandLogo
             alt=""
-            className="h-7 w-auto max-w-[9.5rem] object-contain object-left"
+            className="h-9 w-auto max-w-[9.5rem] object-contain object-left"
           />
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-semibold tracking-tight text-[var(--foreground)]">

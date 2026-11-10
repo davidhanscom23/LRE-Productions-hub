@@ -111,7 +111,7 @@ export function buildEmail(args: {
 
   const rowHtml = rows
     .map(
-      (r) => `<tr><td style="padding:12px 0;border-top:1px solid #e7e1d8;width:36px;font:12px monospace;color:${r.complete ? "#2f7d4f" : "#9a7340"}">${r.complete ? "&#10003;" : r.n}</td>
+      (r) => `<tr><td style="padding:12px 0;border-top:1px solid #e7e1d8;width:36px;font:12px monospace;color:${r.complete ? "#2f7d4f" : "#b01418"}">${r.complete ? "&#10003;" : r.n}</td>
 <td style="padding:12px 0;border-top:1px solid #e7e1d8"><div style="font:600 15px Arial,sans-serif;color:${r.complete ? "#8a8a8a" : "#111"};${r.complete ? "text-decoration:line-through" : ""}">${esc(r.label)}</div><div style="font:13px Arial,sans-serif;color:#6b6b6b">${esc(r.hint)}</div></td></tr>`,
     )
     .join("");
@@ -119,15 +119,15 @@ export function buildEmail(args: {
   const html = `<!doctype html><html><body style="margin:0;background:#f4f1ec">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px">
 <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;background:#fff">
-<tr><td style="background:#0d0d0d;padding:22px 28px;border-bottom:3px solid #9a7340"><span style="font:600 14px Arial,sans-serif;letter-spacing:.28em;color:#fff">LRE PRODUCTIONS</span><span style="float:right;font:11px monospace;letter-spacing:.14em;color:#c19960">SHOW FILE ${esc(file)}</span></td></tr>
+<tr><td style="background:#0d0d0d;padding:22px 28px;border-bottom:3px solid #b01418"><span style="font:600 14px Arial,sans-serif;letter-spacing:.28em;color:#fff">LRE PRODUCTIONS</span><span style="float:right;font:11px monospace;letter-spacing:.14em;color:#c19960">SHOW FILE ${esc(file)}</span></td></tr>
 <tr><td style="padding:28px">
 <p style="margin:0 0 6px;font:12px Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#6b6b6b">${esc(when)}${esc(where)}</p>
 <h1 style="margin:0 0 16px;font:600 24px Arial,sans-serif;color:#111">${esc(portal.event_name)}</h1>
 <p style="margin:0 0 6px;font:16px/1.55 Arial,sans-serif;color:#222">${esc(greet)}</p>
 <p style="margin:0 0 20px;font:16px/1.55 Arial,sans-serif;color:#222">${esc(lead)}</p>
-${showList ? `<p style="margin:0 0 4px;font:700 11px Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#9a7340">Cue sheet · ${status.completeCount} of ${status.total} received</p><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px">${rowHtml}</table>` : ""}
+${showList ? `<p style="margin:0 0 4px;font:700 11px Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#b01418">Cue sheet · ${status.completeCount} of ${status.total} received</p><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px">${rowHtml}</table>` : ""}
 ${note ? `<p style="margin:0 0 20px;font:15px/1.55 Arial,sans-serif;color:#333">${esc(note)}</p>` : ""}
-<p style="margin:0 0 22px"><a href="${esc(link)}" style="display:inline-block;background:#0d0d0d;color:#fff;text-decoration:none;font:600 14px Arial,sans-serif;letter-spacing:.06em;padding:14px 26px;border-bottom:3px solid #9a7340">${showList ? "Open your event portal" : "View your event portal"}</a></p>
+<p style="margin:0 0 22px"><a href="${esc(link)}" style="display:inline-block;background:#0d0d0d;color:#fff;text-decoration:none;font:600 14px Arial,sans-serif;letter-spacing:.06em;padding:14px 26px;border-bottom:3px solid #b01418">${showList ? "Open your event portal" : "View your event portal"}</a></p>
 <p style="margin:0;font:13px/1.5 Arial,sans-serif;color:#6b6b6b">No login or password needed. You can also forward this email to anyone helping you plan.</p>
 </td></tr></table>
 <p style="font:12px Arial,sans-serif;color:#8a8a8a;margin:14px 0 0">LRE Productions · Ponte Vedra Beach, FL · lreproductions.com</p>

@@ -161,7 +161,7 @@ export default function AvShowRemotePage() {
     <div className="min-h-screen bg-[#0e0e0e] px-4 py-6 text-white">
       <div className="mx-auto max-w-md space-y-5">
         <header>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#c19960]">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#e0393e]">
             AV Show Control
           </p>
           <h1 className="mt-1 text-2xl font-semibold">Phone remote</h1>
@@ -192,7 +192,7 @@ export default function AvShowRemotePage() {
             <button
               type="submit"
               disabled={busy}
-              className="w-full rounded-xl bg-[#c19960] px-4 py-3 text-sm font-semibold text-black disabled:opacity-50"
+              className="w-full rounded-xl bg-[#e0393e] px-4 py-3 text-sm font-semibold text-black disabled:opacity-50"
             >
               Connect
             </button>
@@ -207,7 +207,7 @@ export default function AvShowRemotePage() {
               <p className="mt-1 text-lg font-semibold">
                 {state?.event || "Show"}
               </p>
-              <p className="mt-1 text-sm text-[#c19960]">
+              <p className="mt-1 text-sm text-[#e0393e]">
                 {state?.blackout
                   ? "BLACKOUT"
                   : state?.onair || "Standing by"}
@@ -266,7 +266,7 @@ export default function AvShowRemotePage() {
                 <span className="text-sm text-[#9a9a9a]">min</span>
                 <button
                   type="button"
-                  className="rounded-lg bg-[#c19960] px-3 py-2 text-sm font-semibold text-black"
+                  className="rounded-lg bg-[#e0393e] px-3 py-2 text-sm font-semibold text-black"
                   onClick={() =>
                     void sendCmd("tmstart", String(Number(timerMins) || 10))
                   }
@@ -325,7 +325,7 @@ export default function AvShowRemotePage() {
                       onClick={() => void sendCmd("take", String(i))}
                       className={`block w-full rounded-lg px-3 py-2 text-left text-sm ${
                         state.live === i
-                          ? "bg-[#c19960]/20 text-[#c19960]"
+                          ? "bg-[#e0393e]/20 text-[#e0393e]"
                           : "bg-[#0e0e0e] text-white"
                       }`}
                     >

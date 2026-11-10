@@ -47,11 +47,11 @@ export default async function PublicChangeOrderPage({ params }: Props) {
         <div className="mx-auto flex max-w-3xl flex-wrap items-start justify-between gap-4 px-4 py-6">
           <div className="flex items-start gap-3">
             <Image
-              src="/logo.png"
+              src="/logo-dark.png"
               alt={COMPANY.displayName}
               width={120}
-              height={28}
-              className="mt-0.5 h-7 w-auto"
+              height={72}
+              className="mt-0.5 h-10 w-auto"
               priority
             />
             <div>

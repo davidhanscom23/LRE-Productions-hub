@@ -31,13 +31,13 @@ export const DEFAULT_BRAND_KEY = "vident-productions";
 const PHONE = "904-834-1216";
 
 /** Hub brand bronze (globals.css --brand); the form editor contrast-checks it for white text. */
-export const VIDENT_BRONZE = "#9a7340";
+export const VIDENT_BRONZE = "#b01418";
 /**
  * The same bronze one step darker, so white button text reads at 4.5:1 or better (the raw bronze is
  * 4.29:1). The public form darkens a light accent for its buttons anyway; starting the starter form
  * here keeps its editor free of the "hard to read" warning.
  */
-export const VIDENT_BRONZE_AA = "#946e3d";
+export const VIDENT_BRONZE_AA = "#b01418";
 export const VIDENT_AV_RED = "#c00000";
 
 /**

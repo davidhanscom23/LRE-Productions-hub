@@ -8,7 +8,7 @@ export function ContractView({ body }: { body: string }) {
       {blocks.map((b, i) => {
         if (b.kind === "heading") {
           return (
-            <h2 key={i} className="mb-2 mt-7 border-l-[3px] border-[#c9a05c] pl-3 text-[13px] font-bold uppercase tracking-wide text-neutral-900 first:mt-0">
+            <h2 key={i} className="mb-2 mt-7 border-l-[3px] border-[#b01418] pl-3 text-[13px] font-bold uppercase tracking-wide text-neutral-900 first:mt-0">
               {b.text}
             </h2>
           );
@@ -30,7 +30,7 @@ export function ContractView({ body }: { body: string }) {
             <ul key={i} className="my-3 space-y-1.5">
               {b.items.map((it, j) => (
                 <li key={j} className="flex gap-2.5">
-                  <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-[#c9a05c]" />
+                  <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-[#b01418]" />
                   <span>{it}</span>
                 </li>
               ))}

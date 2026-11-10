@@ -100,11 +100,11 @@ export default async function PublicEstimatePage({ params }: Props) {
         <div className="mx-auto flex max-w-4xl flex-wrap items-start justify-between gap-4 px-4 py-6">
           <div className="flex items-start gap-3">
             <Image
-              src="/logo.png"
+              src="/logo-dark.png"
               alt=""
-              width={56}
-              height={56}
-              className="h-14 w-14 object-contain"
+              width={96}
+              height={57}
+              className="h-14 w-auto object-contain"
             />
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.12em]">

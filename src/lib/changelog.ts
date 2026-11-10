@@ -25,6 +25,14 @@ export type ChangelogEntry = {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-10",
+    category: "improved",
+    area: "LRE Hub",
+    title: "New LRE look",
+    description:
+      "The Hub now uses the LRE Productions logo and its black, white, and red colors, in light and dark mode. Estimates, agreements, and the app icon match.",
+  },
+  {
+    date: "2026-11-10",
     category: "new",
     area: "LRE Hub",
     title: "Welcome to the LRE Hub",
