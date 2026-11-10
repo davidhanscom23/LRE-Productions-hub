@@ -25,6 +25,14 @@ export type ChangelogEntry = {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-10",
+    category: "fixed",
+    area: "Teams",
+    title: "Teams now shows Audiovisual only",
+    description:
+      "The Teams page and the department pickers in Text Messages, Quoting, and Hiring now list only Audiovisual, the one department LRE uses.",
+  },
+  {
+    date: "2026-11-10",
     category: "improved",
     area: "LRE Hub",
     title: "New LRE look",

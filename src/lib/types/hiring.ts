@@ -39,13 +39,7 @@ export const CANDIDATE_STAGES: { value: CandidateStage; label: string }[] = [
   { value: "rejected", label: "Rejected" },
 ];
 
-export const HIRING_DEPARTMENTS = [
-  "Audiovisual",
-  "Corporate",
-  "Wedding & Social",
-  "Golf",
-  "Office",
-];
+export const HIRING_DEPARTMENTS = ["Audiovisual"];
 
 export function stageLabel(stage: CandidateStage): string {
   return CANDIDATE_STAGES.find((s) => s.value === stage)?.label ?? "Applied";

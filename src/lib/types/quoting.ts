@@ -3,10 +3,6 @@ import type { Department } from "@/lib/types/database";
 export const QUOTE_DEPARTMENT_OPTIONS = [
   "General",
   "Audiovisual",
-  "Corporate",
-  "Wedding & Social",
-  "Golf",
-  "Office",
 ] as const;
 
 export type QuoteDepartment =

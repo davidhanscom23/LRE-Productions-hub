@@ -9,13 +9,7 @@ import {
   X,
 } from "lucide-react";
 
-const DEPARTMENTS = [
-  "Audiovisual",
-  "Corporate",
-  "Wedding & Social",
-  "Golf",
-  "Office",
-] as const;
+const DEPARTMENTS = ["Audiovisual"] as const;
 
 type Recipient = {
   id: string;

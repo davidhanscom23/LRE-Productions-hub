@@ -23,9 +23,6 @@ export type MarketingVideo = {
 
 /** Category filter chips for the video library. */
 export const MARKETING_VIDEO_CATEGORIES = [
-  "Wedding & Social",
-  "Corporate",
-  "Golf",
   "Audiovisual",
   "Lighting & FX",
 ] as const;

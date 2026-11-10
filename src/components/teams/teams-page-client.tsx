@@ -153,7 +153,7 @@ export function TeamsPageClient({
         </h1>
         <p className="mt-1 text-sm text-[var(--muted)]">
           {canManage
-            ? "Department resources, training, and tools for Audiovisual, Corporate, Wedding & Social, and Golf."
+            ? "Department resources, training, and tools for Audiovisual."
             : "Resources, training, and tools for your assigned departments."}
         </p>
       </div>
@@ -164,9 +164,8 @@ export function TeamsPageClient({
             No departments assigned
           </p>
           <p className="mt-1 text-sm text-[var(--muted)]">
-            Ask an admin to add a department (Audiovisual, Corporate, Wedding
-            &amp; Social, or Golf) to your profile in People so you can see
-            Teams content.
+            Ask an admin to add the Audiovisual department to your profile in
+            People so you can see Teams content.
           </p>
         </div>
       ) : (

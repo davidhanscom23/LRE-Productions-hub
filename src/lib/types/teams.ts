@@ -1,9 +1,4 @@
-export const TEAM_DEPARTMENTS = [
-  "Audiovisual",
-  "Corporate",
-  "Wedding & Social",
-  "Golf",
-] as const;
+export const TEAM_DEPARTMENTS = ["Audiovisual"] as const;
 
 export type TeamDepartment = (typeof TEAM_DEPARTMENTS)[number];
 

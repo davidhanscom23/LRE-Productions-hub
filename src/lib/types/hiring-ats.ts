@@ -24,10 +24,6 @@ export type InterviewTemplate = {
 export const INTERVIEW_TRACKS = [
   "general",
   "Audiovisual",
-  "Corporate",
-  "Wedding & Social",
-  "Golf",
-  "Office",
 ];
 
 export const INTERVIEW_STATUS_LABELS: Record<InterviewStatus, string> = {
