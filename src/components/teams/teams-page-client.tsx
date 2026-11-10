@@ -4,6 +4,7 @@ import { useMemo, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
+  BookOpen,
   ChevronRight,
   ExternalLink,
   GraduationCap,
@@ -11,12 +12,14 @@ import {
   Play,
   Plus,
   Trash2,
+  Wrench,
   X,
 } from "lucide-react";
 import {
   deleteDepartmentLinkAction,
   deleteDepartmentVideoAction,
 } from "@/app/(app)/teams/actions";
+import { AvResourceGuide } from "@/components/teams/av-resource-guide";
 import { AvTimeRollup } from "@/components/teams/av-time-rollup";
 import { AvTimeTracker } from "@/components/teams/av-time-tracker";
 import { LinkFormModal, VideoFormModal } from "@/components/teams/team-modals";
@@ -73,6 +76,7 @@ export function TeamsPageClient({
     visibleDepartments[0] ?? "Audiovisual",
   );
   const [category, setCategory] = useState("all");
+  const [avTab, setAvTab] = useState<"tools" | "guide">("tools");
   const [linkModal, setLinkModal] = useState<{
     open: boolean;
     link: DepartmentLink | null;
@@ -217,6 +221,57 @@ export function TeamsPageClient({
                 </div>
               </section>
 
+              {activeDepartment === "Audiovisual" ? (
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setAvTab("tools")}
+                    className={[
+                      "inline-flex h-9 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold transition-colors",
+                      avTab === "tools"
+                        ? "bg-[var(--brand)] text-white"
+                        : "border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] hover:text-[var(--foreground)]",
+                    ].join(" ")}
+                  >
+                    <Wrench className="h-4 w-4" />
+                    AV Tools
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setAvTab("guide")}
+                    className={[
+                      "inline-flex h-9 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold transition-colors",
+                      avTab === "guide"
+                        ? "bg-[var(--brand)] text-white"
+                        : "border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] hover:text-[var(--foreground)]",
+                    ].join(" ")}
+                  >
+                    <BookOpen className="h-4 w-4" />
+                    Fundamental Resource Guide
+                  </button>
+                  {avTab === "guide" ? (
+                    <Link
+                      href="/training/av-guide"
+                      className="ml-auto inline-flex h-9 items-center gap-1 rounded-lg px-2 text-sm font-medium text-[var(--brand)] hover:bg-[var(--brand-soft)]"
+                    >
+                      Open full page
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </Link>
+                  ) : null}
+                </div>
+              ) : null}
+
+              {activeDepartment === "Audiovisual" && avTab === "guide" ? (
+                <AvResourceGuide />
+              ) : null}
+
+              <div
+                className={
+                  activeDepartment === "Audiovisual" && avTab === "guide"
+                    ? "hidden"
+                    : "contents"
+                }
+              >
               {/* Modules row — Audiovisual uses Time Tracker; others use planning platforms */}
               <div className="grid gap-4 lg:grid-cols-2">
                 {activeDepartment === "Audiovisual" ? (
@@ -459,6 +514,7 @@ export function TeamsPageClient({
                   </div>
                 )}
               </section>
+              </div>
             </>
           )}
         </>

@@ -49,3 +49,11 @@ export const PLANNING_BUTTON_STYLES = [
 ] as const;
 
 export const TRAINING_PORTAL_HREF = "/training-portal";
+
+/**
+ * The AV Fundamental Resource Guide renders with the global var(--brand) /
+ * var(--brand-soft) tokens. This className pins them to the LRE hub colors
+ * for everything nested inside, in both light and dark mode.
+ */
+export const AV_GUIDE_BRAND_VARS =
+  "[--brand:#b01418] [--brand-soft:#fbeaea] dark:[--brand:#e0393e] dark:[--brand-soft:#3a1517]";

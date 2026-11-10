@@ -272,13 +272,15 @@ Developer and API (Terminal Mode): LRE AV → Developer mints shop API keys for 
   {
     slug: "teams",
     title: "Teams — department hubs and AV time clock",
-    body: `Teams has department tabs for Audiovisual, Corporate, Wedding & Social, and Golf with planning links, tutorial videos, and shortcuts.
+    body: `Teams has an Audiovisual department tab with planning links, tutorial videos, and shortcuts.
 
 Staff only see departments assigned on their People profile. Admins and trainers see all tabs and can add, edit, or delete department links and videos. Office is not a Teams tab.
 
-When no admin-managed links exist yet, each tab shows Hub defaults: Wedding & Social (Event Packets, Calendar, Quoting, My Week, Support Guide), Corporate (Quoting, LRE AV, Event Portals, Show Control, Venue Quotes, Calendar), and Audiovisual (LRE AV, Show Control, Event Portals). Admins/Leads can replace those with custom department links and training videos anytime.
+When no admin-managed links exist yet, the tab shows Hub defaults for Audiovisual: LRE AV, Show Control, and Event Portals. Admins/Leads can replace those with custom department links and training videos anytime.
 
-On the Audiovisual tab, the AV Time Tracker lets you clock in From Calendar (upcoming calendar events for the next two weeks — events assigned to you and AV-looking titles first) or Manual Entry (type an event name), add notes, optionally capture GPS, clock out, and review recent AV time entries. Admins need the company Calendar feed; staff/trainers need a personal calendar link on People. Admins and trainers also see Team hours (last 7 days): per-person closed-shift totals and a recent team shifts list (staff only see their own tracker).`,
+On the Audiovisual tab, the AV Time Tracker lets you clock in From Calendar (upcoming calendar events for the next two weeks — events assigned to you and AV-looking titles first) or Manual Entry (type an event name), add notes, optionally capture GPS, clock out, and review recent AV time entries. Admins need the company Calendar feed; staff/trainers need a personal calendar link on People. Admins and trainers also see Team hours (last 7 days): per-person closed-shift totals and a recent team shifts list (staff only see their own tracker).
+
+Fundamental Resource Guide: on the Audiovisual tab, switch from AV Tools to Fundamental Resource Guide for a reference on connectors and signal types, IP ratings, microphone patterns, signal flow, wireless RF, DMX lighting, networked AV, and a definitions glossary. Sections open and close with a tap. Use Open full page to read it on its own at /training/av-guide. All staff can open it; guest accounts cannot.`,
   },
   {
     slug: "training-portal",

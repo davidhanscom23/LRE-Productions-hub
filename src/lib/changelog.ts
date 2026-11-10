@@ -25,6 +25,16 @@ export type ChangelogEntry = {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-10",
+    category: "new",
+    area: "Teams",
+    title: "Fundamental Resource Guide for Audiovisual",
+    description:
+      "The Audiovisual tab in Teams now has a Fundamental Resource Guide: connectors, IP ratings, microphone patterns, signal flow, wireless, DMX lighting, networked AV, and a glossary.",
+    howTo:
+      "Open Teams, choose Audiovisual, then tap Fundamental Resource Guide. Use Open full page to read it on its own.",
+  },
+  {
+    date: "2026-11-10",
     category: "fixed",
     area: "Teams",
     title: "Teams now shows Audiovisual only",
