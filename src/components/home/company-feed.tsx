@@ -49,7 +49,7 @@ export function CompanyFeed({
           <div className="rounded-xl border border-dashed border-[var(--border)] bg-[var(--surface-hover)]/60 px-6 py-12 text-center">
             {/* eslint-disable-next-line @next/next/no-img-element -- small static asset, no optimization needed */}
             <img
-              src="/icon-192-v2.png"
+              src="/icon-192-v3.png"
               alt=""
               className="mx-auto mb-3 h-12 w-12 rounded-full"
             />

@@ -98,8 +98,8 @@ self.addEventListener("push", (event) => {
   const title = data.title || "LRE Hub";
   const options = {
     body: data.body || "",
-    icon: "/icon-192-v2.png",
-    badge: "/icon-192-v2.png",
+    icon: "/icon-192-v3.png",
+    badge: "/icon-192-v3.png",
     data: { href: data.href || "/" },
     tag: data.tag || undefined,
   };

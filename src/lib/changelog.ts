@@ -29,7 +29,7 @@ export const CHANGELOG: ChangelogEntry[] = [
     area: "LRE Hub",
     title: "New LRE look",
     description:
-      "The Hub now uses the LRE Productions logo and its black, white, and red colors, in light and dark mode. Estimates, agreements, and the app icon match.",
+      "The Hub now uses the LRE logo and its black, white, and red colors, in light and dark mode. Estimates, agreements, the hub switcher, and the app icon match.",
   },
   {
     date: "2026-11-10",
