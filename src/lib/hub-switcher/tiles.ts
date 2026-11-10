@@ -20,11 +20,11 @@ export type HubTile = {
 };
 
 export const CURRENT_HUB: HubTile = {
-  slug: "vident",
+  slug: "lre",
   name: "LRE Hub",
   url: "",
-  logoUrl: "/hub-logos/vident.png",
-  logoDarkUrl: "/hub-logos/vident-dark.png",
+  logoUrl: "/hub-logos/lre.png",
+  logoDarkUrl: "/hub-logos/lre-dark.png",
   current: true,
   comingSoon: false,
 };
