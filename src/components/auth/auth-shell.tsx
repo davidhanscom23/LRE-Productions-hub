@@ -15,7 +15,7 @@ export function AuthShell({ title, description, children }: AuthShellProps) {
         <div className="mb-8 text-center">
           <BrandLogo
             alt={COMPANY.displayName}
-            className="mx-auto mb-5 h-12 w-auto max-w-[14rem] object-contain"
+            className="mx-auto mb-5 h-24 w-auto max-w-[14rem] object-contain"
           />
           <h1 className="text-2xl font-bold tracking-tight text-[var(--foreground)]">
             {title}

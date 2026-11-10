@@ -285,7 +285,7 @@ export function HomeWelcome({
       <div
         className={`px-5 pt-8 pb-6 text-center sm:px-8${holiday ? " hl-hero" : ""}`}
       >
-        <BrandLogo alt={COMPANY.displayName} className="mx-auto h-11 w-auto max-w-[16rem] object-contain" />
+        <BrandLogo alt={COMPANY.displayName} className="mx-auto h-20 w-auto max-w-[16rem] object-contain" />
         <h1 className="mt-4 text-2xl font-bold tracking-tight text-[var(--foreground)] sm:text-3xl">
           {holiday ? holiday.greeting : COMPANY.hubTitle}
         </h1>
