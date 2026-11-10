@@ -5,15 +5,15 @@ export const SUBCONTRACTOR_AGREEMENT = {
   key: "subcontractor",
   title: "Subcontractor Agreement",
   subtitle:
-    "Independent Contractor Agreement — Vident Productions · Audiovisual · Corporate · Wedding & Social · Golf",
+    "Independent Contractor Agreement — LRE Productions · Audiovisual · Corporate · Wedding & Social · Golf",
   introduction: [
-    'This Subcontractor Agreement ("Agreement") is entered into by and between Vident Productions, LLC and its DBAs (collectively "Company") and the undersigned Subcontractor ("Subcontractor").',
+    'This Subcontractor Agreement ("Agreement") is entered into by and between LRE Productions, Inc. and its DBAs (collectively "Company") and the undersigned Subcontractor ("Subcontractor").',
   ],
   acknowledgment:
     "By signing below, you agree to all terms and conditions outlined in this Subcontractor Agreement.",
-  companyLine: "Vident Productions · Audiovisual · Corporate · Wedding & Social · Golf",
+  companyLine: "LRE Productions · Audiovisual · Corporate · Wedding & Social · Golf",
   ownerLine:
-    "By: David Hanscom, Owner · 101 Marketside Avenue #404-123, Ponte Vedra, FL 32081 · 904-834-1216 · hello@videntproductions.com",
+    "By: David Hanscom, Owner · 101 Marketside Avenue #404-123, Ponte Vedra, FL 32081 · 904-834-1216 · hello@lreproductions.com",
   signButtonLabel: "Sign Agreement",
   sections: [
     {
@@ -23,7 +23,7 @@ export const SUBCONTRACTOR_AGREEMENT = {
       blocks: [
         {
           paragraphs: [
-            "The Subcontractor is engaged as an independent contractor and not as an employee of Vident Productions. Nothing in this Agreement creates an employer-employee relationship, partnership, or joint venture.",
+            "The Subcontractor is engaged as an independent contractor and not as an employee of LRE Productions. Nothing in this Agreement creates an employer-employee relationship, partnership, or joint venture.",
             "The Subcontractor is responsible for their own taxes, insurance, and any applicable business licenses. The Company will not withhold taxes or provide employee benefits.",
           ],
         },

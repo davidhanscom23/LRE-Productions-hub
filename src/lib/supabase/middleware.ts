@@ -22,7 +22,7 @@ export async function updateSession(request: NextRequest) {
     if (
       // Public per-staff calendar subscription feed (token in the URL is the key).
       (p.startsWith("/api/calendar/feed/") && m === "GET") ||
-      // Vident AV Terminal Mode API (Bearer avk_live_… validated in the route).
+      // LRE AV Terminal Mode API (Bearer avk_live_… validated in the route).
       (p.startsWith("/api/av/terminal/") &&
         (m === "GET" || m === "POST" || m === "PATCH" || m === "DELETE")) ||
       // Twilio inbound SMS webhook + delivery status callback: no Supabase

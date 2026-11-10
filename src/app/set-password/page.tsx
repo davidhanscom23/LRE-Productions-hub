@@ -29,7 +29,7 @@ export default async function SetPasswordPage() {
             Create your password
           </h1>
           <p className="mt-2 text-sm text-[var(--muted)]">
-            Welcome to Vident Productions Hub. Choose a password to finish setting
+            Welcome to LRE Productions Hub. Choose a password to finish setting
             up your account.
           </p>
           <p className="mt-2 text-xs text-[var(--muted)]">{user.email}</p>

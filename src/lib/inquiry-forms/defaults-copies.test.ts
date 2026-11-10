@@ -8,9 +8,9 @@ describe("form settings: owners by event type", () => {
   });
   it("keeps valid emails (lowercased) and drops junk and prototype keys", () => {
     const merged = mergeFormSettings({
-      ownerByEventType: { wedding: " Kallie@VidentProductions.com ", golf: "not-an-email", corp: 42, __proto__: "x@y.com", constructor: "a@b.com" },
+      ownerByEventType: { wedding: " Wedding@LREProductions.com ", golf: "not-an-email", corp: 42, __proto__: "x@y.com", constructor: "a@b.com" },
     });
-    expect(merged.ownerByEventType).toEqual({ wedding: "kallie@videntproductions.com" });
+    expect(merged.ownerByEventType).toEqual({ wedding: "wedding@lreproductions.com" });
   });
 });
 

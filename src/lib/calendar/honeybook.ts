@@ -119,7 +119,7 @@ function crmMatchCandidates(row: HoneyBookCalendarRow): string[] {
 
 /**
  * Score how well an iCal event matches a CRM project row (same-day required).
- * Day comparison uses America/New_York (Vident events are timed, not all-day).
+ * Day comparison uses America/New_York (LRE events are timed, not all-day).
  * Returns 0 when the day differs or names do not overlap enough.
  */
 export function scoreHoneybookIcalCrmMatch(

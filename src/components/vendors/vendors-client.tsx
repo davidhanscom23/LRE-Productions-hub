@@ -73,7 +73,7 @@ export function VendorsClient({
           </h1>
           <p className="mt-1 text-sm text-[var(--muted)]">
             Company vendor directory with search, preferred flags, and change
-            history. Updates sync to the Vident Google Sheet. Deletes need
+            history. Updates sync to the LRE Google Sheet. Deletes need
             admin approval.
           </p>
         </div>

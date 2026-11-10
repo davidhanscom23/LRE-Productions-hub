@@ -10,7 +10,7 @@ import type {
 import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
 
-export const metadata = { title: "Catalog — Vident AV" };
+export const metadata = { title: "Catalog — LRE AV" };
 
 export default async function AvCatalogPage() {
   const profile = await getCurrentProfile();

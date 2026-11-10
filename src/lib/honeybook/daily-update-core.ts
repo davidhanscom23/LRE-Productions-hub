@@ -284,8 +284,8 @@ export function buildStaffEmail(
     html.push("</ul>");
   }
 
-  textLines.push("Open the Projects tab in the Hub to add notes or update a stage.", "", "Vident Productions Hub");
-  html.push('<p>Open the Projects tab in the Hub to add notes or update a stage.</p><p>Vident Productions Hub</p>');
+  textLines.push("Open the Projects tab in the Hub to add notes or update a stage.", "", "LRE Productions Hub");
+  html.push('<p>Open the Projects tab in the Hub to add notes or update a stage.</p><p>LRE Productions Hub</p>');
 
   const subject =
     attention > 0
@@ -386,8 +386,8 @@ export function buildAdminEmail(args: {
     html.push("</ul>");
   }
 
-  text.push("Vident Productions Hub");
-  html.push("<p>Vident Productions Hub</p>");
+  text.push("LRE Productions Hub");
+  html.push("<p>LRE Productions Hub</p>");
 
   return {
     subject: `HoneyBook team update: ${totalAttention} need${totalAttention === 1 ? "s" : ""} attention`,

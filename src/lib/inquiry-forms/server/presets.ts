@@ -1,8 +1,8 @@
 import "server-only";
 
 /**
- * Inquiry Forms - Vident hub presets: brand profiles, business defaults and the two starter forms.
- * Spec section 5 (forms) and section 4 (Vident availability: "open" mode, no location check).
+ * Inquiry Forms - LRE hub presets: brand profiles, business defaults and the two starter forms.
+ * Spec section 5 (forms) and section 4 (LRE availability: "open" mode, no location check).
  *
  * Choice values and budget tier ids are generated with keyFromLabel (snake_case of the label, the
  * same rule the builder uses), and every showIf uses those generated values, so presets.test.ts can
@@ -47,21 +47,21 @@ export const VIDENT_AV_RED = "#c00000";
 export const BRANDS: BrandProfile[] = [
   {
     key: "vident-productions",
-    name: "Vident Productions",
+    name: "LRE Productions",
     // public/logo.png is the WHITE wordmark: the form header paints a dark band behind it.
     logoUrl: "/logo.png",
     logoOnDark: true,
-    siteUrl: "https://videntproductions.com",
-    privacyUrl: "https://videntproductions.com/privacy-policy",
+    siteUrl: "https://lreproductions.com",
+    privacyUrl: "https://lreproductions.com/privacy-policy",
     phone: PHONE,
-    email: "hello@videntproductions.com",
+    email: "hello@lreproductions.com",
     accentColor: VIDENT_BRONZE,
-    legalLine: "Vident Productions, LLC",
+    legalLine: "LRE Productions, Inc.",
   },
   {
     key: "vident-av",
-    name: "Vident Audiovisual",
-    // No Vident Audiovisual logo file in the hub: the form shows a text wordmark.
+    name: "LRE Audiovisual",
+    // No LRE Audiovisual logo file in the hub: the form shows a text wordmark.
     logoUrl: null,
     logoOnDark: false,
     siteUrl: "https://videntaudiovisual.com",
@@ -69,8 +69,8 @@ export const BRANDS: BrandProfile[] = [
     phone: PHONE,
     email: "hello@videntaudiovisual.com",
     accentColor: VIDENT_AV_RED,
-    // The name the brand's own site footer uses ("(c) Vident Audiovisual. All rights reserved.").
-    legalLine: "Vident Audiovisual",
+    // The name the brand's own site footer uses ("(c) LRE Audiovisual. All rights reserved.").
+    legalLine: "LRE Audiovisual",
   },
 ];
 
@@ -80,14 +80,14 @@ export const BRANDS: BrandProfile[] = [
 
 export const HUB_BUSINESS_DEFAULTS: DeepPartial<BusinessSettings> = {
   homeBase: {
-    label: "Vident Productions, Ponte Vedra",
+    label: "LRE Productions, Ponte Vedra",
     address: "101 Marketside Avenue, Ponte Vedra, FL 32081",
     // The same street address the Y? hub geocoded from its website JSON-LD; the settings page
     // geocode button can refine it. Only used if someone turns the location check on.
     lat: 30.24,
     lng: -81.3853,
   },
-  // The area is a choice on the form (Vident covers Northeast Florida, Central Florida, Tampa and
+  // The area is a choice on the form (LRE covers Northeast Florida, Central Florida, Tampa and
   // Southeast Georgia), so there is no distance check.
   location: { enabled: false },
   // No capacity number exists in the hub, and a DMC runs several events a day: a date is "open"
@@ -159,14 +159,14 @@ function field(form: string, key: string, type: FieldDef["type"], label: string,
 const OTHER = { label: "Other", isOther: true } as const;
 
 /** Staff email for new inquiries: the public inbox, with David always copied (David, 05-Nov-26). */
-export const VIDENT_STAFF_INBOXES = ["hello@videntproductions.com", "david@videntproductions.com"];
-/** Directors listed on videntproductions.com/contact (read 05-Nov-26). */
+export const VIDENT_STAFF_INBOXES = ["hello@lreproductions.com"];
+/** Directors listed on lreproductions.com/contact (read 05-Nov-26). */
 export const VIDENT_DIRECTORS = {
-  corporate: "natalie@videntproductions.com",
-  weddingSocial: "kallie@videntproductions.com",
-  golf: "kristin@videntproductions.com",
+  corporate: "hello@lreproductions.com",
+  weddingSocial: "hello@lreproductions.com",
+  golf: "hello@lreproductions.com",
 } as const;
-/** GoHighLevel ids both Vident websites' contact forms send (public, read from the live sites). */
+/** GoHighLevel ids both LRE websites' contact forms send (public, read from the live sites). */
 const VIDENT_GHL_LOCATION = "LsjUOxo376FX3spTvDwa";
 const VIDENT_GHL_TRACKING = "tk_2ba7711add5e48fcbaeca8e803d01da4";
 
@@ -180,7 +180,7 @@ function contactFields(form: string): FieldDef[] {
   ];
 }
 
-// Form V1: "Get a Quote" (videntproductions.com; replaces the site's one-page "Get a Quote" form).
+// Form V1: "Get a Quote" (lreproductions.com; replaces the site's one-page "Get a Quote" form).
 const v1EventType = field("v1", "event_type", "radio", "Event type", {
   role: "event_type",
   required: true,
@@ -345,7 +345,7 @@ const V1: StarterForm = {
     qualify: { celebrate: false },
     onDateUnavailable: { actions: ["change_date", "continue"] },
     // David's picks (05-Nov-26): confirmation on; staff email to hello@ with David always copied;
-    // each event type routed to its director from videntproductions.com/contact (Other stays with
+    // each event type routed to its director from lreproductions.com/contact (Other stays with
     // an admin); a copy to GoHighLevel exactly as the site's own form sends it (read 05-Nov-26).
     confirmationEmail: { enabled: true },
     notify: { recipients: VIDENT_STAFF_INBOXES },
@@ -366,7 +366,7 @@ const V1: StarterForm = {
         locationId: VIDENT_GHL_LOCATION,
         trackingId: VIDENT_GHL_TRACKING,
         formId: "Contact Form",
-        siteUrl: "https://videntproductions.com/contact",
+        siteUrl: "https://lreproductions.com/contact",
         notesKey: "contact.event_details",
         notesLabel: "Event Details",
         eventTypeKey: "contact.event_type",
@@ -472,7 +472,7 @@ const V2: StarterForm = {
     submitLabel: "Send Request",
     thankYou: {
       title: "Request received!",
-      message: "Thank you for reaching out to Vident Audiovisual. We'll be in touch soon.",
+      message: "Thank you for reaching out to LRE Audiovisual. We'll be in touch soon.",
     },
     // David's picks (05-Nov-26): confirmation on; staff email to hello@ with David always copied;
     // no event type routing (AV department); a copy to GoHighLevel as videntaudiovisual.com sends it.
@@ -483,7 +483,7 @@ const V2: StarterForm = {
         enabled: true,
         locationId: VIDENT_GHL_LOCATION,
         trackingId: VIDENT_GHL_TRACKING,
-        formId: "Vident AV Website Form",
+        formId: "LRE AV Website Form",
         siteUrl: "https://videntaudiovisual.com/",
         notesKey: "calendar_notes",
         notesLabel: "Message",

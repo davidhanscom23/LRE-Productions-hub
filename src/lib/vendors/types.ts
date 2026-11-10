@@ -55,7 +55,7 @@ export type VendorAuditEvent = {
 };
 
 export const VENDORS_SHEET_SETTING_KEY = "vendors_spreadsheet_id";
-export const VENDORS_SHEET_TITLE = "Vident Hub Vendors";
+export const VENDORS_SHEET_TITLE = "LRE Hub Vendors";
 export const VENDORS_SHEET_HEADERS = [
   "Category",
   "Company",

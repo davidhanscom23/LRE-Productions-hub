@@ -80,7 +80,7 @@ export async function syncEventPacketsAction(): Promise<{
     const { withHubAssignments } = await import(
       "@/lib/calendar/load-assignments"
     );
-    // Shared Vident HoneyBook calendar only — never personal DJEP feeds.
+    // Shared LRE HoneyBook calendar only — never personal DJEP feeds.
     const collected = await collectAllDjepWorkEvents(supabase);
     if (!collected.feedsScanned) {
       return {
@@ -196,7 +196,7 @@ export async function syncSheetReviewsAction(): Promise<{
   };
 }
 
-/** Shared Vident HoneyBook (or mirrored company) iCal — never personal DJEP. */
+/** Shared LRE HoneyBook (or mirrored company) iCal — never personal DJEP. */
 async function resolveIcalUrlForPackets(options: {
   role: string;
 }): Promise<{ icalUrl: string | null; error: string | null }> {
@@ -268,7 +268,7 @@ export async function listLaunchablePastEventsAction(): Promise<{
       if (!isManualPacketEligible(event)) continue;
       if (!event.uid?.trim() || havePacket.has(event.uid.trim())) continue;
 
-      // Shared Vident HoneyBook calendar only (no DJEP / Y Ent feeds).
+      // Shared LRE HoneyBook calendar only (no DJEP / Y Ent feeds).
       launchable.push({
         uid: event.uid,
         eventDate: event.start.slice(0, 10),

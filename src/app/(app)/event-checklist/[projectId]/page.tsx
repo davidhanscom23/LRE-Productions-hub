@@ -5,7 +5,7 @@ import { getCurrentProfile } from "@/lib/auth/profile";
 import { loadChecklistBoard } from "@/lib/event-checklist/data";
 import { createClient } from "@/lib/supabase/server";
 
-export const metadata = { title: "Gear checklist — Vident" };
+export const metadata = { title: "Gear checklist — LRE" };
 
 type Props = { params: Promise<{ projectId: string }> };
 

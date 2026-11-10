@@ -7,9 +7,9 @@ const message: ParsedMessage = {
   gmailId: "g1",
   threadId: "t1",
   messageKey: "rfc:abc",
-  mailbox: "kallie@videntproductions.com",
+  mailbox: "hello@lreproductions.com",
   from: "jane@example.com",
-  to: ["kallie@videntproductions.com"],
+  to: ["hello@lreproductions.com"],
   cc: [],
   subject: "Wedding in June",
   internalMs: Date.UTC(2026, 10, 6, 15, 0, 0),
@@ -90,7 +90,7 @@ describe("buildPrompt", () => {
 
   it("tells the model vendors and partnership requests are not inquiries", () => {
     const p = buildPrompt({ message, staffName: "Kallie Sango", project: null });
-    expect(p).toContain("HIRE Vident");
+    expect(p).toContain("HIRE LRE");
     expect(p).toContain("NOT inquiries");
     expect(p).not.toContain("previously marked");
   });

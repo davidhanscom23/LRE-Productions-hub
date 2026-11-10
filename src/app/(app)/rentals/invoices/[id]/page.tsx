@@ -13,7 +13,7 @@ import { canAccessVidentAv } from "@/lib/vident-av-access";
 type Props = { params: Promise<{ id: string }> };
 
 export async function generateMetadata() {
-  return { title: "Invoice — Vident AV" };
+  return { title: "Invoice — LRE AV" };
 }
 
 export default async function AvInvoiceDetailPage({ params }: Props) {

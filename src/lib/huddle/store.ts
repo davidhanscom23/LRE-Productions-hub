@@ -24,7 +24,7 @@ type StartResult =
 
 const HUDDLE_WINDOW_MIN = 120; // a huddle stays "live" for up to 2h unless ended
 const SCHEDULE_GRACE_MIN = 120; // a past-due scheduled huddle stays startable for 2h
-const APP_TZ = "America/New_York"; // Vident Productions operates on Eastern time
+const APP_TZ = "America/New_York"; // LRE Productions operates on Eastern time
 
 /** Human-readable local (Eastern) time for notifications, e.g. "Fri, Aug 8, 3:00 PM". */
 function formatWhen(iso: string): string {

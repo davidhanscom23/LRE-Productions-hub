@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { LegalShell } from "@/components/legal/legal-shell";
 
 export const metadata: Metadata = {
-  title: "SMS Terms & Conditions — Vident Productions",
+  title: "SMS Terms & Conditions — LRE Productions",
   description:
-    "Terms and conditions for the Vident Productions staff text-messaging (SMS) program.",
+    "Terms and conditions for the LRE Productions staff text-messaging (SMS) program.",
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -20,7 +20,7 @@ export default function SmsTermsPage() {
     <LegalShell title="SMS Terms &amp; Conditions" updated="August 9, 2026">
       <p>
         These Terms &amp; Conditions govern the text-messaging (SMS/MMS) program
-        operated by Vident Productions, LLC (&ldquo;Vident
+        operated by LRE Productions, Inc. (&ldquo;LRE
         Productions,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or
         &ldquo;our&rdquo;) for our team members. By providing your mobile number
         and opting in, you agree to these terms.
@@ -29,7 +29,7 @@ export default function SmsTermsPage() {
       <div>
         <H2>Program description</H2>
         <p className="mt-2">
-          Vident Productions sends text messages to team members for operational
+          LRE Productions sends text messages to team members for operational
           purposes, including scheduling, shift and event coordination, team
           huddle reminders, and time-sensitive staff alerts. This is an
           internal, non-marketing program for people who work with us.
@@ -55,7 +55,7 @@ export default function SmsTermsPage() {
       <div>
         <H2>Cost</H2>
         <p className="mt-2">
-          <strong>Message and data rates may apply.</strong> Vident Productions
+          <strong>Message and data rates may apply.</strong> LRE Productions
           does not charge for the messages, but your mobile carrier&rsquo;s
           standard rates will apply based on your plan.
         </p>
@@ -81,10 +81,10 @@ export default function SmsTermsPage() {
           </a>{" "}
           or{" "}
           <a
-            href="mailto:hello@videntproductions.com"
+            href="mailto:hello@lreproductions.com"
             className="text-[var(--brand)] hover:underline"
           >
-            hello@videntproductions.com
+            hello@lreproductions.com
           </a>
           .
         </p>
@@ -128,7 +128,7 @@ export default function SmsTermsPage() {
       <div>
         <H2>Contact us</H2>
         <p className="mt-2">
-          Vident Productions, LLC
+          LRE Productions, Inc.
           <br />
           Ponte Vedra Beach, FL
           <br />
@@ -139,10 +139,10 @@ export default function SmsTermsPage() {
           <br />
           Email:{" "}
           <a
-            href="mailto:hello@videntproductions.com"
+            href="mailto:hello@lreproductions.com"
             className="text-[var(--brand)] hover:underline"
           >
-            hello@videntproductions.com
+            hello@lreproductions.com
           </a>
         </p>
       </div>

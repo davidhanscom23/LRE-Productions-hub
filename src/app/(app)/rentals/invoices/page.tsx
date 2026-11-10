@@ -6,7 +6,7 @@ import type { AvInvoice } from "@/lib/av-erp/types";
 import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
 
-export const metadata = { title: "Invoices — Vident AV" };
+export const metadata = { title: "Invoices — LRE AV" };
 
 type Props = { searchParams: Promise<{ status?: string }> };
 

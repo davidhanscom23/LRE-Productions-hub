@@ -17,9 +17,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps) {
   const { track: slug } = await params;
   const track = getApplyTrack(slug);
-  if (!track) return { title: "Apply — Vident Productions" };
+  if (!track) return { title: "Apply — LRE Productions" };
   return {
-    title: `${track.label} application — Vident Productions`,
+    title: `${track.label} application — LRE Productions`,
     description: track.assessmentIntro,
   };
 }

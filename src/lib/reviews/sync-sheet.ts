@@ -73,9 +73,9 @@ function getGoogleSaAuth(scopes: string[]) {
   });
 }
 
-/** Published CSV URL for Vident reviews only — no legacy sheet fallback. */
+/** Published CSV URL for LRE reviews only — no legacy sheet fallback. */
 const BLOCKED_LEGACY_REVIEW_HOST_MARKERS = [
-  // Legacy published CSV / sheet ids from older Hub builds — never use for Vident.
+  // Legacy published CSV / sheet ids from older Hub builds — never use for LRE.
   "2PACX-1vSZ5U9Viy3cFH0fvaraVKCVys2XPaGuKixi4VVGO_0PrYzKtWYyyidCenW1wwUl0L7oorZJJcC4zf5n",
   "1qDlqSrVgxeTa-4TouuWFnmiBoUZa4NKQgujJson33Is",
 ];
@@ -250,7 +250,7 @@ async function fetchPublishedCsvRows(url: string): Promise<SheetRow[]> {
   }
   const text = await res.text();
   if (!text.trim()) {
-    // Header-only / blank publish is valid (Vident sheet starts empty).
+    // Header-only / blank publish is valid (LRE sheet starts empty).
     return [];
   }
   return rowsFromMatrix(parseCsv(text));
@@ -305,7 +305,7 @@ async function loadReviewRows(supabase?: SupabaseClient): Promise<{
   const spreadsheetId = await resolveReviewsSpreadsheetId(supabase);
   if (!spreadsheetId) {
     throw new Error(
-      "Reviews sync is not configured. Set GOOGLE_SHEETS_REVIEWS_CSV_URL, or create the Vident sheet from Client Reviews (Drive + service account).",
+      "Reviews sync is not configured. Set GOOGLE_SHEETS_REVIEWS_CSV_URL, or create the LRE sheet from Client Reviews (Drive + service account).",
     );
   }
 
@@ -345,7 +345,7 @@ export async function syncExternalReviewsFromSheet(options?: {
   if (!(await isReviewsSheetConfiguredAsync(supabase))) {
     return emptyResult({
       error:
-        "Reviews sync is not configured. Set GOOGLE_SHEETS_REVIEWS_CSV_URL or create the Vident Client Reviews sheet from Client Reviews (requires Drive + service account).",
+        "Reviews sync is not configured. Set GOOGLE_SHEETS_REVIEWS_CSV_URL or create the LRE Client Reviews sheet from Client Reviews (requires Drive + service account).",
     });
   }
 
@@ -451,7 +451,7 @@ export async function syncExternalReviewsFromSheet(options?: {
     upserted += 1;
   }
 
-  // Drop rows that are no longer in the Vident sheet.
+  // Drop rows that are no longer in the LRE sheet.
   let pruned = 0;
   const { data: existingReviews, error: existingError } = await supabase
     .from("event_external_reviews")

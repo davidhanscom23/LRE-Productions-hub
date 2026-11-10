@@ -18,7 +18,7 @@ export type OnboardingResource = {
   adminOnly: boolean;
 };
 
-/** Vident company Drive — paste Form/Sheet/Doc links from here onto each card. */
+/** LRE company Drive — paste Form/Sheet/Doc links from here onto each card. */
 export const VIDENT_ONBOARDING_DRIVE_URL =
   "https://drive.google.com/drive/folders/1m3XSbIg6_3_GN431KH2Iw7hjQsr_VgWF";
 

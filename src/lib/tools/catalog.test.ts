@@ -30,7 +30,7 @@ describe("tools catalog ↔ nav placement", () => {
     expect(bad, `unknown category: ${bad.join(", ")}`).toEqual([]);
   });
 
-  it("lists every Vident AV nav item under vident-av (incl. Developer)", () => {
+  it("lists every LRE AV nav item under vident-av (incl. Developer)", () => {
     const avNav = allNav.filter((i) => i.videntAvAccess);
     expect(avNav.length).toBeGreaterThanOrEqual(18);
     for (const item of avNav) {

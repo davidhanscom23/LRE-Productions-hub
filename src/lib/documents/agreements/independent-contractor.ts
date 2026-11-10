@@ -5,15 +5,15 @@ export const INDEPENDENT_CONTRACTOR_AGREEMENT = {
   key: "independent-contractor",
   title: "Independent Contractor Agreement",
   subtitle:
-    "Vident Productions · Audiovisual · Corporate · Wedding & Social · Golf",
+    "LRE Productions · Audiovisual · Corporate · Wedding & Social · Golf",
   introduction: [
-    'This Independent Contractor Agreement ("Agreement") is entered into by and between Vident Productions, LLC and its DBAs (collectively "Company") and the undersigned Contractor ("Contractor").',
+    'This Independent Contractor Agreement ("Agreement") is entered into by and between LRE Productions, Inc. and its DBAs (collectively "Company") and the undersigned Contractor ("Contractor").',
   ],
   acknowledgment:
     "By signing below, you agree to all terms and conditions outlined in this Independent Contractor Agreement.",
-  companyLine: "Vident Productions · Audiovisual · Corporate · Wedding & Social · Golf",
+  companyLine: "LRE Productions · Audiovisual · Corporate · Wedding & Social · Golf",
   ownerLine:
-    "By: David Hanscom, Owner · 101 Marketside Avenue #404-123, Ponte Vedra, FL 32081 · 904-834-1216 · hello@videntproductions.com",
+    "By: David Hanscom, Owner · 101 Marketside Avenue #404-123, Ponte Vedra, FL 32081 · 904-834-1216 · hello@lreproductions.com",
   signButtonLabel: "Sign Agreement",
   sections: [
     {

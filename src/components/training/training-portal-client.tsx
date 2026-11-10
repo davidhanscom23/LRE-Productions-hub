@@ -181,7 +181,7 @@ export function TrainingPortalClient({
           <div>
             <p className="text-sm font-medium text-[var(--brand)]">Training Portal</p>
             <h1 className="mt-0.5 text-2xl font-semibold tracking-tight text-[var(--foreground)]">Courses & progress</h1>
-            <p className="mt-1 max-w-xl text-sm text-[var(--muted)]">Self-paced written courses for Vident Productions teams. Track lesson progress here; use Teams for live tutorial videos.</p>
+            <p className="mt-1 max-w-xl text-sm text-[var(--muted)]">Self-paced written courses for LRE Productions teams. Track lesson progress here; use Teams for live tutorial videos.</p>
           </div>
         </div>
       </div>

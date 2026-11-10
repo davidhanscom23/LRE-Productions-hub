@@ -25,49 +25,49 @@ export const PROJECT_EMAIL_TEMPLATES: ProjectEmailTemplate[] = [
     id: "blank",
     label: "Blank message",
     subject: "{{project_name}}",
-    body: "Hi {{first_name}},\n\n\n\nThank you,\n{{sender_name}}\nVident Productions",
+    body: "Hi {{first_name}},\n\n\n\nThank you,\n{{sender_name}}\nLRE Productions",
   },
   {
     id: "inquiry_reply",
     label: "Reply to a new inquiry",
     subject: "Thank you for reaching out about {{project_name}}",
     body:
-      "Hi {{first_name}},\n\nThank you so much for thinking of Vident Productions for {{project_name}}. We would love to help make it an unforgettable event.\n\nTo put together the best proposal for you, could you share a little more about what you have in mind (guest count, schedule, and any must-have moments)? If it is easier to talk it through, reply with a few times that work for a quick call.\n\nWarmly,\n{{sender_name}}\nVident Productions",
+      "Hi {{first_name}},\n\nThank you so much for thinking of LRE Productions for {{project_name}}. We would love to help make it an unforgettable event.\n\nTo put together the best proposal for you, could you share a little more about what you have in mind (guest count, schedule, and any must-have moments)? If it is easier to talk it through, reply with a few times that work for a quick call.\n\nWarmly,\n{{sender_name}}\nLRE Productions",
   },
   {
     id: "proposal_followup",
     label: "Follow up on a proposal",
     subject: "Following up on your proposal for {{project_name}}",
     body:
-      "Hi {{first_name}},\n\nI wanted to check in on the proposal we sent for {{project_name}}. Do you have any questions, or anything you would like us to adjust? We are happy to tailor it so it is perfect for you.\n\n{{sender_name}}\nVident Productions",
+      "Hi {{first_name}},\n\nI wanted to check in on the proposal we sent for {{project_name}}. Do you have any questions, or anything you would like us to adjust? We are happy to tailor it so it is perfect for you.\n\n{{sender_name}}\nLRE Productions",
   },
   {
     id: "contract_reminder",
     label: "Contract reminder",
     subject: "Your contract for {{project_name}}",
     body:
-      "Hi {{first_name}},\n\nA quick note that your contract for {{project_name}} is ready for your signature. Once it is signed we can hold your date and begin planning the details.\n\nPlease let me know if you have any questions.\n\nThank you,\n{{sender_name}}\nVident Productions",
+      "Hi {{first_name}},\n\nA quick note that your contract for {{project_name}} is ready for your signature. Once it is signed we can hold your date and begin planning the details.\n\nPlease let me know if you have any questions.\n\nThank you,\n{{sender_name}}\nLRE Productions",
   },
   {
     id: "portal_invite",
     label: "Send the client portal link",
     subject: "Your project page for {{project_name}}",
     body:
-      "Hi {{first_name}},\n\nHere is your private project page for {{project_name}}. It is one place to sign your agreement, pay invoices, see your floor plan, share planning details, and book a call with us:\n\n{{project_link}}\n\nThank you,\n{{sender_name}}\nVident Productions",
+      "Hi {{first_name}},\n\nHere is your private project page for {{project_name}}. It is one place to sign your agreement, pay invoices, see your floor plan, share planning details, and book a call with us:\n\n{{project_link}}\n\nThank you,\n{{sender_name}}\nLRE Productions",
   },
   {
     id: "planning_details",
     label: "Planning details request",
     subject: "A few details for {{project_name}}",
     body:
-      "Hi {{first_name}},\n\nWe are getting closer to {{project_name}}{{on_date}}. When you have a moment, please use this link to share your planning details and upload anything we need (floor plans, schedules, logos):\n\n{{project_link}}\n\nThank you,\n{{sender_name}}\nVident Productions",
+      "Hi {{first_name}},\n\nWe are getting closer to {{project_name}}{{on_date}}. When you have a moment, please use this link to share your planning details and upload anything we need (floor plans, schedules, logos):\n\n{{project_link}}\n\nThank you,\n{{sender_name}}\nLRE Productions",
   },
   {
     id: "thank_you_review",
     label: "Thank you and review request",
-    subject: "Thank you from Vident Productions",
+    subject: "Thank you from LRE Productions",
     body:
-      "Hi {{first_name}},\n\nThank you for letting us be part of {{project_name}}. It was a true pleasure, and we hope it was everything you imagined.\n\nIf you have a minute, a short review would mean the world to our team. We read every one.\n\nWith appreciation,\n{{sender_name}}\nVident Productions",
+      "Hi {{first_name}},\n\nThank you for letting us be part of {{project_name}}. It was a true pleasure, and we hope it was everything you imagined.\n\nIf you have a minute, a short review would mean the world to our team. We read every one.\n\nWith appreciation,\n{{sender_name}}\nLRE Productions",
   },
 ];
 

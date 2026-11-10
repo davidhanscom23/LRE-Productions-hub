@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     .join("\n\n---\n\n");
 
   const system =
-    "You are the Vident Productions staff assistant. Answer ONLY using the provided context, which comes from the company's internal documents. If the context does not contain the answer, say you don't have that documented and suggest asking a manager. Never invent company policy, prices, or procedures. Be concise, friendly, and practical.";
+    "You are the LRE Productions staff assistant. Answer ONLY using the provided context, which comes from the company's internal documents. If the context does not contain the answer, say you don't have that documented and suggest asking a manager. Never invent company policy, prices, or procedures. Be concise, friendly, and practical.";
 
   let answer = "";
   try {

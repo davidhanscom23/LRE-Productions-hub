@@ -9,7 +9,7 @@ export { parseDriveFolderId } from "@/lib/drive/folder-id";
 export const DRIVE_ROOT_FOLDER_SETTING_KEY = "google_drive_root_folder_id";
 
 /**
- * Vident Productions Hub company Drive folder — all Hub Drive writes
+ * LRE Productions Hub company Drive folder — all Hub Drive writes
  * (Client Reviews sheet, Social Studio backup, /drive browse) land here unless
  * an admin override or GOOGLE_DRIVE_ROOT_FOLDER_ID points elsewhere.
  * https://drive.google.com/drive/folders/1m3XSbIg6_3_GN431KH2Iw7hjQsr_VgWF
@@ -68,7 +68,7 @@ async function settingsRootFolderId(): Promise<string | null> {
   }
 }
 
-/** Prefer admin-saved folder id; then env; then the Vident company folder. */
+/** Prefer admin-saved folder id; then env; then the LRE company folder. */
 export async function resolveDriveRootFolderId(): Promise<{
   rootFolderId: string | null;
   source: DriveRootFolderSource | null;

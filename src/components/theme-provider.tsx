@@ -8,7 +8,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       attribute="class"
       defaultTheme="system"
       enableSystem
-      storageKey="vident-hub-theme"
+      storageKey="lre-hub-theme"
     >
       {children}
     </NextThemesProvider>

@@ -51,7 +51,7 @@ export async function getStaffFeedIcsByToken(
     .maybeSingle();
   if (!me) return null;
 
-  const calName = `${me.full_name || "My"} — Vident Productions`;
+  const calName = `${me.full_name || "My"} — LRE Productions`;
   const url = await companyIcalUrl(supabase);
   if (!url) return buildIcs([], calName);
 

@@ -571,7 +571,7 @@ export function ProjectDetailClient({
             staffOptions.find((x) => x.id === currentProfileId)?.full_name ?? "",
           projectLink:
             project.share_enabled && project.share_token
-              ? `https://hub.videntproductions.com/project/${project.share_token}`
+              ? `https://hub.lreproductions.com/project/${project.share_token}`
               : "",
         }}
       />

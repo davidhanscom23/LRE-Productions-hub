@@ -6,7 +6,7 @@ import { loadWarehouseBoard } from "@/lib/av-erp/warehouse-data";
 import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
 
-export const metadata = { title: "Warehouse — Vident AV" };
+export const metadata = { title: "Warehouse — LRE AV" };
 
 type Props = { searchParams: Promise<{ tab?: string }> };
 

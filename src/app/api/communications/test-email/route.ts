@@ -23,7 +23,7 @@ export async function POST(req: Request) {
 
   const result = await sendEmailDetailed({
     to,
-    subject: "Vident Productions Hub — test email",
+    subject: "LRE Productions Hub — test email",
     text: "This is a test email from the Hub's Communications test center. If you received it, email delivery is working.",
   });
 

@@ -15,12 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vident Productions Hub",
-  description: "Private staff portal for Vident Productions",
-  applicationName: "Vident Hub",
+  title: "LRE Productions Hub",
+  description: "Private staff portal for LRE Productions",
+  applicationName: "LRE Hub",
   appleWebApp: {
     capable: true,
-    title: "Vident Hub",
+    title: "LRE Hub",
     statusBarStyle: "default",
   },
   icons: {

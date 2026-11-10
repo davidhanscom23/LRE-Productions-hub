@@ -6,7 +6,7 @@ import { loadCostsBoard } from "@/lib/av-erp/job-finance";
 import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
 
-export const metadata = { title: "Costs — Vident AV" };
+export const metadata = { title: "Costs — LRE AV" };
 
 export default async function AvCostsPage() {
   const profile = await getCurrentProfile();

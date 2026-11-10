@@ -101,10 +101,10 @@ export async function sendBookingEmails(opts: {
   const { type, booking: b } = opts;
   const when = whenText(b.startIso, type.timezone);
   const ics = buildIcs(
-    [{ uid: `${b.id}@videntproductions.com`, title: `${type.title} with Vident Productions`, start: b.startIso, end: b.endIso, allDay: false, location: type.location, description: type.description }],
-    "Vident Productions meeting",
+    [{ uid: `${b.id}@lreproductions.com`, title: `${type.title} with LRE Productions`, start: b.startIso, end: b.endIso, allDay: false, location: type.location, description: type.description }],
+    "LRE Productions meeting",
   );
-  const clientText = `Hi ${b.name.split(/\s+/)[0] || "there"},\n\nYou are booked: ${type.title}\n${when}\n${type.location}\n\nNeed to change it? Cancel here and pick a new time: ${cancelUrl(b.cancelToken)}\n\nWe look forward to talking with you.\nVident Productions`;
+  const clientText = `Hi ${b.name.split(/\s+/)[0] || "there"},\n\nYou are booked: ${type.title}\n${when}\n${type.location}\n\nNeed to change it? Cancel here and pick a new time: ${cancelUrl(b.cancelToken)}\n\nWe look forward to talking with you.\nLRE Productions`;
   await sendEmailDetailed({
     to: b.email,
     subject: `Confirmed: ${type.title}, ${when}`,

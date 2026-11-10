@@ -332,7 +332,7 @@ export function ProposalsDetailClient({
           PDF &amp; Drive
         </h2>
         <p className="mt-1 text-sm text-[var(--muted)]">
-          Generate a branded Vident PDF, then upload it under{" "}
+          Generate a branded LRE PDF, then upload it under{" "}
           <code className="text-xs">Proposals / client / event</code> in the
           company Drive folder.
         </p>

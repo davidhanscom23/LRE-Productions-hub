@@ -317,7 +317,7 @@ export function HiringClient({
       <header>
         <h1 className="text-xl font-semibold text-[var(--foreground)]">Hiring</h1>
         <p className="mt-1 text-sm text-[var(--muted)]">
-          Vident Productions&rsquo;s hiring operating system. Admin-only. Public
+          LRE Productions&rsquo;s hiring operating system. Admin-only. Public
           intake lives at <code className="text-xs">/apply</code>.
         </p>
       </header>

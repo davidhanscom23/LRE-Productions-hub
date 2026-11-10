@@ -9,7 +9,7 @@ import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
 
 export const metadata = {
-  title: "Vident AV",
+  title: "LRE AV",
 };
 
 export default async function RentalsPage() {
@@ -19,13 +19,13 @@ export default async function RentalsPage() {
     return (
       <div className="mx-auto max-w-lg rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand)]">
-          Vident AV
+          LRE AV
         </p>
         <h1 className="mt-1 text-xl font-semibold text-[var(--foreground)]">
           Access restricted
         </h1>
         <p className="mt-2 text-sm text-[var(--muted)]">
-          Vident AV is only available to admins and team members assigned to the
+          LRE AV is only available to admins and team members assigned to the
           AV department. Ask an admin to update your profile if you need access.
         </p>
       </div>
@@ -50,7 +50,7 @@ export default async function RentalsPage() {
     <AvErpPage maxWidthClassName="max-w-5xl">
       <div className="mb-6">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand)]">
-          Vident AV
+          LRE AV
         </p>
         <h1 className="text-xl font-semibold tracking-tight text-[var(--foreground)]">
           Overview

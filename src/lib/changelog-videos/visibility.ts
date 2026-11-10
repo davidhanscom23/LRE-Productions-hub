@@ -10,7 +10,7 @@
  *  - everyone else sees live videos only
  *  - a new team member sees live videos from the 60 days before their start
  *    date onward; no start date on file means every live video
- *  - audience "vident-av" videos need Vident AV access (admins and the
+ *  - audience "vident-av" videos need LRE AV access (admins and the
  *    Audiovisual department); audience "lead" videos are for admins and Leads
  *    (role trainer)
  */

@@ -5,7 +5,7 @@ import { validateTwilioSignature } from "@/lib/sms/twilio";
  * Twilio inbound-SMS webhook. No Supabase session (bypassed in middleware);
  * authenticity is the X-Twilio-Signature, validated against the auth token.
  * Point your Twilio number's "A message comes in" webhook here (HTTP POST):
- *   https://hub.videntproductions.com/api/sms/webhook
+ *   https://hub.lreproductions.com/api/sms/webhook
  */
 export async function POST(req: Request) {
   const form = await req.formData();

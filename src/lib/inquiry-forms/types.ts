@@ -324,7 +324,7 @@ export interface BrandProfile {
   email: string | null;
   /** Default accent for new forms of this brand. */
   accentColor: string;
-  /** Legal footer line, e.g. "Vident Productions, Inc." */
+  /** Legal footer line, e.g. "LRE Productions, Inc." */
   legalLine: string | null;
 }
 

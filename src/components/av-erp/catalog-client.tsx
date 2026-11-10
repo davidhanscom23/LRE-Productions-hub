@@ -23,13 +23,16 @@ import {
   upsertProductAccessoryAction,
 } from "@/app/(app)/rentals/catalog/actions";
 import { AvErpPage } from "@/components/av-erp/av-erp-page";
-import type {
-  AvProduct,
-  AvProductAccessory,
-  AvProductGroup,
-  AvProductKind,
-  AvService,
-  AvServiceKind,
+import {
+  AV_OWNER_COMPANIES,
+  ownerCompanyLabel,
+  type AvOwnerCompany,
+  type AvProduct,
+  type AvProductAccessory,
+  type AvProductGroup,
+  type AvProductKind,
+  type AvService,
+  type AvServiceKind,
 } from "@/lib/av-erp/types";
 
 type Props = {
@@ -77,6 +80,7 @@ export function CatalogClient({
     group_id: "",
     rental_price: "0",
     qty_owned: "0",
+    owner_company: "vident" as AvOwnerCompany,
     buffer_pct: "0",
     turnaround_hours: "0",
     replacement_charge: "",
@@ -165,6 +169,7 @@ export function CatalogClient({
       group_id: groups[0]?.id ?? "",
       rental_price: "0",
       qty_owned: "0",
+      owner_company: "vident" as AvOwnerCompany,
       buffer_pct: "0",
       turnaround_hours: "0",
       replacement_charge: "",
@@ -188,6 +193,7 @@ export function CatalogClient({
       group_id: p.group_id ?? "",
       rental_price: String(p.rental_price),
       qty_owned: String(p.qty_owned),
+      owner_company: p.owner_company ?? "vident",
       buffer_pct: String(p.buffer_pct),
       turnaround_hours: String(p.turnaround_hours),
       replacement_charge:
@@ -602,6 +608,25 @@ export function CatalogClient({
                   />
                 </label>
                 <label className="block text-sm">
+                  <span className="mb-1 block text-[var(--muted)]">Owned by</span>
+                  <select
+                    value={productForm.owner_company}
+                    onChange={(e) =>
+                      setProductForm({
+                        ...productForm,
+                        owner_company: e.target.value as AvOwnerCompany,
+                      })
+                    }
+                    className={fieldClass}
+                  >
+                    {AV_OWNER_COMPANIES.map((o) => (
+                      <option key={o.value} value={o.value}>
+                        {o.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label className="block text-sm">
                   <span className="mb-1 block text-[var(--muted)]">Buffer %</span>
                   <input
                     type="number"
@@ -870,6 +895,7 @@ export function CatalogClient({
                         groupNameById.get(p.group_id ?? "") || null,
                         p.code || null,
                         p.kind === "package" ? null : `${p.qty_owned} owned`,
+                        p.kind === "package" ? null : ownerCompanyLabel(p.owner_company),
                       ]
                         .filter(Boolean)
                         .join(" · ")}

@@ -296,7 +296,7 @@ export function VenuePortalEditor({
           <input type="text" autoComplete="off" className={input} value={coordPw} onChange={(e) => setCoordPw(e.target.value)} placeholder={hasCoordinatorPassword ? "Type a new password to replace it" : "Choose a password (6+ characters)"} />
         </Field>
         {hasCoordinatorPassword && <Check label="Remove the coordinator password (turns the savings off)" checked={clearPw} onChange={setClearPw} />}
-        <Field label="Send new requests to" hint="Blank uses the default Vident inbox.">
+        <Field label="Send new requests to" hint="Blank uses the default LRE inbox.">
           <input type="email" className={input} value={f.notify_email} onChange={(e) => set({ notify_email: e.target.value })} />
         </Field>
         <div className="flex items-center gap-3">

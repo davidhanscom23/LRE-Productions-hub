@@ -146,7 +146,7 @@ export async function runHoneyBookAutomations(opts: { dryRun?: boolean; now?: Da
         projectName: String(p.name ?? ""),
         eventDate: fmtDate(p.project_date as string | null),
         location: "",
-        senderName: "The Vident Productions team",
+        senderName: "The LRE Productions team",
         projectLink: "",
       };
       const subject = applyMergeFields(String(auto.subject), ctx);
@@ -156,7 +156,7 @@ export async function runHoneyBookAutomations(opts: { dryRun?: boolean; now?: Da
         subject,
         text,
         html: textToEmailHtml(text),
-        replyTo: process.env.AUTOMATION_REPLY_TO?.trim() || "hello@videntproductions.com",
+        replyTo: process.env.AUTOMATION_REPLY_TO?.trim() || "hello@lreproductions.com",
       });
       if (!res.ok) {
         // Release the slot so tomorrow's run can try again (still inside the catch-up window).

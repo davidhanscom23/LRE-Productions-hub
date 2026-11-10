@@ -31,7 +31,7 @@ type PeoplePageClientProps = {
   viewerRole: UserRole;
   viewerDepartments: Department[];
   departmentManagers?: DepartmentManagerMap;
-  /** @deprecated Unused — Vident uses a shared HoneyBook calendar. */
+  /** @deprecated Unused — LRE uses a shared HoneyBook calendar. */
   awardSummaries?: Record<string, PersonAwardSummary>;
   initialTab?: Tab;
 };
@@ -136,7 +136,7 @@ export function PeoplePageClient({
           </h1>
           <p className="mt-1 text-sm text-[var(--muted)]">
             Directory, birthdays, anniversaries, org chart, and onboarding for
-            the Vident crew.
+            the LRE crew.
           </p>
         </div>
 

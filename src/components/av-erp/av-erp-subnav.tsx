@@ -27,7 +27,7 @@ export function AvErpSubnav() {
   const pathname = usePathname();
   return (
     <nav
-      aria-label="Vident AV sections"
+      aria-label="LRE AV sections"
       className="mb-6 -mx-4 w-[calc(100%+2rem)] border-b border-[var(--border)] px-4 sm:-mx-6 sm:w-[calc(100%+3rem)] sm:px-6 lg:-mx-8 lg:w-[calc(100%+4rem)] lg:px-8"
     >
       <div className="flex flex-wrap gap-x-1 gap-y-0">

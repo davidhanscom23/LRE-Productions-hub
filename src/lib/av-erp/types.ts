@@ -2,6 +2,18 @@
 
 export type AvOpportunityStatus = "draft" | "quotation" | "order" | "closed";
 
+export type AvOwnerCompany = "vident" | "lukesent" | "lre";
+
+export const AV_OWNER_COMPANIES: { value: AvOwnerCompany; label: string }[] = [
+  { value: "vident", label: "Vident" },
+  { value: "lukesent", label: "LukesENT" },
+  { value: "lre", label: "LRE Pro" },
+];
+
+export function ownerCompanyLabel(v: string | null | undefined): string {
+  return AV_OWNER_COMPANIES.find((o) => o.value === v)?.label ?? "Vident";
+}
+
 export type AvProductKind = "rental" | "package" | "sale" | "consumable";
 
 export type AvServiceKind = "crew" | "transport" | "fee";
@@ -92,6 +104,7 @@ export type AvProduct = {
   sale_price: number | null;
   replacement_charge: number | null;
   qty_owned: number;
+  owner_company: AvOwnerCompany;
   buffer_pct: number;
   turnaround_hours: number;
   weight_lbs: number | null;

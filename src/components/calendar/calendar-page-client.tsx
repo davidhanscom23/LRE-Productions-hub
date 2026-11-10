@@ -239,7 +239,7 @@ export function CalendarPageClient({
                 <>
                   Paste the Google Calendar{" "}
                   <span className="font-medium">secret iCal URL</span> for
-                  HoneyBook Calendar — Vident Productions (from Google Calendar
+                  HoneyBook Calendar — LRE Productions (from Google Calendar
                   → Settings and sharing → Integrate calendar).
                 </>
               ) : (

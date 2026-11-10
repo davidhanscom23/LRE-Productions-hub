@@ -7,7 +7,7 @@ import type { AvDocumentTemplate } from "@/lib/av-erp/types";
 import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
 
-export const metadata = { title: "Templates — Vident AV" };
+export const metadata = { title: "Templates — LRE AV" };
 
 export default async function AvTemplatesPage() {
   const profile = await getCurrentProfile();

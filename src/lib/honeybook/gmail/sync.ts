@@ -58,7 +58,7 @@ const MAX_MESSAGES_PER_MAILBOX = 20;
 const TIME_BUDGET_MS = 240_000;
 const OVERLAP_MS = 15 * 60 * 1000;
 const MIN_INQUIRY_CONFIDENCE = 0.7;
-const STAFF_DOMAIN = "videntproductions.com";
+const STAFF_DOMAIN = "lreproductions.com";
 
 function lookbackMs(): number {
   const raw = Number(process.env.HONEYBOOK_GMAIL_LOOKBACK_DAYS);
@@ -66,7 +66,7 @@ function lookbackMs(): number {
   return days * 24 * 60 * 60 * 1000;
 }
 
-/** Staff mailboxes to read: active admins/Leads/staff on the Vident Workspace domain. */
+/** Staff mailboxes to read: active admins/Leads/staff on the LRE Workspace domain. */
 async function loadMailboxes(db: Db): Promise<Staff[]> {
   const override = (process.env.HONEYBOOK_GMAIL_MAILBOXES ?? "")
     .split(",")

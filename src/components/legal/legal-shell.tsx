@@ -15,16 +15,16 @@ export function LegalShell({
       <header className="border-b border-[var(--border)] bg-[var(--surface)]">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-5">
           <Link
-            href="https://videntproductions.com"
+            href="https://lreproductions.com"
             className="text-lg font-semibold text-[var(--brand)]"
           >
-            Vident Productions
+            LRE Productions
           </Link>
           <Link
-            href="https://videntproductions.com"
+            href="https://lreproductions.com"
             className="text-sm text-[var(--muted)] hover:underline"
           >
-            videntproductions.com
+            lreproductions.com
           </Link>
         </div>
       </header>
@@ -39,7 +39,7 @@ export function LegalShell({
       </main>
       <footer className="border-t border-[var(--border)] bg-[var(--surface)]">
         <div className="mx-auto max-w-3xl px-6 py-6 text-sm text-[var(--muted)]">
-          <p>Vident Productions, LLC · Ponte Vedra Beach, FL</p>
+          <p>LRE Productions, Inc. · Ponte Vedra Beach, FL</p>
           <p className="mt-1">
             <Link href="/privacy" className="hover:underline">
               Privacy Policy

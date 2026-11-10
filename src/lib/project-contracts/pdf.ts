@@ -19,7 +19,7 @@ const MUTED = rgb(0.42, 0.42, 0.45);
 const RULE = rgb(0.86, 0.84, 0.8);
 const PANEL = rgb(0.965, 0.955, 0.94);
 
-const FOOTER = "Vident Productions  |  101 Marketside Avenue #404-123, Ponte Vedra, FL 32081  |  904-834-1216  |  hello@videntproductions.com";
+const FOOTER = "LRE Productions  |  101 Marketside Avenue #404-123, Ponte Vedra, FL 32081  |  904-834-1216  |  hello@lreproductions.com";
 
 /** Letter-size branded contract PDF. With `signature`, adds the signed block; without, a blank signature line. */
 export async function buildContractPdf(opts: {

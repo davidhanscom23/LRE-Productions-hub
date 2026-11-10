@@ -1,5 +1,5 @@
 /**
- * Inquiry Forms - Vident hub CRM mapping. PURE (row builders and counting rules; adapter.ts runs the
+ * Inquiry Forms - LRE hub CRM mapping. PURE (row builders and counting rules; adapter.ts runs the
  * queries). Spec section 4: a finished inquiry becomes a honeybook_projects row at stage 'Inquiry'
  * (source_event 'web_form', shown with a Website badge on the board) linked to a honeybook_clients
  * row matched by exact lowercased email, plus one honeybook_project_stage_events row ('' to

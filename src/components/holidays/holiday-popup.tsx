@@ -12,7 +12,7 @@ import { HOLIDAY_THEMES, type HolidayId } from "@/lib/holidays/holidays";
 
 const VISIBLE_MS = 5000;
 const FADE_MS = 450;
-const SEEN_KEY = "vident-hub-holiday-popup-seen";
+const SEEN_KEY = "lre-hub-holiday-popup-seen";
 
 function readFlag(key: string): boolean {
   try {

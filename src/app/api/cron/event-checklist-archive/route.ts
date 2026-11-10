@@ -4,7 +4,7 @@ import { runChecklistArchive } from "@/lib/event-checklist/archive/run";
 
 /**
  * Daily: on Dec 31 (and the first week of January as a catch-up) zip the gear-checklist history and
- * photos to the Vident Hub Backup shared drive; every day remove photos that are archived and past
+ * photos to the LRE Hub Backup shared drive; every day remove photos that are archived and past
  * the 90-day live window. Add `?force=1` to archive outside that window.
  * Authorize with `Authorization: Bearer $CRON_SECRET`.
  */

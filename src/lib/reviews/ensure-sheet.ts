@@ -55,7 +55,7 @@ function googleErrorMessage(err: unknown): string {
   ) {
     return (
       `Google Drive blocked creating a new file (service-account storage quota). ` +
-      `Create a blank Google Sheet yourself in the Vident Drive folder, put the header row on row 1, ` +
+      `Create a blank Google Sheet yourself in the LRE Drive folder, put the header row on row 1, ` +
       `share it with ${sa} as Editor, then paste the sheet URL below and click Link spreadsheet.`
     );
   }
@@ -136,7 +136,7 @@ async function writeHeaderRow(
 }
 
 /**
- * Create (or reuse) a blank Vident Client Reviews spreadsheet in the Hub Drive
+ * Create (or reuse) a blank LRE Client Reviews spreadsheet in the Hub Drive
  * root folder, write the standard header row, and persist the spreadsheet id.
  */
 export async function ensureVidentReviewsSpreadsheet(options?: {
@@ -358,7 +358,7 @@ export async function linkVidentReviewsSpreadsheet(
       webViewLink: null,
       folderId: null,
       error:
-        "That spreadsheet is a blocked legacy reviews sheet. Link a Vident Client Reviews sheet instead.",
+        "That spreadsheet is a blocked legacy reviews sheet. Link a LRE Client Reviews sheet instead.",
     };
   }
 
@@ -493,7 +493,7 @@ export async function resolveReviewsSpreadsheetId(
 ): Promise<string | null> {
   const fromEnv =
     process.env.GOOGLE_SHEETS_REVIEWS_SPREADSHEET_ID?.trim() || null;
-  // Blocked legacy workbook id — never use it for Vident.
+  // Blocked legacy workbook id — never use it for LRE.
   if (fromEnv === "1qDlqSrVgxeTa-4TouuWFnmiBoUZa4NKQgujJson33Is") {
     console.warn(
       "[reviews] Ignoring GOOGLE_SHEETS_REVIEWS_SPREADSHEET_ID — it points at a blocked legacy sheet.",

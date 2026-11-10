@@ -11,7 +11,7 @@ function gateFor(item: NavItem): ShortcutGate {
   return "";
 }
 
-describe("Home shortcut catalog ↔ Vident Hub sidebar", () => {
+describe("Home shortcut catalog ↔ LRE Hub sidebar", () => {
   const nav = NAV_GROUPS.flatMap((g) => g.items).filter((i) => i.href !== "/");
   const byHref = new Map(SHORTCUT_DEFS.map((d) => [d.href, d]));
 

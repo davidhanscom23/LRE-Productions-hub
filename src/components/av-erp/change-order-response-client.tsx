@@ -39,7 +39,7 @@ export function ChangeOrderResponseClient({
             : "Change order declined"}
         </p>
         <p className="mt-1 text-sm text-[var(--muted)]">
-          Thanks — Vident has been notified.
+          Thanks — LRE has been notified.
         </p>
         {done === "accepted" && signer.trim() ? (
           <p className="mt-2 text-sm text-[var(--muted)]">

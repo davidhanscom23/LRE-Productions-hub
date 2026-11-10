@@ -44,7 +44,7 @@ export const DEFAULT_PLANNING_LINKS: Record<
 > = {
   Audiovisual: [
     {
-      title: "Vident AV",
+      title: "LRE AV",
       url: "/rentals",
       description: "Gear quotes, warehouse, invoices, and crew.",
     },
@@ -66,7 +66,7 @@ export const DEFAULT_PLANNING_LINKS: Record<
       description: "Corporate service quotes (non-rental) with pricing notes.",
     },
     {
-      title: "Vident AV",
+      title: "LRE AV",
       url: "/rentals",
       description: "Rental gear quotes, warehouse, and invoices for AV shows.",
     },

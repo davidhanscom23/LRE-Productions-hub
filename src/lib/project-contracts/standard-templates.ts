@@ -90,10 +90,10 @@ const avPartB = numberedSections(
     ["ENGAGEMENT; SERVICES", AV.engagement],
     [
       "NO PAYMENT IN CERTAIN CIRCUMSTANCES",
-      `(a) No payment will be payable to Vident Productions under any of the following circumstances:
+      `(a) No payment will be payable to LRE Productions under any of the following circumstances:
 (i) if prohibited under applicable government law, regulation, or policy; or
-(ii) if Vident Productions did not directly perform or complete the Services;
-(b) No Other Compensation. The compensation set out in the Statement of Work will be Vident Productions' sole compensation under this agreement.
+(ii) if LRE Productions did not directly perform or complete the Services;
+(b) No Other Compensation. The compensation set out in the Statement of Work will be LRE Productions' sole compensation under this agreement.
 (c) Except as otherwise provided herein, all payments are not refundable.
 If there are any Client approved change orders (additional charges for service and/or equipment), the approved charges will be added to the final balance due.`,
     ],
@@ -141,7 +141,7 @@ ${dmcIntro}
 ${DMC_TERMS}
 
 ## PART B: AUDIO VISUAL SERVICES TERMS AND CONDITIONS
-These AV terms apply to the audio visual products, equipment and services in the Statement of Work (the "AV Services"). In this Part B, "Client" and "Vident Productions" have the same meaning as "Client" and "Provider" in Part A.
+These AV terms apply to the audio visual products, equipment and services in the Statement of Work (the "AV Services"). In this Part B, "Client" and "LRE Productions" have the same meaning as "Client" and "Provider" in Part A.
 
 ${avPartB}`;
 

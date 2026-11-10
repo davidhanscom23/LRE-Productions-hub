@@ -53,4 +53,4 @@ export function proposalStatusLabel(status: ProposalStatus): string {
 }
 
 export const DEFAULT_PROPOSAL_INTRO =
-  "Thank you for considering Vident Productions. Below is our proposed scope and investment for your event.";
+  "Thank you for considering LRE Productions. Below is our proposed scope and investment for your event.";

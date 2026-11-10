@@ -58,7 +58,7 @@ export function identifyingParticipants(participants: string[]): string[] {
 
 /**
  * The address to remember when staff say "not a lead": the prospect's own address, never a
- * shared marketplace relay, a Vident address, or blank.
+ * shared marketplace relay, a LRE address, or blank.
  */
 export function notLeadSenderKey(email: string | null | undefined): string | null {
   const e = (email ?? "").trim().toLowerCase();

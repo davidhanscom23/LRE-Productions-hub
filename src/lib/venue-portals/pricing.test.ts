@@ -9,7 +9,7 @@ import {
 } from "@/lib/venue-portals/pricing";
 
 // Example rates chosen to reproduce a real third-party portal we studied, so the
-// model is validated against known-good totals. Real Vident rates are per venue.
+// model is validated against known-good totals. Real LRE rates are per venue.
 const rates: PortalRates = {
   deliveryFee: 150,
   techHourlyRate: 120,

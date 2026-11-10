@@ -1,6 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-/** direct = Vident bills the client (23% surcharge shows); venue = the venue pays Vident and bills the client on its master bill. */
+/** direct = LRE bills the client (23% surcharge shows); venue = the venue pays LRE and bills the client on its master bill. */
 export type AvBillingType = "direct" | "venue";
 
 export const AV_BILLING_LABELS: Record<AvBillingType, string> = {

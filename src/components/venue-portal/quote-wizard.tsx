@@ -767,12 +767,12 @@ function Shell({ portal, children }: { portal: PortalBundle["portal"]; children:
           )}
           <h1 className="font-serif text-4xl sm:text-5xl">{portal.headline}</h1>
           {portal.intro && <p className="mt-4 max-w-2xl text-base text-white/85">{portal.intro}</p>}
-          <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60">Powered by Vident Productions</p>
+          <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60">Powered by LRE Productions</p>
         </div>
       </header>
       <main className="mx-auto max-w-6xl px-4 pb-28 pt-8 lg:pb-12">{children}</main>
       <footer className="border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-        {portal.name} × Vident Productions. Estimates include delivery, setup, strike and labor, calculated for your event.
+        {portal.name} × LRE Productions. Estimates include delivery, setup, strike and labor, calculated for your event.
       </footer>
     </div>
   );

@@ -22,11 +22,11 @@ describe("parseAddresses", () => {
 });
 
 describe("isInternalAddress", () => {
-  it("recognizes both Vident domains", () => {
-    expect(isInternalAddress("kristin@videntproductions.com")).toBe(true);
-    expect(isInternalAddress("david@thevidentcompany.com")).toBe(true);
+  it("recognizes both LRE domains", () => {
+    expect(isInternalAddress("hello@lreproductions.com")).toBe(true);
+    expect(isInternalAddress("hello@lreproductions.com")).toBe(true);
     expect(isInternalAddress("client@gmail.com")).toBe(false);
-    expect(isInternalAddress("x@notvidentproductions.com")).toBe(false);
+    expect(isInternalAddress("x@notlreproductions.com")).toBe(false);
   });
 });
 
@@ -47,11 +47,11 @@ describe("isAutomatedMessage", () => {
 });
 
 describe("externalParticipants", () => {
-  it("drops Vident staff and automated addresses", () => {
+  it("drops LRE staff and automated addresses", () => {
     expect(
       externalParticipants({
         from: "jane@example.com",
-        to: ["kallie@videntproductions.com", "noreply@zoom.us"],
+        to: ["hello@lreproductions.com", "noreply@zoom.us"],
         cc: ["bob@client.org"],
       }),
     ).toEqual(["jane@example.com", "bob@client.org"]);
@@ -60,13 +60,13 @@ describe("externalParticipants", () => {
 
 describe("buildMessageKey", () => {
   it("uses the RFC Message-ID so two mailboxes share one key", () => {
-    expect(buildMessageKey("<ABC@mail.gmail.com>", "a@videntproductions.com", "1")).toBe(
-      buildMessageKey("<abc@mail.gmail.com>", "b@videntproductions.com", "2"),
+    expect(buildMessageKey("<ABC@mail.gmail.com>", "a@lreproductions.com", "1")).toBe(
+      buildMessageKey("<abc@mail.gmail.com>", "b@lreproductions.com", "2"),
     );
   });
   it("falls back to mailbox + Gmail id", () => {
-    expect(buildMessageKey(null, "A@videntproductions.com", "99")).toBe(
-      "gmail:a@videntproductions.com:99",
+    expect(buildMessageKey(null, "A@lreproductions.com", "99")).toBe(
+      "gmail:a@lreproductions.com:99",
     );
   });
 });
@@ -76,7 +76,7 @@ describe("stripQuotedReply", () => {
     const text = [
       "Sounds great, let's do Saturday.",
       "",
-      "On Tue, Nov 3, 2026 at 9:00 AM Kallie <kallie@videntproductions.com> wrote:",
+      "On Tue, Nov 3, 2026 at 9:00 AM Kallie <hello@lreproductions.com> wrote:",
       "> Does Saturday work?",
     ].join("\n");
     expect(stripQuotedReply(text)).toBe("Sounds great, let's do Saturday.");

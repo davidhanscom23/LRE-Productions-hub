@@ -5,15 +5,15 @@ export const TRAINING_AGREEMENT = {
   key: "training",
   title: "Training Agreement",
   subtitle:
-    "Agreement for Trainee Position at Vident Productions",
+    "Agreement for Trainee Position at LRE Productions",
   introduction: [
-    "This Training Agreement sets expectations for trainees joining Vident Productions' training program.",
+    "This Training Agreement sets expectations for trainees joining LRE Productions' training program.",
   ],
   acknowledgment:
     "By signing below, you agree to all terms and conditions outlined in this Training Agreement.",
-  companyLine: "Vident Productions · Audiovisual · Corporate · Wedding & Social · Golf",
+  companyLine: "LRE Productions · Audiovisual · Corporate · Wedding & Social · Golf",
   ownerLine:
-    "By: David Hanscom, Owner · 101 Marketside Avenue #404-123, Ponte Vedra, FL 32081 · 904-834-1216 · hello@videntproductions.com",
+    "By: David Hanscom, Owner · 101 Marketside Avenue #404-123, Ponte Vedra, FL 32081 · 904-834-1216 · hello@lreproductions.com",
   signButtonLabel: "Sign Agreement",
   sections: [
     {

@@ -6,7 +6,7 @@ import { activityCounts, loadActivities } from "@/lib/av-erp/ops-data";
 import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
 
-export const metadata = { title: "Activities — Vident AV" };
+export const metadata = { title: "Activities — LRE AV" };
 
 type Props = {
   searchParams: Promise<{ settled?: string; filter?: string }>;

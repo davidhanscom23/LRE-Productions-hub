@@ -3,7 +3,7 @@ import "server-only";
 import { createServiceClient, isServiceRoleConfigured } from "@/lib/supabase/admin";
 import { STANDARD_CONTRACT_TEMPLATES } from "./standard-templates";
 
-/** Makes sure the three standard Vident contracts exist. Only adds missing ones; never overwrites edits. */
+/** Makes sure the three standard LRE contracts exist. Only adds missing ones; never overwrites edits. */
 export async function ensureStandardContractTemplates(): Promise<void> {
   if (!isServiceRoleConfigured()) return;
   try {

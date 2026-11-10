@@ -33,7 +33,7 @@ import { FormEditor, type EditorFormData } from "./form-editor";
 
 const BRAND: BrandProfile = {
   key: "vident",
-  name: "Vident Productions",
+  name: "LRE Productions",
   logoUrl: null,
   logoOnDark: false,
   siteUrl: "https://example.com",

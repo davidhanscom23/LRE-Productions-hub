@@ -3,7 +3,7 @@
 #
 #   export STRIPE_SECRET_KEY=sk_test_...          # or sk_live_...
 #   export NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
-#   export SITE_URL=https://hub.videntproductions.com   # optional
+#   export SITE_URL=https://hub.lreproductions.com   # optional
 #   ./scripts/setup-stripe-book-now.sh
 set -euo pipefail
 
@@ -12,7 +12,7 @@ cd "$ROOT"
 
 SK="${STRIPE_SECRET_KEY:-}"
 PK="${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:-}"
-SITE="${SITE_URL:-https://hub.videntproductions.com}"
+SITE="${SITE_URL:-https://hub.lreproductions.com}"
 SITE="${SITE%/}"
 WEBHOOK_URL="${SITE}/api/webhooks/stripe"
 
@@ -36,7 +36,7 @@ RESP="$(curl -sS https://api.stripe.com/v1/webhook_endpoints \
   -d "enabled_events[]=checkout.session.completed" \
   -d "enabled_events[]=checkout.session.async_payment_succeeded" \
   -d "enabled_events[]=checkout.session.expired" \
-  -d "description=Vident Venue Quotes Book Now deposit")"
+  -d "description=LRE Venue Quotes Book Now deposit")"
 
 python3 - "$RESP" "$ROOT/.env.local" "$SK" "$PK" <<'PY'
 import json, sys

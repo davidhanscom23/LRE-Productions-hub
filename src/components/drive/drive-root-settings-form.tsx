@@ -49,7 +49,7 @@ export function DriveRootSettingsForm({
   function handleClearOverride() {
     if (
       !confirm(
-        "Clear the Hub override and fall back to GOOGLE_DRIVE_ROOT_FOLDER_ID (or the built-in Vident company folder)?",
+        "Clear the Hub override and fall back to GOOGLE_DRIVE_ROOT_FOLDER_ID (or the built-in LRE company folder)?",
       )
     ) {
       return;
@@ -62,7 +62,7 @@ export function DriveRootSettingsForm({
         setError(result.error);
         return;
       }
-      setMessage("Override cleared — using env or the Vident default folder.");
+      setMessage("Override cleared — using env or the LRE default folder.");
       router.refresh();
     });
   }
@@ -120,7 +120,7 @@ export function DriveRootSettingsForm({
               : rootFolderSource === "env"
                 ? "Environment variable"
                 : rootFolderSource === "default"
-                  ? "Vident company folder (built-in default)"
+                  ? "LRE company folder (built-in default)"
                   : "Not set"}
           </dd>
         </div>

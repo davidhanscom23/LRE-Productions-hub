@@ -1,6 +1,6 @@
 // @vitest-environment node
 /**
- * The Vident adapter against a scripted Supabase fake: the HoneyBook client match (fill blanks only,
+ * The LRE adapter against a scripted Supabase fake: the HoneyBook client match (fill blanks only,
  * unique-email race), the Inquiry project and its history row, partial retries, availability
  * inputs, staff alerts, email, and which profile each auth check reads.
  */
@@ -406,7 +406,7 @@ describe("sendEmail", () => {
       subject: "We received your request",
       text: "t",
       html: "<p>t</p>",
-      replyTo: "hello@videntproductions.com",
+      replyTo: "hello@lreproductions.com",
     });
     expect(out).toEqual({ ok: true, skipped: undefined, error: undefined });
     expect(mail.sendEmailDetailed).toHaveBeenCalledWith({
@@ -414,13 +414,13 @@ describe("sendEmail", () => {
       subject: "We received your request",
       text: "t",
       html: "<p>t</p>",
-      replyTo: "hello@videntproductions.com",
+      replyTo: "hello@lreproductions.com",
     });
   });
 });
 
 describe("auth checks", () => {
-  const admin = { id: "a1", role: "admin", full_name: "David Hanscom", email: "david@videntproductions.com", is_active: true };
+  const admin = { id: "a1", role: "admin", full_name: "David Hanscom", email: "hello@lreproductions.com", is_active: true };
 
   it("currentAdmin reads the REAL profile, so an admin in View as staff still counts", async () => {
     auth.getRealProfile.mockResolvedValue(admin);
@@ -445,7 +445,7 @@ describe("auth checks", () => {
 });
 
 describe("hub identity", () => {
-  it("is the Vident hub with both brands and an absolute origin", () => {
+  it("is the LRE hub with both brands and an absolute origin", () => {
     expect(hubAdapter.hubKey).toBe("vident");
     expect(hubAdapter.brands.map((b) => b.key)).toEqual(["vident-productions", "vident-av"]);
     expect(hubAdapter.defaultBrand).toBe("vident-productions");

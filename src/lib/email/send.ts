@@ -7,7 +7,7 @@ import "server-only";
  * environment, sends are skipped (skipped: true) so the app works without it.
  * To turn email on, add both env vars in Vercel (and .env.local for local dev):
  *   RESEND_API_KEY = your Resend API key
- *   EMAIL_FROM     = "Vident Productions <noreply@videntproductions.com>"
+ *   EMAIL_FROM     = "LRE Productions <hello@lreproductions.com>"
  * Failures never throw — in-app notifications are the source of truth.
  * Callers that care about delivery should use sendEmailDetailed.
  */

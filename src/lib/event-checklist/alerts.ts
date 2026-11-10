@@ -24,7 +24,7 @@ export type AlertRunResult = {
 };
 
 function siteUrl(): string {
-  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://hub.videntproductions.com";
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://hub.lreproductions.com";
   return raw.replace(/\/+$/, "");
 }
 

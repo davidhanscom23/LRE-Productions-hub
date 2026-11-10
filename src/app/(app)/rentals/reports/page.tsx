@@ -6,7 +6,7 @@ import { loadAvReports } from "@/lib/av-erp/reports";
 import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
 
-export const metadata = { title: "Reports — Vident AV" };
+export const metadata = { title: "Reports — LRE AV" };
 
 export default async function AvReportsPage() {
   const profile = await getCurrentProfile();

@@ -1,7 +1,7 @@
 import "server-only";
 
 /**
- * Inquiry Forms - the Vident hub adapter (spec section 6). Everything hub-specific the shared module
+ * Inquiry Forms - the LRE hub adapter (spec section 6). Everything hub-specific the shared module
  * needs: the CRM write (HoneyBook board client + Inquiry project + stage history row), committed
  * work and staff capacity for the availability check, staff alerts, email, the real-admin check,
  * the page-gate role and the public origin.
@@ -192,7 +192,7 @@ export const hubAdapter: HubAdapter = {
   defaultBrand: DEFAULT_BRAND_KEY,
 
   publicOrigin() {
-    // NEXT_PUBLIC_SITE_URL or https://hub.videntproductions.com (the helper the AV portal emails use).
+    // NEXT_PUBLIC_SITE_URL or https://hub.lreproductions.com (the helper the AV portal emails use).
     return getPublicBaseUrl().replace(/\/+$/, "");
   },
 

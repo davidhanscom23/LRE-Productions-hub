@@ -90,7 +90,7 @@ export function LoginForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="h-10 w-full rounded-lg border border-[var(--border)] bg-[var(--surface)] px-3 text-sm outline-none focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand-soft)]"
-          placeholder="you@videntproductions.com"
+          placeholder="you@lreproductions.com"
         />
       </div>
 

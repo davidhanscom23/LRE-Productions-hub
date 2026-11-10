@@ -6,7 +6,7 @@ import type { AvSupplier } from "@/lib/av-erp/types";
 import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
 
-export const metadata = { title: "Suppliers — Vident AV" };
+export const metadata = { title: "Suppliers — LRE AV" };
 
 export default async function AvSuppliersPage() {
   const profile = await getCurrentProfile();

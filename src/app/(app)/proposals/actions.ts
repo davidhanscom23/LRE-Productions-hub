@@ -348,7 +348,7 @@ export async function linkProposalToHoneyBookAction(input: {
     .maybeSingle();
   if (!project) return { error: "HoneyBook project not found in the Hub." };
 
-  const marker = "Vident Hub proposal:";
+  const marker = "LRE Hub proposal:";
   const linkLine = `${marker} ${proposal.drive_web_view_link}`;
   const existingDetails = String(project.details ?? "");
   let nextDetails = existingDetails;

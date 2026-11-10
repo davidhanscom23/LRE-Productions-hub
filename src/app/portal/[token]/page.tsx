@@ -8,7 +8,7 @@ type Props = { params: Promise<{ token: string }> };
 
 // Private, link-only: never indexed.
 export const metadata: Metadata = {
-  title: "Your AV Event Portal | Vident Productions",
+  title: "Your AV Event Portal | LRE Productions",
   robots: { index: false, follow: false },
 };
 
@@ -25,7 +25,7 @@ export default async function EventPortalPage({ params }: Props) {
       <main className="mx-auto max-w-lg px-4 py-20 text-center">
         <h1 className="text-xl font-semibold">This portal is no longer active</h1>
         <p className="mt-2 text-sm text-[var(--muted)]">
-          Please contact your Vident Productions coordinator at hello@videntproductions.com.
+          Please contact your LRE Productions coordinator at hello@lreproductions.com.
         </p>
       </main>
     );

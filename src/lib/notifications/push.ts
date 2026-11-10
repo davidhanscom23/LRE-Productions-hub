@@ -22,7 +22,7 @@ function ensureVapid(): boolean {
   if (!isPushConfigured()) return false;
   if (!vapidReady) {
     webpush.setVapidDetails(
-      process.env.VAPID_SUBJECT || "mailto:hello@videntproductions.com",
+      process.env.VAPID_SUBJECT || "mailto:hello@lreproductions.com",
       process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY as string,
       process.env.VAPID_PRIVATE_KEY as string,
     );

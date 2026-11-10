@@ -73,7 +73,7 @@ export const SEARCH_NAV_TARGETS: SearchNavTarget[] = [
   { href: "/chat", label: "Chat", keywords: ["chat", "messages", "channels"] },
   {
     href: "/rentals",
-    label: "Vident AV",
+    label: "LRE AV",
     keywords: ["vident", "av", "rentals", "gear"],
     videntAvAccess: true,
   },

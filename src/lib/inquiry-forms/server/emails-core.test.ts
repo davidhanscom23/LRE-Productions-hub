@@ -12,10 +12,10 @@ import {
 } from "./emails-core";
 
 const brand = {
-  name: "Vident Productions",
+  name: "LRE Productions",
   phone: "904-571-9064",
   siteUrl: "https://example.com",
-  legalLine: "Vident Productions, Inc.",
+  legalLine: "LRE Productions, Inc.",
 };
 
 describe("escaping and subjects", () => {
@@ -105,11 +105,11 @@ describe("confirmation email", () => {
       emojiPrefix: null,
       answers: ["Event date: Saturday, May 15, 2027", "Venue or city: Casa <Monica>"],
     });
-    expect(email.subject).toBe("We got your request, Vident Productions");
+    expect(email.subject).toBe("We got your request, LRE Productions");
     expect(email.text.startsWith("Hi Ann,")).toBe(true);
     expect(email.text).toContain("Event date: Saturday, May 15, 2027");
     expect(email.text).toContain("call us at 904-571-9064");
-    expect(email.text).toContain("Vident Productions, Inc.");
+    expect(email.text).toContain("LRE Productions, Inc.");
     expect(email.text.toLowerCase()).not.toMatch(/\bavailable\b|\bconfirmed\b|\bbooked\b/);
     expect(email.html).toContain("Casa &lt;Monica&gt;");
   });

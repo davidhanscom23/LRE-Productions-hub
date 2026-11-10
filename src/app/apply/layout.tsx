@@ -14,13 +14,13 @@ const applyBody = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Apply — Vident Productions",
+  title: "Apply — LRE Productions",
   description:
-    "Join the Vident Productions crew. Apply for AV, corporate, wedding, golf, and office roles in Northeast Florida.",
+    "Join the LRE Productions crew. Apply for AV, corporate, wedding, golf, and office roles in Northeast Florida.",
   openGraph: {
-    title: "Apply — Vident Productions",
+    title: "Apply — LRE Productions",
     description:
-      "Join the Vident Productions crew producing unforgettable events across Northeast Florida.",
+      "Join the LRE Productions crew producing unforgettable events across Northeast Florida.",
     images: [{ url: "/apply-hero.jpg" }],
   },
 };

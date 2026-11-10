@@ -61,10 +61,10 @@ const definition: FormDefinition = {
 };
 
 describe("ownerFor", () => {
-  const settings = { ownerByEventType: { "corporate-event": "Natalie@VidentProductions.com", wedding: "kallie@videntproductions.com" } };
+  const settings = { ownerByEventType: { "corporate-event": "Corporate@LREProductions.com", wedding: "hello@lreproductions.com" } };
   it("routes the chosen event type to its owner, lowercased", () => {
-    expect(ownerFor(settings, definition, { event_type: "corporate-event" })).toBe("natalie@videntproductions.com");
-    expect(ownerFor(settings, definition, { event_type: "wedding" })).toBe("kallie@videntproductions.com");
+    expect(ownerFor(settings, definition, { event_type: "corporate-event" })).toBe("corporate@lreproductions.com");
+    expect(ownerFor(settings, definition, { event_type: "wedding" })).toBe("hello@lreproductions.com");
   });
   it("leaves unmapped types, no answer and an empty map with the admins (null)", () => {
     expect(ownerFor(settings, definition, { event_type: "other" })).toBeNull();
@@ -81,12 +81,12 @@ describe("ownerFor", () => {
 
 describe("staffRecipients", () => {
   it("adds the routed owner once and keeps the form's recipients first", () => {
-    expect(staffRecipients(["hello@videntproductions.com", "david@videntproductions.com"], "natalie@videntproductions.com")).toEqual([
-      "hello@videntproductions.com",
-      "david@videntproductions.com",
-      "natalie@videntproductions.com",
+    expect(staffRecipients(["hello@lreproductions.com", "david@lreproductions.com"], "corporate@lreproductions.com")).toEqual([
+      "hello@lreproductions.com",
+      "david@lreproductions.com",
+      "corporate@lreproductions.com",
     ]);
-    expect(staffRecipients(["david@videntproductions.com"], "David@VidentProductions.com")).toEqual(["david@videntproductions.com"]);
+    expect(staffRecipients(["hello@lreproductions.com"], "Hello@LREProductions.com")).toEqual(["hello@lreproductions.com"]);
     expect(staffRecipients([], null)).toEqual([]);
   });
 });
@@ -133,18 +133,18 @@ describe("buildGhlPayload", () => {
     expect((p.formData as Record<string, string>)["contact.event_details"]).toContain("Event type: Holiday Party");
   });
 
-  it("adds the event type and services fields videntproductions.com sends, and the real page when known", () => {
+  it("adds the event type and services fields lreproductions.com sends, and the real page when known", () => {
     const vp: GhlCopySettings = { ...h5, formId: "Contact Form", eventTypeKey: "contact.event_type", servicesKey: "contact.services_needed" };
     const p = buildGhlPayload({
       ...base,
       settings: vp,
       summary: summary({ eventType: "Golf Experience", services: ["Planning", "Venues"] }),
-      pageUrl: "https://videntproductions.com/contact?utm_source=google",
+      pageUrl: "https://lreproductions.com/contact?utm_source=google",
     });
     const data = p.formData as Record<string, string>;
     expect(data["contact.event_type"]).toBe("Golf Experience");
     expect(data["contact.services_needed"]).toBe("Planning, Venues");
-    expect(p.url).toBe("https://videntproductions.com/contact?utm_source=google");
+    expect(p.url).toBe("https://lreproductions.com/contact?utm_source=google");
     expect(p.path).toBe("/contact");
   });
 

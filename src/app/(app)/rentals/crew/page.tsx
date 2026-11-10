@@ -10,7 +10,7 @@ import type { AvContractorBooking } from "@/lib/av-erp/types";
 import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
 
-export const metadata = { title: "Crew — Vident AV" };
+export const metadata = { title: "Crew — LRE AV" };
 
 type Props = {
   searchParams: Promise<{ opportunity?: string; date?: string }>;

@@ -171,7 +171,7 @@ export function ToolsLauncher({
     <div className="-m-4 sm:-m-6 lg:-m-8">
       <section className="bg-[var(--banner)] px-6 py-8 text-[var(--banner-fg)] sm:px-8">
         <p className="text-xs font-semibold tracking-[0.28em] text-[var(--brand)]">
-          THE VIDENT HUB
+          THE LRE HUB
         </p>
         <h1 className="mt-2 text-4xl font-bold tracking-wide sm:text-5xl">
           TOOLS

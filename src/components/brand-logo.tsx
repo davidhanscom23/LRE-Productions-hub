@@ -6,7 +6,7 @@ type BrandLogoProps = {
 /** Wordmark: black in light mode, white in dark mode (via .brand-logo CSS). */
 export function BrandLogo({
   className = "h-8 w-auto object-contain",
-  alt = "Vident Productions",
+  alt = "LRE Productions",
 }: BrandLogoProps) {
   return (
     // eslint-disable-next-line @next/next/no-img-element

@@ -18,7 +18,7 @@ export async function requireAvErpAccess() {
     return {
       supabase,
       profile: null,
-      error: "Vident AV access required." as const,
+      error: "LRE AV access required." as const,
     };
   }
   return { supabase, profile, error: null };

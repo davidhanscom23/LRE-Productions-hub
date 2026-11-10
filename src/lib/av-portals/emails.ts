@@ -14,7 +14,7 @@ export type EmailPortal = {
 };
 
 export function getPublicBaseUrl(): string {
-  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://hub.videntproductions.com";
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://hub.lreproductions.com";
   return raw.replace(/\/+$/, "");
 }
 
@@ -106,7 +106,7 @@ export function buildEmail(args: {
     showList ? `Open your event portal (no login needed): ${link}` : `Your portal, any time: ${link}`,
     "",
     "Warmly,",
-    "The Vident Productions Audiovisual Team",
+    "The LRE Productions Audiovisual Team",
   ].join("\n");
 
   const rowHtml = rows
@@ -119,7 +119,7 @@ export function buildEmail(args: {
   const html = `<!doctype html><html><body style="margin:0;background:#f4f1ec">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px">
 <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;background:#fff">
-<tr><td style="background:#0d0d0d;padding:22px 28px;border-bottom:3px solid #9a7340"><span style="font:600 14px Arial,sans-serif;letter-spacing:.28em;color:#fff">VIDENT PRODUCTIONS</span><span style="float:right;font:11px monospace;letter-spacing:.14em;color:#c19960">SHOW FILE ${esc(file)}</span></td></tr>
+<tr><td style="background:#0d0d0d;padding:22px 28px;border-bottom:3px solid #9a7340"><span style="font:600 14px Arial,sans-serif;letter-spacing:.28em;color:#fff">LRE PRODUCTIONS</span><span style="float:right;font:11px monospace;letter-spacing:.14em;color:#c19960">SHOW FILE ${esc(file)}</span></td></tr>
 <tr><td style="padding:28px">
 <p style="margin:0 0 6px;font:12px Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#6b6b6b">${esc(when)}${esc(where)}</p>
 <h1 style="margin:0 0 16px;font:600 24px Arial,sans-serif;color:#111">${esc(portal.event_name)}</h1>
@@ -130,7 +130,7 @@ ${note ? `<p style="margin:0 0 20px;font:15px/1.55 Arial,sans-serif;color:#333">
 <p style="margin:0 0 22px"><a href="${esc(link)}" style="display:inline-block;background:#0d0d0d;color:#fff;text-decoration:none;font:600 14px Arial,sans-serif;letter-spacing:.06em;padding:14px 26px;border-bottom:3px solid #9a7340">${showList ? "Open your event portal" : "View your event portal"}</a></p>
 <p style="margin:0;font:13px/1.5 Arial,sans-serif;color:#6b6b6b">No login or password needed. You can also forward this email to anyone helping you plan.</p>
 </td></tr></table>
-<p style="font:12px Arial,sans-serif;color:#8a8a8a;margin:14px 0 0">Vident Productions · Ponte Vedra Beach, FL · videntproductions.com</p>
+<p style="font:12px Arial,sans-serif;color:#8a8a8a;margin:14px 0 0">LRE Productions · Ponte Vedra Beach, FL · lreproductions.com</p>
 </td></tr></table></body></html>`;
 
   return { subject, text, html };

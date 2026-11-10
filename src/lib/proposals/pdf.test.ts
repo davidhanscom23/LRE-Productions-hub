@@ -9,7 +9,7 @@ describe("proposal PDF", () => {
       eventName: "Spring Gala",
       eventDate: "2026-06-01",
       department: "Wedding & Social",
-      intro: "Thank you for considering Vident Productions.",
+      intro: "Thank you for considering LRE Productions.",
       notes: "Deposit due on booking.",
       lines: [
         {
@@ -41,6 +41,6 @@ describe("proposal PDF", () => {
         eventName: "Wedding",
         eventDate: "2026-08-15",
       }),
-    ).toMatch(/^Vident-Proposal-Smith-Jones-Wedding-2026-08-15\.pdf$/);
+    ).toMatch(/^LRE-Proposal-Smith-Jones-Wedding-2026-08-15\.pdf$/);
   });
 });

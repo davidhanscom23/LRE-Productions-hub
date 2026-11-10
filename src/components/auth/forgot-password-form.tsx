@@ -81,7 +81,7 @@ export function ForgotPasswordForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className={authInputClass}
-            placeholder="you@videntproductions.com"
+            placeholder="you@lreproductions.com"
           />
         </div>
 

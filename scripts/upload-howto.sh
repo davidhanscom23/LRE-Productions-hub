@@ -1,9 +1,9 @@
 #!/bin/bash
-# Upload how-to videos to the Vident Bunny storage zone.
+# Upload how-to videos to the LRE Bunny storage zone.
 #   usage: scripts/upload-howto.sh path/to/video.mp4 [more.mp4 ...]
 # Reads the storage-zone password from a local file on your Mac (never pasted,
 # never committed): ~/.config/vident-bunny/storage-key  (one line, the zone password).
-# Vident only: zone "vident-productions", folder "vident-howto", CDN vident-productions.b-cdn.net.
+# LRE only: zone "vident-productions", folder "vident-howto", CDN vident-productions.b-cdn.net.
 set -euo pipefail
 ZONE="vident-productions"
 FOLDER="vident-howto"

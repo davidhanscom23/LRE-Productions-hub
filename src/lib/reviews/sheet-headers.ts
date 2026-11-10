@@ -1,5 +1,5 @@
 /**
- * Column headers for the Vident Client Reviews Google Sheet.
+ * Column headers for the LRE Client Reviews Google Sheet.
  * Keep in sync with the marketing site /reviews CSV and sync-sheet parsers.
  */
 export const REVIEWS_SHEET_HEADERS = [
@@ -15,7 +15,7 @@ export const REVIEWS_SHEET_HEADERS = [
   "Event_ID",
 ] as const;
 
-export const REVIEWS_SHEET_TITLE = "Vident Client Reviews";
+export const REVIEWS_SHEET_TITLE = "LRE Client Reviews";
 
 /** app_settings key for the Hub-managed spreadsheet id (created in Drive). */
 export const REVIEWS_SPREADSHEET_SETTING_KEY =

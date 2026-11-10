@@ -5,7 +5,7 @@ import { listIntegrationTokens } from "@/lib/av-erp/terminal-tokens";
 import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
 
-export const metadata = { title: "Developer and API — Vident AV" };
+export const metadata = { title: "Developer and API — LRE AV" };
 
 export default async function AvDeveloperPage() {
   const profile = await getCurrentProfile();

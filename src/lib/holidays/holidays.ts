@@ -1,5 +1,5 @@
 /**
- * Holiday hub themes — full-shell skins for the Vident Hub.
+ * Holiday hub themes — full-shell skins for the LRE Hub.
  * Dates are resolved in America/New_York so the whole company shares one day.
  *
  * Guests never get a holiday skin; admins can preview any holiday from Hub health.
@@ -229,7 +229,7 @@ export const HOLIDAY_THEMES: Record<HolidayId, HolidayTheme> = {
     id: "christmas-day",
     name: "Christmas Day",
     greeting: "Merry Christmas",
-    tagline: "Merry Christmas — joy to the world from all of us at Vident Productions.",
+    tagline: "Merry Christmas — joy to the world from all of us at LRE Productions.",
     subline: "Thank you for making every season bright.",
     mode: "dark",
     rule: "December 25",

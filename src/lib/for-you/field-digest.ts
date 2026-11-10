@@ -40,7 +40,7 @@ function formatDigestBody(
   }
   lines.push("Open For You in the Hub to clear them.");
   lines.push("");
-  lines.push("— Vident Productions Hub");
+  lines.push("— LRE Productions Hub");
   return lines.join("\n");
 }
 

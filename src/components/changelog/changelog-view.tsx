@@ -87,7 +87,7 @@ export function ChangelogView({ videos = [] }: { videos?: ChangelogVideo[] }) {
   useEffect(() => {
     try {
       window.localStorage.setItem(CHANGELOG_SEEN_KEY, CHANGELOG_STAMP);
-      window.dispatchEvent(new Event("vident-changelog-seen"));
+      window.dispatchEvent(new Event("lre-changelog-seen"));
     } catch {
       // ignore
     }

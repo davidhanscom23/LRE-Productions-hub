@@ -6,7 +6,7 @@ import { ymdInZone } from "@/lib/av-erp/ops-schedule";
 import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
 
-export const metadata = { title: "Planner — Vident AV" };
+export const metadata = { title: "Planner — LRE AV" };
 
 export default async function AvGearPlannerPage() {
   const profile = await getCurrentProfile();

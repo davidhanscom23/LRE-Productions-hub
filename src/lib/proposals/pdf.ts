@@ -301,5 +301,5 @@ export function proposalFileName(input: {
       .replace(/\s+/g, "-")
       .slice(0, 40) || "Proposal";
   const dateBit = input.eventDate?.slice(0, 10) ?? new Date().toISOString().slice(0, 10);
-  return `Vident-Proposal-${safe(input.clientName)}-${safe(input.eventName || "Event")}-${dateBit}.pdf`;
+  return `LRE-Proposal-${safe(input.clientName)}-${safe(input.eventName || "Event")}-${dateBit}.pdf`;
 }

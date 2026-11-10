@@ -32,7 +32,7 @@ export type ToolCategory = {
 export const TOOL_CATEGORIES: ToolCategory[] = [
   { id: "me", title: "FOR ME", hue: 38 },
   { id: "events", title: "EVENTS & PRODUCTION", hue: 32 },
-  { id: "vident-av", title: "VIDENT AV", hue: 24 },
+  { id: "vident-av", title: "LRE AV", hue: 24 },
   { id: "quotes", title: "QUOTES & PROPOSALS", hue: 172 },
   { id: "staffing", title: "STAFFING & PAY", hue: 140 },
   { id: "people", title: "PEOPLE & CULTURE", hue: 262 },
@@ -134,7 +134,7 @@ export const NEW_TOOL_MAX_AGE_DAYS = 30;
 /** Used only when visit tracking is unavailable. */
 const FALLBACK_WINDOW_DAYS = 14;
 
-export const TOOLS_SEEN_KEY = "vident-hub.tools.seen";
+export const TOOLS_SEEN_KEY = "lre-hub.tools.seen";
 
 /**
  * True when a tool shipped after the person's previous visit.

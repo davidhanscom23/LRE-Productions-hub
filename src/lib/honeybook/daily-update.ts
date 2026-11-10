@@ -27,7 +27,7 @@ function easternToday(): string {
 }
 
 function siteBase(): string {
-  return process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://hub.videntproductions.com";
+  return process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://hub.lreproductions.com";
 }
 
 function skipped(reason: string): DailyUpdateResult {

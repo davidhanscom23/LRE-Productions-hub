@@ -6,7 +6,7 @@ import { loadStockRows } from "@/lib/av-erp/warehouse-data";
 import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
 
-export const metadata = { title: "Stock — Vident AV" };
+export const metadata = { title: "Stock — LRE AV" };
 
 export default async function AvStockPage() {
   const profile = await getCurrentProfile();

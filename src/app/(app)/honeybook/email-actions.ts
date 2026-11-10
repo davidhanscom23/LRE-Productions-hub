@@ -48,7 +48,7 @@ export async function sendProjectEmailAction(input: {
     return { error: "Email isn't set up yet. An admin needs to add RESEND_API_KEY and EMAIL_FROM in Vercel." };
   }
 
-  const signature = `\n\n--\n${profile.full_name ?? "Vident Productions"}\nVident Productions`;
+  const signature = `\n\n--\n${profile.full_name ?? "LRE Productions"}\nLRE Productions`;
   const hasSignature = /vident productions\s*$/i.test(body);
   const text = hasSignature ? body : body + signature;
   const result = await sendEmailDetailed({

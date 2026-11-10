@@ -338,7 +338,7 @@ async function getAwardExcludedUserIds(
     .from("profiles")
     .select("id")
     .or(
-      "email.ilike.david@videntproductions.com,email.ilike.david@yentertainmentdjs.com,email.ilike.david@thevidentcompany.com",
+      "email.ilike.hello@lreproductions.com,email.ilike.david@yentertainmentdjs.com,email.ilike.hello@lreproductions.com",
     );
   return (byEmail ?? []).map((row) => String(row.id));
 }

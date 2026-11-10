@@ -6,7 +6,7 @@ import { validateTwilioSignature } from "@/lib/sms/twilio";
  * authenticity is the X-Twilio-Signature. Twilio POSTs delivery updates
  * (queued → sent → delivered / failed / undelivered) for outbound messages.
  * Put this URL in your number's / Messaging Service's "status callback" field:
- *   https://hub.videntproductions.com/api/sms/status
+ *   https://hub.lreproductions.com/api/sms/status
  */
 export async function POST(req: Request) {
   const form = await req.formData();

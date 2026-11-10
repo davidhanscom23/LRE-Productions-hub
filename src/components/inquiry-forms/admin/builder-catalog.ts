@@ -44,7 +44,7 @@ export const ROLE_LABELS: Record<FieldRole, string> = FIELD_ROLE_LABELS;
 
 /**
  * What a role does, in the owner's words (shown under the role picker). Hub-specific (hub-copy.ts):
- * the Y? hub writes a Leads card, the Vident hub a HoneyBook project, and Vident never says "lead".
+ * the Y? hub writes a Leads card, the LRE hub a HoneyBook project, and LRE never says "lead".
  */
 export { ROLE_HELP };
 

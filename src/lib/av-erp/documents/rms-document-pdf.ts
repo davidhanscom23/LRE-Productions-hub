@@ -177,7 +177,7 @@ export async function buildRmsDocumentPdf(doc: RmsDocument): Promise<Uint8Array>
   draw(COMPANY.displayName, W - M - 190, ry - 10, 11, { bold: true });
   ry -= 14;
   const addrParts = COMPANY.address.split(/,\s*(.+)/).filter(Boolean);
-  for (const l of [...addrParts, COMPANY.phone, COMPANY.email, "videntproductions.com"]) {
+  for (const l of [...addrParts, COMPANY.phone, COMPANY.email, "lreproductions.com"]) {
     draw(fit(l, 8, 190), W - M - 190, ry - 8, 8, { color: MUTED });
     ry -= 11;
   }
@@ -398,7 +398,7 @@ export async function buildRmsDocumentPdf(doc: RmsDocument): Promise<Uint8Array>
     const intro =
       doc.kind === "contract"
         ? "I, the undersigned, accept the terms and conditions of rental and agree to this contract."
-        : "I agree to the terms of this estimate and understand that Vident Productions will provide me with a contract to secure the rental items and services included in it. Any additions will be reflected in my final invoice.";
+        : "I agree to the terms of this estimate and understand that LRE Productions will provide me with a contract to secure the rental items and services included in it. Any additions will be reflected in my final invoice.";
     const introLines = wrapText(t(intro), CW - 20, (s) => font.widthOfTextAtSize(s, 8));
     const boxH = 30 + introLines.length * 10.5 + (stamp ? 62 : 46);
     ensure(boxH + 10);
@@ -465,5 +465,5 @@ export function rmsDocumentFileName(doc: RmsDocument): string {
       .replace(/[^\w\s-]+/g, "")
       .replace(/\s+/g, "-")
       .slice(0, 40) || rmsDocTitle(doc.kind);
-  return `Vident-${rmsDocTitle(doc.kind)}-${doc.reference}-${safe(doc.subject)}.pdf`;
+  return `LRE-${rmsDocTitle(doc.kind)}-${doc.reference}-${safe(doc.subject)}.pdf`;
 }

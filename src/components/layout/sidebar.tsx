@@ -282,7 +282,7 @@ export const NAV_GROUPS: NavGroup[] = [
       },
       {
         href: "/rentals",
-        label: "Vident AV",
+        label: "LRE AV",
         icon: Package,
         videntAvAccess: true,
         toolsCategory: "vident-av",
@@ -806,8 +806,8 @@ export function Sidebar({
       }
     };
     check();
-    window.addEventListener("vident-changelog-seen", check);
-    return () => window.removeEventListener("vident-changelog-seen", check);
+    window.addEventListener("lre-changelog-seen", check);
+    return () => window.removeEventListener("lre-changelog-seen", check);
   }, [pathname]);
 
   const closeMobile = () => {

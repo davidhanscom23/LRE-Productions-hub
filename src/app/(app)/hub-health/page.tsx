@@ -178,7 +178,7 @@ export default async function HubHealthPage() {
           driveInfo.rootFolderSource === "app_settings"
             ? "Hub override"
             : driveInfo.rootFolderSource === "default"
-              ? "Vident default"
+              ? "LRE default"
               : "env"
         })${driveInfo.clientEmail ? ` via ${driveInfo.clientEmail}` : ""}.`;
 
@@ -281,7 +281,7 @@ export default async function HubHealthPage() {
       label: "Website reviews sheet",
       status: reviewsSheet ? "ok" : "warn",
       detail: reviewsSheet
-        ? `Vident reviews sheet is linked${
+        ? `LRE reviews sheet is linked${
             reviewsSpreadsheetId ? ` (${reviewsSpreadsheetId})` : ""
           }.`
         : "Not linked. Set GOOGLE_SHEETS_REVIEWS_CSV_URL or GOOGLE_SHEETS_REVIEWS_SPREADSHEET_ID (share the sheet with the service account).",
@@ -349,7 +349,7 @@ export default async function HubHealthPage() {
     },
     {
       id: "av-erp-core",
-      label: "Vident AV core (migration 140+)",
+      label: "LRE AV core (migration 140+)",
       status: avCoreOk ? "ok" : "missing",
       detail: avCoreOk
         ? "av_opportunities is available (AV ERP core applied)."
@@ -357,11 +357,11 @@ export default async function HubHealthPage() {
             avCore.error?.message ?? "table missing"
           })`,
       href: "/rentals",
-      hrefLabel: "Vident AV",
+      hrefLabel: "LRE AV",
     },
     {
       id: "av-erp-invoices",
-      label: "Vident AV invoices (migration 144)",
+      label: "LRE AV invoices (migration 144)",
       status: avInvoicesOk ? "ok" : "missing",
       detail: avInvoicesOk
         ? "av_invoices is available (144 applied)."
@@ -373,7 +373,7 @@ export default async function HubHealthPage() {
     },
     {
       id: "av-erp-costs-crew",
-      label: "Vident AV costs & crew (migration 145)",
+      label: "LRE AV costs & crew (migration 145)",
       status: avCostsOk ? "ok" : "missing",
       detail: avCostsOk
         ? "av_job_costs is available (145 applied)."
@@ -385,7 +385,7 @@ export default async function HubHealthPage() {
     },
     {
       id: "av-erp-credits",
-      label: "Vident AV invoice credits (migration 146)",
+      label: "LRE AV invoice credits (migration 146)",
       status: avCreditsOk ? "ok" : "missing",
       detail: avCreditsOk
         ? "av_invoice_credits is available (146 applied)."
@@ -397,7 +397,7 @@ export default async function HubHealthPage() {
     },
     {
       id: "av-erp-crew-rollup",
-      label: "Vident AV crew → labor costs (migration 147)",
+      label: "LRE AV crew → labor costs (migration 147)",
       status: avCrewRollupOk ? "ok" : "missing",
       detail: avCrewRollupOk
         ? "av_job_costs.booking_id is available (147 applied)."
@@ -409,7 +409,7 @@ export default async function HubHealthPage() {
     },
     {
       id: "av-erp-terminal-tokens",
-      label: "Vident AV Developer API keys (migration 148)",
+      label: "LRE AV Developer API keys (migration 148)",
       status: avTokensOk ? "ok" : "missing",
       detail: avTokensOk
         ? "av_integration_tokens is available (148 applied)."
@@ -421,7 +421,7 @@ export default async function HubHealthPage() {
     },
     {
       id: "av-erp-venue-plan",
-      label: "Vident AV text kind + venue plan (migration 149)",
+      label: "LRE AV text kind + venue plan (migration 149)",
       status: avVenuePlanOk ? "ok" : "missing",
       detail: avVenuePlanOk
         ? "av_opportunity_attachments is available (149 applied)."
@@ -433,7 +433,7 @@ export default async function HubHealthPage() {
     },
     {
       id: "av-erp-km-gaps",
-      label: "Vident AV KM gaps (migration 151)",
+      label: "LRE AV KM gaps (migration 151)",
       status: avKmGapsOk ? "ok" : "missing",
       detail: avKmGapsOk
         ? "av_contractors / estimate response / serials / templates available (151 applied)."
@@ -466,10 +466,10 @@ export default async function HubHealthPage() {
       label: "Current RMS env (retired)",
       status: currentRmsEnvLeft ? "warn" : "ok",
       detail: currentRmsEnvLeft
-        ? "CURRENT_RMS_SUBDOMAIN and/or CURRENT_RMS_API_KEY are still set in this environment. Vident AV Import is gone — remove both from Vercel when ready."
+        ? "CURRENT_RMS_SUBDOMAIN and/or CURRENT_RMS_API_KEY are still set in this environment. LRE AV Import is gone — remove both from Vercel when ready."
         : "No CURRENT_RMS_* env vars set (Import retired).",
       href: "/rentals",
-      hrefLabel: "Vident AV",
+      hrefLabel: "LRE AV",
     },
     {
       id: "ask-index",
@@ -478,8 +478,8 @@ export default async function HubHealthPage() {
       detail: !openai
         ? "OpenAI key missing — Ask the Hub cannot rebuild embeddings."
         : avGuideFresh
-          ? "Vident AV hub guide in the index includes the latest Reports / Import-retired copy."
-          : "Vident AV guide looks stale or missing in kb_documents. Open Ask the Hub → Rebuild index so staff answers match the new AV modules.",
+          ? "LRE AV hub guide in the index includes the latest Reports / Import-retired copy."
+          : "LRE AV guide looks stale or missing in kb_documents. Open Ask the Hub → Rebuild index so staff answers match the new AV modules.",
       href: "/ask",
       hrefLabel: "Rebuild on Ask the Hub",
     },

@@ -4,7 +4,7 @@
  * inquiry-forms file is shared code, identical in both hubs. PURE: safe in client components,
  * server actions and vitest.
  *
- * Vident hub: a finished inquiry is a project at stage Inquiry on the Hub's HoneyBook board
+ * LRE hub: a finished inquiry is a project at stage Inquiry on the Hub's HoneyBook board
  * (/honeybook; source "web_form", shown with a Website badge), and the record link
  * (adapter.staffRecordHref) opens that project. "Lead" is a role name in this hub (trainer), so
  * these words never call an inquiry a lead.
@@ -49,12 +49,12 @@ export const HUB_COPY = {
   formsListDescription:
     "Multi-step website forms that check the date, then add each inquiry to the HoneyBook board as an Inquiry project.",
   /** Share tab, "Where to paste it": the site builder line and the test inquiry line. */
-  shareSiteBuilder: "GoHighLevel site builder (videntproductions.com, videntaudiovisual.com)",
+  shareSiteBuilder: "GoHighLevel site builder (lreproductions.com, videntaudiovisual.com)",
   shareTestInquiry:
     "Send a test inquiry: it shows up in Submissions and on the HoneyBook board in the Inquiry column.",
   /** Placeholders in the form settings. */
-  exampleEmail: "name@videntproductions.com",
-  exampleThankYouUrl: "https://videntproductions.com/thank-you",
+  exampleEmail: "name@lreproductions.com",
+  exampleThankYouUrl: "https://lreproductions.com/thank-you",
   /** Eyebrow above the Inquiry Forms page titles: the nav group they sit in. */
   sectionEyebrow: "Quotes & Proposals",
 } as const;
@@ -69,7 +69,7 @@ export const BUILDER_COPY = {
 } as const;
 
 /**
- * What a role does, in the owner's words (shown under the role picker). Vident: a HoneyBook project
+ * What a role does, in the owner's words (shown under the role picker). LRE: a HoneyBook project
  * (project type, date, budget, location and the details text) plus the client's name, email and phone.
  * There is no guest count, inquiry source, message or company column, so those go into the details.
  */

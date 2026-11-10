@@ -37,7 +37,7 @@ export const SHORTCUT_DEFS: ShortcutDef[] = [
   { href: "/announcements", label: "Announcements", description: "Company notices.", gate: "" },
   { href: "/kudos", label: "Kudos", description: "Recognize a teammate.", gate: "" },
   { href: "/polls", label: "Polls", description: "Quick team polls.", gate: "" },
-  { href: "/rentals", label: "Vident AV", description: "Hub AV quotes, warehouse, invoices & reports.", gate: "videntav" },
+  { href: "/rentals", label: "LRE AV", description: "Hub AV quotes, warehouse, invoices & reports.", gate: "videntav" },
   { href: "/teams", label: "Teams", description: "Audiovisual, Corporate, Wedding & Social, and Golf.", gate: "" },
   { href: "/people", label: "People", description: "Profiles, contacts & departments.", gate: "" },
   { href: "/directory", label: "Directory", description: "Company org chart.", gate: "" },
@@ -66,7 +66,7 @@ export const SHORTCUT_DEFS: ShortcutDef[] = [
   { href: "/av-portals", label: "AV Event Portals", description: "Client planning links for AV shows.", gate: "videntav" },
   { href: "/av-show", label: "AV Show Control", description: "Screens and lower thirds for live shows.", gate: "videntav" },
   { href: "/venue-quotes", label: "Venue Quotes", description: "Public instant-quote pages.", gate: "marketing" },
-  // Added Nov 2026 so every Vident Hub module in the sidebar can be pinned.
+  // Added Nov 2026 so every LRE Hub module in the sidebar can be pinned.
   { href: "/tools", label: "Tools", description: "Every Hub module, grouped by what you need to do.", gate: "" },
   { href: "/my-calendar", label: "My Calendar", description: "Your personal calendar feed.", gate: "" },
   { href: "/forum", label: "Forum", description: "Longer team discussions.", gate: "" },
@@ -83,6 +83,7 @@ export const SHORTCUT_DEFS: ShortcutDef[] = [
   { href: "/sms", label: "SMS Portal", description: "Business texting.", gate: "admin" },
   { href: "/communications", label: "Communications", description: "Automated client and staff emails.", gate: "admin" },
   { href: "/inquiry-forms", label: "Inquiry Forms", description: "Website inquiry forms that feed the HoneyBook board.", gate: "admin" },
+  { href: "/hub-switcher", label: "Hub Switcher", description: "Choose who sees which hub.", gate: "admin" },
   { href: "/hub-health", label: "Hub Health", description: "Checks and errors.", gate: "admin" },
   { href: "/page-map", label: "Page Map", description: "Every page in the hub and who can open it.", gate: "admin" },
   { href: "/rentals/quotes", label: "AV Estimates", description: "Hub opportunities, holds, estimates, and share links.", gate: "videntav" },

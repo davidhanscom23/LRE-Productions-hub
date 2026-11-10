@@ -15,7 +15,7 @@ import type { FieldTemplateId } from "./builder-catalog";
 
 const BRAND: BrandProfile = {
   key: "vident",
-  name: "Vident Productions",
+  name: "LRE Productions",
   logoUrl: "/logo.png",
   logoOnDark: false,
   siteUrl: "https://example.com",

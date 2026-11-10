@@ -5,7 +5,7 @@ export type CheckinKind = "d30" | "d14" | "d7" | "d3";
 
 const MS_PER_DAY = 86_400_000;
 
-/** Today's calendar date (YYYY-MM-DD) in the Vident home time zone. */
+/** Today's calendar date (YYYY-MM-DD) in the LRE home time zone. */
 export function todayInEastern(now: Date = new Date()): string {
   return new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/New_York",

@@ -1,6 +1,6 @@
 import type { Profile } from "@/lib/types/database";
 
-/** Admins and anyone assigned to the AV department can open Vident AV. */
+/** Admins and anyone assigned to the AV department can open LRE AV. */
 export function canAccessVidentAv(
   profile: Pick<Profile, "role" | "departments"> | null | undefined,
 ): boolean {

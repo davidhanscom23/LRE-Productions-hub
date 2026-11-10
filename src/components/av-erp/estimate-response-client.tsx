@@ -34,7 +34,7 @@ function DoneBanner({
     <div className="mt-8 rounded-xl border border-[var(--border)] bg-[var(--surface)] px-4 py-5 text-center">
       <p className="text-base font-semibold">{title}</p>
       <p className="mt-1 text-sm text-[var(--muted)]">
-        Thanks — Vident has been notified.
+        Thanks — LRE has been notified.
       </p>
       {signerName?.trim() ? (
         <p className="mt-2 text-sm text-[var(--muted)]">

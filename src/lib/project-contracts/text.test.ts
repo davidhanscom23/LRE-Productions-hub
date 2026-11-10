@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { fillContract, leftoverTokens, toWinAnsi, wrapText } from "./text";
 import { buildContractPdf } from "./pdf";
 
-const ctx = { clientName: "Pat Lee", clientEmail: "", projectName: "Lee Wedding", eventDate: "June 5, 2027", location: "", companyName: "Vident Productions", today: "November 7, 2026" };
+const ctx = { clientName: "Pat Lee", clientEmail: "", projectName: "Lee Wedding", eventDate: "June 5, 2027", location: "", companyName: "LRE Productions", today: "November 7, 2026" };
 
 describe("contract text", () => {
   it("fills tokens, marks gaps, leaves unknown tokens", () => {
@@ -27,7 +27,7 @@ describe("contract text", () => {
     const body = Array.from({ length: 120 }, (_, i) => `${i + 1}. Clause number ${i + 1} that goes on for a little while so it wraps nicely.`).join("\n");
     const png = Uint8Array.from(Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==", "base64"));
     const bytes = await buildContractPdf({
-      companyName: "Vident Productions",
+      companyName: "LRE Productions",
       title: "Agreement",
       body,
       projectName: "Lee Wedding",

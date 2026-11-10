@@ -16,9 +16,9 @@ export type CollectedCalendarFeeds = {
 };
 
 /**
- * Load the shared Vident work calendar only (HoneyBook→Google iCal, with
+ * Load the shared LRE work calendar only (HoneyBook→Google iCal, with
  * legacy company_ical_url as fallback). Personal DJEP feeds are intentionally
- * ignored — Vident does not use DJEP / Y Entertainment calendars.
+ * ignored — LRE does not use DJEP / Y Entertainment calendars.
  */
 export async function collectAllDjepWorkEvents(
   supabase: SupabaseClient,

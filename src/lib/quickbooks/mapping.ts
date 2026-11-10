@@ -42,7 +42,7 @@ export function buildQbInvoice(inv: InvoiceForQb, ids: { customerId: string; ite
     CustomerRef: { value: ids.customerId },
     TxnDate: inv.issuedAt ?? undefined,
     DueDate: inv.dueAt ?? undefined,
-    PrivateNote: `Created from the Vident Hub (${inv.number}).`,
+    PrivateNote: `Created from the LRE Hub (${inv.number}).`,
     CustomerMemo: inv.notes ? { value: inv.notes.slice(0, 1000) } : undefined,
     Line: lines,
   };

@@ -62,7 +62,7 @@ export type RmsDocument = {
   notes: string;
   transportNotes: string;
   terms: string;
-  /** venue = the venue pays Vident; shows the master-bill note, no surcharge row. */
+  /** venue = the venue pays LRE; shows the master-bill note, no surcharge row. */
   billingType?: "direct" | "venue";
   /** Estimates: last day the prices are held. */
   validUntil?: string | null;

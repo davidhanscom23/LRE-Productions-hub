@@ -36,9 +36,9 @@ describe("notLeadSenderKey", () => {
   it("remembers a real prospect address, lowercased", () => {
     expect(notLeadSenderKey(" Risa@NinjaNation.com ")).toBe("risa@ninjanation.com");
   });
-  it("never remembers relays, Vident staff, or blanks", () => {
+  it("never remembers relays, LRE staff, or blanks", () => {
     expect(notLeadSenderKey("yourfriends@gigsalad.com")).toBeNull();
-    expect(notLeadSenderKey("kallie@videntproductions.com")).toBeNull();
+    expect(notLeadSenderKey("hello@lreproductions.com")).toBeNull();
     expect(notLeadSenderKey("")).toBeNull();
     expect(notLeadSenderKey(null)).toBeNull();
   });

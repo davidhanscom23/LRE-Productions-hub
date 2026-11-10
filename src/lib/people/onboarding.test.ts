@@ -8,7 +8,7 @@ import {
 } from "./onboarding";
 
 describe("DEFAULT_ONBOARDING_RESOURCES", () => {
-  it("lists the six Vident onboarding cards", () => {
+  it("lists the six LRE onboarding cards", () => {
     expect(DEFAULT_ONBOARDING_RESOURCES.map((r) => r.title)).toEqual([
       "Corporate Onboarding Form",
       "Weddings & Social Onboarding Form",

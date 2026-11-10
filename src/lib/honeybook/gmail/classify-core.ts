@@ -33,7 +33,7 @@ export type ProjectContext = {
 };
 
 export const SYSTEM = [
-  "You read ONE email from a staff mailbox at Vident Productions, an event-production company",
+  "You read ONE email from a staff mailbox at LRE Productions, an event-production company",
   "(audiovisual, corporate events, weddings & social events, golf events).",
   "Your job is to keep a clear trail so a teammate can pick up the project later.",
   "Be factual and brief. Never invent details that are not in the email.",
@@ -118,7 +118,7 @@ export function buildPrompt(args: {
 }): string {
   const { message, staffName, project, notLeadExamples = [] } = args;
   const lines: string[] = [
-    `Mailbox owner (Vident staff): ${staffName}`,
+    `Mailbox owner (LRE staff): ${staffName}`,
     `Direction: ${message.direction === "outbound" ? "sent BY the staff member" : "received BY the staff member"}`,
     `Email date: ${new Date(message.internalMs).toISOString().slice(0, 10)}`,
     `From: ${message.from}`,
@@ -155,17 +155,17 @@ export function buildPrompt(args: {
   } else {
     lines.push(
       "This email is NOT yet linked to any project. Decide whether it is a NEW inquiry about an event",
-      "(someone asking about hiring Vident for audiovisual, corporate, wedding/social, or golf event services).",
+      "(someone asking about hiring LRE for audiovisual, corporate, wedding/social, or golf event services).",
       "Set is_event_inquiry true only for a real prospective client. Newsletters, vendors, job seekers,",
       "and existing-client billing are false. Fill client (the PROSPECT, not the staff member) and event",
       "details only from the email. `note` is a 1-3 sentence summary of what they are asking for.",
       "Set needs_action true with a clear `action` (usually: reply to the inquiry and send details).",
-      "A real inquiry is someone who wants to HIRE Vident, or buy services, for THEIR OWN event.",
+      "A real inquiry is someone who wants to HIRE LRE, or buy services, for THEIR OWN event.",
       "These are NOT inquiries (is_event_inquiry false): vendors, exhibitors, sponsors, or performers asking to",
-      "take part in or sell to Vident's events; partnership, referral, or collaboration requests; anyone",
+      "take part in or sell to LRE's events; partnership, referral, or collaboration requests; anyone",
       "describing what THEY offer (for example 'we would be a good fit for your events'); equipment or rental",
-      "companies selling to Vident; job seekers; and press or podcast requests.",
-      "When unsure whether the sender wants to hire Vident, set is_event_inquiry false or confidence below 0.5.",
+      "companies selling to LRE; job seekers; and press or podcast requests.",
+      "When unsure whether the sender wants to hire LRE, set is_event_inquiry false or confidence below 0.5.",
     );
     if (notLeadExamples.length > 0) {
       lines.push("Staff previously marked emails like these as NOT leads:");

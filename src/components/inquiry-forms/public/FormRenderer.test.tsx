@@ -78,7 +78,7 @@ function bundle(over: Partial<PublicFormBundle> = {}): PublicFormBundle {
     settings: settings(),
     brand: {
       key: "vident",
-      name: "Vident Productions",
+      name: "LRE Productions",
       logoUrl: "/logo.png",
       logoOnDark: false,
       siteUrl: "https://example.com",
@@ -86,7 +86,7 @@ function bundle(over: Partial<PublicFormBundle> = {}): PublicFormBundle {
       phone: "904-571-9064",
       email: "events@example.com",
       accentColor: "#ae4213",
-      legalLine: "Vident Productions, Inc.",
+      legalLine: "LRE Productions, Inc.",
     },
     turnstileSiteKey: null,
     preview: false,
@@ -239,7 +239,7 @@ describe("FormRenderer first step", () => {
     expect(container.querySelector("h2")?.textContent).toBe("Let's check your date");
     expect(container.querySelector('button[type="submit"]')?.textContent).toContain("Check availability");
     expect(container.textContent).toContain("Step 1 of 3");
-    expect(container.textContent).toContain("Vident Productions, Inc.");
+    expect(container.textContent).toContain("LRE Productions, Inc.");
   });
 
   it("gives the honeypot nothing browser autofill could match (the old company_website did)", async () => {

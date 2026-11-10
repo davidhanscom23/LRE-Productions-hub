@@ -235,7 +235,7 @@ export async function runChecklistArchive(
     } catch (e) {
       const message = e instanceof Error ? e.message : String(e);
       result.error = /not found|permission|forbidden|insufficient/i.test(message)
-        ? `${message} Check that the Drive service account is a Content manager on the Vident Hub Backup shared drive.`
+        ? `${message} Check that the Drive service account is a Content manager on the LRE Hub Backup shared drive.`
         : message;
     }
     try {
@@ -244,7 +244,7 @@ export async function runChecklistArchive(
       } else if (result.archivedRows > 0) {
         await notifyAdmins(
           "Checklist history archived",
-          `${result.archivedRows} checks and ${result.archivedPhotos} photos were saved to the Vident Hub Backup drive (${result.archivedZips} zip${result.archivedZips === 1 ? "" : "s"}).`,
+          `${result.archivedRows} checks and ${result.archivedPhotos} photos were saved to the LRE Hub Backup drive (${result.archivedZips} zip${result.archivedZips === 1 ? "" : "s"}).`,
         );
       }
     } catch {

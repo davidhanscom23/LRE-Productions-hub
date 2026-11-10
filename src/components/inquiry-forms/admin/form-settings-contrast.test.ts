@@ -10,9 +10,9 @@ describe("accent contrast", () => {
   });
 
   it("scores white text on the brand accents", () => {
-    expect(whiteTextContrast("#ae4213")).toBeGreaterThanOrEqual(MIN_TEXT_CONTRAST); // Vident Productions
+    expect(whiteTextContrast("#ae4213")).toBeGreaterThanOrEqual(MIN_TEXT_CONTRAST); // LRE Productions
     expect(whiteTextContrast("#d6001c")).toBeGreaterThanOrEqual(MIN_TEXT_CONTRAST); // Partner Brand
-    expect(whiteTextContrast("#9a7340")).toBeLessThan(MIN_TEXT_CONTRAST); // Vident bronze: too light
+    expect(whiteTextContrast("#9a7340")).toBeLessThan(MIN_TEXT_CONTRAST); // LRE bronze: too light
     expect(contrastRatio("#ffffff", "#000000")).toBeCloseTo(21, 5);
     expect(contrastRatio("#ffffff", "#ffffff")).toBeCloseTo(1, 5);
     expect(whiteTextContrast("nope")).toBeNull();

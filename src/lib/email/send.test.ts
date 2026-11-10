@@ -17,7 +17,7 @@ beforeEach(() => {
   fetchMock.mockResolvedValue(new Response("{}", { status: 200 }));
   vi.stubGlobal("fetch", fetchMock);
   vi.stubEnv("RESEND_API_KEY", "re_test_key");
-  vi.stubEnv("EMAIL_FROM", "Vident Productions <hello@videntproductions.com>");
+  vi.stubEnv("EMAIL_FROM", "LRE Productions <hello@lreproductions.com>");
 });
 
 afterEach(() => {
@@ -27,7 +27,7 @@ afterEach(() => {
 
 describe("replyToList", () => {
   it("keeps trimmed, non-empty addresses", () => {
-    expect(replyToList(" hello@videntproductions.com ")).toEqual(["hello@videntproductions.com"]);
+    expect(replyToList(" hello@lreproductions.com ")).toEqual(["hello@lreproductions.com"]);
     expect(replyToList(["a@x.com", " ", "b@x.com"])).toEqual(["a@x.com", "b@x.com"]);
     expect(replyToList(null)).toEqual([]);
     expect(replyToList(undefined)).toEqual([]);
@@ -41,14 +41,14 @@ describe("sendEmailDetailed reply_to", () => {
       to: "jane@example.com",
       subject: "We received your request",
       text: "Thanks",
-      replyTo: "hello@videntproductions.com",
+      replyTo: "hello@lreproductions.com",
     });
     expect(result).toEqual({ ok: true });
     expect(fetchMock).toHaveBeenCalledTimes(1);
     expect(sentBody()).toMatchObject({
       to: ["jane@example.com"],
       subject: "We received your request",
-      reply_to: "hello@videntproductions.com",
+      reply_to: "hello@lreproductions.com",
     });
   });
 
@@ -68,7 +68,7 @@ describe("sendEmailDetailed reply_to", () => {
 
   it("still skips without Resend settings", async () => {
     vi.stubEnv("RESEND_API_KEY", "");
-    const result = await sendEmailDetailed({ to: "a@example.com", subject: "s", text: "t", replyTo: "hello@videntproductions.com" });
+    const result = await sendEmailDetailed({ to: "a@example.com", subject: "s", text: "t", replyTo: "hello@lreproductions.com" });
     expect(result.skipped).toBe(true);
     expect(fetchMock).not.toHaveBeenCalled();
   });

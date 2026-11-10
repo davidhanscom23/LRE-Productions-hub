@@ -292,7 +292,7 @@ export const SUPPORT_GUIDE_TOPICS: SupportGuideTopic[] = [
     slug: "vident-av",
     category: "People & teams",
     moduleHref: "/rentals",
-    moduleLabel: "Open Vident AV",
+    moduleLabel: "Open LRE AV",
   },
   {
     slug: "resources",

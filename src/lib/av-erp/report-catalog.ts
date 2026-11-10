@@ -1,5 +1,5 @@
 /**
- * Hub Vident AV Reports catalog + full KM AV CRM 19-report registry
+ * Hub LRE AV Reports catalog + full KM AV CRM 19-report registry
  * (from km-av-crm.vercel.app/reports bundle). Map KM keys onto existing Hub
  * sections; do not invent empty Hub pages for unmapped KM reports.
  */

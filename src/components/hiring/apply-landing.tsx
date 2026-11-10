@@ -44,7 +44,7 @@ export function ApplyLanding() {
               href={COMPANY.website}
               className="apply-anim-fade-up text-xs font-medium tracking-wide text-white/75 transition-colors hover:text-white"
             >
-              videntproductions.com
+              lreproductions.com
             </Link>
           </div>
 
@@ -53,7 +53,7 @@ export function ApplyLanding() {
               Now hiring
             </p>
             <h1 className="apply-anim-fade-up-delay apply-display mt-4 text-[clamp(2.4rem,7vw,4.5rem)] font-extrabold leading-[0.95] tracking-tight text-white">
-              Join the Vident crew
+              Join the LRE crew
             </h1>
             <p className="apply-anim-fade-up-delay mt-5 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
               Pick the department you’re interested in and answer a few real

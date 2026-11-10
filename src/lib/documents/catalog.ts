@@ -36,7 +36,7 @@ export const DOCUMENT_CATALOG: DocumentCatalogEntry[] = [
     key: "staff-handbook",
     title: "Staff Handbook",
     description:
-      "Policies & procedures for Vident Productions staff — acknowledge after reading.",
+      "Policies & procedures for LRE Productions staff — acknowledge after reading.",
     href: "/staff-handbook",
     kind: "handbook",
   },

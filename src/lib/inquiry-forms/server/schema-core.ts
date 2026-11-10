@@ -7,7 +7,7 @@ import type { ScoreLabel, SubmissionStage } from "../types";
 
 /**
  * The migration that creates these tables, in supabase/migrations: each hub uses its next free
- * number (Y? 278_inquiry_forms.sql, Vident 167_inquiry_forms.sql).
+ * number (Y? 278_inquiry_forms.sql, LRE 167_inquiry_forms.sql).
  */
 export const MIGRATION_FILE_PATTERN = /^\d+_inquiry_forms\.sql$/;
 

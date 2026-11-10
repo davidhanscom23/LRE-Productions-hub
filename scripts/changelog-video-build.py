@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a Change Log video for the Vident Hub (not the Y? Hub).
+"""Build a Change Log video for the LRE Hub (not the Y? Hub).
 
 Usage:
   python3 scripts/changelog-video-build.py <key> --shots <dir> --wavs <dir> --fonts <dir> --out <dir>
@@ -85,7 +85,7 @@ SCENES = {
   ("staffing", [(307, 330, 1265, 645)], "Staffing", "In Staffing, you can see which events still need crew, and Leads can mark or clear unavailable days. There's an AV crew link too. Stay focused!"),
  ],
  "av": [
-  ("quotes", [(265, 188, 1300, 256)], "What's new for Vident AV", "Here's what's new for the Vydent AV team since late October."),
+  ("quotes", [(265, 188, 1300, 256)], "What's new for LRE AV", "Here's what's new for the Vydent AV team since late October."),
   ("quotes", [(307, 282, 890, 330), (1154, 282, 1265, 315)], "Quotes", "The Hub now owns your catalog, customers, venues, and quotes. Current RMS has been retired."),
   ("quotes", [(307, 400, 1265, 535)], "Estimates", "Estimates go out as a private link or PDF. Clients can sign with a drawn signature, and change orders are supported."),
   ("warehouse", [(700, 188, 796, 224), (307, 745, 1265, 842)], "Warehouse, Costs and Crew", "In Warehouse, check gear out and back in. Costs show your margin, and Crew shows day rates."),
@@ -181,7 +181,7 @@ def wav_secs(path):
 
 
 def chunk_words(text):
-    shown = text.replace("Vydent", "Vident")
+    shown = text.replace("Vydent", "LRE")
     words, chunks, cur = shown.split(), [], []
     for wd in words:
         cur.append(wd)
@@ -232,7 +232,7 @@ def base_frame(shot, rects, title, f_title):
         d.rounded_rectangle(r, radius=10, outline=BRONZE, width=6)
     d.rectangle((0, 0, W, TITLE_H), fill=BAR)
     d.line((0, TITLE_H - 1, W, TITLE_H - 1), fill=BRONZE, width=3)
-    spaced(d, (60, TITLE_H // 2), "VIDENT PRODUCTIONS", f_title, BRONZE, 5)
+    spaced(d, (60, TITLE_H // 2), "LRE PRODUCTIONS", f_title, BRONZE, 5)
     spaced(d, (W - 60, TITLE_H // 2), title.upper(), f_title, (240, 240, 240), 5, anchor="r")
     return img
 

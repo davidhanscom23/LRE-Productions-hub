@@ -146,7 +146,7 @@ export function PortalClient({
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-5">
           {/* Header is black in both themes, so the white wordmark is used as-is. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="Vident Productions" className="h-8 w-auto object-contain" />
+          <img src="/logo.png" alt="LRE Productions" className="h-8 w-auto object-contain" />
           <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/70">
             Show file <b className="font-normal text-[var(--brand)]">{show.fileNo}</b>
           </span>
@@ -274,7 +274,7 @@ export function PortalClient({
         </section>
 
         <p className="mt-8 text-center text-xs text-[var(--muted)]">
-          Questions? Reply to your check-in email or write hello@videntproductions.com. No login needed; keep this
+          Questions? Reply to your check-in email or write hello@lreproductions.com. No login needed; keep this
           link handy.
         </p>
       </main>

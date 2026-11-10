@@ -7,7 +7,7 @@ import {
 } from "@/lib/event-packets/honeybook-link";
 import { createClient } from "@/lib/supabase/server";
 
-export const metadata = { title: "Open gear checklist — Vident" };
+export const metadata = { title: "Open gear checklist — LRE" };
 
 type Props = {
   searchParams: Promise<{

@@ -65,7 +65,7 @@ export async function createPortalAction(
   input: PortalInput & { sendNow: boolean },
 ): Promise<ActionResult<{ id: string }>> {
   const profile = await gate();
-  if (!profile) return fail("You do not have access to Vident AV.");
+  if (!profile) return fail("You do not have access to LRE AV.");
   const v = validate(input);
   if ("error" in v) return fail(v.error);
 
@@ -98,7 +98,7 @@ export async function createPortalAction(
 }
 
 export async function updatePortalAction(id: string, input: PortalInput): Promise<ActionResult> {
-  if (!(await gate())) return fail("You do not have access to Vident AV.");
+  if (!(await gate())) return fail("You do not have access to LRE AV.");
   const v = validate(input);
   if ("error" in v) return fail(v.error);
   const { error } = await createServiceClient().from("av_event_portals").update(v.row).eq("id", id);
@@ -109,7 +109,7 @@ export async function updatePortalAction(id: string, input: PortalInput): Promis
 }
 
 export async function setPortalActiveAction(id: string, active: boolean): Promise<ActionResult> {
-  if (!(await gate())) return fail("You do not have access to Vident AV.");
+  if (!(await gate())) return fail("You do not have access to LRE AV.");
   const { error } = await createServiceClient().from("av_event_portals").update({ is_active: active }).eq("id", id);
   if (error) return fail("Could not update the portal.");
   revalidatePath("/av-portals");
@@ -118,7 +118,7 @@ export async function setPortalActiveAction(id: string, active: boolean): Promis
 }
 
 export async function sendCheckinNowAction(id: string): Promise<ActionResult> {
-  if (!(await gate())) return fail("You do not have access to Vident AV.");
+  if (!(await gate())) return fail("You do not have access to LRE AV.");
   const portal = await fetchPortalById(id);
   if (!portal) return fail("Portal not found.");
   const { status } = await fetchPortalState(id);
@@ -131,7 +131,7 @@ export async function sendCheckinNowAction(id: string): Promise<ActionResult> {
 }
 
 export async function deletePortalFileAction(portalId: string, fileId: string): Promise<ActionResult> {
-  if (!(await gate())) return fail("You do not have access to Vident AV.");
+  if (!(await gate())) return fail("You do not have access to LRE AV.");
   const supabase = createServiceClient();
   const { data: file } = await supabase
     .from("av_event_portal_files")
@@ -148,7 +148,7 @@ export async function deletePortalFileAction(portalId: string, fileId: string): 
 
 export async function deletePortalAction(id: string): Promise<ActionResult> {
   const profile = await gate();
-  if (!profile) return fail("You do not have access to Vident AV.");
+  if (!profile) return fail("You do not have access to LRE AV.");
   const supabase = createServiceClient();
   const { data: files } = await supabase
     .from("av_event_portal_files")

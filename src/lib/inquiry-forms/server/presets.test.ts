@@ -89,7 +89,7 @@ describe("starter forms", () => {
   it("David's picks (05-Nov-26): confirmation on, staff email to hello@ with David always copied", () => {
     for (const form of STARTER_FORMS) {
       expect(form.settings.confirmationEmail.enabled, form.slug).toBe(true);
-      expect(form.settings.notify.recipients, form.slug).toEqual(["hello@videntproductions.com", "david@videntproductions.com"]);
+      expect(form.settings.notify.recipients, form.slug).toEqual(["hello@lreproductions.com"]);
     }
   });
 
@@ -104,7 +104,7 @@ describe("starter forms", () => {
       eventTypeKey: "contact.event_type",
       servicesKey: "contact.services_needed",
     });
-    expect(av.settings.copies.ghl).toMatchObject({ enabled: true, formId: "Vident AV Website Form", notesKey: "calendar_notes", notesLabel: "Message" });
+    expect(av.settings.copies.ghl).toMatchObject({ enabled: true, formId: "LRE AV Website Form", notesKey: "calendar_notes", notesLabel: "Message" });
     for (const form of STARTER_FORMS) expect(form.settings.copies, form.slug).not.toHaveProperty("djep");
   });
 
@@ -113,11 +113,11 @@ describe("starter forms", () => {
     const typeField = allFields(quote.definition).find((f) => f.role === "event_type");
     const ownerOf = (label: string) => quote.settings.ownerByEventType[typeField?.choices?.find((c) => c.label === label)?.value ?? ""] ?? null;
     for (const label of ["Corporate Event", "Incentive Trip", "Team Building", "Game Show", "Tradeshow", "Virtual or Hybrid"]) {
-      expect(ownerOf(label), label).toBe("natalie@videntproductions.com");
+      expect(ownerOf(label), label).toBe("hello@lreproductions.com");
     }
-    expect(ownerOf("Wedding")).toBe("kallie@videntproductions.com");
-    expect(ownerOf("Social Celebration")).toBe("kallie@videntproductions.com");
-    expect(ownerOf("Golf Experience")).toBe("kristin@videntproductions.com");
+    expect(ownerOf("Wedding")).toBe("hello@lreproductions.com");
+    expect(ownerOf("Social Celebration")).toBe("hello@lreproductions.com");
+    expect(ownerOf("Golf Experience")).toBe("hello@lreproductions.com");
     expect(ownerOf("Other")).toBeNull();
     expect(av.settings.ownerByEventType).toEqual({});
   });
@@ -305,7 +305,7 @@ describe("V2 Request AV", () => {
     expect(form.settings.submitLabel).toBe("Send Request");
     expect(form.settings.thankYou).toEqual({
       title: "Request received!",
-      message: "Thank you for reaching out to Vident Audiovisual. We'll be in touch soon.",
+      message: "Thank you for reaching out to LRE Audiovisual. We'll be in touch soon.",
     });
     expect(form.settings.accentColor).toBe("#c00000");
   });
@@ -317,18 +317,18 @@ describe("brands", () => {
     expect(DEFAULT_BRAND_KEY).toBe("vident-productions");
     expect(BRANDS[0]).toEqual({
       key: "vident-productions",
-      name: "Vident Productions",
+      name: "LRE Productions",
       logoUrl: "/logo.png",
       logoOnDark: true,
-      siteUrl: "https://videntproductions.com",
-      privacyUrl: "https://videntproductions.com/privacy-policy",
+      siteUrl: "https://lreproductions.com",
+      privacyUrl: "https://lreproductions.com/privacy-policy",
       phone: "904-834-1216",
-      email: "hello@videntproductions.com",
+      email: "hello@lreproductions.com",
       accentColor: "#9a7340",
-      legalLine: "Vident Productions, LLC",
+      legalLine: "LRE Productions, Inc.",
     });
     expect(BRANDS[1]).toMatchObject({
-      name: "Vident Audiovisual",
+      name: "LRE Audiovisual",
       logoUrl: null,
       logoOnDark: false,
       siteUrl: "https://videntaudiovisual.com",
@@ -340,11 +340,11 @@ describe("brands", () => {
   });
 });
 
-describe("Vident business defaults", () => {
+describe("LRE business defaults", () => {
   it("layer onto the generic defaults as spec section 4 says (open dates, no location check)", () => {
     const merged = mergeBusinessSettings(layerSettings(DEFAULT_BUSINESS_SETTINGS, HUB_BUSINESS_DEFAULTS));
     expect(merged.homeBase).toEqual({
-      label: "Vident Productions, Ponte Vedra",
+      label: "LRE Productions, Ponte Vedra",
       address: "101 Marketside Avenue, Ponte Vedra, FL 32081",
       lat: 30.24,
       lng: -81.3853,

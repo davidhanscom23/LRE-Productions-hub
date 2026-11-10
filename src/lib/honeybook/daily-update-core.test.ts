@@ -32,7 +32,7 @@ function project(over: Partial<DigestProject> = {}): DigestProject {
 }
 
 function digest(projects: DigestProject[], name = "Kallie Sango"): StaffDigest {
-  return { staffId: "s1", name, email: "kallie@videntproductions.com", projects, tasks: [] };
+  return { staffId: "s1", name, email: "hello@lreproductions.com", projects, tasks: [] };
 }
 
 describe("date helpers", () => {
@@ -114,7 +114,7 @@ describe("emails", () => {
     const email = buildAdminEmail({
       digests: [a, b],
       unassigned: [{ id: "33333333-3333-3333-3333-333333333333", name: "Golf Outing", clientName: "Acme", createdAt: "2026-11-05T12:00:00Z" }],
-      syncIssues: ["kristin@videntproductions.com: unauthorized_client"],
+      syncIssues: ["hello@lreproductions.com: unauthorized_client"],
       todayIso: TODAY,
       siteBase: BASE,
     });

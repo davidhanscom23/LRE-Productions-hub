@@ -49,7 +49,7 @@ export type SubmitQuoteResult = {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const TIME_RE = /^([01]\d|2[0-3]):[0-5]\d$/;
-const FALLBACK_NOTIFY = "hello@videntproductions.com";
+const FALLBACK_NOTIFY = "hello@lreproductions.com";
 const MAX_PER_HOUR = 5;
 
 const clean = (v: unknown, max: number) =>
@@ -357,7 +357,7 @@ export async function submitQuoteRequestAction(
       `Estimated total: ${usd(quote.total)} (an estimate only; delivery and labor are calculated for your event)`,
       depositDue > 0 ? `Deposit due: ${usd(depositDue)}` : "",
       "",
-      "Vident Productions",
+      "LRE Productions",
     ]
       .filter((l) => l !== "")
       .join("\n"),

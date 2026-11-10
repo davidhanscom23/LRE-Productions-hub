@@ -43,7 +43,7 @@ const SIGNED_URL_TTL_SEC = 60 * 60;
 type Props = { params: Promise<{ id: string }> };
 
 export async function generateMetadata() {
-  return { title: "Estimate — Vident AV" };
+  return { title: "Estimate — LRE AV" };
 }
 
 export default async function AvQuoteDetailPage({ params }: Props) {

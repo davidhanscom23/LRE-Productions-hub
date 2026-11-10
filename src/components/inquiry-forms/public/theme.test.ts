@@ -58,7 +58,7 @@ describe("buildFormTheme", () => {
     expect(t["--iqf-accent-text"]).toBe("#ae4213");
   });
 
-  it("darkens a mid-tone accent (Vident bronze) instead of switching to a dark label", () => {
+  it("darkens a mid-tone accent (LRE bronze) instead of switching to a dark label", () => {
     expect(contrastRatio(BRAND_ACCENTS.videntBronze, WHITE)).toBeLessThan(4.5);
     const t = buildFormTheme(BRAND_ACCENTS.videntBronze);
     expect(t["--iqf-on-accent"]).toBe(WHITE);

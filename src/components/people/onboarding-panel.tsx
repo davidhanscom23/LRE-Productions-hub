@@ -91,7 +91,7 @@ export function OnboardingPanel({
               rel="noopener noreferrer"
               className="font-medium underline underline-offset-2 hover:opacity-90"
             >
-              Vident Google Drive
+              LRE Google Drive
             </a>{" "}
             / Google Forms). Interview Questions - AV stays visible to admins
             only.

@@ -4,7 +4,7 @@
  * chatter are skipped before any AI call, and nothing from a skipped message is stored.
  */
 
-export const INTERNAL_DOMAINS = ["videntproductions.com", "thevidentcompany.com"];
+export const INTERNAL_DOMAINS = ["lreproductions.com", "lreproductions.com"];
 
 /** Systems that send automated mail the Hub already hears about another way (or never needs). */
 const AUTOMATED_DOMAINS = [
@@ -70,7 +70,7 @@ export function isAutomatedMessage(headers: HeaderMap, fromAddress: string): boo
   return false;
 }
 
-/** Everyone on the message who is not on a Vident domain. */
+/** Everyone on the message who is not on a LRE domain. */
 export function externalParticipants(addresses: {
   from: string;
   to: string[];

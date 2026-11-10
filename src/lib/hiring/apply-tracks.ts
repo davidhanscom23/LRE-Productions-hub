@@ -1,6 +1,6 @@
 /**
  * Public /apply tracks — scenario assessments by department
- * (Vident DJ / Photobooth / AV assessments).
+ * (LRE DJ / Photobooth / AV assessments).
  */
 
 export type ApplyTrackSlug =

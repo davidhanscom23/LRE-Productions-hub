@@ -56,5 +56,5 @@ export function alertSms(
   url: string,
 ): string {
   const name = eventName.length > 60 ? `${eventName.slice(0, 57)}...` : eventName;
-  return `Vident: gear ${pass === "out" ? "out of" : "back into"} the warehouse for ${name} is only ${percent}% checked. Open the checklist: ${url}`;
+  return `LRE: gear ${pass === "out" ? "out of" : "back into"} the warehouse for ${name} is only ${percent}% checked. Open the checklist: ${url}`;
 }

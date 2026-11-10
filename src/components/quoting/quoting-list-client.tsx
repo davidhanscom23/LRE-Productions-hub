@@ -147,7 +147,7 @@ export function QuotingListClient({
         <p className="mt-1 text-sm text-[var(--muted)]">
           Build event quotes with list vs quoted pricing. Decreases over 20% on
           a line or the total need admin approval before you can mark a quote
-          ready. AV rental estimates live under Vident AV → Quotes.
+          ready. AV rental estimates live under LRE AV → Quotes.
         </p>
       </header>
 

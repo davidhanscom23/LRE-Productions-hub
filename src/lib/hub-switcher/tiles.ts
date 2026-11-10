@@ -21,7 +21,7 @@ export type HubTile = {
 
 export const CURRENT_HUB: HubTile = {
   slug: "vident",
-  name: "Vident Hub",
+  name: "LRE Hub",
   url: "",
   logoUrl: "/hub-logos/vident.png",
   logoDarkUrl: "/hub-logos/vident-dark.png",

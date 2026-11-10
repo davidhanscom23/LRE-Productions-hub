@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { LegalShell } from "@/components/legal/legal-shell";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Vident Productions",
+  title: "Privacy Policy — LRE Productions",
   description:
-    "Privacy Policy for Vident Productions, including our staff SMS/text messaging program.",
+    "Privacy Policy for LRE Productions, including our staff SMS/text messaging program.",
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -19,11 +19,11 @@ export default function PrivacyPage() {
   return (
     <LegalShell title="Privacy Policy" updated="August 9, 2026">
       <p>
-        This Privacy Policy explains how Vident Productions, LLC
-        (&ldquo;Vident Productions,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo;
+        This Privacy Policy explains how LRE Productions, Inc.
+        (&ldquo;LRE Productions,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo;
         or &ldquo;our&rdquo;) collects, uses, and protects information in
-        connection with our staff portal at hub.videntproductions.com and our
-        text-messaging program for team members. Vident Productions, LLC is
+        connection with our staff portal at hub.lreproductions.com and our
+        text-messaging program for team members. LRE Productions, Inc. is
         based in Ponte Vedra Beach, Florida.
       </p>
 
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
           SMS / text messaging consent &amp; data sharing
         </p>
         <p className="mt-2">
-          Vident Productions operates a text-messaging (SMS) program for its
+          LRE Productions operates a text-messaging (SMS) program for its
           team members.{" "}
           <strong>
             We do not share, sell, or provide your mobile phone number or
@@ -49,7 +49,7 @@ export default function PrivacyPage() {
       <div>
         <H2>Who this policy covers</H2>
         <p className="mt-2">
-          Our staff portal and SMS program are intended for Vident Productions
+          Our staff portal and SMS program are intended for LRE Productions
           team members, contractors, and applicants. We do not use this program
           to send marketing or promotional messages to the general public.
         </p>
@@ -81,7 +81,7 @@ export default function PrivacyPage() {
       <div>
         <H2>SMS / text messaging program</H2>
         <p className="mt-2">
-          With your consent, Vident Productions sends text messages to team
+          With your consent, LRE Productions sends text messages to team
           members for operational purposes such as scheduling, shift and event
           coordination, huddle reminders, and time-sensitive alerts. Message
           frequency varies. Message and data rates may apply. You can opt out at
@@ -148,7 +148,7 @@ export default function PrivacyPage() {
         <H2>Children&rsquo;s privacy</H2>
         <p className="mt-2">
           Our portal and messaging program are intended for adults who work with
-          Vident Productions and are not directed to children under 13.
+          LRE Productions and are not directed to children under 13.
         </p>
       </div>
 
@@ -164,7 +164,7 @@ export default function PrivacyPage() {
       <div>
         <H2>Contact us</H2>
         <p className="mt-2">
-          Vident Productions, LLC
+          LRE Productions, Inc.
           <br />
           Ponte Vedra Beach, FL
           <br />
@@ -175,10 +175,10 @@ export default function PrivacyPage() {
           <br />
           Email:{" "}
           <a
-            href="mailto:hello@videntproductions.com"
+            href="mailto:hello@lreproductions.com"
             className="text-[var(--brand)] hover:underline"
           >
-            hello@videntproductions.com
+            hello@lreproductions.com
           </a>
         </p>
       </div>

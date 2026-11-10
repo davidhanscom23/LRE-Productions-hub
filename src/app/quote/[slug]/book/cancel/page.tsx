@@ -25,7 +25,7 @@ export default async function BookDepositCancelPage({
   return (
     <main className="mx-auto flex min-h-[70vh] max-w-lg flex-col justify-center px-6 py-16 text-center">
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-        Vident Productions
+        LRE Productions
       </p>
       <h1 className="mt-3 font-serif text-3xl text-slate-900">
         Deposit checkout canceled

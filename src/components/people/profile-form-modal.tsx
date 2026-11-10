@@ -351,7 +351,7 @@ export function ProfileFormModal({
 
           <p className="text-xs leading-relaxed text-[var(--muted)]">
             By providing your mobile number, you agree to receive operational
-            text messages from Vident Productions (scheduling, event details, team
+            text messages from LRE Productions (scheduling, event details, team
             huddle reminders, and staff alerts). Message frequency varies.
             Message &amp; data rates may apply. Reply STOP to opt out, HELP for
             help. See our{" "}

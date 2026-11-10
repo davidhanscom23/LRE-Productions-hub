@@ -27,6 +27,11 @@ function revalidateCatalog() {
   revalidatePath("/rentals/catalog");
 }
 
+function ownerCompany(formData: FormData): "vident" | "lukesent" | "lre" {
+  const v = str(formData, "owner_company");
+  return v === "lukesent" || v === "lre" ? v : "vident";
+}
+
 export async function createProductGroupAction(
   formData: FormData,
 ): Promise<AvErpActionResult> {
@@ -64,6 +69,7 @@ export async function createProductAction(
     group_id: groupId,
     rental_price: Math.max(0, num(formData, "rental_price")),
     qty_owned: Math.max(0, num(formData, "qty_owned")),
+    owner_company: ownerCompany(formData),
     buffer_pct: Math.min(100, Math.max(0, num(formData, "buffer_pct"))),
     turnaround_hours: Math.max(0, Math.floor(num(formData, "turnaround_hours"))),
     replacement_charge: str(formData, "replacement_charge")
@@ -99,6 +105,7 @@ export async function updateProductAction(
       group_id: str(formData, "group_id") || null,
       rental_price: Math.max(0, num(formData, "rental_price")),
       qty_owned: Math.max(0, num(formData, "qty_owned")),
+      owner_company: ownerCompany(formData),
       buffer_pct: Math.min(100, Math.max(0, num(formData, "buffer_pct"))),
       turnaround_hours: Math.max(
         0,
@@ -285,7 +292,7 @@ export async function duplicateProductAction(
   const { data: source, error: loadError } = await supabase
     .from("av_products")
     .select(
-      "name, code, description, kind, group_id, rental_price, sale_price, replacement_charge, buffer_pct, turnaround_hours, weight_lbs, photo_path",
+      "name, code, description, kind, group_id, rental_price, sale_price, replacement_charge, buffer_pct, turnaround_hours, weight_lbs, photo_path, owner_company",
     )
     .eq("id", productId)
     .maybeSingle();
@@ -305,6 +312,7 @@ export async function duplicateProductAction(
       sale_price: source.sale_price,
       replacement_charge: source.replacement_charge,
       qty_owned: 0,
+      owner_company: source.owner_company,
       buffer_pct: source.buffer_pct,
       turnaround_hours: source.turnaround_hours,
       weight_lbs: source.weight_lbs,

@@ -3,7 +3,7 @@ import { ROLE_HELP as CATALOG_ROLE_HELP } from "@/components/inquiry-forms/admin
 import { FIELD_ROLES } from "./types";
 import { BUILDER_COPY, CRM_WORDS, HUB_COPY, ROLE_HELP } from "./hub-copy";
 
-describe("Vident hub copy", () => {
+describe("LRE hub copy", () => {
   it("never calls an inquiry a lead ('Lead' is a staff role in this hub)", () => {
     const strings = [
       ...Object.values(CRM_WORDS),

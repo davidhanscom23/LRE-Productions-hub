@@ -2,9 +2,9 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Vident Productions Hub",
-    short_name: "Vident Hub",
-    description: "Private staff portal for Vident Productions.",
+    name: "LRE Productions Hub",
+    short_name: "LRE Hub",
+    description: "Private staff portal for LRE Productions.",
     start_url: "/",
     scope: "/",
     display: "standalone",

@@ -28,7 +28,7 @@ const sql = migrationName ? readFileSync(join(MIGRATIONS_DIR, migrationName), "u
 
 /**
  * Y? keeps What's New in a changelog_entries table, so its entry goes inside this migration; a hub
- * without that table (Vident: src/lib/changelog.ts) must not insert into it, or the run fails.
+ * without that table (LRE: src/lib/changelog.ts) must not insert into it, or the run fails.
  */
 const hubHasChangelogTable = migrationFiles.some(
   (f) =>

@@ -126,7 +126,7 @@ export function ResetPasswordForm() {
   return (
     <AuthShell
       title="Set a new password"
-      description="Choose a new password for your Vident Productions Hub account."
+      description="Choose a new password for your LRE Productions Hub account."
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         {error && (
