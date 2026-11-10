@@ -20,7 +20,7 @@ create policy "plaud_meetings read (owner only)"
           or lower(coalesce(p.email, '')) in (
             'david@videntproductions.com',
             'david@yentertainmentdjs.com',
-            'david@thevidentcompany.com'
+            'david@yentertainmentdjs.com'
           )
         )
     )

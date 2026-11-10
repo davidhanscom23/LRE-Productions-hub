@@ -41,5 +41,5 @@ create policy "hub link access write owner" on public.hub_link_access for all to
 
 -- The SQL editor has no signed-in user, so pause the profile triggers for this one update only.
 alter table public.profiles disable trigger user;
-update public.profiles set is_owner = true where email = 'david@thevidentcompany.com';
+update public.profiles set is_owner = true where email = 'david@yentertainmentdjs.com';
 alter table public.profiles enable trigger user;
