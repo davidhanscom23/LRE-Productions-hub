@@ -47,10 +47,16 @@ export function BusinessDetails() {
               Phone
             </p>
             <a
-              href={COMPANY.phoneHref}
+              href={COMPANY.officePhoneHref}
               className="mt-0.5 block text-sm font-medium text-[var(--foreground)] hover:text-[var(--brand)]"
             >
-              {COMPANY.phone}
+              Office: {COMPANY.officePhone}
+            </a>
+            <a
+              href={COMPANY.cellPhoneHref}
+              className="block text-sm font-medium text-[var(--foreground)] hover:text-[var(--brand)]"
+            >
+              Cell: {COMPANY.cellPhone}
             </a>
           </div>
         </div>
