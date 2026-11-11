@@ -1,7 +1,7 @@
 /**
  * Speaker's Guide to the AV Booth. Public page at /speaker-guide that LRE
  * shares with event organizers so their speakers and presenters can read it.
- * Keep in sync with public/lre-speaker-av-guide.pdf.
+ * Keep in sync with public/lre-speaker-av-guide.pdf. The research sources behind these tips are internal only, so they are not shown to clients.
  */
 
 export const SPEAKER_GUIDE_PDF = "/lre-speaker-av-guide.pdf";
@@ -10,7 +10,7 @@ export const SPEAKER_GUIDE_INTRO = {
   kicker: "An LRE Productions guide for first-time & less experienced speakers",
   title: "A Speaker's Guide to the AV Booth",
   lead: "Simple things you can do before you step on stage so the tech disappears and your message takes center stage.",
-  body: "Thank you for sharing your expertise with our audience. On the day of the event, we are busy running sound, slides, and stage cues, so we rarely get a quiet moment to share what we have learned from watching hundreds of talks. This guide gathers the most common things that trip up speakers (and the easy fixes) so you can walk on stage relaxed and ready.",
+  body: "Thank you for sharing your expertise with the audience. On the day of the event, we are busy running sound, slides, and stage cues, so we rarely get a quiet moment to share what we have learned from watching hundreds of talks. This guide gathers the most common things that trip up speakers (and the easy fixes) so you can walk on stage relaxed and ready.",
 };
 
 export const FIVE_THINGS: { title: string; body: string }[] = [
@@ -185,24 +185,4 @@ export const CHECKLIST: { title: string; items: string[] }[] = [
       "Say thank you to the booth. We always notice, and we love it.",
     ],
   },
-];
-
-export const SOURCES_INTRO =
-  "Compiled from AV industry publications, venue speaker guides, professional audio forums, and speaker coaching blogs. Direct Reddit threads did not surface in our search, so the community perspective here comes from ProSoundWeb and VirtualDJ forum discussions.";
-
-export const SOURCES: { label: string; url: string }[] = [
-  { label: "Brandt Krueger, “Optimizing the A in AV,” Smart Meetings, March/April 2024", url: "pubs.royle.com/article/Smart+Tech/4747474/818218/article.html" },
-  { label: "Robert Swing, 11 mic-use tips, AVNetwork (SCN Hall of Fame 2015)", url: "avnetwork.com/avnetwork/scns-2015-hall-of-fame-robert-swing" },
-  { label: "Alyssa Miller, “Don't Tap That Mic: Top 10 tips for working with production crews as a speaker”", url: "alyssasec.com/2020/02/dont-tap-that-mic" },
-  { label: "Hinxton Hall AV guidance for speakers and organisers, 2025", url: "hinxtonhall.org" },
-  { label: "Alaska Bar CLE Microphone Tips", url: "alaskabar.org/wp-content/uploads/CLE-Microphone-Tips.pdf" },
-  { label: "Royal National Institute for Deaf People (RNID) mic guidance, 2026", url: "developer.rnid.org.uk/wp-content/uploads/2026/06/07.-Mic-guidance.pdf" },
-  { label: "Quickchannel, “Mastering Video Event Production, Part 2” (aspect ratio, monitors, clickers)", url: "quickchannel.com/en/?p=1324" },
-  { label: "American Heart Association speaker guidelines (16:9, 24 pt minimum); AAST AV guidelines", url: "aast.org" },
-  { label: "VirtualDJ forum thread, “Getting guests to remember to hold the mic closer”", url: "virtualdj.com/forums/130986/General_Discussion/Holding_The_Mic_Closer.html" },
-  { label: "Through Line Group, “Don't Flush Your Speech Down the Toilet”", url: "throughlinegroup.com/2011/01/04/dont-flush-speech-down-the-toilet/" },
-  { label: "Christian Heilmann, “A few tricks about public speaking and stage technology”", url: "christianheilmann.com/?p=3518" },
-  { label: "ProSoundWeb Community thread, “Presenter speaker training” (Dec 2023)", url: "forums.prosoundweb.com/index.php/topic,179799.0.html" },
-  { label: "Marketing Profs, “Nine Ways to Elevate Your Presentation and Speaking Skills”", url: "marketingprofs.com/articles/2011/4300" },
-  { label: "Reader notes on Confessions of a Public Speaker (confidence monitors and clickers)", url: "goodreads.com/notes/8577592" },
 ];

@@ -292,7 +292,7 @@ Fundamental Resource Guide: on the Audiovisual tab, switch from AV Tools to Fund
     title: "Speaker's Guide to the AV Booth (shareable with clients)",
     body: `The Speaker's Guide to the AV Booth is a public page at hub.lreproductions.com/speaker-guide. No login is needed, so LRE can send the link to event organizers and they can pass it to their speakers and presenters before the event.
 
-What it covers: the five things to remember, handheld and lavalier microphone do's and don'ts, slides and clickers, working with the AV team on the day, what to do if something goes wrong on stage, a printable checklist, and sources.
+What it covers: the five things to remember, handheld and lavalier microphone do's and don'ts, slides and clickers, working with the AV team on the day, what to do if something goes wrong on stage, and a printable checklist.
 
 How to share it: open Teams, choose Audiovisual, and tap Speaker AV Guide (shareable). Copy the page address and send it. The page has a Download PDF button (file: hub.lreproductions.com/lre-speaker-av-guide.pdf) and a Print button for a one-page-per-section handout. The page is hidden from search engines, so it is only found by people who have the link.
 

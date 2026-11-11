@@ -9,8 +9,6 @@ import {
   FIVE_THINGS,
   MIC_SECTION,
   SLIDES_SECTION,
-  SOURCES,
-  SOURCES_INTRO,
   SPEAKER_GUIDE_INTRO,
   SPEAKER_GUIDE_PDF,
   type Bullet,
@@ -188,24 +186,6 @@ export default function SpeakerGuidePage() {
             ))}
           </div>
         </div>
-
-        <SectionHead kicker="Sources" title="Where These Tips Came From" />
-        <p className="mt-3 text-sm text-[var(--muted)]">{SOURCES_INTRO}</p>
-        <ul className="mt-3 list-disc space-y-1.5 pl-5 text-xs leading-relaxed text-[var(--muted)]">
-          {SOURCES.map((s) => (
-            <li key={s.url}>
-              {s.label} &ndash;{" "}
-              <a
-                href={`https://${s.url}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="break-all underline hover:text-[var(--brand)]"
-              >
-                {s.url}
-              </a>
-            </li>
-          ))}
-        </ul>
 
         <footer className="mt-12 border-t border-[var(--border)] pt-4 text-sm">
           <p>
