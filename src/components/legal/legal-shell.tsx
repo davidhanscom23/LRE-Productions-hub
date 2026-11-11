@@ -39,7 +39,7 @@ export function LegalShell({
       </main>
       <footer className="border-t border-[var(--border)] bg-[var(--surface)]">
         <div className="mx-auto max-w-3xl px-6 py-6 text-sm text-[var(--muted)]">
-          <p>LRE Productions, Inc. · Ponte Vedra Beach, FL</p>
+          <p>LRE Productions, Inc. · Tiverton, RI</p>
           <p className="mt-1">
             <Link href="/privacy" className="hover:underline">
               Privacy Policy

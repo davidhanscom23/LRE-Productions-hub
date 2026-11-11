@@ -93,7 +93,7 @@ export const HANDBOOK_CONTENT = {
   "mission": "Our mission is to deliver unforgettable event experiences with integrity, gratitude, and teamwork—creating stress-free events that leave every client feeling valued and celebrated.",
   "acknowledgment": "I acknowledge that I have read, fully understand, and agree to adhere to LRE Productions' Policies and Procedures Handbook.",
   "companyLine": "LRE Productions · Audiovisual · Corporate · Wedding & Social · Golf",
-  "ownerLine": "By: David Hanscom, Owner · 101 Marketside Avenue #404-123, Ponte Vedra, FL 32081 · 904-834-1216 · hello@lreproductions.com",
+  "ownerLine": "By: David Hanscom, Owner · 1061 Fish Rd., Unit 1, Tiverton, RI 02878 · 401-816-5496 · hello@lreproductions.com",
   "sections": [
     {
       "id": "employment",
@@ -690,7 +690,7 @@ export const HANDBOOK_CONTENT = {
         {
           "heading": "Non-Competition",
           "paragraphs": [
-            "For a period of eighteen (18) months beginning on Staff's termination date, Staff agrees not to compete with the Company in any business which directly competes with the Business conducted by the Company anywhere within a fifty (50) mile radius of 101 Marketside Avenue #404-123, Ponte Vedra, FL 32081.",
+            "For a period of eighteen (18) months beginning on Staff's termination date, Staff agrees not to compete with the Company in any business which directly competes with the Business conducted by the Company anywhere within a fifty (50) mile radius of 1061 Fish Rd., Unit 1, Tiverton, RI 02878.",
             "The above restrictions are not intended to prevent staff from performing AV or event production services at club, nightlife, or festival-related events. However, staff must notify their manager and obtain the Company's permission prior to performing at such events."
           ]
         },

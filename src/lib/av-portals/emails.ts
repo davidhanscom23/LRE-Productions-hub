@@ -130,7 +130,7 @@ ${note ? `<p style="margin:0 0 20px;font:15px/1.55 Arial,sans-serif;color:#333">
 <p style="margin:0 0 22px"><a href="${esc(link)}" style="display:inline-block;background:#0d0d0d;color:#fff;text-decoration:none;font:600 14px Arial,sans-serif;letter-spacing:.06em;padding:14px 26px;border-bottom:3px solid #b01418">${showList ? "Open your event portal" : "View your event portal"}</a></p>
 <p style="margin:0;font:13px/1.5 Arial,sans-serif;color:#6b6b6b">No login or password needed. You can also forward this email to anyone helping you plan.</p>
 </td></tr></table>
-<p style="font:12px Arial,sans-serif;color:#8a8a8a;margin:14px 0 0">LRE Productions · Ponte Vedra Beach, FL · lreproductions.com</p>
+<p style="font:12px Arial,sans-serif;color:#8a8a8a;margin:14px 0 0">LRE Productions · Tiverton, RI · lreproductions.com</p>
 </td></tr></table></body></html>`;
 
   return { subject, text, html };

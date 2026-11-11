@@ -283,6 +283,17 @@ On the Audiovisual tab, the AV Time Tracker lets you clock in From Calendar (upc
 Fundamental Resource Guide: on the Audiovisual tab, switch from AV Tools to Fundamental Resource Guide for a reference on connectors and signal types, IP ratings, microphone patterns, signal flow, wireless RF, DMX lighting, networked AV, and a definitions glossary. Sections open and close with a tap. Use Open full page to read it on its own at /training/av-guide. All staff can open it; guest accounts cannot.`,
   },
   {
+    slug: "speaker-guide",
+    title: "Speaker's Guide to the AV Booth (shareable with clients)",
+    body: `The Speaker's Guide to the AV Booth is a public page at hub.lreproductions.com/speaker-guide. No login is needed, so LRE can send the link to event organizers and they can pass it to their speakers and presenters before the event.
+
+What it covers: the five things to remember, handheld and lavalier microphone do's and don'ts, slides and clickers, working with the AV team on the day, what to do if something goes wrong on stage, a printable checklist, and sources.
+
+How to share it: open Teams, choose Audiovisual, and tap Speaker AV Guide (shareable). Copy the page address and send it. The page has a Download PDF button (file: hub.lreproductions.com/lre-speaker-av-guide.pdf) and a Print button for a one-page-per-section handout. The page is hidden from search engines, so it is only found by people who have the link.
+
+To change the wording, update src/lib/speaker-guide/content.ts and replace public/lre-speaker-av-guide.pdf so the web page and the PDF stay the same.`,
+  },
+  {
     slug: "training-portal",
     title: "Training Portal — courses & progress",
     body: `Training Portal is self-paced written courses with personal progress.

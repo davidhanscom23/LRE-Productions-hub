@@ -75,6 +75,8 @@ export async function updateSession(request: NextRequest) {
       pathname.startsWith("/av-show/remote/") ||
       isInquiryPublicPage(pathname) ||
       pathname === "/privacy" ||
+      pathname === "/speaker-guide" ||
+      pathname === "/lre-speaker-av-guide.pdf" ||
       pathname === "/sms-terms" ||
       pathname.startsWith("/auth") ||
       pathname === "/forgot-password" ||
@@ -132,6 +134,8 @@ export async function updateSession(request: NextRequest) {
     // Inquiry Forms public form pages (and the /inquire/embed.js loader).
     isInquiryPublicPage(pathname) ||
     pathname === "/privacy" ||
+    pathname === "/speaker-guide" ||
+    pathname === "/lre-speaker-av-guide.pdf" ||
     pathname === "/sms-terms" ||
     pathname.startsWith("/auth") ||
     pathname === "/forgot-password" ||

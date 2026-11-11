@@ -165,6 +165,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: "/documents", label: "Documents", group: "Learn & refs", kind: "page", audience: "staff" },
   { path: "/documents/[slug]", label: "Document", group: "Learn & refs", kind: "reachable", audience: "staff", note: "Reached from the Documents list." },
   { path: "/training-portal", label: "Training portal", group: "Learn & refs", kind: "page", audience: "staff" },
+  { path: "/training/av-guide", label: "AV Fundamental Resource Guide", group: "Learn & refs", kind: "reachable", audience: "staff", note: "Reached from Teams > Audiovisual > Fundamental Resource Guide > Open full page." },
   { path: "/training-portal/[slug]", label: "Training course", group: "Learn & refs", kind: "reachable", audience: "staff", note: "Reached from the Training portal." },
   { path: "/staff-handbook", label: "Staff handbook", group: "Learn & refs", kind: "page", audience: "staff" },
   { path: "/videos", label: "Videos", group: "Learn & refs", kind: "page", audience: "staff" },
@@ -214,6 +215,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: "/sign/[token]", label: "Contract signing (public)", group: "Public", kind: "public", note: "Client-facing link to read and e-sign a contract sent from a HoneyBook project card; the signed PDF is archived and emailed. Needs migration 183_project_contracts.sql." },
   { path: "/project/[token]", label: "HoneyBook project (client)", group: "Public", kind: "public", note: "Client portal (private share link, no login): sign contracts, pay invoices, see floor plans, book a call, plus project details, questionnaire and file uploads." },
   { path: "/av-show/remote", label: "AV Show phone remote", group: "Public", kind: "public", note: "Phone remote for AV Show Control, opened with the PIN from the control page; no login." },
+  { path: "/speaker-guide", label: "Speaker's Guide to the AV Booth", group: "Public", kind: "public", note: "Shareable guide for speakers and presenters at LRE events (no login). Has a Download PDF button and a print view." },
   { path: "/privacy", label: "Privacy policy", group: "Public", kind: "public" },
   { path: "/sms-terms", label: "SMS terms", group: "Public", kind: "public" },
 ];

@@ -249,6 +249,15 @@ export function TeamsPageClient({
                     <BookOpen className="h-4 w-4" />
                     Fundamental Resource Guide
                   </button>
+                  <a
+                    href="/speaker-guide"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] px-3 text-sm font-semibold text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Speaker AV Guide (shareable)
+                  </a>
                   {avTab === "guide" ? (
                     <Link
                       href="/training/av-guide"

@@ -77,7 +77,7 @@ export default function SmsTermsPage() {
         <p className="mt-2">
           For help, reply <strong>HELP</strong> to any message, or contact us at{" "}
           <a href="tel:+19048341216" className="text-[var(--brand)] hover:underline">
-            904-834-1216
+            401-816-5496
           </a>{" "}
           or{" "}
           <a
@@ -130,11 +130,11 @@ export default function SmsTermsPage() {
         <p className="mt-2">
           LRE Productions, Inc.
           <br />
-          Ponte Vedra Beach, FL
+          Tiverton, RI
           <br />
           Phone:{" "}
           <a href="tel:+19048341216" className="text-[var(--brand)] hover:underline">
-            904-834-1216
+            401-816-5496
           </a>
           <br />
           Email:{" "}

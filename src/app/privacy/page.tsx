@@ -24,7 +24,7 @@ export default function PrivacyPage() {
         or &ldquo;our&rdquo;) collects, uses, and protects information in
         connection with our staff portal at hub.lreproductions.com and our
         text-messaging program for team members. LRE Productions, Inc. is
-        based in Ponte Vedra Beach, Florida.
+        based in Tiverton, Rhode Island.
       </p>
 
       <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4">
@@ -166,11 +166,11 @@ export default function PrivacyPage() {
         <p className="mt-2">
           LRE Productions, Inc.
           <br />
-          Ponte Vedra Beach, FL
+          Tiverton, RI
           <br />
           Phone:{" "}
           <a href="tel:+19048341216" className="text-[var(--brand)] hover:underline">
-            904-834-1216
+            401-816-5496
           </a>
           <br />
           Email:{" "}

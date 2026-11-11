@@ -24,6 +24,24 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    date: "2026-11-11",
+    category: "new",
+    area: "Speaker AV Guide",
+    title: "Shareable Speaker's Guide to the AV Booth",
+    description:
+      "LRE now has a public Speaker's Guide to the AV Booth that event organizers can send to their speakers and presenters. It covers microphones, slides, clickers, working with the AV team, and a printable checklist. No login is needed to read it.",
+    howTo:
+      "Open Teams, choose Audiovisual, and tap Speaker AV Guide (shareable). Copy the page address (hub.lreproductions.com/speaker-guide) to send to a client. The page has Download PDF and Print buttons.",
+  },
+  {
+    date: "2026-11-11",
+    category: "fixed",
+    area: "Agreements and contracts",
+    title: "LRE address and phone on legal documents",
+    description:
+      "The Privacy Policy, SMS terms, staff handbook, contractor and training agreements, contract PDFs, and AV portal emails now show the Tiverton, RI address and the LRE office phone instead of the old Florida details. The home weather card now shows Tiverton.",
+  },
+  {
     date: "2026-11-10",
     category: "new",
     area: "Teams",

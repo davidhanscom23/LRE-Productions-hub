@@ -13,7 +13,7 @@ export const INDEPENDENT_CONTRACTOR_AGREEMENT = {
     "By signing below, you agree to all terms and conditions outlined in this Independent Contractor Agreement.",
   companyLine: "LRE Productions · Audiovisual · Corporate · Wedding & Social · Golf",
   ownerLine:
-    "By: David Hanscom, Owner · 101 Marketside Avenue #404-123, Ponte Vedra, FL 32081 · 904-834-1216 · hello@lreproductions.com",
+    "By: David Hanscom, Owner · 1061 Fish Rd., Unit 1, Tiverton, RI 02878 · 401-816-5496 · hello@lreproductions.com",
   signButtonLabel: "Sign Agreement",
   sections: [
     {

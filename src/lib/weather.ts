@@ -1,8 +1,8 @@
-/** Approximate coords for company HQ weather (Ponte Vedra, FL). */
+/** Approximate coords for company HQ weather (Tiverton, RI). */
 export const COMPANY_WEATHER = {
-  latitude: 30.2397,
-  longitude: -81.3856,
-  label: "Ponte Vedra",
+  latitude: 41.6290,
+  longitude: -71.2084,
+  label: "Tiverton",
 } as const;
 
 export type HubWeather = {

@@ -17,6 +17,7 @@ export const ASK_EXAMPLE_QUESTION_GROUPS: ExampleQuestionGroup[] = [
       "How do roles and departments work?",
       "Who can access which modules?",
       "How do I switch to another company hub?",
+      "How do I send speakers the AV guide for an event?",
       "How does Guest access work, and what can guests see?",
       "How do I change Appearance to light, dark, or system?",
       "Which holidays change how the Hub looks, and how do I preview one?",
