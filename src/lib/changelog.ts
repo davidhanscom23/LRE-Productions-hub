@@ -25,6 +25,14 @@ export type ChangelogEntry = {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-11",
+    category: "fixed",
+    area: "Holiday skins",
+    title: "Holiday skins are easier to read",
+    description:
+      "Tabs, breadcrumbs and subtitles no longer get lost on bright parts of the holiday photo. The page now sits on a soft panel with a light text shadow, and the photo still shows around the edges.",
+  },
+  {
+    date: "2026-11-11",
     category: "improved",
     area: "Navigation",
     title: "Breadcrumbs at the top of every page",

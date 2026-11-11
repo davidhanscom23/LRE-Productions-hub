@@ -80,6 +80,32 @@
   box-shadow: inset 0 -2px 0 var(--hl-rim);
 }
 
+/* ───────── Readability layer (all holiday photos) ─────────
+ * The photo shows through the page, so tabs, breadcrumbs and subtitles can land on
+ * bright areas (flags, sunsets, snow). A soft panel of the skin's own background colour
+ * sits behind the page content, and headings/tabs get a faint shadow, so text stays
+ * readable on any photo while the picture is still visible at the edges and in the header. */
+
+[data-holiday] main {
+  background-image: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--background) 62%, transparent) 0%,
+    color-mix(in srgb, var(--background) 50%, transparent) 100%
+  );
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+[data-holiday] main :is(h1, h2, h3, h4, p, label, legend, [role="tab"], nav a, a[href], button) {
+  text-shadow: 0 1px 3px color-mix(in srgb, var(--background) 90%, transparent);
+}
+
+/* Tab strips and search fields get their own glass so they never sit straight on the photo. */
+[data-holiday] main :is([role="tablist"], [data-tabs]) {
+  background-color: color-mix(in srgb, var(--background) 55%, transparent);
+  border-radius: 0.75rem;
+}
+
 /* ───────── Per-holiday tokens ───────── */
 
 /* New Year's Day — sunrise over fresh hills */
