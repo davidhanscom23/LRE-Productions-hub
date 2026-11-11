@@ -283,6 +283,11 @@ On the Audiovisual tab, the AV Time Tracker lets you clock in From Calendar (upc
 Fundamental Resource Guide: on the Audiovisual tab, switch from AV Tools to Fundamental Resource Guide for a reference on connectors and signal types, IP ratings, microphone patterns, signal flow, wireless RF, DMX lighting, networked AV, and a definitions glossary. Sections open and close with a tap. Use Open full page to read it on its own at /training/av-guide. All staff can open it; guest accounts cannot.`,
   },
   {
+    slug: "breadcrumbs",
+    title: "Breadcrumbs: the trail at the top of every page",
+    body: `Every Hub page except Home shows a breadcrumb trail at the very top, for example Home / Teams / Details. It tells you where you are and lets you step back up: click Home or any earlier name in the trail to jump there. The last name is the page you are on and is not a link. Pages inside a section use the same names as the sidebar, and a single record shows as Details. The trail is for everyone signed in except client-portal guests, in light and dark mode, and on phones long trails wrap onto a second line.`,
+  },
+  {
     slug: "speaker-guide",
     title: "Speaker's Guide to the AV Booth (shareable with clients)",
     body: `The Speaker's Guide to the AV Booth is a public page at hub.lreproductions.com/speaker-guide. No login is needed, so LRE can send the link to event organizers and they can pass it to their speakers and presenters before the event.

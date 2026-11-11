@@ -25,6 +25,16 @@ export type ChangelogEntry = {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-11",
+    category: "improved",
+    area: "Navigation",
+    title: "Breadcrumbs at the top of every page",
+    description:
+      "Every page now shows a breadcrumb trail at the top (for example Home / Teams / Details) so you can see where you are and jump back up a level.",
+    howTo:
+      "Look at the top of any page. Click Home or any earlier name in the trail to go back to it. The last name is the page you are on.",
+  },
+  {
+    date: "2026-11-11",
     category: "new",
     area: "Speaker AV Guide",
     title: "Shareable Speaker's Guide to the AV Booth",

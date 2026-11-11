@@ -6,6 +6,7 @@ import type { HubTile } from "@/lib/hub-switcher/tiles";
 import { Topbar } from "@/components/layout/topbar";
 import { ViewAsBanner } from "@/components/layout/view-as-banner";
 import { MottoBar } from "@/components/layout/motto-bar";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { GearChecklistDuePopup } from "@/components/event-checklist/due-popup";
 import { HuddleBar } from "@/components/huddle/huddle-bar";
 import { MobileNavProvider } from "@/components/layout/mobile-nav";
@@ -99,6 +100,7 @@ export function AppShell({
             ) : null}
             {!isGuest ? <HubPointsDiscoverTracker enabled /> : null}
             <main className="relative min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain p-4 sm:p-6 lg:p-8">
+              {!isGuest ? <Breadcrumbs /> : null}
               {!isGuest ? <HowToVideoLink profile={profile} /> : null}
               {children}
             </main>
