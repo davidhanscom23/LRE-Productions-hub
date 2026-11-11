@@ -34,7 +34,7 @@
 [data-holiday] aside.hub-sidebar {
   background-color: transparent;
   background-image:
-    linear-gradient(90deg, var(--hl-glass) 0%, var(--hl-glass-2) 100%),
+    linear-gradient(90deg, color-mix(in srgb, var(--background) 92%, transparent) 0%, color-mix(in srgb, var(--background) 86%, transparent) 100%),
     linear-gradient(
       180deg,
       color-mix(in srgb, var(--hl-rim) 12%, transparent) 0%,
@@ -53,14 +53,14 @@
 }
 
 [data-holiday] aside.hub-sidebar > div:first-child {
-  background: var(--hl-chrome);
+  background: color-mix(in srgb, var(--background) 92%, transparent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom-color: color-mix(in srgb, var(--hl-rim) 40%, transparent);
 }
 
 [data-holiday] aside.hub-sidebar nav a:not([aria-current="page"]) {
-  background-color: var(--hl-nav);
+  background-color: color-mix(in srgb, var(--background) 80%, transparent);
 }
 
 [data-holiday] aside.hub-sidebar nav a[aria-current="page"] {
@@ -73,7 +73,7 @@
 
 [data-holiday] .hub-main-column header,
 [data-holiday] .hub-main-column .hub-motto-bar {
-  background-color: var(--hl-chrome);
+  background-color: color-mix(in srgb, var(--background) 92%, transparent);
 }
 
 [data-holiday] .hub-motto-bar {
@@ -89,11 +89,11 @@
 [data-holiday] main {
   background-image: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--background) 62%, transparent) 0%,
-    color-mix(in srgb, var(--background) 50%, transparent) 100%
+    color-mix(in srgb, var(--background) 90%, transparent) 0%,
+    color-mix(in srgb, var(--background) 86%, transparent) 100%
   );
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 [data-holiday] main :is(h1, h2, h3, h4, p, label, legend, [role="tab"], nav a, a[href], button) {
@@ -102,8 +102,14 @@
 
 /* Tab strips and search fields get their own glass so they never sit straight on the photo. */
 [data-holiday] main :is([role="tablist"], [data-tabs]) {
-  background-color: color-mix(in srgb, var(--background) 55%, transparent);
+  background-color: color-mix(in srgb, var(--background) 70%, transparent);
   border-radius: 0.75rem;
+}
+
+/* Floating menus, dialogs and tooltips: solid, never see-through. */
+[data-holiday] :is([role="menu"], [role="listbox"], [role="dialog"], [role="tooltip"], [data-radix-popper-content-wrapper] > *) {
+  background-color: color-mix(in srgb, var(--background) 97%, var(--foreground) 3%);
+  backdrop-filter: none;
 }
 
 /* ───────── Per-holiday tokens ───────── */
@@ -224,8 +230,8 @@
   --surface-hover: rgba(255, 246, 255, 0.95);
   --sidebar: transparent;
   --border: #dcc9ec;
-  --muted: #6f5f8a;
-  --brand: #8b4fc0;
+  --muted: #54406f;
+  --brand: #6a2f9f;
   --brand-soft: #efe3fb;
   --banner: rgba(255, 226, 242, 0.88);
   --banner-fg: #6b2c7a;
@@ -306,7 +312,7 @@
   --sidebar: transparent;
   --border: #3a4a78;
   --muted: #b6bfd6;
-  --brand: #ef4452;
+  --brand: #ff6b76;
   --brand-soft: rgba(80, 16, 24, 0.9);
   --banner: rgba(6, 12, 30, 0.82);
   --banner-fg: #f6f2ea;
@@ -360,7 +366,7 @@
   --sidebar: transparent;
   --border: #2a3f8a;
   --muted: #b0bde8;
-  --brand: #ff4d5e;
+  --brand: #ff6b78;
   --brand-soft: rgba(80, 14, 28, 0.9);
   --banner: rgba(3, 8, 28, 0.8);
   --banner-fg: #ffffff;
@@ -522,7 +528,7 @@
   --sidebar: transparent;
   --border: #5a4620;
   --muted: #d0bd8e;
-  --brand: #ff2e93;
+  --brand: #ff63b0;
   --brand-soft: rgba(84, 12, 52, 0.9);
   --banner: rgba(6, 4, 12, 0.84);
   --banner-fg: #f3cf7a;

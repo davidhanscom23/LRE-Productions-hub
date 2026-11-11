@@ -27,6 +27,14 @@ export const CHANGELOG: ChangelogEntry[] = [
     date: "2026-11-11",
     category: "fixed",
     area: "Holiday skins",
+    title: "Holiday skins: text now sits on solid panels",
+    description:
+      "The sidebar, top bar and page content on holiday skins now sit on near-solid panels, and menus and pop-ups are fully solid, so text is readable everywhere. A few skin text colors were also brightened for contrast.",
+  },
+  {
+    date: "2026-11-11",
+    category: "fixed",
+    area: "Holiday skins",
     title: "Holiday skins are easier to read",
     description:
       "Tabs, breadcrumbs and subtitles no longer get lost on bright parts of the holiday photo. The page now sits on a soft panel with a light text shadow, and the photo still shows around the edges.",
