@@ -24,6 +24,15 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    date: "2026-11-12",
+    category: "fixed",
+    area: "Tools",
+    title: "NEW tags are back on the Tools page",
+    description:
+      "Tools that shipped in the last two weeks show a NEW tag again on the Tools page, instead of only the Tools link in the sidebar.",
+    howTo: "The tag clears on your device once you open that tool from the Tools page.",
+  },
+  {
     date: "2026-11-11",
     category: "fixed",
     area: "Holiday skins",

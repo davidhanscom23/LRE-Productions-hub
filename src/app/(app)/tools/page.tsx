@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 import { ToolsLauncher } from "@/components/tools/tools-launcher";
 import { getCurrentProfile } from "@/lib/auth/profile";
-import { touchHubVisit } from "@/lib/auth/hub-visit";
 import { isGuestRole } from "@/lib/auth/guest";
 import { isSharedCalendarConfigured } from "@/lib/calendar/settings";
 import { canViewStaffHandbook } from "@/lib/handbook/settings";
@@ -19,8 +18,6 @@ export default async function ToolsPage() {
   const showCalendar = !isGuest && (isAdmin || (await isSharedCalendarConfigured()));
   const showHandbook = isGuest ? false : await canViewStaffHandbook(isAdmin);
   const showMarketing = profile.role === "admin" || profile.role === "trainer";
-
-  const visit = isGuest ? undefined : await touchHubVisit();
 
   let pinnedHrefs: string[] | null = null;
   if (!isGuest) {
@@ -40,7 +37,6 @@ export default async function ToolsPage() {
   return (
     <ToolsLauncher
       pinnedHrefs={pinnedHrefs}
-      visit={visit}
       profile={profile}
       access={{
         isGuest,

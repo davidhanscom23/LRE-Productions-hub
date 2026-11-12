@@ -91,60 +91,13 @@ describe("tools catalog ↔ nav placement", () => {
 import { isToolNew } from "./catalog";
 
 describe("isToolNew", () => {
-  const now = new Date("2026-11-06T12:00:00Z");
-  it("is new only when it shipped after the previous visit", () => {
-    expect(
-      isToolNew("/inquiry-forms", {
-        now,
-        tracked: true,
-        previousVisitAt: "2026-11-02T10:00:00Z",
-      }),
-    ).toBe(true);
-    expect(
-      isToolNew("/inquiry-forms", {
-        now,
-        tracked: true,
-        previousVisitAt: "2026-11-05T10:00:00Z",
-      }),
-    ).toBe(false);
+  it("is new for two weeks after shipping, however often someone visits", () => {
+    expect(isToolNew("/inquiry-forms", { now: new Date("2026-11-04T08:00:00Z") })).toBe(true);
+    expect(isToolNew("/inquiry-forms", { now: new Date("2026-11-12T12:00:00Z") })).toBe(true);
+    expect(isToolNew("/inquiry-forms", { now: new Date("2026-11-19T00:00:00Z") })).toBe(false);
   });
-  it("shows nothing on a first visit and ignores unknown or old tools", () => {
-    expect(
-      isToolNew("/inquiry-forms", {
-        now,
-        tracked: true,
-        previousVisitAt: null,
-      }),
-    ).toBe(false);
-    expect(
-      isToolNew("/unknown", {
-        now,
-        tracked: true,
-        previousVisitAt: "2026-01-01T00:00:00Z",
-      }),
-    ).toBe(false);
-    expect(
-      isToolNew("/av-show", {
-        now: new Date("2026-12-20T00:00:00Z"),
-        tracked: true,
-        previousVisitAt: "2026-01-01T00:00:00Z",
-      }),
-    ).toBe(false);
-  });
-  it("falls back to a two-week window when tracking is unavailable", () => {
-    expect(
-      isToolNew("/inquiry-forms", {
-        now,
-        tracked: false,
-        previousVisitAt: null,
-      }),
-    ).toBe(true);
-    expect(
-      isToolNew("/av-show", {
-        now: new Date("2026-11-20T00:00:00Z"),
-        tracked: false,
-        previousVisitAt: null,
-      }),
-    ).toBe(false);
+  it("ignores unknown tools and dates in the future", () => {
+    expect(isToolNew("/unknown", { now: new Date("2026-11-06T12:00:00Z") })).toBe(false);
+    expect(isToolNew("/inquiry-forms", { now: new Date("2026-11-01T00:00:00Z") })).toBe(false);
   });
 });

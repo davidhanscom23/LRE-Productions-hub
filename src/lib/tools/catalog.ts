@@ -113,10 +113,11 @@ export const EXTRA_DESCRIPTIONS: Record<string, string> = {
 
 /**
  * Tools that are new (or just got a notable update), with the date they
- * shipped. A tool is tagged NEW for a person when it shipped after their
- * previous visit to the Hub, and clears once they open it on that device.
+ * shipped. A tool shows a NEW pill on the Tools page for NEW_TOOL_MAX_AGE_DAYS
+ * after it ships, and the pill clears on a device once that tool is opened
+ * from the Tools page.
  * When you add a Hub module, add its href here with today's date (YYYY-MM-DD).
- * Old entries can stay: they stop counting after NEW_TOOL_MAX_AGE_DAYS.
+ * Old entries can stay: they stop counting after the window.
  */
 export const TOOL_ADDED_ON: Record<string, string> = {
   "/hub-switcher": "2026-11-08",
@@ -128,32 +129,21 @@ export const TOOL_ADDED_ON: Record<string, string> = {
   "/av-show": "2026-11-01",
 };
 
-/** Never tag a tool older than this, however long someone has been away. */
-export const NEW_TOOL_MAX_AGE_DAYS = 30;
-
-/** Used only when visit tracking is unavailable. */
-const FALLBACK_WINDOW_DAYS = 14;
+/** A tool stops being tagged NEW this many days after it shipped. */
+export const NEW_TOOL_MAX_AGE_DAYS = 14;
 
 export const TOOLS_SEEN_KEY = "lre-hub.tools.seen";
 
 /**
- * True when a tool shipped after the person's previous visit.
- * `previousVisitAt` null with `tracked` true means a first visit: nothing is new.
+ * True while a tool is inside its NEW window. Deliberately not tied to the
+ * person's last visit: frequent visitors would otherwise never see a pill,
+ * because every page view moved "last visit" past the ship date.
  */
-export function isToolNew(
-  href: string,
-  opts: { now: Date; tracked: boolean; previousVisitAt: string | null },
-): boolean {
+export function isToolNew(href: string, opts: { now: Date }): boolean {
   const added = TOOL_ADDED_ON[href];
   if (!added) return false;
-  // Count the whole shipping day, so a tool added after someone's visit that day still shows.
-  const addedAt = new Date(`${added}T23:59:59Z`).getTime();
+  const addedAt = new Date(`${added}T00:00:00Z`).getTime();
   if (Number.isNaN(addedAt)) return false;
   const ageDays = (opts.now.getTime() - addedAt) / 86_400_000;
-  if (ageDays > NEW_TOOL_MAX_AGE_DAYS) return false;
-  if (!opts.tracked) return ageDays <= FALLBACK_WINDOW_DAYS;
-  if (!opts.previousVisitAt) return false;
-  const prev = new Date(opts.previousVisitAt).getTime();
-  if (Number.isNaN(prev)) return false;
-  return addedAt > prev;
+  return ageDays >= 0 && ageDays < NEW_TOOL_MAX_AGE_DAYS;
 }

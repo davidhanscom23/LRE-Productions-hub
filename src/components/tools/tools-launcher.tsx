@@ -61,11 +61,9 @@ export function ToolsLauncher({
   access,
   pinnedHrefs,
   profile,
-  visit,
 }: {
   access: ToolsAccess;
   pinnedHrefs: string[] | null;
-  visit?: { tracked: boolean; previousVisitAt: string | null };
   profile?: Pick<Profile, "role" | "departments"> | null;
 }) {
   const [query, setQuery] = useState("");
@@ -86,11 +84,7 @@ export function ToolsLauncher({
               .map((i) => i.href)
               .filter(
                 (h) =>
-                  isToolNew(h, {
-                    now,
-                    tracked: visit?.tracked ?? false,
-                    previousVisitAt: visit?.previousVisitAt ?? null,
-                  }) && !seen.has(h),
+                  isToolNew(h, { now }) && !seen.has(h),
               ),
           ),
         );
@@ -99,7 +93,7 @@ export function ToolsLauncher({
       }
     };
     check();
-  }, [visit]);
+  }, []);
 
   const markSeen = (href: string) => {
     try {
