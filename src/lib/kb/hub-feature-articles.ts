@@ -289,8 +289,8 @@ Fundamental Resource Guide: on the Audiovisual tab, switch from AV Tools to Fund
   },
   {
     slug: "speaker-guide",
-    title: "Speaker's Guide to the AV Booth (shareable with clients)",
-    body: `The Speaker's Guide to the AV Booth is a public page at hub.lreproductions.com/speaker-guide. No login is needed, so LRE can send the link to event organizers and they can pass it to their speakers and presenters before the event.
+    title: "Guide to a smooth Speaker Experience (shareable with clients)",
+    body: `The Guide to a smooth Speaker Experience is a public page at hub.lreproductions.com/speaker-guide. No login is needed, so LRE can send the link to event organizers and they can pass it to their speakers and presenters before the event.
 
 What it covers: the five things to remember, handheld and lavalier microphone do's and don'ts, slides and clickers, working with the AV team on the day, what to do if something goes wrong on stage, and a printable checklist.
 

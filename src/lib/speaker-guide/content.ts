@@ -1,5 +1,5 @@
 /**
- * Speaker's Guide to the AV Booth. Public page at /speaker-guide that LRE
+ * Guide to a smooth Speaker Experience. Public page at /speaker-guide that LRE
  * shares with event organizers so their speakers and presenters can read it.
  * Keep in sync with public/lre-speaker-av-guide.pdf. The research sources behind these tips are internal only, so they are not shown to clients.
  */
@@ -8,7 +8,7 @@ export const SPEAKER_GUIDE_PDF = "/lre-speaker-av-guide.pdf";
 
 export const SPEAKER_GUIDE_INTRO = {
   kicker: "An LRE Productions guide for first-time & less experienced speakers",
-  title: "A Speaker's Guide to the AV Booth",
+  title: "Guide to a smooth Speaker Experience",
   lead: "Simple things you can do before you step on stage so the tech disappears and your message takes center stage.",
   body: "Thank you for sharing your expertise with the audience. On the day of the event, we are busy running sound, slides, and stage cues, so we rarely get a quiet moment to share what we have learned from watching hundreds of talks. This guide gathers the most common things that trip up speakers (and the easy fixes) so you can walk on stage relaxed and ready.",
 };

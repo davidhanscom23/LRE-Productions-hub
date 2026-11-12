@@ -17,7 +17,7 @@ import {
 } from "@/lib/speaker-guide/content";
 
 export const metadata: Metadata = {
-  title: "A Speaker's Guide to the AV Booth — LRE Productions",
+  title: "Guide to a smooth Speaker Experience — LRE Productions",
   description:
     "Simple things speakers and presenters can do before they step on stage: microphones, slides, clickers, and working with the AV team.",
   robots: { index: false, follow: false },

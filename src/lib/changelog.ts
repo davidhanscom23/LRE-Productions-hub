@@ -53,9 +53,9 @@ export const CHANGELOG: ChangelogEntry[] = [
     date: "2026-11-11",
     category: "new",
     area: "Speaker AV Guide",
-    title: "Shareable Speaker's Guide to the AV Booth",
+    title: "Shareable Guide to a smooth Speaker Experience",
     description:
-      "LRE now has a public Speaker's Guide to the AV Booth that event organizers can send to their speakers and presenters. It covers microphones, slides, clickers, working with the AV team, and a printable checklist. No login is needed to read it.",
+      "LRE now has a public Guide to a smooth Speaker Experience that event organizers can send to their speakers and presenters. It covers microphones, slides, clickers, working with the AV team, and a printable checklist. No login is needed to read it.",
     howTo:
       "Open Teams, choose Audiovisual, and tap Speaker AV Guide (shareable). Copy the page address (hub.lreproductions.com/speaker-guide) to send to a client. The page has Download PDF and Print buttons.",
   },
