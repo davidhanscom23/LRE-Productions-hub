@@ -216,6 +216,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: "/project/[token]", label: "HoneyBook project (client)", group: "Public", kind: "public", note: "Client portal (private share link, no login): sign contracts, pay invoices, see floor plans, book a call, plus project details, questionnaire and file uploads." },
   { path: "/av-show/remote", label: "AV Show phone remote", group: "Public", kind: "public", note: "Phone remote for AV Show Control, opened with the PIN from the control page; no login." },
   { path: "/speaker-guide", label: "Guide to a smooth Speaker Experience", group: "Public", kind: "public", note: "Shareable guide for speakers and presenters at LRE events (no login). Has a Download PDF button and a print view." },
+  { path: "/led-wall-guide", label: "LED Wall Layouts guide", group: "Public", kind: "public", note: "Shareable page showing seven ways to arrange 64 LED tiles with metric and imperial sizes (no login). Has a print view." },
   { path: "/privacy", label: "Privacy policy", group: "Public", kind: "public" },
   { path: "/sms-terms", label: "SMS terms", group: "Public", kind: "public" },
 ];
