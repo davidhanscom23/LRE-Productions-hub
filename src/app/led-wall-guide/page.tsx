@@ -75,8 +75,7 @@ export default function LedWallGuidePage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/led-wall-guide-logo.png" alt="LRE Productions" className="h-14 w-auto" />
         <h1 className="mt-6 text-4xl leading-tight font-extrabold tracking-tight uppercase sm:text-6xl">
-          64 LED tiles.
-          <br />7 wall layouts.
+          7 wall layouts.
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-[#d0d0d0]">
           With 64 individual tiles at 500 mm × 500 mm each, multiply the tiles across and

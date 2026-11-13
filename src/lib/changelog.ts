@@ -27,6 +27,14 @@ export const CHANGELOG: ChangelogEntry[] = [
     date: "2026-11-13",
     category: "improved",
     area: "LED Wall Guide",
+    title: "LED Wall Guide headline simplified",
+    description:
+      "The headline at the top of the shareable LED Wall Guide now reads just \"7 wall layouts.\" The 64-tile details are still in the stats below it.",
+  },
+  {
+    date: "2026-11-13",
+    category: "improved",
+    area: "LED Wall Guide",
     title: "LED Wall Guide now shows two-screen splits",
     description:
       "The shareable LED Wall Guide has a new section that splits the 64 tiles into two matching 32-tile screens, like projector screens on each side of a stage, with sizes in meters and feet.",
