@@ -826,7 +826,7 @@ export const APPLY_TRACKS: Record<ApplyTrackSlug, ApplyTrack> = {
       "Conferences, launches, and summits — polish under pressure with executives in the room.",
     assessmentTitle: "Corporate Production Working Style Assessment",
     assessmentIntro:
-      "Real moments from corporate programs in Northeast Florida. Pick the response closest to how you’d actually handle each one — there’s no perfect score to chase.",
+      "Real moments from corporate programs. Pick the response closest to how you’d actually handle each one — there’s no perfect score to chase.",
     questions: CORPORATE_QUESTIONS,
   },
   wedding: {

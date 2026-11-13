@@ -388,7 +388,7 @@ export function PersonDetailModal({
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="h-10 w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 text-sm outline-none focus:border-[var(--brand)]"
-                  placeholder="904-555-1234"
+                  placeholder="401-555-1234"
                 />
               </label>
               <label className="block space-y-1.5">

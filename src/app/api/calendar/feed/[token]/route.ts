@@ -25,7 +25,7 @@ export async function GET(
     status: 200,
     headers: {
       "content-type": "text/calendar; charset=utf-8",
-      "content-disposition": 'inline; filename="vident-productions.ics"',
+      "content-disposition": 'inline; filename="lre-productions.ics"',
       "cache-control": "public, max-age=1800",
     },
   });

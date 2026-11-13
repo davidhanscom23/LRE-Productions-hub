@@ -438,7 +438,7 @@ export const HANDBOOK_CONTENT = {
           "items": [
             "Keep the account public and professional at all times.",
             "Content should reflect positively on you and LRE Productions.",
-            "Tag @videntproductions where appropriate to cross-promote.",
+            "Tag @lreproductions where appropriate to cross-promote.",
             "Do not post anything that conflicts with LRE Productions' brand, mission, or values.",
             "Client photos or event footage may only be posted with client consent and in alignment with company social media standards."
           ]

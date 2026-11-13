@@ -28,7 +28,7 @@ import type { DeepPartial } from "./bundle-core";
 
 export const DEFAULT_BRAND_KEY = "vident-productions";
 
-const PHONE = "904-834-1216";
+const PHONE = "401-816-5496";
 
 /** Hub brand bronze (globals.css --brand); the form editor contrast-checks it for white text. */
 export const VIDENT_BRONZE = "#b01418";
@@ -80,15 +80,14 @@ export const BRANDS: BrandProfile[] = [
 
 export const HUB_BUSINESS_DEFAULTS: DeepPartial<BusinessSettings> = {
   homeBase: {
-    label: "LRE Productions, Ponte Vedra",
-    address: "101 Marketside Avenue, Ponte Vedra, FL 32081",
-    // The same street address the Y? hub geocoded from its website JSON-LD; the settings page
-    // geocode button can refine it. Only used if someone turns the location check on.
-    lat: 30.24,
-    lng: -81.3853,
+    label: "LRE Productions, Tiverton",
+    address: "1061 Fish Rd., Unit 1, Tiverton, RI 02878",
+    // Approximate Tiverton, RI coordinates; the settings page geocode button can refine them.
+    // Only used if someone turns the location check on.
+    lat: 41.63,
+    lng: -71.21,
   },
-  // The area is a choice on the form (LRE covers Northeast Florida, Central Florida, Tampa and
-  // Southeast Georgia), so there is no distance check.
+  // The area is a choice on the form (David and Luke confirm the list of areas LRE covers), so there is no distance check.
   location: { enabled: false },
   // No capacity number exists in the hub, and a DMC runs several events a day: a date is "open"
   // unless an admin adds blackout dates or a minimum notice (none by default).
@@ -241,14 +240,9 @@ const v1Steps: StepDef[] = [
         role: "event_location",
         required: true,
         choices: choices([
-          "Ponte Vedra",
-          "Jacksonville",
-          "St. Augustine",
-          "Amelia Island",
-          "Northeast Florida",
-          "Central Florida or Orlando",
-          "Tampa",
-          "Southeast Georgia",
+          "Rhode Island",
+          "Southeastern Massachusetts",
+          "Connecticut",
           "Somewhere else",
           "Not sure yet",
         ]),

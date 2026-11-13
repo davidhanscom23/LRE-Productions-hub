@@ -64,7 +64,7 @@ const STATE_CODES = new Set([
   "WI", "WY", "DC", "PR",
 ]);
 
-/** Two-letter state of the business address ("..., Ponte Vedra, FL 32081" -> "FL"). */
+/** Two-letter state of the business address ("..., Tiverton, RI 02878" -> "RI"). */
 export function stateFromAddress(address: string | null | undefined): string | null {
   if (!address) return null;
   const matches = address.match(/\b[A-Z]{2}\b(?=\s*\d{5}|\s*$|\s*,)/g) ?? [];
