@@ -1,11 +1,11 @@
 import "server-only";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { collectAllDjepWorkEvents } from "@/lib/calendar/collect-feeds";
+import { collectAllWorkEvents } from "@/lib/calendar/collect-feeds";
 import {
-  canonicalDjepCalendarUid,
-  extractDjepEventId,
-} from "@/lib/calendar/djep-event-id";
+  canonicalCalendarUid,
+  extractExternalEventId,
+} from "@/lib/calendar/external-event-id";
 import type { CalendarEvent } from "@/lib/calendar/events";
 import { matchAssignedStaffProfiles } from "@/lib/event-packets/match-staff";
 import { createPacketFromCalendarEvent } from "@/lib/event-packets/sync";
@@ -43,7 +43,7 @@ function syntheticEventFromReview(row: ReviewBridgeRow): CalendarEvent | null {
   if (!row.eventId || !row.reviewDate) return null;
   const start = `${row.reviewDate}T12:00:00.000Z`;
   return {
-    uid: row.calendarUid || canonicalDjepCalendarUid(row.eventId),
+    uid: row.calendarUid || canonicalCalendarUid(row.eventId),
     source: "work",
     title: row.reviewerName || "Event",
     start,
@@ -105,7 +105,7 @@ export async function bridgeReviewsToPackets(
 
   let collected;
   try {
-    collected = await collectAllDjepWorkEvents(supabase);
+    collected = await collectAllWorkEvents(supabase);
   } catch (err) {
     console.error(
       "[reviews] calendar bridge fetch failed",
@@ -120,7 +120,7 @@ export async function bridgeReviewsToPackets(
 
   const eventsById = new Map<string, CalendarEvent>();
   for (const event of collected.events) {
-    const id = extractDjepEventId(event.uid);
+    const id = extractExternalEventId(event.uid);
     if (id) eventsById.set(id, event);
   }
 
@@ -146,7 +146,7 @@ export async function bridgeReviewsToPackets(
     let fromReviewOnly = false;
 
     if (!event) {
-      // DJEP feeds are thin on history — synthesize from the review row when
+      // planner feeds are thin on history — synthesize from the review row when
       // the review date falls inside the 24-month packet window.
       if (!row.reviewDate) {
         skippedNoDate += 1;
@@ -192,8 +192,8 @@ export async function bridgeReviewsToPackets(
       clientName:
         event.clientName?.trim() || row.reviewerName.trim() || null,
       eventType: event.eventType?.trim() || row.eventType.trim() || "Other",
-      uid: extractDjepEventId(event.uid)
-        ? canonicalDjepCalendarUid(extractDjepEventId(event.uid)!)
+      uid: extractExternalEventId(event.uid)
+        ? canonicalCalendarUid(extractExternalEventId(event.uid)!)
         : event.uid,
     };
 

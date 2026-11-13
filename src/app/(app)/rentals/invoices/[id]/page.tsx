@@ -8,7 +8,7 @@ import type {
   AvPayment,
 } from "@/lib/av-erp/types";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -20,7 +20,7 @@ export default async function AvInvoiceDetailPage({ params }: Props) {
   const { id } = await params;
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const supabase = await createClient();
   let { data: invoice, error } = await supabase

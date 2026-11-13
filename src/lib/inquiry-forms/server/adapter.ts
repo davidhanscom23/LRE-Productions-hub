@@ -31,7 +31,7 @@ import { qualificationSummaryLine } from "./lifecycle-core";
 import { BRANDS, DEFAULT_BRAND_KEY } from "./presets";
 
 export interface HubAdapter {
-  hubKey: "y-ent" | "vident";
+  hubKey: "lre";
   brands: BrandProfile[];
   defaultBrand: string;
   /** Canonical absolute origin, no trailing slash. */
@@ -187,7 +187,7 @@ async function ownerProfileId(sb: SupabaseClient, email: string | null | undefin
 }
 
 export const hubAdapter: HubAdapter = {
-  hubKey: "vident",
+  hubKey: "lre",
   brands: BRANDS,
   defaultBrand: DEFAULT_BRAND_KEY,
 

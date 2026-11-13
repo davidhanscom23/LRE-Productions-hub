@@ -1,8 +1,8 @@
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
-export { canAccessVidentAv };
+export { canAccessAv };
 
 export async function requireAvErpAccess() {
   const supabase = await createClient();
@@ -14,7 +14,7 @@ export async function requireAvErpAccess() {
       error: "You must be signed in." as const,
     };
   }
-  if (!canAccessVidentAv(profile)) {
+  if (!canAccessAv(profile)) {
     return {
       supabase,
       profile: null,

@@ -1,11 +1,11 @@
 /**
- * Extract a DJEP numeric event id from common ICS shapes:
+ * Extract a planner numeric event id from common ICS shapes:
  * - UID `EVENTID:146284`
- * - UID `146284@youreventplanningsite.com`
+ * - UID `146284@planner.example.com`
  * - DESCRIPTION line `Event ID: 146284` / `Event_ID: 146284`
  * - URL `...use_event=146284`
  */
-export function extractDjepEventId(
+export function extractExternalEventId(
   ...parts: Array<string | null | undefined>
 ): string | null {
   for (const part of parts) {
@@ -30,6 +30,6 @@ export function extractDjepEventId(
   return null;
 }
 
-export function canonicalDjepCalendarUid(eventId: string): string {
+export function canonicalCalendarUid(eventId: string): string {
   return `EVENTID:${eventId}`;
 }

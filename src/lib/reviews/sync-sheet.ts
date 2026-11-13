@@ -9,7 +9,7 @@ import { refreshAllReviewCredits } from "@/lib/reviews/credited-profiles";
 import { resolveReviewsSpreadsheetId } from "@/lib/reviews/ensure-sheet";
 import {
   calendarUidFromEventId,
-  normalizeDjepEventId,
+  normalizeExternalEventId,
   type EventExternalReviewSyncResult,
 } from "@/lib/types/event-reviews";
 import {
@@ -212,7 +212,7 @@ function rowsFromMatrix(values: string[][]): SheetRow[] {
 
     const reviewerName = cell(row, idx.name);
     const reviewDate = parseDate(cell(row, idx.date));
-    const eventId = normalizeDjepEventId(cell(row, idx.eventId));
+    const eventId = normalizeExternalEventId(cell(row, idx.eventId));
 
     out.push({
       sheetRow: i + 1,
@@ -373,7 +373,7 @@ export async function syncExternalReviewsFromSheet(options?: {
   const packetsByEventId = new Map<string, string[]>();
   const packetsByClientDate = new Map<string, string[]>();
   for (const packet of packetRows ?? []) {
-    const eventId = normalizeDjepEventId(
+    const eventId = normalizeExternalEventId(
       packet.calendar_uid ? String(packet.calendar_uid) : null,
     );
     if (eventId) {
@@ -515,7 +515,7 @@ export async function syncExternalReviewsFromSheet(options?: {
 
   const afterByEventId = new Map<string, number>();
   for (const packet of packetsAfter ?? []) {
-    const eventId = normalizeDjepEventId(
+    const eventId = normalizeExternalEventId(
       packet.calendar_uid ? String(packet.calendar_uid) : null,
     );
     if (!eventId) continue;

@@ -4,14 +4,14 @@ import { StockClient } from "@/components/av-erp/stock-client";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { loadStockRows } from "@/lib/av-erp/warehouse-data";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Stock — LRE AV" };
 
 export default async function AvStockPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const supabase = await createClient();
   let rows;

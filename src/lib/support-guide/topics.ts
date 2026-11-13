@@ -289,7 +289,7 @@ export const SUPPORT_GUIDE_TOPICS: SupportGuideTopic[] = [
     moduleLabel: "Open Teams",
   },
   {
-    slug: "vident-av",
+    slug: "lre-av",
     category: "People & teams",
     moduleHref: "/rentals",
     moduleLabel: "Open LRE AV",

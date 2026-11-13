@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { createServiceClient } from "@/lib/supabase/admin";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 import {
   PORTAL_BUCKET,
   fetchPortalById,
@@ -22,7 +22,7 @@ const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 async function gate() {
   const profile = await getCurrentProfile();
-  return profile && canAccessVidentAv(profile) ? profile : null;
+  return profile && canAccessAv(profile) ? profile : null;
 }
 
 export type PortalInput = {

@@ -1,7 +1,7 @@
 import { ExternalLink, Layers, MonitorPlay, Timer } from "lucide-react";
 import { redirect } from "next/navigation";
 import { getCurrentProfile } from "@/lib/auth/profile";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "AV Show Control" };
 export const dynamic = "force-dynamic";
@@ -39,7 +39,7 @@ export default async function AvShowPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
 
-  if (!canAccessVidentAv(profile)) {
+  if (!canAccessAv(profile)) {
     return (
       <div className="mx-auto max-w-lg rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand)]">

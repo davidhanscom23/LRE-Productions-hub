@@ -86,7 +86,7 @@ export type NavItem = {
   /** When true, only users with Calendar access see this link. */
   calendarAccess?: boolean;
   /** When true, only admin or AV-department users see this link. */
-  videntAvAccess?: boolean;
+  avAccess?: boolean;
   /** When true, hide unless Staff Handbook is visible to this user. */
   handbookAccess?: boolean;
   /** When true, only admin or trainer see this link. */
@@ -284,155 +284,155 @@ export const NAV_GROUPS: NavGroup[] = [
         href: "/rentals",
         label: "LRE AV",
         icon: Package,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/quotes",
         label: "AV Estimates",
         icon: ClipboardList,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/invoices",
         label: "AV Invoices",
         icon: Receipt,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/costs",
         label: "AV Costs",
         icon: BarChart3,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/reports",
         label: "AV Reports",
         icon: FileText,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/developer",
         label: "AV Developer",
         icon: KeyRound,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/warehouse",
         label: "AV Warehouse",
         icon: Warehouse,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/stock",
         label: "AV Stock",
         icon: Boxes,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/calendar",
         label: "AV Gear calendar",
         icon: Calendar,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/planner",
         label: "AV Planner",
         icon: MapPinned,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/travel",
         label: "AV Travel",
         icon: Plane,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/activities",
         label: "AV Activities",
         icon: ListChecks,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/customers",
         label: "AV Customers",
         icon: Users,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/venues",
         label: "AV Venues",
         icon: Building2,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/suppliers",
         label: "AV Suppliers",
         icon: Truck,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/crew",
         label: "AV Crew",
         icon: HardHat,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/contractors",
         label: "AV Contractors",
         icon: HardHat,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/serials",
         label: "AV Serials",
         icon: Boxes,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/templates",
         label: "AV Templates",
         icon: FileText,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/rentals/catalog",
         label: "AV Catalog",
         icon: Package,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/av-portals",
         label: "AV Event Portals",
         icon: ClipboardList,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/av-show",
         label: "AV Show Control",
         icon: MonitorPlay,
-        videntAvAccess: true,
-        toolsCategory: "vident-av",
+        avAccess: true,
+        toolsCategory: "av",
       },
       {
         href: "/pipeline",
@@ -749,7 +749,7 @@ type SidebarProps = {
   /** Admins always; staff when the shared Pipeline calendar is connected. */
   showCalendar?: boolean;
   /** Admins or anyone with the AV department. */
-  showVidentAv?: boolean;
+  showAv?: boolean;
   /** Admins always while draft; everyone once published. */
   showHandbook?: boolean;
   /** Admins and trainers. */
@@ -766,7 +766,7 @@ export function filterItem(
     isGuest: boolean;
     isAdmin: boolean;
     showCalendar: boolean;
-    showVidentAv: boolean;
+    showAv: boolean;
     showHandbook: boolean;
     showMarketing: boolean;
   },
@@ -774,7 +774,7 @@ export function filterItem(
   if (opts.isGuest) return Boolean(item.guestAccess);
   if (item.adminOnly && !opts.isAdmin) return false;
   if (item.calendarAccess && !opts.showCalendar) return false;
-  if (item.videntAvAccess && !opts.showVidentAv) return false;
+  if (item.avAccess && !opts.showAv) return false;
   if (item.handbookAccess && !opts.showHandbook) return false;
   if (item.marketerAccess && !opts.showMarketing) return false;
   return true;
@@ -782,7 +782,7 @@ export function filterItem(
 
 export function Sidebar({
   showCalendar = false,
-  showVidentAv = false,
+  showAv = false,
   showHandbook = false,
   showMarketing = false,
   isGuest = false,
@@ -825,7 +825,7 @@ export function Sidebar({
       isGuest,
       isAdmin,
       showCalendar,
-      showVidentAv,
+      showAv,
       showHandbook,
       showMarketing,
     }),
@@ -833,7 +833,7 @@ export function Sidebar({
       isGuest,
       isAdmin,
       showCalendar,
-      showVidentAv,
+      showAv,
       showHandbook,
       showMarketing,
     ],

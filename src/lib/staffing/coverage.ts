@@ -1,9 +1,9 @@
 import "server-only";
 
 import {
-  getCachedDjepIcalPartition,
+  getCachedIcalPartition,
   type CalendarEvent,
-  type DjepTimeOffAbsence,
+  type FeedTimeOffAbsence,
 } from "@/lib/calendar/events";
 import { getSharedWorkIcalUrl } from "@/lib/calendar/settings";
 import { matchAssignedStaffProfiles } from "@/lib/event-packets/match-staff";
@@ -66,11 +66,11 @@ type MergedOff = {
 };
 
 /**
- * Match a DJEP absence row to Hub profiles. Prefer assigned-staff slot; fall
+ * Match a planner absence row to Hub profiles. Prefer assigned-staff slot; fall
  * back to the full summary string for name tokens.
  */
-function matchDjepAbsencePeople(
-  absence: DjepTimeOffAbsence,
+function matchFeedAbsencePeople(
+  absence: FeedTimeOffAbsence,
   profiles: StaffingPerson[],
 ): StaffingPerson[] {
   const matchable = profiles.map((p) => ({
@@ -101,9 +101,9 @@ function matchDjepAbsencePeople(
 }
 
 /**
- * Build next N days of coverage from Hub + DJEP time off (de-duped) and DJEP
+ * Build next N days of coverage from Hub + planner time off (de-duped) and planner
  * work events. Active staff default to available unless they are on Hub or
- * DJEP time off for that day — weekly availability patterns are not required.
+ * planner time off for that day — weekly availability patterns are not required.
  */
 export async function buildStaffingCoverage(
   supabase: SupabaseClient,
@@ -112,7 +112,7 @@ export async function buildStaffingCoverage(
   days: DayCoverage[];
   icalConfigured: boolean;
   icalError: string | null;
-  unmatchedDjepTimeOff: number;
+  unmatchedFeedTimeOff: number;
 }> {
   const dayCount = options?.days ?? 28;
   const today = new Date();
@@ -155,18 +155,18 @@ export async function buildStaffingCoverage(
   const teamOff = (timeOffRows ?? []) as TeamTimeOff[];
 
   let events: CalendarEvent[] = [];
-  let djepAbsences: DjepTimeOffAbsence[] = [];
+  let feedAbsences: FeedTimeOffAbsence[] = [];
   let icalConfigured = false;
   let icalError: string | null = null;
-  let unmatchedDjepTimeOff = 0;
+  let unmatchedFeedTimeOff = 0;
 
   const icalUrl = await getSharedWorkIcalUrl();
   if (icalUrl) {
     icalConfigured = true;
     try {
-      const partition = await getCachedDjepIcalPartition(icalUrl);
+      const partition = await getCachedIcalPartition(icalUrl);
       events = partition.workEvents;
-      djepAbsences = partition.timeOff.filter(
+      feedAbsences = partition.timeOff.filter(
         (a) => a.endDate >= fromKey && a.startDate <= toKey,
       );
     } catch (err) {
@@ -175,15 +175,15 @@ export async function buildStaffingCoverage(
     }
   }
 
-  // Pre-expand DJEP absences → personId → dateKeys + type
-  const djepOffByDay = new Map<
+  // Pre-expand planner absences → personId → dateKeys + type
+  const feedOffByDay = new Map<
     string,
     Map<string, { type: TimeOffType; label: string }>
   >();
-  for (const absence of djepAbsences) {
-    const matched = matchDjepAbsencePeople(absence, people);
+  for (const absence of feedAbsences) {
+    const matched = matchFeedAbsencePeople(absence, people);
     if (matched.length === 0) {
-      unmatchedDjepTimeOff += 1;
+      unmatchedFeedTimeOff += 1;
       continue;
     }
     const type = coerceTimeOffType(absence.eventType);
@@ -192,11 +192,11 @@ export async function buildStaffingCoverage(
       let cursor = absence.startDate < fromKey ? fromKey : absence.startDate;
       const last = absence.endDate > toKey ? toKey : absence.endDate;
       while (cursor <= last) {
-        const dayMap = djepOffByDay.get(cursor) ?? new Map();
+        const dayMap = feedOffByDay.get(cursor) ?? new Map();
         if (!dayMap.has(person.id)) {
           dayMap.set(person.id, { type, label: person.full_name });
         }
-        djepOffByDay.set(cursor, dayMap);
+        feedOffByDay.set(cursor, dayMap);
         const d = new Date(`${cursor}T12:00:00`);
         d.setDate(d.getDate() + 1);
         cursor = dateKeyLocal(d);
@@ -238,13 +238,13 @@ export async function buildStaffingCoverage(
       });
     }
 
-    const djepDay = djepOffByDay.get(key);
-    if (djepDay) {
-      for (const [personId, info] of djepDay) {
+    const feedDay = feedOffByDay.get(key);
+    if (feedDay) {
+      for (const [personId, info] of feedDay) {
         const existing = merged.get(personId);
         if (existing) {
-          if (!existing.sources.includes("djep")) {
-            existing.sources.push("djep");
+          if (!existing.sources.includes("feed")) {
+            existing.sources.push("feed");
           }
           // Prefer Hub type when both present.
         } else {
@@ -253,7 +253,7 @@ export async function buildStaffingCoverage(
           merged.set(personId, {
             person,
             type: info.type,
-            sources: ["djep"],
+            sources: ["feed"],
             hubRequestId: null,
             hubStart: null,
             hubEnd: null,
@@ -279,7 +279,7 @@ export async function buildStaffingCoverage(
       .sort((a, b) => a.person.full_name.localeCompare(b.person.full_name));
     const offIds = new Set(onTimeOff.map((o) => o.person.id));
 
-    // Default available: every active staffer not on Hub or DJEP time off.
+    // Default available: every active staffer not on Hub or planner time off.
     const available = people
       .filter((person) => !offIds.has(person.id))
       .sort((a, b) => a.full_name.localeCompare(b.full_name));
@@ -303,5 +303,5 @@ export async function buildStaffingCoverage(
     });
   }
 
-  return { days, icalConfigured, icalError, unmatchedDjepTimeOff };
+  return { days, icalConfigured, icalError, unmatchedFeedTimeOff };
 }

@@ -4,7 +4,7 @@ import { WarehouseClient } from "@/components/av-erp/warehouse-client";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { loadWarehouseBoard } from "@/lib/av-erp/warehouse-data";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Warehouse — LRE AV" };
 
@@ -13,7 +13,7 @@ type Props = { searchParams: Promise<{ tab?: string }> };
 export default async function AvWarehousePage({ searchParams }: Props) {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const { tab: tabRaw } = await searchParams;
   const tab =

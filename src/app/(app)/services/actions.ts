@@ -4,7 +4,6 @@ import { getCurrentProfile } from "@/lib/auth/profile";
 import { canManagePipelineCrm } from "@/lib/pipeline/access";
 import { categoryOf, SERVICE_CATEGORIES } from "@/lib/services-catalog/categories";
 import { cleanCategoryName } from "@/lib/services-catalog/category-list";
-import { PIPELINE_SERVICES_SEED } from "@/lib/services-catalog/seed";
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 
@@ -38,28 +37,6 @@ export async function saveServiceAction(input: Input): Promise<{ error: string |
   if (error) return { error: error.code === "23505" ? "A service with that name already exists." : error.message };
   revalidatePath("/services");
   return { error: null };
-}
-
-/** Add every Pipeline service that isn't already in the catalog. Safe to run twice. */
-export async function importPipelineServicesAction(): Promise<{ error: string | null; added: number; skipped: number }> {
-  const profile = await requireEditor();
-  if (!profile) return { error: "Only admins and Leads can import.", added: 0, skipped: 0 };
-  const supabase = await createClient();
-  const { data: existing, error: readErr } = await supabase.from("service_catalog_items").select("name");
-  if (readErr) return { error: readErr.message, added: 0, skipped: 0 };
-  const have = new Set((existing ?? []).map((r) => String(r.name).trim().toLowerCase()));
-  const fresh = PIPELINE_SERVICES_SEED.filter(([n]) => !have.has(n.trim().toLowerCase())).map(([name, price]) => ({
-    name,
-    category: categoryOf(name),
-    unit_price: price,
-    created_by: profile.id,
-  }));
-  if (fresh.length) {
-    const { error } = await supabase.from("service_catalog_items").insert(fresh);
-    if (error) return { error: error.message, added: 0, skipped: 0 };
-  }
-  revalidatePath("/services");
-  return { error: null, added: fresh.length, skipped: PIPELINE_SERVICES_SEED.length - fresh.length };
 }
 
 const categoryMissing = "Categories need migration 188_service_categories_invoice_sections.sql.";

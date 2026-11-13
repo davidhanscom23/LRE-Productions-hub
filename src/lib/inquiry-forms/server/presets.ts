@@ -26,19 +26,19 @@ import type { DeepPartial } from "./bundle-core";
 // Brands
 // ---------------------------------------------------------------------------
 
-export const DEFAULT_BRAND_KEY = "vident-productions";
+export const DEFAULT_BRAND_KEY = "lre-productions";
 
 const PHONE = "401-816-5496";
 
-/** Hub brand bronze (globals.css --brand); the form editor contrast-checks it for white text. */
-export const VIDENT_BRONZE = "#b01418";
+/** Hub brand red (globals.css --brand); the form editor contrast-checks it for white text. */
+export const LRE_RED = "#b01418";
 /**
- * The same bronze one step darker, so white button text reads at 4.5:1 or better (the raw bronze is
+ * The same red one step darker, so white button text reads at 4.5:1 or better (the raw bronze is
  * 4.29:1). The public form darkens a light accent for its buttons anyway; starting the starter form
  * here keeps its editor free of the "hard to read" warning.
  */
-export const VIDENT_BRONZE_AA = "#b01418";
-export const VIDENT_AV_RED = "#c00000";
+export const LRE_RED_AA = "#b01418";
+export const LRE_AV_RED = "#c00000";
 
 /**
  * Brand profiles. Privacy links were checked live on 05-Nov-2026: both pages answer 200 and render a
@@ -46,7 +46,7 @@ export const VIDENT_AV_RED = "#c00000";
  */
 export const BRANDS: BrandProfile[] = [
   {
-    key: "vident-productions",
+    key: "lre-productions",
     name: "LRE Productions",
     // public/logo.png is the WHITE wordmark: the form header paints a dark band behind it.
     logoUrl: "/logo.png",
@@ -55,22 +55,21 @@ export const BRANDS: BrandProfile[] = [
     privacyUrl: "https://lreproductions.com/privacy-policy",
     phone: PHONE,
     email: "hello@lreproductions.com",
-    accentColor: VIDENT_BRONZE,
+    accentColor: LRE_RED,
     legalLine: "LRE Productions, Inc.",
   },
   {
-    key: "vident-av",
+    key: "lre-av",
     name: "LRE Audiovisual",
     // No LRE Audiovisual logo file in the hub: the form shows a text wordmark.
     logoUrl: null,
     logoOnDark: false,
-    siteUrl: "https://videntaudiovisual.com",
-    privacyUrl: "https://videntaudiovisual.com/privacy-policy",
+    siteUrl: "https://lreproductions.com",
+    privacyUrl: "https://lreproductions.com/privacy-policy",
     phone: PHONE,
-    email: "hello@videntaudiovisual.com",
-    accentColor: VIDENT_AV_RED,
-    // The name the brand's own site footer uses ("(c) LRE Audiovisual. All rights reserved.").
-    legalLine: "LRE Audiovisual",
+    email: "hello@lreproductions.com",
+    accentColor: LRE_AV_RED,
+    legalLine: "LRE Productions, Inc.",
   },
 ];
 
@@ -87,7 +86,7 @@ export const HUB_BUSINESS_DEFAULTS: DeepPartial<BusinessSettings> = {
     lat: 41.63,
     lng: -71.21,
   },
-  // The area is a choice on the form (David and Luke confirm the list of areas LRE covers), so there is no distance check.
+  // The area is a choice on the form (Newport, Providence, Boston, Plymouth, Martha's Vineyard and nearby New England, from lreproductions.com/service-areas), so there is no distance check.
   location: { enabled: false },
   // No capacity number exists in the hub, and a DMC runs several events a day: a date is "open"
   // unless an admin adds blackout dates or a minimum notice (none by default).
@@ -157,17 +156,12 @@ function field(form: string, key: string, type: FieldDef["type"], label: string,
 
 const OTHER = { label: "Other", isOther: true } as const;
 
-/** Staff email for new inquiries: the public inbox, with David always copied (David, 05-Nov-26). */
-export const VIDENT_STAFF_INBOXES = ["hello@lreproductions.com"];
-/** Directors listed on lreproductions.com/contact (read 05-Nov-26). */
-export const VIDENT_DIRECTORS = {
+/** Staff email for new inquiries: the public inbox. */
+export const LRE_STAFF_INBOXES = ["hello@lreproductions.com"];
+/** Who owns new inquiries by event type (one inbox for now). */
+export const LRE_DIRECTORS = {
   corporate: "hello@lreproductions.com",
-  weddingSocial: "hello@lreproductions.com",
-  golf: "hello@lreproductions.com",
 } as const;
-/** GoHighLevel ids both LRE websites' contact forms send (public, read from the live sites). */
-const VIDENT_GHL_LOCATION = "LsjUOxo376FX3spTvDwa";
-const VIDENT_GHL_TRACKING = "tk_2ba7711add5e48fcbaeca8e803d01da4";
 
 /** Step 1 of both forms: who is asking. */
 function contactFields(form: string): FieldDef[] {
@@ -186,9 +180,6 @@ const v1EventType = field("v1", "event_type", "radio", "Event type", {
   layout: "cards",
   choices: choices([
     "Corporate Event",
-    "Wedding",
-    "Social Celebration",
-    "Golf Experience",
     "Incentive Trip",
     "Team Building",
     "Game Show",
@@ -211,19 +202,6 @@ const v1Steps: StepDef[] = [
     title: "What are you planning?",
     fields: [
       v1EventType,
-      field("v1", "wedding_planning_level", "radio", "Wedding planning level", {
-        choices: choices([
-          "Wedding Management (The Peace of Mind)",
-          "Partial Planning (The Styled & Supported)",
-          "Full-Service Planning (The Signature Soiree)",
-          "Not sure yet",
-        ]),
-        showIf: { fieldKey: "event_type", op: "equals", values: [valueOf(v1EventType, "Wedding")] },
-      }),
-      field("v1", "golf_experience", "radio", "Golf experience", {
-        choices: choices(["Tournament", "Corporate golf outing", "Golf trip or itinerary", "Putting party", "Other"]),
-        showIf: { fieldKey: "event_type", op: "equals", values: [valueOf(v1EventType, "Golf Experience")] },
-      }),
     ],
   },
   {
@@ -240,9 +218,12 @@ const v1Steps: StepDef[] = [
         role: "event_location",
         required: true,
         choices: choices([
-          "Rhode Island",
-          "Southeastern Massachusetts",
-          "Connecticut",
+          "Newport, RI",
+          "Providence, RI",
+          "Boston, MA",
+          "Plymouth, MA",
+          "Martha's Vineyard, MA",
+          "Somewhere else in New England",
           "Somewhere else",
           "Not sure yet",
         ]),
@@ -325,11 +306,11 @@ const v1Steps: StepDef[] = [
 const V1: StarterForm = {
   slug: "get-a-quote",
   name: "Get a Quote",
-  brand: "vident-productions",
+  brand: "lre-productions",
   definition: { version: 1, steps: v1Steps },
   settings: mergeFormSettings({
-    brand: "vident-productions",
-    accentColor: VIDENT_BRONZE_AA,
+    brand: "lre-productions",
+    accentColor: LRE_RED_AA,
     submitLabel: "Get a Quote",
     thankYou: {
       title: "Thank you!",
@@ -339,38 +320,21 @@ const V1: StarterForm = {
     qualify: { celebrate: false },
     onDateUnavailable: { actions: ["change_date", "continue"] },
     // David's picks (05-Nov-26): confirmation on; staff email to hello@ with David always copied;
-    // each event type routed to its director from lreproductions.com/contact (Other stays with
-    // an admin); a copy to GoHighLevel exactly as the site's own form sends it (read 05-Nov-26).
+    // corporate event types go to the hello@ inbox (Other stays with an admin).
     confirmationEmail: { enabled: true },
-    notify: { recipients: VIDENT_STAFF_INBOXES },
+    notify: { recipients: LRE_STAFF_INBOXES },
     ownerByEventType: {
-      [valueOf(v1EventType, "Corporate Event")]: VIDENT_DIRECTORS.corporate,
-      [valueOf(v1EventType, "Incentive Trip")]: VIDENT_DIRECTORS.corporate,
-      [valueOf(v1EventType, "Team Building")]: VIDENT_DIRECTORS.corporate,
-      [valueOf(v1EventType, "Game Show")]: VIDENT_DIRECTORS.corporate,
-      [valueOf(v1EventType, "Tradeshow")]: VIDENT_DIRECTORS.corporate,
-      [valueOf(v1EventType, "Virtual or Hybrid")]: VIDENT_DIRECTORS.corporate,
-      [valueOf(v1EventType, "Wedding")]: VIDENT_DIRECTORS.weddingSocial,
-      [valueOf(v1EventType, "Social Celebration")]: VIDENT_DIRECTORS.weddingSocial,
-      [valueOf(v1EventType, "Golf Experience")]: VIDENT_DIRECTORS.golf,
-    },
-    copies: {
-      ghl: {
-        enabled: true,
-        locationId: VIDENT_GHL_LOCATION,
-        trackingId: VIDENT_GHL_TRACKING,
-        formId: "Contact Form",
-        siteUrl: "https://lreproductions.com/contact",
-        notesKey: "contact.event_details",
-        notesLabel: "Event Details",
-        eventTypeKey: "contact.event_type",
-        servicesKey: "contact.services_needed",
-      },
+      [valueOf(v1EventType, "Corporate Event")]: LRE_DIRECTORS.corporate,
+      [valueOf(v1EventType, "Incentive Trip")]: LRE_DIRECTORS.corporate,
+      [valueOf(v1EventType, "Team Building")]: LRE_DIRECTORS.corporate,
+      [valueOf(v1EventType, "Game Show")]: LRE_DIRECTORS.corporate,
+      [valueOf(v1EventType, "Tradeshow")]: LRE_DIRECTORS.corporate,
+      [valueOf(v1EventType, "Virtual or Hybrid")]: LRE_DIRECTORS.corporate,
     },
   }),
 };
 
-// Form V2: "Request AV" (videntaudiovisual.com; replaces the site's "Send Message" form).
+// Form V2: "Request AV" (the lreproductions.com Audiovisual request form).
 const v2Steps: StepDef[] = [
   {
     id: "v2-step-connect",
@@ -389,11 +353,9 @@ const v2Steps: StepDef[] = [
         choices: choices([
           "Conference",
           "Corporate Meeting",
-          "Wedding",
           "Gala",
           "Trade Show",
           "Concert",
-          "Private Event",
           OTHER,
         ]),
       }),
@@ -458,33 +420,20 @@ const v2Steps: StepDef[] = [
 const V2: StarterForm = {
   slug: "request-av",
   name: "Request AV",
-  brand: "vident-av",
+  brand: "lre-av",
   definition: { version: 1, steps: v2Steps },
   settings: mergeFormSettings({
-    brand: "vident-av",
-    accentColor: VIDENT_AV_RED,
+    brand: "lre-av",
+    accentColor: LRE_AV_RED,
     submitLabel: "Send Request",
     thankYou: {
       title: "Request received!",
       message: "Thank you for reaching out to LRE Audiovisual. We'll be in touch soon.",
     },
     // David's picks (05-Nov-26): confirmation on; staff email to hello@ with David always copied;
-    // no event type routing (AV department); a copy to GoHighLevel as videntaudiovisual.com sends it.
+    // no event type routing (AV department).
     confirmationEmail: { enabled: true },
-    notify: { recipients: VIDENT_STAFF_INBOXES },
-    copies: {
-      ghl: {
-        enabled: true,
-        locationId: VIDENT_GHL_LOCATION,
-        trackingId: VIDENT_GHL_TRACKING,
-        formId: "LRE AV Website Form",
-        siteUrl: "https://videntaudiovisual.com/",
-        notesKey: "calendar_notes",
-        notesLabel: "Message",
-        eventTypeKey: null,
-        servicesKey: null,
-      },
-    },
+    notify: { recipients: LRE_STAFF_INBOXES },
   }),
 };
 

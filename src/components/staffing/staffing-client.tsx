@@ -24,9 +24,9 @@ function fmtHeading(dateKey: string, weekdayLabel: string): string {
 
 function sourceHint(sources: TimeOffSource[]): string {
   const hub = sources.includes("hub");
-  const djep = sources.includes("djep");
-  if (hub && djep) return "Hub + feed";
-  if (djep) return "Calendar feed";
+  const fromFeed = sources.includes("feed");
+  if (hub && fromFeed) return "Hub + feed";
+  if (fromFeed) return "Calendar feed";
   return "Hub";
 }
 
@@ -45,7 +45,7 @@ export function StaffingClient({
   fromDate,
   icalConfigured,
   icalError,
-  unmatchedDjepTimeOff,
+  unmatchedFeedTimeOff,
   canEdit,
   isAdmin,
 }: {
@@ -54,7 +54,7 @@ export function StaffingClient({
   fromDate: string | null;
   icalConfigured: boolean;
   icalError: string | null;
-  unmatchedDjepTimeOff: number;
+  unmatchedFeedTimeOff: number;
   canEdit: boolean;
   isAdmin: boolean;
 }) {
@@ -169,10 +169,10 @@ export function StaffingClient({
             : icalError
               ? `Calendar feed error: ${icalError}`
               : "Event load from the shared Pipeline calendar."}{" "}
-          {unmatchedDjepTimeOff > 0 ? (
+          {unmatchedFeedTimeOff > 0 ? (
             <span className="text-amber-800 dark:text-amber-200">
-              {unmatchedDjepTimeOff} feed time-off row
-              {unmatchedDjepTimeOff === 1 ? "" : "s"} couldn’t match a Hub
+              {unmatchedFeedTimeOff} feed time-off row
+              {unmatchedFeedTimeOff === 1 ? "" : "s"} couldn’t match a Hub
               profile (check People names vs the calendar feed).{" "}
             </span>
           ) : null}

@@ -110,7 +110,7 @@ export const SUBCONTRACTOR_AGREEMENT = {
           paragraphs: [
             "Either party may terminate this Agreement at any time with written notice. Outstanding compensation for completed events remains due upon termination.",
             "Grounds for immediate termination by the Company include, but are not limited to: unprofessional conduct, no-show to a confirmed event, breach of confidentiality, or damage to Company reputation or equipment.",
-            "This Agreement is governed by the laws of the State of Florida. Any disputes shall be resolved in the courts of St. Johns County, Florida.",
+            "This Agreement is governed by the laws of the State of Rhode Island. Any disputes shall be resolved in the state or federal courts located in Rhode Island.",
           ],
         },
       ],

@@ -105,7 +105,7 @@ export default async function HubHealthPage() {
       .from("kb_documents")
       .select("content")
       .eq("source_type", "hub_guide")
-      .eq("source_id", "vident-av")
+      .eq("source_id", "lre-av")
       .maybeSingle(),
     // draft_saved_at is part of 167: a missing column reads as "not applied".
     inquiryProbeUsesServiceRole

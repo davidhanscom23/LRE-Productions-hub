@@ -5,13 +5,13 @@ export type AvOpportunityStatus = "draft" | "quotation" | "order" | "closed";
 export type AvOwnerCompany = "vident" | "lukesent" | "lre";
 
 export const AV_OWNER_COMPANIES: { value: AvOwnerCompany; label: string }[] = [
-  { value: "vident", label: "Vident" },
+  { value: "vident", label: "Vident (legacy)" },
   { value: "lukesent", label: "LukesENT" },
   { value: "lre", label: "LRE Pro" },
 ];
 
 export function ownerCompanyLabel(v: string | null | undefined): string {
-  return AV_OWNER_COMPANIES.find((o) => o.value === v)?.label ?? "Vident";
+  return AV_OWNER_COMPANIES.find((o) => o.value === v)?.label ?? "LRE Pro";
 }
 
 export type AvProductKind = "rental" | "package" | "sale" | "consumable";

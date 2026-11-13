@@ -2,7 +2,7 @@ import "server-only";
 import { createServiceClient } from "@/lib/supabase/admin";
 import {
   COMPANY_ICAL_SETTING_KEY,
-  fetchDjepIcalPartition,
+  fetchIcalPartition,
   type CalendarEvent,
 } from "@/lib/calendar/events";
 import {
@@ -55,7 +55,7 @@ export async function getStaffFeedIcsByToken(
   const url = await companyIcalUrl(supabase);
   if (!url) return buildIcs([], calName);
 
-  const { workEvents } = await fetchDjepIcalPartition(url);
+  const { workEvents } = await fetchIcalPartition(url);
 
   const { data: profilesData } = await supabase
     .from("profiles")

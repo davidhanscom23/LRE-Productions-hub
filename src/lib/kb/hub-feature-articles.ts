@@ -89,7 +89,7 @@ Pricing: equipment is package price plus add-ons; setup fee is charged once per 
   {
     slug: "inquiry-forms",
     title: "Inquiry Forms: website inquiry forms that land on the Pipeline board",
-    body: `Inquiry Forms (/inquiry-forms, admin-only, listed in Tools under Quotes & Proposals) builds the multi-step inquiry forms for the lreproductions.com and videntaudiovisual.com websites. A visitor answers a few short steps, the form checks the event date, and every finished inquiry is added to the Pipeline board as an Inquiry project. Only admins can open it; Leads and staff never see the forms or the submissions (they see the projects on the board as usual).
+    body: `Inquiry Forms (/inquiry-forms, admin-only, listed in Tools under Quotes & Proposals) builds the multi-step inquiry forms for the lreproductions.com website. A visitor answers a few short steps, the form checks the event date, and every finished inquiry is added to the Pipeline board as an Inquiry project. Only admins can open it; Leads and staff never see the forms or the submissions (they see the projects on the board as usual).
 
 Getting started: on the empty Inquiry Forms page click Add the starter forms. That creates two live forms: Get a Quote (LRE Productions, /inquire/get-a-quote: event type with wedding planning and golf follow-ups, date, area, guests, services, budget range and event details) and Request AV (LRE Audiovisual, /inquire/request-av: event type, date and times, venue, attendees, AV services, rental only or full production, and the request). The list shows each form with its status and its views, starts and finished inquiries. Click a form to open its four tabs. Build edits the steps and questions: add, remove or drag questions, change labels, choices, required and half width, and show a question only when an earlier answer matches; the checking step runs the date check, so keep it after the step that asks for the date. Edits are saved as a draft: visitors keep seeing the published version until you publish, and you can try the draft first (a preview saves nothing). Settings holds the brand and accent color, button labels, the thank-you message, what to offer when a date is blocked (pick another date or send the request anyway), staff email recipients (the starter forms email hello@lreproductions.com and David), the confirmation email to the visitor (on in the starter forms; replies go to the brand's hello@ inbox), who owns each event type, and copies to other systems. Get a Quote sends Corporate Event, Incentive Trip, Team Building, Game Show, Tradeshow and Virtual or Hybrid to Natalie McBride, Wedding and Social Celebration to Kallie Sango, and Golf Experience to Kristin Thompson: that person also gets the staff email and is added as the project's lead assignee when they have a Hub login. Both forms send a copy of each finished inquiry to GoHighLevel the same way the website contact forms do, so GoHighLevel follow-ups keep running; each copy shows in the submission's history and is retried for 24 hours if it does not go through. Share gives the form's link and the one embed snippet for the website: paste it into a custom code block on the page and the form sizes itself on phones and computers. Submissions lists every visitor's run with their answers, the date result, a high, medium or low fit score, where they came from (UTM, ad click or website), and the stage (in progress, completed, waitlisted, abandoned or spam).
 
@@ -235,7 +235,7 @@ Anyone with access can send messages. You can delete your own messages; admins c
 If you don’t see a channel you need, ask an admin to add you.`
   },
   {
-    slug: "vident-av",
+    slug: "lre-av",
     title: "LRE AV — gear, bookings, and estimates",
     body: `LRE AV (route /rentals) is the Hub AV rental workspace (system of record for day-to-day ops). Customers, Venues, Catalog, Estimates, Warehouse, Stock, Calendar/Planner/Travel, Activities, Invoices, Costs, Crew, and Reports are Hub-owned.
 
@@ -567,7 +567,7 @@ Payment requests: enter amount, category (Event day, Hourly, Flat fee, Bonus, or
 Mini 1099 hub: for the current tax year, upload a W-9 (PDF or image) and digitally sign the annual 1099 acknowledgment (drawn signature, name, email, IP/browser recorded). Admins see a roster of who has signed and the latest W-9 on file. Needs migration 121_contractor_pay.sql. After deploy, Rebuild index on Ask the Hub so answers mention this module.`,
   },
   {
-    slug: "quoting-vs-vident-av",
+    slug: "quoting-vs-lre-av",
     title: "Quoting vs LRE AV — which quote tool?",
     body: `The Hub has two quote paths on purpose. Pick the one that matches the job — do not rebuild the same package in both.
 
@@ -829,9 +829,9 @@ Invoices can be edited until a payment is recorded. After that, or once it has b
   {
     slug: "services-catalog",
     title: "Services Catalog — saved services and prices",
-    body: `The Services Catalog (/services, under Tools, Quotes & Proposals) is the Hub's version of Pipeline's saved services: 134 items with prices, grouped into Planning & coordination, Transportation & delivery, Event rentals, Kitchen & serving, Golf & tournament events, Decor & signage, Experiences & production, and Other.
+    body: `The Services Catalog (/services, under Tools, Quotes & Proposals) is the Hub's version of Pipeline's saved services: saved items with prices, grouped into Planning & coordination, Transportation & delivery, Event rentals, Kitchen & serving, Golf & tournament events, Decor & signage, Experiences & production, and Other.
 
-Everyone on staff can search it by name, description, or category. Admins and Leads can add a service, edit its name, description, category and price, and archive one (archived items are hidden unless you tick Show archived). The first time, an admin or Lead clicks Import from Pipeline to load the list; running it again only adds items that are missing. Categories were assigned automatically, so change any that look wrong. Admins and Leads can also click Categories to add their own (for example DMC categories), rename one (its items move with it), or delete one that no item uses; the item form has a + New category option too. Custom categories need migration 188_service_categories_invoice_sections.sql. Needs migration 180_service_catalog.sql.
+Everyone on staff can search it by name, description, or category. Admins and Leads can add a service, edit its name, description, category and price, and archive one (archived items are hidden unless you tick Show archived). The catalog starts empty; an admin or Lead builds it with + Add service. Categories were assigned automatically, so change any that look wrong. Admins and Leads can also click Categories to add their own (for example DMC categories), rename one (its items move with it), or delete one that no item uses; the item form has a + New category option too. Custom categories need migration 188_service_categories_invoice_sections.sql. Needs migration 180_service_catalog.sql.
 
 You can also drop catalog items onto a LRE AV estimate: in the estimate's item picker, set Type to Pipeline services (or use the Pipeline service box), choose a category and an item, and click Add line. Rental categories (Event rentals, Kitchen & serving) come in as rental lines and everything else as sale lines; change the kind on the line if needed. Admins and Leads can use Edit this catalog item under the pick to change the name, price or category, or choose + New category, and the change is saved to the catalog for every estimate and invoice.
 

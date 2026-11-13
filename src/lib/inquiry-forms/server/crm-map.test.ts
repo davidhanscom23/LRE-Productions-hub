@@ -34,7 +34,7 @@ function summary(over: Partial<CrmSummary> = {}): CrmSummary {
     eventDate: "2027-05-15",
     eventTimeStart: null,
     eventTimeEnd: null,
-    eventLocation: "Rhode Island",
+    eventLocation: "Newport, RI",
     guestCount: null,
     guestLabel: "150 - 300",
     services: ["Audio & Visuals", "Planning"],
@@ -138,10 +138,10 @@ describe("buildProjectDetails", () => {
         formName: "Get a Quote",
         ending: "completed",
         summaryLine: "Fit: high (80). Date open. Budget: $25,000 - $50,000.",
-        lines: ["Full name: Jane Smith", "Area: Rhode Island"],
+        lines: ["Full name: Jane Smith", "Area: Newport, RI"],
       }),
     ).toBe(
-      "Website form: Get a Quote\nFit: high (80). Date open. Budget: $25,000 - $50,000.\n\nFull name: Jane Smith\nArea: Rhode Island",
+      "Website form: Get a Quote\nFit: high (80). Date open. Budget: $25,000 - $50,000.\n\nFull name: Jane Smith\nArea: Newport, RI",
     );
   });
 
@@ -178,7 +178,7 @@ describe("buildProjectInsert", () => {
       project_type: "Corporate Event",
       project_date: "2027-05-15",
       budget: 25000,
-      location: "Rhode Island",
+      location: "Newport, RI",
       details: "d",
       source_event: WEB_FORM_SOURCE,
       raw: { form_slug: "get-a-quote", submission_id: "sub-1" },
@@ -216,7 +216,7 @@ describe("the starter forms map onto the board as the spec says", () => {
       company: "Acme Corp",
       event_type: "corporate_event",
       event_date: "2027-05-15",
-      event_location: "rhode_island",
+      event_location: "newport_ri",
       venue: "TPC Sawgrass",
       guest_count: "field_150_300",
       services: ["audio_visuals", "planning"],
@@ -231,7 +231,7 @@ describe("the starter forms map onto the board as the spec says", () => {
       project_type: "Corporate Event",
       project_date: "2027-05-15",
       budget: 25000,
-      location: "Rhode Island",
+      location: "Newport, RI",
     });
     expect(buildClientInsert(s, "sub-1").email).toBe("jane@acme.com");
     const lines = formatAnswerLines(form.definition, answers);

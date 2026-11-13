@@ -5,7 +5,7 @@ import { isGuestRole } from "@/lib/auth/guest";
 import { isSharedCalendarConfigured } from "@/lib/calendar/settings";
 import { canViewStaffHandbook } from "@/lib/handbook/settings";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Tools" };
 
@@ -42,7 +42,7 @@ export default async function ToolsPage() {
         isGuest,
         isAdmin,
         showCalendar,
-        showVidentAv: !isGuest && canAccessVidentAv(profile),
+        showAv: !isGuest && canAccessAv(profile),
         showHandbook,
         showMarketing: !isGuest && showMarketing,
       }}

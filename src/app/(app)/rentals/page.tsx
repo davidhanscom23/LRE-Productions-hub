@@ -6,7 +6,7 @@ import { getCurrentProfile } from "@/lib/auth/profile";
 import { demoShopAlreadyLoaded } from "@/lib/av-erp/demo-shop";
 import { loadHubOverviewStats } from "@/lib/av-erp/overview";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = {
   title: "LRE AV",
@@ -15,7 +15,7 @@ export const metadata = {
 export default async function RentalsPage() {
   const profile = await getCurrentProfile();
 
-  if (!canAccessVidentAv(profile)) {
+  if (!canAccessAv(profile)) {
     return (
       <div className="mx-auto max-w-lg rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand)]">

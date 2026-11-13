@@ -446,9 +446,9 @@ describe("auth checks", () => {
 
 describe("hub identity", () => {
   it("is the LRE hub with both brands and an absolute origin", () => {
-    expect(hubAdapter.hubKey).toBe("vident");
-    expect(hubAdapter.brands.map((b) => b.key)).toEqual(["vident-productions", "vident-av"]);
-    expect(hubAdapter.defaultBrand).toBe("vident-productions");
+    expect(hubAdapter.hubKey).toBe("lre");
+    expect(hubAdapter.brands.map((b) => b.key)).toEqual(["lre-productions", "lre-av"]);
+    expect(hubAdapter.defaultBrand).toBe("lre-productions");
     expect(hubAdapter.publicOrigin()).toMatch(/^https?:\/\/[^/]+(\/.*[^/])?$/);
   });
 });

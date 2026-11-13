@@ -7,7 +7,7 @@ export type SearchNavTarget = {
   label: string;
   keywords: string[];
   calendarAccess?: boolean;
-  videntAvAccess?: boolean;
+  avAccess?: boolean;
   handbookAccess?: boolean;
   marketerAccess?: boolean;
   adminOnly?: boolean;
@@ -74,8 +74,8 @@ export const SEARCH_NAV_TARGETS: SearchNavTarget[] = [
   {
     href: "/rentals",
     label: "LRE AV",
-    keywords: ["vident", "av", "rentals", "gear"],
-    videntAvAccess: true,
+    keywords: ["lre", "av", "rentals", "gear"],
+    avAccess: true,
   },
   {
     href: "/rentals/quotes",
@@ -91,31 +91,31 @@ export const SEARCH_NAV_TARGETS: SearchNavTarget[] = [
       "pdf",
       "share link",
     ],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/customers",
     label: "AV Customers",
     keywords: ["customers", "clients", "av", "rental"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/venues",
     label: "AV Venues",
     keywords: ["venues", "job venue", "av", "rental", "power", "parking"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/catalog",
     label: "AV Catalog",
     keywords: ["catalog", "products", "packages", "services", "gear", "av"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/reports",
     label: "AV Reports",
     keywords: reportCatalogSearchKeywords(),
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/developer",
@@ -130,79 +130,79 @@ export const SEARCH_NAV_TARGETS: SearchNavTarget[] = [
       "integration token",
       "av",
     ],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/invoices",
     label: "AV Invoices",
     keywords: ["invoices", "ar", "payments", "billing", "av"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/costs",
     label: "AV Costs",
     keywords: ["costs", "margin", "profit", "job costs", "av"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/warehouse",
     label: "AV Warehouse",
     keywords: ["warehouse", "checkout", "check out", "check back", "gear", "av"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/stock",
     label: "AV Stock",
     keywords: ["stock", "inventory", "qty", "owned", "free", "av"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/calendar",
     label: "AV Gear calendar",
     keywords: ["gear calendar", "av calendar", "gear out", "av"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/planner",
     label: "AV Planner",
     keywords: ["planner", "timeline", "gear window", "av"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/travel",
     label: "AV Travel",
     keywords: ["travel", "leave", "return", "runs", "av"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/activities",
     label: "AV Activities",
     keywords: ["activities", "tasks", "pre-job", "av"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/suppliers",
     label: "AV Suppliers",
     keywords: ["suppliers", "vendors", "sub-hire", "av"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/rentals/crew",
     label: "AV Crew",
     keywords: ["crew", "bookings", "contractors", "day rate", "av"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/av-portals",
     label: "AV Event Portals",
     keywords: ["av", "portal", "event", "client", "floor plan", "run of show", "checklist", "check-in"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   {
     href: "/av-show",
     label: "AV Show Control",
     keywords: ["av", "show", "lower third", "stage timer", "run of show", "screens", "graphics", "slideshow", "sponsor"],
-    videntAvAccess: true,
+    avAccess: true,
   },
   { href: "/teams", label: "Teams", keywords: ["teams", "department", "audiovisual"] },
   {

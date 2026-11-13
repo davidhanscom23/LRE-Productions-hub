@@ -4,14 +4,14 @@ import { ContractorsClient } from "@/components/av-erp/contractors-client";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import type { AvContractor } from "@/lib/av-erp/types";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Contractors — LRE AV" };
 
 export default async function AvContractorsPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const supabase = await createClient();
   const { data, error } = await supabase

@@ -7,7 +7,7 @@ import {
   fetchCompanyCalendarEvents,
   type CalendarEvent,
 } from "@/lib/calendar/events";
-import { extractDjepEventId } from "@/lib/calendar/djep-event-id";
+import { extractExternalEventId } from "@/lib/calendar/external-event-id";
 
 export type CollectedCalendarFeeds = {
   feedsScanned: number;
@@ -17,10 +17,10 @@ export type CollectedCalendarFeeds = {
 
 /**
  * Load the shared LRE work calendar only (shared Google iCal, with
- * legacy company_ical_url as fallback). Personal DJEP feeds are intentionally
- * ignored — LRE does not use DJEP / Y Entertainment calendars.
+ * legacy company_ical_url as fallback). Personal planner feeds are intentionally
+ * ignored — LRE only uses the shared company calendar.
  */
-export async function collectAllDjepWorkEvents(
+export async function collectAllWorkEvents(
   supabase: SupabaseClient,
 ): Promise<CollectedCalendarFeeds> {
   let icalUrl = "";
@@ -58,7 +58,7 @@ export async function collectAllDjepWorkEvents(
   const events = [...byUid.values()];
   const eventIds = new Set<string>();
   for (const event of events) {
-    const id = extractDjepEventId(event.uid);
+    const id = extractExternalEventId(event.uid);
     if (id) eventIds.add(id);
   }
 

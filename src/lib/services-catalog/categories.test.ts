@@ -1,13 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { categoryOf, textKindForCategory } from "./categories";
-import { PIPELINE_SERVICES_SEED } from "./seed";
 
 describe("service catalog", () => {
-  it("seed has 134 distinct titles with non-negative prices", () => {
-    expect(PIPELINE_SERVICES_SEED).toHaveLength(134);
-    expect(new Set(PIPELINE_SERVICES_SEED.map(([n]) => n.trim().toLowerCase())).size).toBe(134);
-    expect(PIPELINE_SERVICES_SEED.every(([, p]) => p >= 0)).toBe(true);
-  });
   it("categorizes representative items", () => {
     expect(categoryOf("Wedding Management")).toBe("Planning & coordination");
     expect(categoryOf("Transportation - Sedan Transportation")).toBe("Transportation & delivery");

@@ -3,14 +3,14 @@ import { AvErpPage } from "@/components/av-erp/av-erp-page";
 import { SerialsClient } from "@/components/av-erp/serials-client";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Serials — LRE AV" };
 
 export default async function AvSerialsPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const supabase = await createClient();
   const [unitsRes, productsRes] = await Promise.all([

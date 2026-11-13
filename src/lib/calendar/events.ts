@@ -2,12 +2,12 @@ import { createHash } from "crypto";
 import { unstable_cache } from "next/cache";
 import ical, { type VEvent } from "node-ical";
 import {
-  canonicalDjepCalendarUid,
-  extractDjepEventId,
-} from "@/lib/calendar/djep-event-id";
+  canonicalCalendarUid,
+  extractExternalEventId,
+} from "@/lib/calendar/external-event-id";
 
 export type CalendarRelatedFile = {
-  /** Display title from DJEP Related Files (e.g. "Planning Form"). */
+  /** Display title from planner Related Files (e.g. "Planning Form"). */
   title: string;
   url: string;
 };
@@ -15,7 +15,7 @@ export type CalendarRelatedFile = {
 export type CalendarEvent = {
   uid: string;
   /**
-   * "work" = DJEP company/staff feed.
+   * "work" = planner company/staff feed.
    * "timeoff" = approved staff time off.
    * "pipeline" = CRM projects (dated projects overlaid on the calendar).
    */
@@ -40,20 +40,20 @@ export type CalendarEvent = {
   venue: string | null;
   clientName: string | null;
   organization: string | null;
-  /** Freeform client contact line from DJEP DESCRIPTION, if present. */
+  /** Freeform client contact line from planner DESCRIPTION, if present. */
   clientContact: string | null;
   clientPhone: string | null;
   clientEmail: string | null;
   /**
-   * Links from DJEP DESCRIPTION when present (Related Files title+URL, or an
-   * Event Planning field that contains a URL). Real DJEP feeds often export
-   * `Event Planning:` with an empty value — planning forms live in DJEP, not
+   * Links from planner DESCRIPTION when present (Related Files title+URL, or an
+   * Event Planning field that contains a URL). Real planner feeds often export
+   * `Event Planning:` with an empty value — planning forms live in planner, not
    * as iCal links.
    */
   relatedFiles: CalendarRelatedFile[];
   /** Prefer a planning-titled link / Event Planning URL when the feed has one. */
   planningFormUrl: string | null;
-  /** Generic event URL from VEVENT, or built from DJEP UID EVENTID + feed host. */
+  /** Generic event URL from VEVENT, or built from planner UID EVENTID + feed host. */
   eventUrl: string | null;
   /** Wall-clock times from DESCRIPTION (e.g. "4:00 PM") */
   descriptionStartTime: string | null;
@@ -222,7 +222,7 @@ function isRelatedFilesLabel(normalized: string): boolean {
 }
 
 /**
- * DJEP iCal detail label for planning. Live feeds use plain "Event Planning:"
+ * planner iCal detail label for planning. Live feeds use plain "Event Planning:"
  * (often empty). Older/alternate configs may use "Event Planning #N".
  */
 export function isEventPlanningLabel(normalized: string): boolean {
@@ -236,7 +236,7 @@ export function isEventPlanningLabel(normalized: string): boolean {
 
 type ContactSection = "root" | "venue" | "client";
 
-/** Detect DJEP DESCRIPTION section headers (usually no trailing value). */
+/** Detect planner DESCRIPTION section headers (usually no trailing value). */
 export function contactSectionFromLine(line: string): ContactSection | null {
   const normalized = normalizeLabel(line.replace(/-+/g, " "));
   if (!normalized) return null;
@@ -360,7 +360,7 @@ function pushRelatedFile(
 }
 
 /**
- * Parse one Related Files value that may contain title + URL in common DJEP
+ * Parse one Related Files value that may contain title + URL in common planner
  * shapes: "Title - https://…", "Title|https://…", HTML anchors, or bare URL.
  */
 export function parseRelatedFileValue(
@@ -431,7 +431,7 @@ function labelKeyFromLine(line: string): string | null {
 }
 
 /**
- * Walk DESCRIPTION lines and collect DJEP Related Files / Event Planning
+ * Walk DESCRIPTION lines and collect planner Related Files / Event Planning
  * fields (title + URL), including multi-line label + URL-on-next-line.
  */
 export function parseRelatedFilesFromDescription(
@@ -580,11 +580,11 @@ function labelMatches(normalized: string, needles: string[]): boolean {
 }
 
 /**
- * DJEP SUMMARY is " - "-separated:
+ * planner SUMMARY is " - "-separated:
  * date - status - event type - assigned staff - (start - end) - venue - client [- org]
  * Only take the first four parts (they never contain " - " themselves).
  */
-export function parseDjepSummary(summary: string | null): SummaryFields {
+export function parseFeedSummary(summary: string | null): SummaryFields {
   const empty: SummaryFields = {
     date: null,
     status: null,
@@ -603,14 +603,14 @@ export function parseDjepSummary(summary: string | null): SummaryFields {
 }
 
 /**
- * DJEP DESCRIPTION is newline-separated "Label: value" pairs, plus section
+ * planner DESCRIPTION is newline-separated "Label: value" pairs, plus section
  * headers like "Client Contact Information" / "Venue Contact Information".
- * Values may be blank (e.g. "Event Name:", "Event Planning:"). Live DJEP
+ * Values may be blank (e.g. "Event Name:", "Event Planning:"). Live planner
  * feeds put client phone/email under the Client Contact section (Work/Cell/
  * Home Phone, Email) — not "Client Phone". Event Planning is usually empty
  * (planning forms are not exported as URLs).
  */
-export function parseDjepDescription(description: string | null): DescriptionFields {
+export function parseFeedDescription(description: string | null): DescriptionFields {
   const empty: DescriptionFields = {
     eventStartTime: null,
     eventEndTime: null,
@@ -845,21 +845,21 @@ export function displayTitleFromFields(fields: {
 }
 
 /**
- * DJEP ICS UIDs look like `EVENTID:146284`. Returns the numeric/string id, or null.
+ * planner ICS UIDs look like `EVENTID:146284`. Returns the numeric/string id, or null.
  * Also accepts bare numeric UIDs and `use_event=` / description "Event ID:" forms
  * when those strings are passed in.
  */
-export function parseDjepEventIdFromUid(
+export function parseEventIdFromUid(
   uid: string | null | undefined,
 ): string | null {
-  return extractDjepEventId(uid);
+  return extractExternalEventId(uid);
 }
 
 /**
- * Origin of the company iCal feed (e.g. https://youreventplanningsite.com).
- * Used to build per-event DJEP deep links.
+ * Origin of the company iCal feed (e.g. https://planner.example.com).
+ * Used to build per-event planner deep links.
  */
-export function djepOriginFromIcalUrl(
+export function originFromIcalUrl(
   icalUrl: string | null | undefined,
 ): string | null {
   if (!icalUrl?.trim()) return null;
@@ -878,24 +878,24 @@ export function djepOriginFromIcalUrl(
  * calendar). The logon form accepts
  * `clientlogon.asp?use_event={id}`.
  */
-export function buildDjepEventUrl(
+export function buildEventUrl(
   icalUrl: string | null | undefined,
   uid: string | null | undefined,
 ): string | null {
-  const eventId = parseDjepEventIdFromUid(uid);
-  const origin = djepOriginFromIcalUrl(icalUrl);
+  const eventId = parseEventIdFromUid(uid);
+  const origin = originFromIcalUrl(icalUrl);
   if (!eventId || !origin) return null;
   return `${origin}/clientlogon.asp?use_event=${encodeURIComponent(eventId)}`;
 }
 
 /**
- * DJEP “Time Off” iCal rows. Live All Staff feeds export these as:
+ * planner “Time Off” iCal rows. Live All Staff feeds export these as:
  *   UID: DAYSOFFID:{id}
  *   SUMMARY: Scheduled Day Off: {Employee Name}
  *   DESCRIPTION: Scheduled Day Off {Employee Name} - {reason}
  * (not the phrase “time off”, and not EVENTID work-event summaries).
  */
-export function isDjepTimeOffEvent(input: {
+export function isFeedTimeOffEvent(input: {
   eventType: string | null;
   status: string | null;
   summary: string | null;
@@ -940,16 +940,16 @@ export function isDjepTimeOffEvent(input: {
   ) {
     return true;
   }
-  // DESCRIPTION only for the explicit DJEP day-off lead-in.
+  // DESCRIPTION only for the explicit planner day-off lead-in.
   if (/^\s*scheduled\s+day\s+off\b/i.test(description)) return true;
   return false;
 }
 
 /**
- * Employee display name from a DJEP DAYSOFF / Time Off VEVENT.
+ * Employee display name from a planner DAYSOFF / Time Off VEVENT.
  * Examples: "Scheduled Day Off: Brandon Lettow" → "Brandon Lettow".
  */
-export function personNameFromDjepTimeOff(
+export function personNameFromFeedTimeOff(
   summary: string | null | undefined,
   description?: string | null,
 ): string | null {
@@ -980,7 +980,7 @@ export function personNameFromDjepTimeOff(
   return null;
 }
 
-/** True when end − start is an exact N-day span (DJEP DAYSOFF midnights). */
+/** True when end − start is an exact N-day span (planner DAYSOFF midnights). */
 export function isExactMultiDaySpan(
   start: Date,
   end: Date | null | undefined,
@@ -991,7 +991,7 @@ export function isExactMultiDaySpan(
 }
 
 /** Skip Time Off and other non-event calendar entries from the work feed. */
-export function shouldSkipDjepEvent(input: {
+export function shouldSkipFeedEvent(input: {
   eventType: string | null;
   status: string | null;
   summary: string | null;
@@ -999,17 +999,17 @@ export function shouldSkipDjepEvent(input: {
   uid?: string | null;
   categories?: string[] | string | null;
 }): boolean {
-  return isDjepTimeOffEvent(input);
+  return isFeedTimeOffEvent(input);
 }
 
-/** Absence row extracted from a DJEP iCal Time Off / PTO VEVENT. */
-export type DjepTimeOffAbsence = {
+/** Absence row extracted from a planner iCal Time Off / PTO VEVENT. */
+export type FeedTimeOffAbsence = {
   uid: string;
   /** Inclusive local YYYY-MM-DD */
   startDate: string;
   /** Inclusive local YYYY-MM-DD */
   endDate: string;
-  /** Raw DJEP event type / label when present */
+  /** Raw planner event type / label when present */
   eventType: string | null;
   /** Staff name(s) from SUMMARY assigned-staff slot or related fields */
   assignedStaff: string | null;
@@ -1027,7 +1027,7 @@ function dateKeyFromLocalDate(d: Date): string {
  * Inclusive local date keys for a VEVENT. All-day DTEND is treated as exclusive
  * (ICS convention), so the last included day is the day before end.
  */
-export function djepAbsenceDateRange(
+export function feedAbsenceDateRange(
   start: Date,
   end: Date | null,
   allDay: boolean,
@@ -1051,7 +1051,7 @@ export function djepAbsenceDateRange(
   };
 }
 
-function mapDjepEventTypeToHint(eventType: string | null): string | null {
+function mapFeedEventTypeToHint(eventType: string | null): string | null {
   if (!eventType?.trim()) return null;
   const t = eventType.trim().toLowerCase();
   if (t.includes("vacation") || t.includes("pto") || t.includes("holiday")) {
@@ -1064,16 +1064,16 @@ function mapDjepEventTypeToHint(eventType: string | null): string | null {
 }
 
 /**
- * Parse company (or dedicated) DJEP ICS into work events + time-off absences.
+ * Parse company (or dedicated) planner ICS into work events + time-off absences.
  * One download; callers partition for calendar vs staffing.
  */
-export async function fetchDjepIcalPartition(icalUrl: string): Promise<{
+export async function fetchIcalPartition(icalUrl: string): Promise<{
   workEvents: CalendarEvent[];
-  timeOff: DjepTimeOffAbsence[];
+  timeOff: FeedTimeOffAbsence[];
 }> {
   const data = await fetchIcsData(icalUrl);
   const workEvents: CalendarEvent[] = [];
-  const timeOff: DjepTimeOffAbsence[] = [];
+  const timeOff: FeedTimeOffAbsence[] = [];
 
   for (const item of Object.values(data)) {
     if (!item || typeof item !== "object") continue;
@@ -1085,9 +1085,9 @@ export async function fetchDjepIcalPartition(icalUrl: string): Promise<{
 
     const end = toDate(vevent.end as Date | string | undefined);
     const summaryText = parameterText(vevent.summary);
-    const summary = parseDjepSummary(summaryText);
+    const summary = parseFeedSummary(summaryText);
     const descriptionText = parameterText(vevent.description);
-    const description = parseDjepDescription(descriptionText);
+    const description = parseFeedDescription(descriptionText);
     const contact = parseVEventContact(parameterText(vevent.contact));
     const allDay = isAllDay(start, vevent);
     const uid =
@@ -1110,27 +1110,27 @@ export async function fetchDjepIcalPartition(icalUrl: string): Promise<{
       categories,
     };
 
-    if (isDjepTimeOffEvent(skipInput)) {
+    if (isFeedTimeOffEvent(skipInput)) {
       if (!withinWindow(start.toISOString())) continue;
-      // DJEP DAYSOFF rows use midnight→midnight date-times (datetype
+      // planner DAYSOFF rows use midnight→midnight date-times (datetype
       // date-time), which ICS treats like all-day with an exclusive end.
       const exclusiveEnd =
         allDay || isExactMultiDaySpan(start, end);
-      const { startDate, endDate } = djepAbsenceDateRange(
+      const { startDate, endDate } = feedAbsenceDateRange(
         start,
         end,
         exclusiveEnd,
       );
       const assigned =
-        personNameFromDjepTimeOff(summaryText, descriptionText) ||
+        personNameFromFeedTimeOff(summaryText, descriptionText) ||
         summary.assignedStaff ||
         description.clientName ||
         description.clientContact ||
         null;
-      // Prefer an explicit type from the SUMMARY event-type slot; DJEP DAYSOFF
+      // Prefer an explicit type from the SUMMARY event-type slot; planner DAYSOFF
       // rows usually omit it — Staffing labels those as unavailable.
       const leaveType =
-        mapDjepEventTypeToHint(summary.eventType) ||
+        mapFeedEventTypeToHint(summary.eventType) ||
         (summary.eventType &&
         !/^(?:scheduled\s+)?(?:day|time)\s+off\b/i.test(summary.eventType)
           ? summary.eventType
@@ -1168,23 +1168,23 @@ export async function fetchDjepIcalPartition(icalUrl: string): Promise<{
       (veventUrl && isPlanningFormUrl(veventUrl) ? veventUrl : null) ||
       pickPlanningFormUrl([], extractAllHttpUrls(descriptionText));
 
-    // Prefer a canonical EVENTID:{n} uid when DJEP exposes the id in UID,
+    // Prefer a canonical EVENTID:{n} uid when planner exposes the id in UID,
     // DESCRIPTION ("Event ID: …"), or URL (use_event=). Keeps packets aligned
     // with website review Event_ID values.
-    const resolvedEventId = extractDjepEventId(
+    const resolvedEventId = extractExternalEventId(
       uid,
       descriptionText,
       veventUrl,
       summaryText,
     );
     const canonicalUid = resolvedEventId
-      ? canonicalDjepCalendarUid(resolvedEventId)
+      ? canonicalCalendarUid(resolvedEventId)
       : uid;
 
-    const builtDjepUrl = buildDjepEventUrl(icalUrl, canonicalUid);
+    const builtEventUrl = buildEventUrl(icalUrl, canonicalUid);
     const eventUrl =
       (veventUrl && veventUrl !== planningFormUrl ? veventUrl : null) ||
-      (builtDjepUrl && builtDjepUrl !== planningFormUrl ? builtDjepUrl : null);
+      (builtEventUrl && builtEventUrl !== planningFormUrl ? builtEventUrl : null);
 
     workEvents.push({
       uid: canonicalUid,
@@ -1287,31 +1287,31 @@ export async function fetchCompanyCalendarEvents(
  * Cache key is a hash of the URL so the raw feed URL is never embedded in
  * logs as a plaintext cache key.
  */
-export function getCachedDjepIcalPartition(icalUrl: string) {
+export function getCachedIcalPartition(icalUrl: string) {
   const urlHash = createHash("sha256")
     .update(icalUrl)
     .digest("hex")
     .slice(0, 24);
 
   return unstable_cache(
-    async () => fetchDjepIcalPartition(icalUrl),
-    ["djep-ical-partition-v3-24m", urlHash],
-    { revalidate: CACHE_SECONDS, tags: ["company-ical", "djep-ical"] },
+    async () => fetchIcalPartition(icalUrl),
+    ["ical-partition-v4-24m", urlHash],
+    { revalidate: CACHE_SECONDS, tags: ["company-ical", "ical-feed"] },
   )();
 }
 
-export function getCachedDjepCalendarEvents(icalUrl: string) {
+export function getCachedFeedCalendarEvents(icalUrl: string) {
   // Shared Google feeds use the generic parser (SUMMARY as title).
   return getCachedGenericIcalEvents(icalUrl, "work");
 }
 
-export function getCachedDjepTimeOffAbsences(icalUrl: string) {
-  return getCachedDjepIcalPartition(icalUrl).then((p) => p.timeOff);
+export function getCachedFeedTimeOffAbsences(icalUrl: string) {
+  return getCachedIcalPartition(icalUrl).then((p) => p.timeOff);
 }
 
 /**
  * Generic ICS → CalendarEvent (Google Calendar, etc.).
- * Uses SUMMARY as the title — unlike the DJEP parser, which expects
+ * Uses SUMMARY as the title — unlike the planner parser, which expects
  * "date - status - type - staff" summaries.
  */
 export async function fetchGenericIcalEvents(
@@ -1388,7 +1388,7 @@ export function getCachedGenericIcalEvents(
   )();
 }
 
-/** @deprecated Prefer getCachedDjepCalendarEvents */
+/** @deprecated Prefer getCachedFeedCalendarEvents */
 export function getCachedCompanyCalendarEvents(icalUrl: string) {
-  return getCachedDjepCalendarEvents(icalUrl);
+  return getCachedFeedCalendarEvents(icalUrl);
 }

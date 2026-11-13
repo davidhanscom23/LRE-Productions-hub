@@ -2,7 +2,7 @@
 import type { ChecklistHistoryRow, ChecklistItem, Checklist } from "../types";
 import type { NewOp, QueuedOp } from "./ops";
 
-const DB_NAME = "vident-checklist-offline";
+const DB_NAME = "lre-checklist-offline";
 const DB_VERSION = 1;
 
 export type Snapshot = {

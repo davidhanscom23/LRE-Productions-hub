@@ -14,7 +14,7 @@ export const DRIVE_ROOT_FOLDER_SETTING_KEY = "google_drive_root_folder_id";
  * an admin override or GOOGLE_DRIVE_ROOT_FOLDER_ID points elsewhere.
  * https://drive.google.com/drive/folders/1m3XSbIg6_3_GN431KH2Iw7hjQsr_VgWF
  */
-export const DEFAULT_VIDENT_DRIVE_ROOT_FOLDER_ID =
+export const DEFAULT_DRIVE_ROOT_FOLDER_ID =
   "1m3XSbIg6_3_GN431KH2Iw7hjQsr_VgWF";
 
 export type DriveRootFolderSource = "env" | "app_settings" | "default";
@@ -82,7 +82,7 @@ export async function resolveDriveRootFolderId(): Promise<{
     return { rootFolderId: fromEnv, source: "env" };
   }
   return {
-    rootFolderId: DEFAULT_VIDENT_DRIVE_ROOT_FOLDER_ID,
+    rootFolderId: DEFAULT_DRIVE_ROOT_FOLDER_ID,
     source: "default",
   };
 }

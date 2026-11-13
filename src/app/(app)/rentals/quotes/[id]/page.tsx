@@ -35,7 +35,7 @@ import { isGeminiConfigured } from "@/lib/gemini/credentials";
 import { canManagePipelineCrm } from "@/lib/pipeline/access";
 import { mergeCategories } from "@/lib/services-catalog/category-list";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 const AV_OPP_MEDIA_BUCKET = "av-opportunity-media";
 const SIGNED_URL_TTL_SEC = 60 * 60;
@@ -50,7 +50,7 @@ export default async function AvQuoteDetailPage({ params }: Props) {
   const { id } = await params;
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const supabase = await createClient();
   let { data: opportunity, error } = await supabase

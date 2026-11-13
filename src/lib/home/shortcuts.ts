@@ -2,7 +2,7 @@ export type ShortcutGate =
   | ""
   | "admin"
   | "calendar"
-  | "videntav"
+  | "av"
   | "meetings"
   | "marketing"
   | "handbook";
@@ -17,7 +17,7 @@ export type ShortcutDef = {
 export type ShortcutAccess = {
   isAdmin: boolean;
   showCalendar: boolean;
-  showVidentAv: boolean;
+  showAv: boolean;
   showMarketing: boolean;
   showHandbook: boolean;
 };
@@ -37,7 +37,7 @@ export const SHORTCUT_DEFS: ShortcutDef[] = [
   { href: "/announcements", label: "Announcements", description: "Company notices.", gate: "" },
   { href: "/kudos", label: "Kudos", description: "Recognize a teammate.", gate: "" },
   { href: "/polls", label: "Polls", description: "Quick team polls.", gate: "" },
-  { href: "/rentals", label: "LRE AV", description: "Hub AV quotes, warehouse, invoices & reports.", gate: "videntav" },
+  { href: "/rentals", label: "LRE AV", description: "Hub AV quotes, warehouse, invoices & reports.", gate: "av" },
   { href: "/teams", label: "Teams", description: "Audiovisual, Corporate, Wedding & Social, and Golf.", gate: "" },
   { href: "/people", label: "People", description: "Profiles, contacts & departments.", gate: "" },
   { href: "/directory", label: "Directory", description: "Company org chart.", gate: "" },
@@ -63,8 +63,8 @@ export const SHORTCUT_DEFS: ShortcutDef[] = [
   { href: "/staffing", label: "Staffing", description: "Coverage & availability board.", gate: "marketing" },
   { href: "/onboarding", label: "Onboarding", description: "New-hire checklists.", gate: "marketing" },
   { href: "/reports", label: "Reports", description: "Admin snapshot.", gate: "admin" },
-  { href: "/av-portals", label: "AV Event Portals", description: "Client planning links for AV shows.", gate: "videntav" },
-  { href: "/av-show", label: "AV Show Control", description: "Screens and lower thirds for live shows.", gate: "videntav" },
+  { href: "/av-portals", label: "AV Event Portals", description: "Client planning links for AV shows.", gate: "av" },
+  { href: "/av-show", label: "AV Show Control", description: "Screens and lower thirds for live shows.", gate: "av" },
   { href: "/venue-quotes", label: "Venue Quotes", description: "Public instant-quote pages.", gate: "marketing" },
   // Added Nov 2026 so every LRE Hub module in the sidebar can be pinned.
   { href: "/tools", label: "Tools", description: "Every Hub module, grouped by what you need to do.", gate: "" },
@@ -86,25 +86,25 @@ export const SHORTCUT_DEFS: ShortcutDef[] = [
   { href: "/hub-switcher", label: "Hub Switcher", description: "Choose who sees which hub.", gate: "admin" },
   { href: "/hub-health", label: "Hub Health", description: "Checks and errors.", gate: "admin" },
   { href: "/page-map", label: "Page Map", description: "Every page in the hub and who can open it.", gate: "admin" },
-  { href: "/rentals/quotes", label: "AV Estimates", description: "Hub opportunities, holds, estimates, and share links.", gate: "videntav" },
-  { href: "/rentals/invoices", label: "AV Invoices", description: "Draft, send, and collect on Hub AV invoices.", gate: "videntav" },
-  { href: "/rentals/costs", label: "AV Costs", description: "Job costs and margin vs revenue.", gate: "videntav" },
-  { href: "/rentals/reports", label: "AV Reports", description: "Profit, AR, pipeline, gear, crew, and stock reports.", gate: "videntav" },
-  { href: "/rentals/developer", label: "AV Developer", description: "Terminal Mode API keys for Claude or scripts.", gate: "videntav" },
-  { href: "/rentals/warehouse", label: "AV Warehouse", description: "Check gear out and back for reserved jobs.", gate: "videntav" },
-  { href: "/rentals/stock", label: "AV Stock", description: "Owned qty minus gear currently out.", gate: "videntav" },
-  { href: "/rentals/calendar", label: "AV Gear Calendar", description: "Month view of gear out and back windows.", gate: "videntav" },
-  { href: "/rentals/planner", label: "AV Planner", description: "Four-week bars for open AV jobs.", gate: "videntav" },
-  { href: "/rentals/travel", label: "AV Travel", description: "Leave and return runs for one day.", gate: "videntav" },
-  { href: "/rentals/activities", label: "AV Activities", description: "Pre-job tasks due before gear out.", gate: "videntav" },
-  { href: "/rentals/customers", label: "AV Customers", description: "Hub-owned AV rental customers.", gate: "videntav" },
-  { href: "/rentals/venues", label: "AV Venues", description: "Job venues for AV quotes and orders.", gate: "videntav" },
-  { href: "/rentals/suppliers", label: "AV Suppliers", description: "Vendors and sub-hire for AV jobs.", gate: "videntav" },
-  { href: "/rentals/crew", label: "AV Crew", description: "Book people onto jobs with role and day rate.", gate: "videntav" },
-  { href: "/rentals/contractors", label: "AV Contractors", description: "External freelancers for crew bookings.", gate: "videntav" },
-  { href: "/rentals/serials", label: "AV Serials", description: "Serialized asset units and barcodes.", gate: "videntav" },
-  { href: "/rentals/templates", label: "AV Templates", description: "Estimate and invoice terms templates.", gate: "videntav" },
-  { href: "/rentals/catalog", label: "AV Catalog", description: "Products, packages, services, Comes with, and Duplicate.", gate: "videntav" },
+  { href: "/rentals/quotes", label: "AV Estimates", description: "Hub opportunities, holds, estimates, and share links.", gate: "av" },
+  { href: "/rentals/invoices", label: "AV Invoices", description: "Draft, send, and collect on Hub AV invoices.", gate: "av" },
+  { href: "/rentals/costs", label: "AV Costs", description: "Job costs and margin vs revenue.", gate: "av" },
+  { href: "/rentals/reports", label: "AV Reports", description: "Profit, AR, pipeline, gear, crew, and stock reports.", gate: "av" },
+  { href: "/rentals/developer", label: "AV Developer", description: "Terminal Mode API keys for Claude or scripts.", gate: "av" },
+  { href: "/rentals/warehouse", label: "AV Warehouse", description: "Check gear out and back for reserved jobs.", gate: "av" },
+  { href: "/rentals/stock", label: "AV Stock", description: "Owned qty minus gear currently out.", gate: "av" },
+  { href: "/rentals/calendar", label: "AV Gear Calendar", description: "Month view of gear out and back windows.", gate: "av" },
+  { href: "/rentals/planner", label: "AV Planner", description: "Four-week bars for open AV jobs.", gate: "av" },
+  { href: "/rentals/travel", label: "AV Travel", description: "Leave and return runs for one day.", gate: "av" },
+  { href: "/rentals/activities", label: "AV Activities", description: "Pre-job tasks due before gear out.", gate: "av" },
+  { href: "/rentals/customers", label: "AV Customers", description: "Hub-owned AV rental customers.", gate: "av" },
+  { href: "/rentals/venues", label: "AV Venues", description: "Job venues for AV quotes and orders.", gate: "av" },
+  { href: "/rentals/suppliers", label: "AV Suppliers", description: "Vendors and sub-hire for AV jobs.", gate: "av" },
+  { href: "/rentals/crew", label: "AV Crew", description: "Book people onto jobs with role and day rate.", gate: "av" },
+  { href: "/rentals/contractors", label: "AV Contractors", description: "External freelancers for crew bookings.", gate: "av" },
+  { href: "/rentals/serials", label: "AV Serials", description: "Serialized asset units and barcodes.", gate: "av" },
+  { href: "/rentals/templates", label: "AV Templates", description: "Estimate and invoice terms templates.", gate: "av" },
+  { href: "/rentals/catalog", label: "AV Catalog", description: "Products, packages, services, Comes with, and Duplicate.", gate: "av" },
 ];
 
 export const DEFAULT_SHORTCUT_HREFS: string[] = [
@@ -125,8 +125,8 @@ export function isShortcutAccessible(
       return a.isAdmin;
     case "calendar":
       return a.showCalendar;
-    case "videntav":
-      return a.showVidentAv;
+    case "av":
+      return a.showAv;
     case "marketing":
       return a.showMarketing;
     case "handbook":

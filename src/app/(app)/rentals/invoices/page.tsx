@@ -4,7 +4,7 @@ import { InvoicesListClient } from "@/components/av-erp/invoices-list-client";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import type { AvInvoice } from "@/lib/av-erp/types";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Invoices — LRE AV" };
 
@@ -13,7 +13,7 @@ type Props = { searchParams: Promise<{ status?: string }> };
 export default async function AvInvoicesPage({ searchParams }: Props) {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const { status: statusRaw } = await searchParams;
   const initialFilter =

@@ -63,3 +63,12 @@ The handbook and agreements are not stored in the database (0 handbook rows, 0 d
 1. Items 14, 15, 20, 21, 22: nothing should be signed with Florida terms. Send the contracts and handbook to the Rhode Island attorney.
 2. Items 1, 3, 5, 6, 7: you and Luke decide the money rules. Items 7 and 8 disagree with each other today (balance after the event vs. 30 days before), so pick one for LRE.
 3. Items 24 to 32: I can clean these up in one pass once you say go. It touches about 30 files, mostly wording.
+
+
+## Update, Nov 13, 2026: wording cleanup round 2
+
+Done in code: Florida law and venue now read Rhode Island in the contract terms, handbook and the three agreements. The Florida travel counties, the Florida driver's license rule, DJEP names, Vident function names, the second inquiry form and the starter services button are all changed or removed.
+
+**Still needs the Rhode Island attorney (items 14, 15, 20, 21, 22):** the new Rhode Island wording is a plain swap, not legal advice. The handbook covenant still carries the $10,000 liquidated damages clause. Do not sign with these terms until the attorney has read them.
+
+One Vident word stays on purpose: the saved audience value `vident-av` in the database. Renaming it needs a migration and does nothing staff can see.

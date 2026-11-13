@@ -135,7 +135,7 @@ export const TRAINING_AGREEMENT = {
       blocks: [
         {
           paragraphs: [
-            "This Agreement is governed by the laws of the State of Florida. Any disputes shall be resolved in the courts of St. Johns County, Florida.",
+            "This Agreement is governed by the laws of the State of Rhode Island. Any disputes shall be resolved in the state or federal courts located in Rhode Island.",
           ],
         },
       ],

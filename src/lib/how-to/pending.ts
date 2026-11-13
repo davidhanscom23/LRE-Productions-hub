@@ -16,4 +16,10 @@ export type PendingHowToVideo = {
   since: string;
 };
 
-export const PENDING_HOW_TO_VIDEOS: PendingHowToVideo[] = [];
+export const PENDING_HOW_TO_VIDEOS: PendingHowToVideo[] = [
+  {
+    route: "/services",
+    reason: "The Import from Pipeline button was removed; services are now added one at a time with + Add service.",
+    since: "2026-11-13",
+  },
+];

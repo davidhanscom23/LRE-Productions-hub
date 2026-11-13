@@ -27,7 +27,7 @@ Each staff-facing module has a short how-to video (registry: `src/lib/how-to/vid
 1. Record or update the module's video, or — if no HeyGen browser is available — add an entry to `PENDING_HOW_TO_VIDEOS` in `src/lib/how-to/pending.ts` and tell David "video owed: <route>". When he says "make the pending videos", build them.
 2. Keep the script in sync with the module's Ask the Hub guide (`src/lib/kb/hub-feature-articles.ts`).
 3. After any registry change run `python3 scripts/gen-howto-course.py` and paste the SQL it writes (`supabase/migrations/169_howto_video_course.sql`) inline in your reply — never just the file name.
-4. Admin-only modules get a video too, with `audience: "admin"` (shown to admins only). Pages limited to a department or role (for example Vident AV) must set `audience` so the link and the course lesson only show to people who can open the page.
+4. Admin-only modules get a video too, with `audience: "admin"` (shown to admins only). Pages limited to a department or role (for example LRE AV) must set `audience` so the link and the course lesson only show to people who can open the page.
 5. Keep this separate from every other hub: the LRE repo, Supabase project and Vercel project only.
 
 ## Tools page (required for every new Hub module)
@@ -35,7 +35,7 @@ Each staff-facing module has a short how-to video (registry: `src/lib/how-to/vid
 Whenever you add a **user-facing Hub module** staff should open from the app:
 
 1. Add it to `NAV_GROUPS` in `src/components/layout/sidebar.tsx` with the right access flag.
-2. Set **`toolsCategory`** on that nav item (`me` | `events` | `vident-av` | `quotes` | `staffing` | `people` | `learn` | `marketing` | `comms` | `admin`). The Tools page groups by this field automatically — do not maintain a separate Tools href list.
+2. Set **`toolsCategory`** on that nav item (`me` | `events` | `av` | `quotes` | `staffing` | `people` | `learn` | `marketing` | `comms` | `admin`). The Tools page groups by this field automatically — do not maintain a separate Tools href list.
 3. Add a one-line description in `EXTRA_DESCRIPTIONS` (`src/lib/tools/catalog.ts`) unless a home shortcut already covers it.
 4. Add a top-search entry in `src/lib/search/nav-targets.ts` when discovery matters.
 5. Add the module's href to `TOOL_ADDED_ON` in `src/lib/tools/catalog.ts` with today's date so its Tools tile shows a NEW tag for anyone who has not visited the Hub since then (it clears per device once opened).

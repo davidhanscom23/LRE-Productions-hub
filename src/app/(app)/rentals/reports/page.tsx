@@ -4,14 +4,14 @@ import { ReportsClient } from "@/components/av-erp/reports-client";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { loadAvReports } from "@/lib/av-erp/reports";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Reports — LRE AV" };
 
 export default async function AvReportsPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const supabase = await createClient();
   let data;

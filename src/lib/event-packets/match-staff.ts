@@ -10,7 +10,7 @@ function escapeRegExp(value: string): string {
 }
 
 /**
- * Split DJEP / sheet assigned-staff text into candidate name tokens.
+ * Split planner / sheet assigned-staff text into candidate name tokens.
  * Handles "Alex & Jordan", "Alex, Jordan", "Alex / Jordan", and website
  * sheet style "David; Hector".
  */
@@ -23,7 +23,7 @@ export function splitAssignedStaff(assignedStaff: string | null | undefined): st
 }
 
 /**
- * Match DJEP assigned-staff text to Hub profiles (full name, then first name).
+ * Match planner assigned-staff text to Hub profiles (full name, then first name).
  * Returns unique matched profiles, longest full-name wins per token.
  */
 export function matchAssignedStaffProfiles(

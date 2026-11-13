@@ -7,24 +7,24 @@ export type StaffingPerson = {
   departments: string[];
 };
 
-export type TimeOffSource = "hub" | "djep";
+export type TimeOffSource = "hub" | "feed";
 
 export type DayCoverage = {
   dateKey: string;
   weekdayKey: string;
   weekdayLabel: string;
-  /** Active staff not on Hub or DJEP time off for this day. */
+  /** Active staff not on Hub or planner time off for this day. */
   available: StaffingPerson[];
   onTimeOff: {
     person: StaffingPerson;
     type: TimeOffType;
-    /** Where the absence was found — Hub, DJEP, or both (de-duped to one row). */
+    /** Where the absence was found — Hub, planner, or both (de-duped to one row). */
     sources: TimeOffSource[];
     /** Hub time_off_requests.id when Hub contributes to this row. */
     hubRequestId: string | null;
     /**
      * True when admins can clear this Hub mark from Staffing (single-day Hub
-     * request for this date). DJEP-only rows are not clearable here.
+     * request for this date). planner-only rows are not clearable here.
      */
     clearable: boolean;
   }[];

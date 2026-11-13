@@ -4,14 +4,14 @@ import { QuotesListClient } from "@/components/av-erp/quotes-list-client";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import type { AvOpportunity } from "@/lib/av-erp/types";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Estimates — LRE AV" };
 
 export default async function AvQuotesPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const supabase = await createClient();
   const { data, error } = await supabase

@@ -12,7 +12,7 @@
 export type ToolsCategoryId =
   | "me"
   | "events"
-  | "vident-av"
+  | "av"
   | "quotes"
   | "staffing"
   | "people"
@@ -32,7 +32,7 @@ export type ToolCategory = {
 export const TOOL_CATEGORIES: ToolCategory[] = [
   { id: "me", title: "FOR ME", hue: 38 },
   { id: "events", title: "EVENTS & PRODUCTION", hue: 32 },
-  { id: "vident-av", title: "LRE AV", hue: 24 },
+  { id: "av", title: "LRE AV", hue: 24 },
   { id: "quotes", title: "QUOTES & PROPOSALS", hue: 172 },
   { id: "staffing", title: "STAFFING & PAY", hue: 140 },
   { id: "people", title: "PEOPLE & CULTURE", hue: 262 },

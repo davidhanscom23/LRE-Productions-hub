@@ -60,7 +60,7 @@ function buildPrompt(context: CaptionPacketContext): string {
 Brand: ${COMPANY.displayName}
 Handle: ${COMPANY.socialHandle}
 Website: ${COMPANY.website}
-Service area: use the event venue's location when it is obvious; do not invent a city.
+Service area: LRE serves Newport, Providence, Boston, Plymouth, Martha's Vineyard and surrounding New England. Use the event venue's location when it is obvious; do not invent a city.
 
 ${eventFactsBlock(context)}
 

@@ -85,7 +85,7 @@ type HomeWelcomeProps = {
   weather: HubWeather | null;
   isAdmin?: boolean;
   showCalendar?: boolean;
-  showVidentAv?: boolean;
+  showAv?: boolean;
   showMarketing?: boolean;
   showHandbook?: boolean;
   /** The user's saved shortcut hrefs in order, or null to use the default set. */
@@ -218,7 +218,7 @@ export function HomeWelcome({
   weather,
   isAdmin = false,
   showCalendar = false,
-  showVidentAv = false,
+  showAv = false,
   showMarketing = false,
   showHandbook = false,
   pinnedHrefs = null,
@@ -237,14 +237,14 @@ export function HomeWelcome({
     () => ({
       isAdmin,
       showCalendar,
-      showVidentAv,
+      showAv,
       showMarketing,
       showHandbook,
     }),
     [
       isAdmin,
       showCalendar,
-      showVidentAv,
+      showAv,
       showMarketing,
       showHandbook,
     ],

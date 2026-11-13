@@ -40,7 +40,7 @@ export type EventExternalReviewSyncResult = {
   calendarFeedsScanned: number;
   /** Work events loaded from those feeds. */
   calendarEventsLoaded: number;
-  /** Distinct DJEP Event IDs found on the calendar feeds. */
+  /** Distinct planner Event IDs found on the calendar feeds. */
   calendarEventIdsFound: number;
   /** Review Event_IDs that also appeared on a calendar feed. */
   reviewIdsOnCalendar: number;
@@ -55,8 +55,8 @@ export type EventExternalReviewSyncResult = {
   error: string | null;
 };
 
-/** Normalize sheet Event_ID / packet calendar_uid to digits-only DJEP id. */
-export function normalizeDjepEventId(
+/** Normalize sheet Event_ID / packet calendar_uid to digits-only planner id. */
+export function normalizeExternalEventId(
   raw: string | null | undefined,
 ): string | null {
   if (!raw?.trim()) return null;
@@ -73,11 +73,11 @@ export function calendarUidFromEventId(eventId: string): string {
   return `EVENTID:${eventId}`;
 }
 
-/** True when a packet calendar_uid refers to the same DJEP event id. */
+/** True when a packet calendar_uid refers to the same planner event id. */
 export function calendarUidMatchesEventId(
   calendarUid: string | null | undefined,
   eventId: string,
 ): boolean {
-  const normalized = normalizeDjepEventId(calendarUid);
+  const normalized = normalizeExternalEventId(calendarUid);
   return normalized != null && normalized === eventId;
 }

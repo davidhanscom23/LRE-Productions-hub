@@ -29,7 +29,7 @@ export default async function StaffingPage({ searchParams }: Props) {
     /^\d{4}-\d{2}-\d{2}$/.test(fromRaw) ? fromRaw : undefined;
 
   const supabase = await createClient();
-  const { days, icalConfigured, icalError, unmatchedDjepTimeOff } =
+  const { days, icalConfigured, icalError, unmatchedFeedTimeOff } =
     await buildStaffingCoverage(supabase, {
       days: dayCount,
       fromDate,
@@ -42,7 +42,7 @@ export default async function StaffingPage({ searchParams }: Props) {
       fromDate={fromDate ?? days[0]?.dateKey ?? null}
       icalConfigured={icalConfigured}
       icalError={icalError}
-      unmatchedDjepTimeOff={unmatchedDjepTimeOff}
+      unmatchedFeedTimeOff={unmatchedFeedTimeOff}
       canEdit={profile.role === "admin" || profile.role === "trainer"}
       isAdmin={profile.role === "admin"}
     />

@@ -129,7 +129,7 @@ export async function saveWorkIcalUrlAction(
 
   revalidateTag("work-ical", "max");
   revalidateTag("company-ical", "max");
-  revalidateTag("djep-ical", "max");
+  revalidateTag("ical-feed", "max");
   revalidatePath("/calendar");
   revalidatePath("/my-week");
   revalidatePath("/teams");
@@ -157,7 +157,7 @@ export async function clearWorkIcalUrlAction(): Promise<{
 
   revalidateTag("work-ical", "max");
   revalidateTag("company-ical", "max");
-  revalidateTag("djep-ical", "max");
+  revalidateTag("ical-feed", "max");
   revalidatePath("/calendar");
   revalidatePath("/my-week");
   revalidatePath("/teams");
