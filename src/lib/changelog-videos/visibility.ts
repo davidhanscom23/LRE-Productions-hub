@@ -14,7 +14,7 @@
  *    Audiovisual department); audience "lead" videos are for admins and Leads
  *    (role trainer)
  */
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 import type { Profile } from "@/lib/types/database";
 
 export const NEW_HIRE_WINDOW_DAYS = 60;
@@ -57,7 +57,7 @@ export function canSeeChangelogVideo(
   if (!viewer) return false;
   if (viewer.role === "admin") return true;
   if (video.status !== "live") return false;
-  if (video.audience === "vident-av" && !canAccessVidentAv(viewer)) return false;
+  if (video.audience === "vident-av" && !canAccessAv(viewer)) return false;
   if (video.audience === "lead" && viewer.role !== "trainer") return false;
   const cutoff = newHireCutoff(viewer.start_date);
   return cutoff === null || video.period_end >= cutoff;

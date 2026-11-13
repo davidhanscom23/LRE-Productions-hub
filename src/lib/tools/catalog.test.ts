@@ -31,11 +31,11 @@ describe("tools catalog ↔ nav placement", () => {
   });
 
   it("lists every LRE AV nav item under vident-av (incl. Developer)", () => {
-    const avNav = allNav.filter((i) => i.videntAvAccess);
+    const avNav = allNav.filter((i) => i.avAccess);
     expect(avNav.length).toBeGreaterThanOrEqual(18);
     for (const item of avNav) {
       expect(item.toolsCategory, `${item.href} missing toolsCategory`).toBe(
-        "vident-av" satisfies ToolsCategoryId,
+        "av" satisfies ToolsCategoryId,
       );
     }
     expect(
@@ -48,7 +48,7 @@ describe("tools catalog ↔ nav placement", () => {
     expect(TOOL_CATEGORIES.map((c) => c.id)).toEqual([
       "me",
       "events",
-      "vident-av",
+      "av",
       "quotes",
       "staffing",
       "people",

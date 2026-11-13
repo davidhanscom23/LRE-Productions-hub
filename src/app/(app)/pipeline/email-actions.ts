@@ -49,7 +49,7 @@ export async function sendProjectEmailAction(input: {
   }
 
   const signature = `\n\n--\n${profile.full_name ?? "LRE Productions"}\nLRE Productions`;
-  const hasSignature = /vident productions\s*$/i.test(body);
+  const hasSignature = /lre productions\s*$/i.test(body);
   const text = hasSignature ? body : body + signature;
   const result = await sendEmailDetailed({
     to: valid,

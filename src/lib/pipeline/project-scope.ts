@@ -4,7 +4,7 @@ export type ProjectScope = "mine" | "everyone";
 /** Person filter values: "" = anyone, "unassigned", or a profile id. */
 export const UNASSIGNED_FILTER = "unassigned";
 
-export const PROJECT_SCOPE_STORAGE_KEY = "vident-pipeline-project-scope-v1";
+export const PROJECT_SCOPE_STORAGE_KEY = "lre-pipeline-project-scope-v1";
 
 type WithAssignees = { assignees?: { profile_id: string }[] | null };
 

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { createServiceClient } from "@/lib/supabase/admin";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 import { FILE_KEY_LABEL } from "@/lib/av-portals/items";
 import { formatEventDate, portalUrl, showFileNumber } from "@/lib/av-portals/emails";
 import { PORTAL_BUCKET, fetchPortalById, fetchPortalState } from "@/lib/av-portals/server";
@@ -17,7 +17,7 @@ export default async function AvPortalDetailPage({ params }: Props) {
   const { id } = await params;
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/");
+  if (!canAccessAv(profile)) redirect("/");
 
   const portal = await fetchPortalById(id);
   if (!portal) notFound();

@@ -3,7 +3,7 @@ import "server-only";
 import {
   COMPANY_ICAL_SETTING_KEY,
   WORK_ICAL_SETTING_KEY,
-  getCachedDjepCalendarEvents,
+  getCachedFeedCalendarEvents,
 } from "@/lib/calendar/events";
 import { withHubAssignments } from "@/lib/calendar/load-assignments";
 import {
@@ -80,7 +80,7 @@ export async function runCompanyPacketAutoSync(options?: {
   }
 
   try {
-    const rawEvents = await getCachedDjepCalendarEvents(icalUrl);
+    const rawEvents = await getCachedFeedCalendarEvents(icalUrl);
     const events = await withHubAssignments(supabase, rawEvents);
     const result = await syncPacketsFromEvents({
       supabase,

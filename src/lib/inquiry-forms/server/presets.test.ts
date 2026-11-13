@@ -13,8 +13,8 @@ import {
   DEFAULT_BRAND_KEY,
   HUB_BUSINESS_DEFAULTS,
   STARTER_FORMS,
-  VIDENT_BRONZE,
-  VIDENT_BRONZE_AA,
+  LRE_RED,
+  LRE_RED_AA,
 } from "./presets";
 
 function byKey(fields: FieldDef[], key: string): FieldDef {
@@ -28,8 +28,8 @@ const labels = (f: FieldDef) => (f.choices ?? []).map((c) => c.label);
 describe("starter forms", () => {
   it("are the two spec forms with valid, unique slugs and known brands", () => {
     expect(STARTER_FORMS.map((f) => [f.slug, f.name, f.brand])).toEqual([
-      ["get-a-quote", "Get a Quote", "vident-productions"],
-      ["request-av", "Request AV", "vident-av"],
+      ["get-a-quote", "Get a Quote", "lre-productions"],
+      ["request-av", "Request AV", "lre-av"],
     ]);
     const brandKeys = new Set(BRANDS.map((b) => b.key));
     for (const form of STARTER_FORMS) {
@@ -93,31 +93,20 @@ describe("starter forms", () => {
     }
   });
 
-  it("copies every inquiry to GoHighLevel exactly as each website's form does, never to DJEP", () => {
-    const [quote, av] = STARTER_FORMS;
-    expect(quote.settings.copies.ghl).toMatchObject({
-      enabled: true,
-      locationId: "LsjUOxo376FX3spTvDwa",
-      trackingId: "tk_2ba7711add5e48fcbaeca8e803d01da4",
-      formId: "Contact Form",
-      notesKey: "contact.event_details",
-      eventTypeKey: "contact.event_type",
-      servicesKey: "contact.services_needed",
-    });
-    expect(av.settings.copies.ghl).toMatchObject({ enabled: true, formId: "LRE AV Website Form", notesKey: "calendar_notes", notesLabel: "Message" });
-    for (const form of STARTER_FORMS) expect(form.settings.copies, form.slug).not.toHaveProperty("djep");
+  it("sends no copy of any inquiry to another company's GoHighLevel account", () => {
+    for (const form of STARTER_FORMS) {
+      expect(form.settings.copies.ghl, form.slug).toBeNull();
+      expect(form.settings.copies, form.slug).not.toHaveProperty("legacy");
+    }
   });
 
-  it("routes Get a Quote by event type to the website's directors; Other and Request AV stay with the admins", () => {
+  it("routes Get a Quote by event type to the hello@ inbox; Other and Request AV stay with the admins", () => {
     const [quote, av] = STARTER_FORMS;
     const typeField = allFields(quote.definition).find((f) => f.role === "event_type");
     const ownerOf = (label: string) => quote.settings.ownerByEventType[typeField?.choices?.find((c) => c.label === label)?.value ?? ""] ?? null;
     for (const label of ["Corporate Event", "Incentive Trip", "Team Building", "Game Show", "Tradeshow", "Virtual or Hybrid"]) {
       expect(ownerOf(label), label).toBe("hello@lreproductions.com");
     }
-    expect(ownerOf("Wedding")).toBe("hello@lreproductions.com");
-    expect(ownerOf("Social Celebration")).toBe("hello@lreproductions.com");
-    expect(ownerOf("Golf Experience")).toBe("hello@lreproductions.com");
     expect(ownerOf("Other")).toBeNull();
     expect(av.settings.ownerByEventType).toEqual({});
   });
@@ -145,14 +134,11 @@ describe("V1 Get a Quote", () => {
     ]);
   });
 
-  it("offers the event types as cards and branches for weddings and golf", () => {
+  it("offers the corporate event types as cards", () => {
     const eventType = byKey(fields, "event_type");
     expect(eventType).toMatchObject({ type: "radio", layout: "cards", required: true, role: "event_type" });
     expect(labels(eventType)).toEqual([
       "Corporate Event",
-      "Wedding",
-      "Social Celebration",
-      "Golf Experience",
       "Incentive Trip",
       "Team Building",
       "Game Show",
@@ -161,20 +147,6 @@ describe("V1 Get a Quote", () => {
       "Other",
     ]);
     expect(eventType.choices?.find((c) => c.isOther)?.label).toBe("Other");
-
-    const wedding = byKey(fields, "wedding_planning_level");
-    expect(wedding.showIf).toEqual({ fieldKey: "event_type", op: "equals", values: ["wedding"] });
-    expect(labels(wedding)).toEqual([
-      "Wedding Management (The Peace of Mind)",
-      "Partial Planning (The Styled & Supported)",
-      "Full-Service Planning (The Signature Soiree)",
-      "Not sure yet",
-    ]);
-
-    const golf = byKey(fields, "golf_experience");
-    expect(golf.showIf).toEqual({ fieldKey: "event_type", op: "equals", values: ["golf_experience"] });
-    expect(labels(golf)).toEqual(["Tournament", "Corporate golf outing", "Golf trip or itinerary", "Putting party", "Other"]);
-    expect(golf.choices?.some((c) => c.isOther)).toBe(false);
   });
 
   it("asks when and where with the area as a required choice", () => {
@@ -184,9 +156,12 @@ describe("V1 Get a Quote", () => {
     const area = byKey(fields, "event_location");
     expect(area).toMatchObject({ type: "select", role: "event_location", required: true });
     expect(labels(area)).toEqual([
-      "Rhode Island",
-      "Southeastern Massachusetts",
-      "Connecticut",
+      "Newport, RI",
+      "Providence, RI",
+      "Boston, MA",
+      "Plymouth, MA",
+      "Martha's Vineyard, MA",
+      "Somewhere else in New England",
       "Somewhere else",
       "Not sure yet",
     ]);
@@ -232,8 +207,8 @@ describe("V1 Get a Quote", () => {
     expect(form.settings.onDateUnavailable.actions).toEqual(["change_date", "continue"]);
     expect(form.settings.onDateUnavailable.message).toBe(DEFAULT_FORM_SETTINGS.onDateUnavailable.message);
     // The brand bronze, one AA-safe step darker (exactly what the editor's "use a darker shade" gives).
-    expect(form.settings.accentColor).toBe(VIDENT_BRONZE_AA);
-    expect(darkenForWhiteText(VIDENT_BRONZE)).toBe(VIDENT_BRONZE_AA);
+    expect(form.settings.accentColor).toBe(LRE_RED_AA);
+    expect(darkenForWhiteText(LRE_RED)).toBe(LRE_RED_AA);
   });
 });
 
@@ -259,11 +234,9 @@ describe("V2 Request AV", () => {
     expect(labels(eventType)).toEqual([
       "Conference",
       "Corporate Meeting",
-      "Wedding",
       "Gala",
       "Trade Show",
       "Concert",
-      "Private Event",
       "Other",
     ]);
     expect(eventType.choices?.find((c) => c.isOther)?.label).toBe("Other");
@@ -308,10 +281,10 @@ describe("V2 Request AV", () => {
 
 describe("brands", () => {
   it("lists both brands with their sites, contacts and live privacy pages", () => {
-    expect(BRANDS.map((b) => b.key)).toEqual(["vident-productions", "vident-av"]);
-    expect(DEFAULT_BRAND_KEY).toBe("vident-productions");
+    expect(BRANDS.map((b) => b.key)).toEqual(["lre-productions", "lre-av"]);
+    expect(DEFAULT_BRAND_KEY).toBe("lre-productions");
     expect(BRANDS[0]).toEqual({
-      key: "vident-productions",
+      key: "lre-productions",
       name: "LRE Productions",
       logoUrl: "/logo.png",
       logoOnDark: true,
@@ -326,10 +299,10 @@ describe("brands", () => {
       name: "LRE Audiovisual",
       logoUrl: null,
       logoOnDark: false,
-      siteUrl: "https://videntaudiovisual.com",
-      privacyUrl: "https://videntaudiovisual.com/privacy-policy",
+      siteUrl: "https://lreproductions.com",
+      privacyUrl: "https://lreproductions.com/privacy-policy",
       phone: "401-816-5496",
-      email: "hello@videntaudiovisual.com",
+      email: "hello@lreproductions.com",
       accentColor: "#c00000",
     });
   });

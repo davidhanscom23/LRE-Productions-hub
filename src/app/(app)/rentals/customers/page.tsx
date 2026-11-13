@@ -3,14 +3,14 @@ import { CustomersClient } from "@/components/av-erp/customers-client";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import type { AvCustomer } from "@/lib/av-erp/types";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Customers — LRE AV" };
 
 export default async function AvCustomersPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const supabase = await createClient();
   let { data, error } = await supabase

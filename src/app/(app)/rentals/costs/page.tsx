@@ -4,14 +4,14 @@ import { CostsBoardClient } from "@/components/av-erp/costs-board-client";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { loadCostsBoard } from "@/lib/av-erp/job-finance";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Costs — LRE AV" };
 
 export default async function AvCostsPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const supabase = await createClient();
   let rows;

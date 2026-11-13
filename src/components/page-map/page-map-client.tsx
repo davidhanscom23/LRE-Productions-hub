@@ -31,7 +31,7 @@ const AUDIENCE_LABEL: Record<PageAudience, string> = {
 function navAudience(item: NavItem): { label: string; admin: boolean } {
   if (item.adminOnly) return { label: "Admin", admin: true };
   if (item.marketerAccess) return { label: "Admin & trainers", admin: false };
-  if (item.videntAvAccess) return { label: "AV & admin", admin: false };
+  if (item.avAccess) return { label: "AV & admin", admin: false };
   return { label: "All staff", admin: false };
 }
 

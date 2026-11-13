@@ -49,7 +49,7 @@ export const HUB_COPY = {
   formsListDescription:
     "Multi-step website forms that check the date, then add each inquiry to the Pipeline board as an Inquiry project.",
   /** Share tab, "Where to paste it": the site builder line and the test inquiry line. */
-  shareSiteBuilder: "GoHighLevel site builder (lreproductions.com, videntaudiovisual.com)",
+  shareSiteBuilder: "GoHighLevel site builder (lreproductions.com)",
   shareTestInquiry:
     "Send a test inquiry: it shows up in Submissions and on the Pipeline board in the Inquiry column.",
   /** Placeholders in the form settings. */

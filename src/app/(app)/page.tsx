@@ -25,7 +25,7 @@ import { canViewStaffHandbook } from "@/lib/handbook/settings";
 import { upcomingAnniversaries } from "@/lib/people/anniversaries";
 import { upcomingBirthdays } from "@/lib/people/birthdays";
 import { normalizeHexColor } from "@/lib/people/color";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 import { createClient } from "@/lib/supabase/server";
 import { fetchCompanyWeather } from "@/lib/weather";
 import {
@@ -462,7 +462,7 @@ export default async function HomePage() {
         weather={weather}
         isAdmin={isAdmin}
         showCalendar={isAdmin || (await isSharedCalendarConfigured())}
-        showVidentAv={canAccessVidentAv(profile)}
+        showAv={canAccessAv(profile)}
         showMarketing={showMarketing}
         showHandbook={showHandbook}
         pinnedHrefs={pinnedHrefs}

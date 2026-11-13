@@ -139,7 +139,7 @@ async function writeHeaderRow(
  * Create (or reuse) a blank LRE Client Reviews spreadsheet in the Hub Drive
  * root folder, write the standard header row, and persist the spreadsheet id.
  */
-export async function ensureVidentReviewsSpreadsheet(options?: {
+export async function ensureReviewsSpreadsheet(options?: {
   writeClient?: SupabaseClient;
 }): Promise<EnsureReviewsSheetResult> {
   if (!isDriveCredentialsConfigured()) {
@@ -333,7 +333,7 @@ export async function ensureVidentReviewsSpreadsheet(options?: {
  * Link an existing spreadsheet (you created in Drive) and write the header row.
  * Use this when the service account cannot create files due to storage quota.
  */
-export async function linkVidentReviewsSpreadsheet(
+export async function linkReviewsSpreadsheet(
   input: string,
   options?: { writeClient?: SupabaseClient },
 ): Promise<EnsureReviewsSheetResult> {

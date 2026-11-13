@@ -203,8 +203,8 @@ export const HANDBOOK_CONTENT = {
         {
           "heading": "Travel",
           "items": [
-            "Most travel required by LRE Productions occurs within Duval, St. Johns, and Clay counties.",
-            "Travel outside these counties using a personal vehicle will be reimbursed at 58 cents per mile or the current IRS Standard Mileage Rate."
+            "Most travel required by LRE Productions occurs within Rhode Island and eastern Massachusetts.",
+            "Travel outside this area using a personal vehicle will be reimbursed at 58 cents per mile or the current IRS Standard Mileage Rate."
           ]
         },
         {
@@ -549,7 +549,7 @@ export const HANDBOOK_CONTENT = {
           "heading": "Eligibility",
           "items": [
             "The driver must be approved and added to LRE Productions' commercial auto policy.",
-            "The driver must possess a valid Florida Driver's License.",
+            "The driver must possess a valid driver's license.",
             "The driver must have a clean driving record.",
             "If the driver's status changes at any point, they must immediately notify management."
           ]
@@ -717,7 +717,7 @@ export const HANDBOOK_CONTENT = {
           "heading": "Enforcement",
           "paragraphs": [
             "In the event of a breach, Staff agrees that LRE is entitled to seek a temporary or permanent injunction or other equitable relief. Staff also agrees to pay the Company liquidated damages in the amount of $10,000.00 for any violation of the non-competition, non-solicitation, or non-interference restrictions.",
-            "This Agreement is governed by the laws of the State of Florida. Jurisdiction and venue lies exclusively in the federal and state courts located in St. Johns County, Florida."
+            "This Agreement is governed by the laws of the State of Rhode Island. Jurisdiction and venue lies exclusively in the federal and state courts located in Rhode Island."
           ]
         },
         {

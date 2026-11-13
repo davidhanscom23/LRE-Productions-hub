@@ -2,16 +2,16 @@ import "server-only";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
 import {
-  normalizeDjepEventId,
+  normalizeExternalEventId,
   type EventExternalReview,
 } from "@/lib/types/event-reviews";
 
-/** Reviews matched to a packet via DJEP Event_ID / calendar_uid. */
+/** Reviews matched to a packet via planner Event_ID / calendar_uid. */
 export async function getReviewsForPacket(
   supabase: SupabaseClient,
   calendarUid: string | null | undefined,
 ): Promise<EventExternalReview[]> {
-  const eventId = normalizeDjepEventId(calendarUid);
+  const eventId = normalizeExternalEventId(calendarUid);
   if (!eventId) return [];
 
   const calendarUidNorm = `EVENTID:${eventId}`;

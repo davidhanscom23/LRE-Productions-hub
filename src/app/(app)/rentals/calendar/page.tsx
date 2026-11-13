@@ -4,14 +4,14 @@ import { getCurrentProfile } from "@/lib/auth/profile";
 import { loadGearJobs } from "@/lib/av-erp/ops-data";
 import { ymdInZone } from "@/lib/av-erp/ops-schedule";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Gear calendar — LRE AV" };
 
 export default async function AvGearCalendarPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const supabase = await createClient();
   let jobs;

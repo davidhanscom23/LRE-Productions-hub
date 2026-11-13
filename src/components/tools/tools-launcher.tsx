@@ -37,7 +37,7 @@ export type ToolsAccess = {
   isGuest: boolean;
   isAdmin: boolean;
   showCalendar: boolean;
-  showVidentAv: boolean;
+  showAv: boolean;
   showHandbook: boolean;
   showMarketing: boolean;
 };

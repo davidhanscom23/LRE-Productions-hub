@@ -3,8 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import {
-  ensureVidentReviewsSpreadsheet,
-  linkVidentReviewsSpreadsheet,
+  ensureReviewsSpreadsheet,
+  linkReviewsSpreadsheet,
 } from "@/lib/reviews/ensure-sheet";
 import { syncExternalReviewsFromSheet } from "@/lib/reviews/sync-sheet";
 import { createClient } from "@/lib/supabase/server";
@@ -41,7 +41,7 @@ async function finishReviewsSheetSetup(input: {
   };
 }
 
-export async function ensureVidentReviewsSheetAction(): Promise<{
+export async function ensureReviewsSheetAction(): Promise<{
   error: string | null;
   created?: boolean;
   spreadsheetId?: string | null;
@@ -56,7 +56,7 @@ export async function ensureVidentReviewsSheetAction(): Promise<{
   }
 
   const supabase = await createClient();
-  const ensured = await ensureVidentReviewsSpreadsheet({
+  const ensured = await ensureReviewsSpreadsheet({
     writeClient: supabase,
   });
   if (!ensured.ok) {
@@ -70,7 +70,7 @@ export async function ensureVidentReviewsSheetAction(): Promise<{
   });
 }
 
-export async function linkVidentReviewsSheetAction(input: string): Promise<{
+export async function linkReviewsSheetAction(input: string): Promise<{
   error: string | null;
   created?: boolean;
   spreadsheetId?: string | null;
@@ -85,7 +85,7 @@ export async function linkVidentReviewsSheetAction(input: string): Promise<{
   }
 
   const supabase = await createClient();
-  const linked = await linkVidentReviewsSpreadsheet(input, {
+  const linked = await linkReviewsSpreadsheet(input, {
     writeClient: supabase,
   });
   if (!linked.ok) {

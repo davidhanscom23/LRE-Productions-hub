@@ -43,7 +43,7 @@ export type StaffColorEntry = {
 };
 
 /**
- * Match DJEP "Assigned Staff" text to a profile color.
+ * Match planner "Assigned Staff" text to a profile color.
  * Tries full-name contains, then first-name token matches.
  */
 export function matchStaffColor(

@@ -8,7 +8,7 @@ import {
 } from "@/lib/av-erp/crew-date-filter";
 import type { AvContractorBooking } from "@/lib/av-erp/types";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Crew — LRE AV" };
 
@@ -19,7 +19,7 @@ type Props = {
 export default async function AvCrewPage({ searchParams }: Props) {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const { opportunity: preselect, date: dateRaw } = await searchParams;
   const filterDate = isIsoDateKey(dateRaw) ? dateRaw!.trim() : null;

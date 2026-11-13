@@ -2,7 +2,7 @@
 
 import { SEARCH_NAV_TARGETS } from "@/lib/search/nav-targets";
 import { isSharedCalendarConfigured } from "@/lib/calendar/settings";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 import { createClient } from "@/lib/supabase/server";
 import { canViewTrainingCourse } from "@/lib/training/audience-access";
 import {
@@ -71,7 +71,7 @@ export async function searchHubAction(
 
   const showCalendar =
     isAdmin || (await isSharedCalendarConfigured());
-  const showVident = canAccessVidentAv({
+  const showAv = canAccessAv({
     role,
     departments: (profile.departments as Department[] | null) ?? [],
   });
@@ -88,7 +88,7 @@ export async function searchHubAction(
   for (const item of SEARCH_NAV_TARGETS) {
     if (item.adminOnly && !isAdmin) continue;
     if (item.calendarAccess && !showCalendar) continue;
-    if (item.videntAvAccess && !showVident) continue;
+    if (item.avAccess && !showAv) continue;
     if (item.handbookAccess && !showHandbook) continue;
     if (item.marketerAccess && !isMarketer) continue;
 

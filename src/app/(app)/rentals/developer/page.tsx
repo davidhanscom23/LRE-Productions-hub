@@ -3,14 +3,14 @@ import { DeveloperClient } from "@/components/av-erp/developer-client";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { listIntegrationTokens } from "@/lib/av-erp/terminal-tokens";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Developer and API — LRE AV" };
 
 export default async function AvDeveloperPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const supabase = await createClient();
   let tokens: Awaited<ReturnType<typeof listIntegrationTokens>> = [];

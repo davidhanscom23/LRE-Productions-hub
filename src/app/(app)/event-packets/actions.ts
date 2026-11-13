@@ -74,14 +74,14 @@ export async function syncEventPacketsAction(): Promise<{
     // Bust the 15-minute ICS cache so Sync always pulls a fresh feed.
     revalidatePacketIcalCaches();
 
-    const { collectAllDjepWorkEvents } = await import(
+    const { collectAllWorkEvents } = await import(
       "@/lib/calendar/collect-feeds"
     );
     const { withHubAssignments } = await import(
       "@/lib/calendar/load-assignments"
     );
-    // Shared LRE Pipeline calendar only — never personal DJEP feeds.
-    const collected = await collectAllDjepWorkEvents(supabase);
+    // Shared LRE Pipeline calendar only — never personal planner feeds.
+    const collected = await collectAllWorkEvents(supabase);
     if (!collected.feedsScanned) {
       return {
         error: isAdmin
@@ -196,7 +196,7 @@ export async function syncSheetReviewsAction(): Promise<{
   };
 }
 
-/** Shared LRE Pipeline (or mirrored company) iCal — never personal DJEP. */
+/** Shared LRE Pipeline (or mirrored company) iCal — never personal planner. */
 async function resolveIcalUrlForPackets(options: {
   role: string;
 }): Promise<{ icalUrl: string | null; error: string | null }> {
@@ -216,7 +216,7 @@ async function resolveIcalUrlForPackets(options: {
 function revalidatePacketIcalCaches() {
   revalidateTag("work-ical", "max");
   revalidateTag("company-ical", "max");
-  revalidateTag("djep-ical", "max");
+  revalidateTag("ical-feed", "max");
 }
 
 /**
@@ -268,7 +268,7 @@ export async function listLaunchablePastEventsAction(): Promise<{
       if (!isManualPacketEligible(event)) continue;
       if (!event.uid?.trim() || havePacket.has(event.uid.trim())) continue;
 
-      // Shared LRE Pipeline calendar only (no DJEP / Y Ent feeds).
+      // Shared LRE Pipeline calendar only (no personal planner feeds).
       launchable.push({
         uid: event.uid,
         eventDate: event.start.slice(0, 10),

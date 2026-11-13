@@ -4,7 +4,7 @@ import { ActivitiesClient } from "@/components/av-erp/activities-client";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { activityCounts, loadActivities } from "@/lib/av-erp/ops-data";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const metadata = { title: "Activities — LRE AV" };
 
@@ -15,7 +15,7 @@ type Props = {
 export default async function AvActivitiesPage({ searchParams }: Props) {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/rentals");
+  if (!canAccessAv(profile)) redirect("/rentals");
 
   const { settled, filter: filterRaw } = await searchParams;
   const includeSettled = settled === "1";

@@ -12,7 +12,7 @@ import {
 import { updateOnboardingResourceUrlAction } from "@/app/(app)/people/actions";
 import {
   hasOnboardingUrl,
-  VIDENT_ONBOARDING_DRIVE_URL,
+  ONBOARDING_DRIVE_URL,
   type OnboardingResource,
 } from "@/lib/people/onboarding";
 import type { Department, UserRole } from "@/lib/types/database";
@@ -86,7 +86,7 @@ export function OnboardingPanel({
             <span className="font-medium">Add link</span> on each card below
             (copy from{" "}
             <a
-              href={VIDENT_ONBOARDING_DRIVE_URL}
+              href={ONBOARDING_DRIVE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium underline underline-offset-2 hover:opacity-90"

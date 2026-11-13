@@ -4,7 +4,7 @@ import { getCurrentProfile } from "@/lib/auth/profile";
 import { isSharedCalendarConfigured } from "@/lib/calendar/settings";
 import { canViewStaffHandbook } from "@/lib/handbook/settings";
 import { createClient } from "@/lib/supabase/server";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 import {
   accessibleShortcutHrefs,
   type ShortcutAccess,
@@ -23,7 +23,7 @@ export async function saveShortcutsAction(hrefs: string[]): Promise<Result> {
   const access: ShortcutAccess = {
     isAdmin,
     showCalendar: isAdmin || (await isSharedCalendarConfigured()),
-    showVidentAv: canAccessVidentAv(profile),
+    showAv: canAccessAv(profile),
     showMarketing: profile.role === "admin" || profile.role === "trainer",
     showHandbook: await canViewStaffHandbook(isAdmin),
   };

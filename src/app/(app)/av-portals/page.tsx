@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { createServiceClient } from "@/lib/supabase/admin";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 import { computeStatus, type PortalValues } from "@/lib/av-portals/items";
 import { daysUntil, todayInEastern } from "@/lib/av-portals/cadence";
 import { formatEventDate, showFileNumber } from "@/lib/av-portals/emails";
@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 export default async function AvPortalsPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessVidentAv(profile)) redirect("/");
+  if (!canAccessAv(profile)) redirect("/");
 
   const supabase = createServiceClient();
   const { data, error } = await supabase

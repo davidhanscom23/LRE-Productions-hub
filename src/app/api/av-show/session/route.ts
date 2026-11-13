@@ -2,14 +2,14 @@ import { NextResponse } from "next/server";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { createShowSession } from "@/lib/av-show/remote-store";
 import { isServiceRoleConfigured } from "@/lib/supabase/admin";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 
 export const runtime = "nodejs";
 
 /** Staff: start a Hub remote session (PIN + control token). */
 export async function POST() {
   const profile = await getCurrentProfile();
-  if (!profile || !canAccessVidentAv(profile)) {
+  if (!profile || !canAccessAv(profile)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   if (!isServiceRoleConfigured()) {

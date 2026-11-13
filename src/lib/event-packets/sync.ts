@@ -1,4 +1,4 @@
-import { extractDjepEventId } from "@/lib/calendar/djep-event-id";
+import { extractExternalEventId } from "@/lib/calendar/external-event-id";
 import { type CalendarEvent } from "@/lib/calendar/events";
 import {
   DEFAULT_PACKET_LOOKBACK_DAYS,
@@ -171,7 +171,7 @@ export async function syncPacketsFromEvents(options: {
   /** Override auto-sync lookback (days ago through today). */
   lookbackDays?: number;
   /**
-   * When set, only sync these DJEP event ids (digits). Used to bridge
+   * When set, only sync these planner event ids (digits). Used to bridge
    * website reviews → packets for events still on the calendar feed.
    */
   onlyEventIds?: Set<string>;
@@ -187,7 +187,7 @@ export async function syncPacketsFromEvents(options: {
   const eligible = events.filter((event) => {
     if (!isPacketEligible(event, new Date(), lookbackDays)) return false;
     if (!onlyEventIds || onlyEventIds.size === 0) return true;
-    const eventId = extractDjepEventId(event.uid);
+    const eventId = extractExternalEventId(event.uid);
     return Boolean(eventId && onlyEventIds.has(eventId));
   });
 

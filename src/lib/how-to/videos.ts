@@ -14,7 +14,7 @@
  * here, run `python3 scripts/gen-howto-course.py`, and run the SQL it writes.
  * Course lessons and points are generated from this list.
  */
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 import { isGuestRole } from "@/lib/auth/guest";
 import type { Profile } from "@/lib/types/database";
 
@@ -55,7 +55,7 @@ export function canWatchHowTo(
     case "all":
       return true;
     case "vident-av":
-      return canAccessVidentAv(profile);
+      return canAccessAv(profile);
     case "lead":
       return profile.role === "admin" || profile.role === "trainer";
     case "admin":

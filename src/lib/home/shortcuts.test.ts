@@ -4,7 +4,7 @@ import { SHORTCUT_DEFS, type ShortcutGate } from "@/lib/home/shortcuts";
 
 function gateFor(item: NavItem): ShortcutGate {
   if (item.adminOnly) return "admin";
-  if (item.videntAvAccess) return "videntav";
+  if (item.avAccess) return "av";
   if (item.marketerAccess) return "marketing";
   if (item.calendarAccess) return "calendar";
   if (item.handbookAccess) return "handbook";

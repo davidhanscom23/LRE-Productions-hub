@@ -25,6 +25,22 @@ export type ChangelogEntry = {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-13",
+    category: "improved",
+    area: "Wording",
+    title: "Contracts, handbook and forms now say Rhode Island and LRE",
+    description:
+      "Contract and handbook wording now names Rhode Island law and courts, and travel is described as Rhode Island and eastern Massachusetts. The second inquiry form now belongs to LRE, no longer sends leads to another company's CRM, and offers only LRE event types and service areas.",
+  },
+  {
+    date: "2026-11-13",
+    category: "removed",
+    area: "Services",
+    title: "Import from Pipeline button removed",
+    description:
+      "The Services page no longer has a button that loads a starter list of services. Admins and Leads add services one at a time with + Add service.",
+  },
+  {
+    date: "2026-11-13",
     category: "fixed",
     area: "Wording",
     title: "Leftover Florida and old-company wording removed",

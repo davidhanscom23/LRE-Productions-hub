@@ -20,7 +20,7 @@ import {
   type HolidayId,
 } from "@/lib/holidays/holidays";
 import { isGuestRole } from "@/lib/auth/guest";
-import { canAccessVidentAv } from "@/lib/vident-av-access";
+import { canAccessAv } from "@/lib/av-access";
 import type { StaffColorEntry } from "@/lib/people/color";
 import type { Profile } from "@/lib/types/database";
 
@@ -60,7 +60,7 @@ export function AppShell({
   const showCalendar =
     showCalendarProp ?? (!isGuest && profile.role === "admin");
   const isAdmin = profile.role === "admin";
-  const showVidentAv = !isGuest && canAccessVidentAv(profile);
+  const showAv = !isGuest && canAccessAv(profile);
   const showMarketing =
     !isGuest &&
     (profile.role === "admin" || profile.role === "trainer");
@@ -81,7 +81,7 @@ export function AppShell({
           <div className="relative z-10 flex min-h-0 min-w-0 flex-1 overflow-hidden">
           <Sidebar
             showCalendar={showCalendar}
-            showVidentAv={showVidentAv}
+            showAv={showAv}
             showHandbook={!isGuest && showHandbook}
             showMarketing={showMarketing}
             isGuest={isGuest}

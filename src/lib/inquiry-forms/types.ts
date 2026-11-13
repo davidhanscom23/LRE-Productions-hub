@@ -195,7 +195,7 @@ export type DateUnavailableAction = "change_date" | "alternatives" | "waitlist" 
 
 /** Per form. `notify` is SERVER-ONLY and never reaches the public bundle. */
 export interface FormSettings {
-  /** Brand key from the hub adapter (e.g. "vident"). */
+  /** Brand key from the hub adapter (e.g. "lre"). */
   brand: string;
   /** Hex accent for buttons, progress and selected cards (contrast-checked in the editor). */
   accentColor: string;

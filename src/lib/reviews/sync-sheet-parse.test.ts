@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { parseCsv } from "./csv";
-import { normalizeDjepEventId } from "@/lib/types/event-reviews";
+import { normalizeExternalEventId } from "@/lib/types/event-reviews";
 import { splitAssignedStaff } from "@/lib/event-packets/match-staff";
 
 describe("parseCsv (reviews published sheet)", () => {
@@ -17,8 +17,8 @@ describe("parseCsv (reviews published sheet)", () => {
     expect(rows[0]?.[9]).toBe("Event_ID");
     expect(rows[1]?.[1]).toBe("Hello, world");
     expect(rows[1]?.[6]).toBe("David; Hector");
-    expect(normalizeDjepEventId(rows[1]?.[9])).toBe("146358");
-    expect(normalizeDjepEventId(rows[2]?.[9])).toBeNull();
+    expect(normalizeExternalEventId(rows[1]?.[9])).toBe("146358");
+    expect(normalizeExternalEventId(rows[2]?.[9])).toBeNull();
   });
 
   it("reads the live website published CSV fixture when present", () => {
@@ -35,7 +35,7 @@ describe("parseCsv (reviews published sheet)", () => {
     expect(eventIdx).toBeGreaterThanOrEqual(0);
     let withId = 0;
     for (const row of rows.slice(1)) {
-      if (normalizeDjepEventId(row[eventIdx] ?? "")) withId += 1;
+      if (normalizeExternalEventId(row[eventIdx] ?? "")) withId += 1;
     }
     expect(withId).toBeGreaterThan(300);
   });
