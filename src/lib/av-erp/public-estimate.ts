@@ -112,12 +112,14 @@ export async function loadCustomerEstimateByToken(
 ): Promise<CustomerEstimate | null> {
   if (!ESTIMATE_TOKEN_RE.test(token)) return null;
   const supabase = createServiceClient();
-  let { data: opp, error } = await supabase
+  const firstTry = await supabase
     .from("av_opportunities")
     .select(OPP_SELECT)
     .eq("share_token", token)
     .eq("share_enabled", true)
     .maybeSingle();
+  const error = firstTry.error;
+  let opp = firstTry.data;
   if (error || !opp) {
     const mid = await supabase
       .from("av_opportunities")
