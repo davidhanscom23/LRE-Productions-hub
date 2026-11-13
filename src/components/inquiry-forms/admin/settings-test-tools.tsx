@@ -189,7 +189,7 @@ function AddressTester() {
             type="text"
             value={text}
             maxLength={300}
-            placeholder="e.g. Casa Monica, St. Augustine"
+            placeholder="e.g. Newport Harbor Hotel, Newport RI"
             onChange={(e) => setText(e.target.value)}
             onKeyDown={runOnEnter(run)}
             autoComplete="off"

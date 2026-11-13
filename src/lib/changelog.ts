@@ -25,6 +25,14 @@ export type ChangelogEntry = {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-13",
+    category: "fixed",
+    area: "Wording",
+    title: "Leftover Florida and old-company wording removed",
+    description:
+      "The staff application page, inquiry form defaults, caption writer, sample data and the calendar download name no longer mention Florida or another company. The inquiry form now uses the LRE office phone and Tiverton address, and its Area list is Rhode Island, Southeastern Massachusetts and Connecticut until you set your own.",
+  },
+  {
+    date: "2026-11-13",
     category: "improved",
     area: "LED Wall Guide",
     title: "LED Wall Guide headline simplified",

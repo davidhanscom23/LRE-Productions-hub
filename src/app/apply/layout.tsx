@@ -16,11 +16,11 @@ const applyBody = DM_Sans({
 export const metadata: Metadata = {
   title: "Apply — LRE Productions",
   description:
-    "Join the LRE Productions crew. Apply for AV, corporate, wedding, golf, and office roles in Northeast Florida.",
+    "Join the LRE Productions crew. Apply for audiovisual and event production roles.",
   openGraph: {
     title: "Apply — LRE Productions",
     description:
-      "Join the LRE Productions crew producing unforgettable events across Northeast Florida.",
+      "Join the LRE Productions crew producing unforgettable corporate events.",
     images: [{ url: "/apply-hero.jpg" }],
   },
 };

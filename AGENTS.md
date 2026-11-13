@@ -28,7 +28,7 @@ Each staff-facing module has a short how-to video (registry: `src/lib/how-to/vid
 2. Keep the script in sync with the module's Ask the Hub guide (`src/lib/kb/hub-feature-articles.ts`).
 3. After any registry change run `python3 scripts/gen-howto-course.py` and paste the SQL it writes (`supabase/migrations/169_howto_video_course.sql`) inline in your reply — never just the file name.
 4. Admin-only modules get a video too, with `audience: "admin"` (shown to admins only). Pages limited to a department or role (for example Vident AV) must set `audience` so the link and the course lesson only show to people who can open the page.
-5. Keep this separate from the Y? Entertainment Hub: Vident repo, Supabase, Vercel and Bunny only.
+5. Keep this separate from every other hub: the LRE repo, Supabase project and Vercel project only.
 
 ## Tools page (required for every new Hub module)
 
@@ -95,8 +95,6 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzd
 
 (This anon key is Supabase's public local-dev demo key, identical on every machine — not a real secret. If `npx supabase status` ever shows a different `anon key`, use that value.)
 
-Vident AV no longer requires Current RMS. You can remove unused `CURRENT_RMS_SUBDOMAIN` / `CURRENT_RMS_API_KEY` from Vercel if they remain from the old Import flow.
-
 For **Venue Quotes → Book Now** Stripe deposits, set:
 
 ```
@@ -120,7 +118,7 @@ NEXT_PUBLIC_TURNSTILE_SITE_KEY=
 TURNSTILE_SECRET_KEY=
 ```
 
-The sweep cron `/api/cron/inquiry-forms-sweep` (every 5 minutes, `vercel.json`) needs `CRON_SECRET` and `SUPABASE_SERVICE_ROLE_KEY`, like the other crons; the public form API uses the service role too. Optional staff alert emails and the visitor confirmation (off by default) go through `RESEND_API_KEY` + `EMAIL_FROM`, with links built from `NEXT_PUBLIC_SITE_URL` (default `https://hub.videntproductions.com`).
+The sweep cron `/api/cron/inquiry-forms-sweep` (every 5 minutes, `vercel.json`) needs `CRON_SECRET` and `SUPABASE_SERVICE_ROLE_KEY`, like the other crons; the public form API uses the service role too. Optional staff alert emails and the visitor confirmation (off by default) go through `RESEND_API_KEY` + `EMAIL_FROM`, with links built from `NEXT_PUBLIC_SITE_URL` (default `https://hub.lreproductions.com`).
 
 ### Non-obvious gotchas
 
@@ -134,4 +132,4 @@ The sweep cron `/api/cron/inquiry-forms-sweep` (every 5 minutes, `vercel.json`) 
 
 ## Change Log Videos (weekly check)
 
-A weekly scheduled check reads `src/lib/changelog.ts` for entries since the last `changelog_video_runs.check_date`, skips admin-only and fix-only items, and drafts video scripts. Full procedure: `docs/changelog-videos/README.md`. When you add a user-facing changelog entry, keep the title and first sentence plain enough to be read aloud. Do not apply any of this to the Y? Hub.
+A weekly scheduled check reads `src/lib/changelog.ts` for entries since the last `changelog_video_runs.check_date`, skips admin-only and fix-only items, and drafts video scripts. Full procedure: `docs/changelog-videos/README.md`. When you add a user-facing changelog entry, keep the title and first sentence plain enough to be read aloud. Do not apply any of this to another hub.

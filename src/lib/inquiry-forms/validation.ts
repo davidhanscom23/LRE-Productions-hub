@@ -3,7 +3,7 @@
  *
  * PURE module: the public renderer shows these messages under each field on Next, and the server
  * re-runs the same checks on every save/complete (never trust the browser). `ctx.today` is the
- * business-time-zone date ("YYYY-MM-DD", from todayInTz()) so "past date" means past in Florida.
+ * business-time-zone date ("YYYY-MM-DD", from todayInTz()) so "past date" means past in the business time zone.
  *
  * Hidden fields (condition false) are never validated. Messages are short, visitor-facing and
  * actionable ("Please enter your email").

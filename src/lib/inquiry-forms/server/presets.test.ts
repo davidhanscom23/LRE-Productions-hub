@@ -184,14 +184,9 @@ describe("V1 Get a Quote", () => {
     const area = byKey(fields, "event_location");
     expect(area).toMatchObject({ type: "select", role: "event_location", required: true });
     expect(labels(area)).toEqual([
-      "Ponte Vedra",
-      "Jacksonville",
-      "St. Augustine",
-      "Amelia Island",
-      "Northeast Florida",
-      "Central Florida or Orlando",
-      "Tampa",
-      "Southeast Georgia",
+      "Rhode Island",
+      "Southeastern Massachusetts",
+      "Connecticut",
       "Somewhere else",
       "Not sure yet",
     ]);
@@ -322,7 +317,7 @@ describe("brands", () => {
       logoOnDark: true,
       siteUrl: "https://lreproductions.com",
       privacyUrl: "https://lreproductions.com/privacy-policy",
-      phone: "904-834-1216",
+      phone: "401-816-5496",
       email: "hello@lreproductions.com",
       accentColor: "#b01418",
       legalLine: "LRE Productions, Inc.",
@@ -333,7 +328,7 @@ describe("brands", () => {
       logoOnDark: false,
       siteUrl: "https://videntaudiovisual.com",
       privacyUrl: "https://videntaudiovisual.com/privacy-policy",
-      phone: "904-834-1216",
+      phone: "401-816-5496",
       email: "hello@videntaudiovisual.com",
       accentColor: "#c00000",
     });
@@ -344,10 +339,10 @@ describe("LRE business defaults", () => {
   it("layer onto the generic defaults as spec section 4 says (open dates, no location check)", () => {
     const merged = mergeBusinessSettings(layerSettings(DEFAULT_BUSINESS_SETTINGS, HUB_BUSINESS_DEFAULTS));
     expect(merged.homeBase).toEqual({
-      label: "LRE Productions, Ponte Vedra",
-      address: "101 Marketside Avenue, Ponte Vedra, FL 32081",
-      lat: 30.24,
-      lng: -81.3853,
+      label: "LRE Productions, Tiverton",
+      address: "1061 Fish Rd., Unit 1, Tiverton, RI 02878",
+      lat: 41.63,
+      lng: -71.21,
     });
     expect(merged.location.enabled).toBe(false);
     expect(merged.availability.mode).toBe("open");

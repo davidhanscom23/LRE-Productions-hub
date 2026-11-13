@@ -5,7 +5,7 @@
  *
  * Rules (spec non-negotiable 7):
  * - An event date is a wall-calendar "YYYY-MM-DD" string. Never parse one with
- *   `new Date("YYYY-MM-DD")`: that is UTC midnight, which is the PREVIOUS evening in Florida.
+ *   `new Date("YYYY-MM-DD")`: that is UTC midnight, which is the PREVIOUS evening in US time zones.
  * - Day arithmetic runs on UTC calendar math (Date.UTC), so a DST change can never shift a day.
  * - "Today", the day of a timestamp and email timestamps use the business time zone
  *   (America/New_York), never the visitor's or the server's zone.

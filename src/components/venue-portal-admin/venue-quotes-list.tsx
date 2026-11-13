@@ -66,7 +66,7 @@ export function VenueQuotesList({ rows }: { rows: PortalListRow[] }) {
             type="button"
             onClick={() => {
               setMode({ kind: "starter" });
-              setName("Ponte Vedra Meeting Center");
+              setName("Sample Meeting Center");
               setSlug("ponte-vedra-meeting-center");
               setErr(null);
             }}

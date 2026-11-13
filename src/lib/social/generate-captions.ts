@@ -60,7 +60,7 @@ function buildPrompt(context: CaptionPacketContext): string {
 Brand: ${COMPANY.displayName}
 Handle: ${COMPANY.socialHandle}
 Website: ${COMPANY.website}
-Service area focus: Northeast Florida / St. Johns County / Ponte Vedra / Jacksonville area when relevant (infer from venue if obvious; do not invent a false city).
+Service area: use the event venue's location when it is obvious; do not invent a city.
 
 ${eventFactsBlock(context)}
 
