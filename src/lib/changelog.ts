@@ -25,6 +25,15 @@ export type ChangelogEntry = {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-12",
+    category: "removed",
+    area: "Pipeline",
+    title: "Pipeline is now fully built into the Hub",
+    description:
+      "The old HoneyBook connections (email sync, Zapier, CSV import and the archive page) are gone. Pipeline works the same way for clients, projects, payments and notes, and everything is edited right in the Hub.",
+    howTo: "Open Pipeline in the sidebar. Add projects by hand or let website Inquiry Forms create them.",
+  },
+  {
+    date: "2026-11-12",
     category: "new",
     area: "LED Wall Guide",
     title: "Shareable LED Wall Layouts guide",

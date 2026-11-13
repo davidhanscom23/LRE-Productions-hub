@@ -22,7 +22,7 @@ describe("sales report", () => {
   });
 
   it("derives lead source", () => {
-    expect(leadSourceOf({ source_event: "hub", raw: {} })).toBe("Email inquiry");
+    expect(leadSourceOf({ source_event: "hub", raw: {} })).toBe("Added in the Hub");
     expect(leadSourceOf({ source_event: "web_form", raw: null })).toBe("Website form");
     expect(leadSourceOf({ source_event: "x", raw: { "Lead Source": " The Knot " } })).toBe("The Knot");
   });
