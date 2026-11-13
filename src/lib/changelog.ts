@@ -24,6 +24,15 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    date: "2026-11-13",
+    category: "improved",
+    area: "LED Wall Guide",
+    title: "LED Wall Guide now shows two-screen splits",
+    description:
+      "The shareable LED Wall Guide has a new section that splits the 64 tiles into two matching 32-tile screens, like projector screens on each side of a stage, with sizes in meters and feet.",
+    howTo: "Open the LED Wall Guide and scroll down to Split in half. Two screens.",
+  },
+  {
     date: "2026-11-12",
     category: "removed",
     area: "Pipeline",

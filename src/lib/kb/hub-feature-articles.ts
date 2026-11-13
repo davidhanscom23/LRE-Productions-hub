@@ -296,6 +296,8 @@ What it covers: seven ways to arrange 64 LED tiles (each tile is 500 mm × 500 m
 
 How to share it: open Teams, choose Audiovisual, and tap LED Wall Guide (shareable). Copy the page address and send it. The page has a Print button and is hidden from search engines, so it is only found by people who have the link.
 
+Two-screen splits: a second section, "Split in half. Two screens.", cuts the 64 tiles into two matching 32-tile screens used like projector screens on each side of a stage. The standard pair is 8 × 4 tiles each (4.0 m × 2.0 m, 13.12 ft × 6.56 ft, 8 m² each). It also shows 4 × 8, 16 × 2, 2 × 16, 32 × 1 and 1 × 32 pairs.
+
 To change it, edit src/app/led-wall-guide/page.tsx.`,
   },
   {
