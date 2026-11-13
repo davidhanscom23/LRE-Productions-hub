@@ -288,6 +288,17 @@ Fundamental Resource Guide: on the Audiovisual tab, switch from AV Tools to Fund
     body: `Every Hub page except Home shows a breadcrumb trail at the very top, for example Home / Teams / Details. It tells you where you are and lets you step back up: click Home or any earlier name in the trail to jump there. The last name is the page you are on and is not a link. Pages inside a section use the same names as the sidebar, and a single record shows as Details. The trail is for everyone signed in except client-portal guests, in light and dark mode, and on phones long trails wrap onto a second line.`,
   },
   {
+    slug: "led-wall-guide",
+    title: "LED Wall Layouts guide (64 tiles, shareable with clients)",
+    body: `The LED Wall Layouts guide is a public page at hub.lreproductions.com/led-wall-guide. No login is needed, so LRE Productions can send the link to clients who ask what size LED wall they can get.
+
+What it covers: seven ways to arrange 64 LED tiles (each tile is 500 mm × 500 mm, about 1.64 ft × 1.64 ft): 8 × 8, 16 × 4, 4 × 16, 32 × 2, 2 × 32, 64 × 1 and 1 × 64. Each layout shows a picture of the wall plus its size in meters and in feet and inches. Every layout is 16 m² (about 172 ft²) of screen.
+
+How to share it: open Teams, choose Audiovisual, and tap LED Wall Guide (shareable). Copy the page address and send it. The page has a Print button and is hidden from search engines, so it is only found by people who have the link.
+
+To change it, edit src/app/led-wall-guide/page.tsx.`,
+  },
+  {
     slug: "speaker-guide",
     title: "Guide to a smooth Speaker Experience (shareable with clients)",
     body: `The Guide to a smooth Speaker Experience is a public page at hub.lreproductions.com/speaker-guide. No login is needed, so LRE can send the link to event organizers and they can pass it to their speakers and presenters before the event.

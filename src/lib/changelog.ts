@@ -25,6 +25,16 @@ export type ChangelogEntry = {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-12",
+    category: "new",
+    area: "LED Wall Guide",
+    title: "Shareable LED Wall Layouts guide",
+    description:
+      "LRE Productions now has a public LED Wall Layouts page showing seven ways to arrange 64 LED tiles, with sizes in meters and feet. Send it to clients who ask what size LED wall they can have. No login is needed to view it.",
+    howTo:
+      "Open Teams, choose Audiovisual, and tap LED Wall Guide (shareable). Copy the page address to send to a client.",
+  },
+  {
+    date: "2026-11-12",
     category: "fixed",
     area: "Tools",
     title: "NEW tags are back on the Tools page",

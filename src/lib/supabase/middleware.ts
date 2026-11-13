@@ -76,6 +76,8 @@ export async function updateSession(request: NextRequest) {
       isInquiryPublicPage(pathname) ||
       pathname === "/privacy" ||
       pathname === "/speaker-guide" ||
+      pathname === "/led-wall-guide" ||
+      pathname === "/led-wall-guide-logo.png" ||
       pathname === "/lre-speaker-av-guide.pdf" ||
       pathname === "/sms-terms" ||
       pathname.startsWith("/auth") ||
@@ -135,6 +137,8 @@ export async function updateSession(request: NextRequest) {
     isInquiryPublicPage(pathname) ||
     pathname === "/privacy" ||
     pathname === "/speaker-guide" ||
+    pathname === "/led-wall-guide" ||
+    pathname === "/led-wall-guide-logo.png" ||
     pathname === "/lre-speaker-av-guide.pdf" ||
     pathname === "/sms-terms" ||
     pathname.startsWith("/auth") ||
