@@ -4,8 +4,8 @@
 --     archived (never hard-deleted) and points at the card that survived.
 --   * pipeline_project_merges: one row per merge, with the ids of everything that moved, so a merge
 --     can be undone.
---   * merge_pipeline_projects(): admins and Leads. Moves notes, files, tasks, payments, proposals,
---     event packets, Gmail thread links and assignees onto the surviving card, in one transaction.
+--   * merge_pipeline_projects(): admins and Leads. Moves notes, files, payments, proposals,
+--     event packets and assignees onto the surviving card, in one transaction.
 --   * undo_pipeline_merge(): admins only. Moves everything back and restores both cards.
 
 alter table public.pipeline_projects
@@ -75,13 +75,10 @@ declare
   v_fields       text[];
   v_notes        jsonb;
   v_files        jsonb;
-  v_tasks        jsonb;
-  v_payments     jsonb;
+    v_payments     jsonb;
   v_proposals    jsonb;
   v_packets      jsonb;
-  v_threads      jsonb;
-  v_messages     jsonb;
-  v_requests     jsonb;
+      v_requests     jsonb;
   v_assignees    jsonb;
   v_questionnaire boolean := false;
   v_note_id      uuid;
@@ -134,12 +131,6 @@ begin
     where project_id = p_merge returning id
   ) select coalesce(jsonb_agg(id), '[]'::jsonb) into v_files from moved;
 
-  -- Mirrored tasks (My Week)
-  with moved as (
-    update public.pipeline_tasks set project_id = p_keep, project_name = (select name from public.pipeline_projects where id = p_keep)
-    where project_id = p_merge returning id
-  ) select coalesce(jsonb_agg(id), '[]'::jsonb) into v_tasks from moved;
-
   -- Payments
   with moved as (
     update public.pipeline_payments set project_id = p_keep
@@ -156,18 +147,6 @@ begin
     update public.event_packets set pipeline_project_id = p_keep
     where pipeline_project_id = p_merge returning id
   ) select coalesce(jsonb_agg(id), '[]'::jsonb) into v_packets from moved;
-
-  -- Gmail: later replies on the same email thread land on the kept card
-  with moved as (
-    update public.pipeline_gmail_threads set project_id = p_keep
-    where project_id = p_merge returning mailbox, thread_id
-  ) select coalesce(jsonb_agg(jsonb_build_object('mailbox', mailbox, 'thread_id', thread_id)), '[]'::jsonb)
-    into v_threads from moved;
-
-  with moved as (
-    update public.pipeline_gmail_messages set project_id = p_keep
-    where project_id = p_merge returning message_key
-  ) select coalesce(jsonb_agg(message_key), '[]'::jsonb) into v_messages from moved;
 
   -- Staff add / remove requests that are still open (skip ones that would clash)
   with moved as (
@@ -241,9 +220,8 @@ begin
     ),
     jsonb_build_object('stage', v_merge.stage, 'name', v_merge.name, 'share_enabled', v_merge.share_enabled),
     jsonb_build_object(
-      'notes', v_notes, 'files', v_files, 'tasks', v_tasks, 'payments', v_payments,
-      'proposals', v_proposals, 'packets', v_packets, 'gmail_threads', v_threads,
-      'gmail_messages', v_messages, 'assignment_requests', v_requests,
+      'notes', v_notes, 'files', v_files, 'payments', v_payments,
+      'proposals', v_proposals, 'packets', v_packets, 'assignment_requests', v_requests,
       'assignees_added', v_assignees, 'questionnaire', v_questionnaire,
       'system_note', v_note_id
     )
@@ -292,10 +270,6 @@ begin
   update public.pipeline_project_files set project_id = v_log.merged_id
     where id in (select (jsonb_array_elements_text(v_mv -> 'files'))::uuid);
 
-  update public.pipeline_tasks set project_id = v_log.merged_id,
-    project_name = coalesce(v_log.merged_before ->> 'name', project_name)
-    where id in (select (jsonb_array_elements_text(v_mv -> 'tasks'))::uuid);
-
   update public.pipeline_payments set project_id = v_log.merged_id
     where id in (select (jsonb_array_elements_text(v_mv -> 'payments'))::uuid);
 
@@ -304,13 +278,6 @@ begin
 
   update public.event_packets set pipeline_project_id = v_log.merged_id
     where id in (select (jsonb_array_elements_text(v_mv -> 'packets'))::uuid);
-
-  update public.pipeline_gmail_threads t set project_id = v_log.merged_id
-    from jsonb_array_elements(v_mv -> 'gmail_threads') e
-    where t.mailbox = e ->> 'mailbox' and t.thread_id = e ->> 'thread_id';
-
-  update public.pipeline_gmail_messages set project_id = v_log.merged_id
-    where message_key in (select jsonb_array_elements_text(v_mv -> 'gmail_messages'));
 
   update public.pipeline_assignment_requests set project_id = v_log.merged_id
     where id in (select (jsonb_array_elements_text(v_mv -> 'assignment_requests'))::uuid);
