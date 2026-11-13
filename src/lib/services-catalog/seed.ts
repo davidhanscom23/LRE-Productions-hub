@@ -1,6 +1,6 @@
-// Copied from the HoneyBook Services list on 2026-11-07 (title and price only).
-// HoneyBook said 135 saved services; 134 came across, so check the list for one that is missing.
-export const HONEYBOOK_SERVICES_SEED: ReadonlyArray<readonly [string, number]> = [
+// Copied from the Pipeline Services list on 2026-11-07 (title and price only).
+// Pipeline said 135 saved services; 134 came across, so check the list for one that is missing.
+export const PIPELINE_SERVICES_SEED: ReadonlyArray<readonly [string, number]> = [
   ["12\" Sautee Pan", 0.0],
   ["12ft Black and White Checkered Feather Flags", 580.0],
   ["2 Tired Cake - Feeds 60", 660.0],

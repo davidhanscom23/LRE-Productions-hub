@@ -28,8 +28,8 @@ type PacketCompleteFormProps = {
   currentUserId: string;
   isAdmin: boolean;
   isTrainer?: boolean;
-  /** Linked HoneyBook mirror project label (admins/Leads). */
-  honeybookProjectName?: string | null;
+  /** Linked Pipeline mirror project label (admins/Leads). */
+  pipelineProjectName?: string | null;
 };
 
 const inputClass =
@@ -42,7 +42,7 @@ export function PacketCompleteForm({
   currentUserId,
   isAdmin,
   isTrainer = false,
-  honeybookProjectName = null,
+  pipelineProjectName = null,
 }: PacketCompleteFormProps) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
@@ -174,20 +174,20 @@ export function PacketCompleteForm({
               Open gear checklist
             </Link>
           </p>
-          {honeybookProjectName &&
-          packet.honeybook_project_id &&
+          {pipelineProjectName &&
+          packet.pipeline_project_id &&
           (isAdmin || isTrainer) ? (
             <p className="mt-2 text-xs text-[var(--muted)]">
               CRM project:{" "}
               <Link
-                href="/honeybook"
+                href="/pipeline"
                 className="font-medium text-[var(--brand)] hover:underline"
               >
-                {honeybookProjectName}
+                {pipelineProjectName}
               </Link>
               <span className="text-[var(--muted)]">
                 {" "}
-                (HoneyBook mirror — Projects tab)
+                (Pipeline mirror — Projects tab)
               </span>
             </p>
           ) : null}

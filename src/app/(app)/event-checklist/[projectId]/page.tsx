@@ -46,7 +46,7 @@ export default async function EventChecklistPage({ params }: Props) {
           admin to assign you on the event card.
         </p>
         <p className="mt-2">
-          <Link href="/honeybook" className="font-medium underline">
+          <Link href="/pipeline" className="font-medium underline">
             Back to events
           </Link>
         </p>

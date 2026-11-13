@@ -150,7 +150,7 @@ export function ChecklistClient({
   return (
     <div className="mx-auto max-w-3xl space-y-4 p-4">
       <div>
-        <Link href="/honeybook" className="text-xs text-[var(--muted)] hover:underline">
+        <Link href="/pipeline" className="text-xs text-[var(--muted)] hover:underline">
           ← Events
         </Link>
         <h1 className="mt-1 text-xl font-bold">{project.name}</h1>

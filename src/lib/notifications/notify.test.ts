@@ -16,8 +16,8 @@ function client(error: { message: string } | null) {
 }
 
 const ROWS = [
-  { userId: "u1", kind: "web_inquiry", title: "New inquiry", body: "Jane Smith", href: "/honeybook/projects/p1" },
-  { userId: "u2", kind: "web_inquiry", title: "New inquiry", body: "Jane Smith", href: "/honeybook/projects/p1" },
+  { userId: "u1", kind: "web_inquiry", title: "New inquiry", body: "Jane Smith", href: "/pipeline/projects/p1" },
+  { userId: "u2", kind: "web_inquiry", title: "New inquiry", body: "Jane Smith", href: "/pipeline/projects/p1" },
 ];
 
 beforeEach(() => {
@@ -30,14 +30,14 @@ describe("insertNotifications", () => {
     await insertNotifications(sb, ROWS);
     expect(from).toHaveBeenCalledWith("hub_notifications");
     expect(insert).toHaveBeenCalledWith([
-      { user_id: "u1", kind: "web_inquiry", title: "New inquiry", body: "Jane Smith", href: "/honeybook/projects/p1" },
-      { user_id: "u2", kind: "web_inquiry", title: "New inquiry", body: "Jane Smith", href: "/honeybook/projects/p1" },
+      { user_id: "u1", kind: "web_inquiry", title: "New inquiry", body: "Jane Smith", href: "/pipeline/projects/p1" },
+      { user_id: "u2", kind: "web_inquiry", title: "New inquiry", body: "Jane Smith", href: "/pipeline/projects/p1" },
     ]);
     expect(push.sendPushToUsers).toHaveBeenCalledTimes(1);
     expect(push.sendPushToUsers).toHaveBeenCalledWith(["u1", "u2"], {
       title: "New inquiry",
       body: "Jane Smith",
-      href: "/honeybook/projects/p1",
+      href: "/pipeline/projects/p1",
     });
   });
 

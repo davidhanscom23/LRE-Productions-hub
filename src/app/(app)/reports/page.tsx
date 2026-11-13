@@ -12,7 +12,7 @@ import {
   formatMoney,
   type ExpenseCategory,
 } from "@/lib/types/expenses";
-import { countProjectsByStageLabel } from "@/lib/honeybook/pipeline-board";
+import { countProjectsByStageLabel } from "@/lib/pipeline/pipeline-board";
 import { redirect } from "next/navigation";
 
 function Stat({
@@ -112,13 +112,13 @@ export default async function ReportsPage() {
     // Partnerships (migration 177) are not events: keep them out of these counts.
     (async () => {
       const withType = await supabase
-        .from("honeybook_projects")
+        .from("pipeline_projects")
         .select("stage, booked_at, record_type");
       if (!withType.error) return withType;
-      return supabase.from("honeybook_projects").select("stage, booked_at");
+      return supabase.from("pipeline_projects").select("stage, booked_at");
     })(),
     supabase
-      .from("honeybook_payments")
+      .from("pipeline_payments")
       .select("amount, paid_at")
       .gte("paid_at", monthStart),
   ]);
@@ -184,7 +184,7 @@ export default async function ReportsPage() {
     (t) => t.status === "open",
   ).length;
 
-  // HoneyBook CRM (optional until migration 111 is applied)
+  // Pipeline CRM (optional until migration 111 is applied)
   const hbProjects = (
     (hbProjectsRes.data ?? []) as unknown as {
       stage: string;
@@ -200,7 +200,7 @@ export default async function ReportsPage() {
   const hbPaidThisMonth = (
     (hbPaymentsRes.data ?? []) as { amount: number | string }[]
   ).reduce((s, p) => s + (Number(p.amount) || 0), 0);
-  const honeybookReady = !hbProjectsRes.error;
+  const pipelineReady = !hbProjectsRes.error;
 
   return (
     <div className="mx-auto max-w-4xl space-y-6 pb-16">
@@ -240,10 +240,10 @@ export default async function ReportsPage() {
           value={String(openTasks)}
           sub="in Action Center"
         />
-        {honeybookReady ? (
+        {pipelineReady ? (
           <>
             <Stat
-              label="HoneyBook projects"
+              label="Pipeline projects"
               value={String(hbProjects.length)}
               sub={`${hbBooked} booked / with booked date`}
               tone="brand"
@@ -251,7 +251,7 @@ export default async function ReportsPage() {
             <Stat
               label="HB payments this month"
               value={formatMoney(hbPaidThisMonth)}
-              sub="from synced HoneyBook payments"
+              sub="from synced Pipeline payments"
             />
           </>
         ) : null}
@@ -299,16 +299,16 @@ export default async function ReportsPage() {
         </Panel>
       </div>
 
-      {honeybookReady ? (
-        <Panel title="HoneyBook projects by stage">
+      {pipelineReady ? (
+        <Panel title="Pipeline projects by stage">
           {hbProjects.length === 0 ? (
             <p className="text-sm text-[var(--muted)]">
-              No HoneyBook projects synced yet. Connect Zapier on{" "}
+              No projects yet. Add one on{" "}
               <a
-                href="/honeybook"
+                href="/pipeline"
                 className="font-medium text-[var(--brand)] underline-offset-2 hover:underline"
               >
-                HoneyBook
+                Pipeline
               </a>
               .
             </p>

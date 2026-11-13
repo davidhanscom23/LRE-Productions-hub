@@ -213,7 +213,7 @@ export function SchedulingClient({ types, bookings, baseUrl }: { types: TypeRow[
                   <p className="font-medium">{when(b)} · {b.name}</p>
                   <p className="text-xs text-[var(--muted)]">
                     {b.type_title} · {b.email}{b.phone ? ` · ${b.phone}` : ""}
-                    {b.project_id && <> · <a className="underline" href={`/honeybook/projects/${b.project_id}`}>project</a></>}
+                    {b.project_id && <> · <a className="underline" href={`/pipeline/projects/${b.project_id}`}>project</a></>}
                   </p>
                   {b.notes && <p className="text-xs">{b.notes}</p>}
                 </div>

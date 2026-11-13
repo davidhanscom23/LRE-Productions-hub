@@ -1,4 +1,4 @@
--- Hub service catalog: the saved services/prices that HoneyBook kept, so invoices and
+-- Hub service catalog: the saved services/prices that Pipeline kept, so invoices and
 -- proposals can pick from them. Everyone on staff can read; admins and Leads edit.
 
 create table if not exists public.service_catalog_items (

@@ -26,7 +26,7 @@ export const NOTIFICATION_KINDS: {
     kind: "web_inquiry",
     label: "Website inquiries",
     description:
-      "When someone sends a website Inquiry Form (including waitlist requests) and it lands on the HoneyBook board.",
+      "When someone sends a website Inquiry Form (including waitlist requests) and it lands on the Pipeline board.",
     mandatory: false,
     adminOnly: true,
   },

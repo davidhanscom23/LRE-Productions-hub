@@ -80,13 +80,13 @@ export async function syncEventPacketsAction(): Promise<{
     const { withHubAssignments } = await import(
       "@/lib/calendar/load-assignments"
     );
-    // Shared LRE HoneyBook calendar only — never personal DJEP feeds.
+    // Shared LRE Pipeline calendar only — never personal DJEP feeds.
     const collected = await collectAllDjepWorkEvents(supabase);
     if (!collected.feedsScanned) {
       return {
         error: isAdmin
-          ? "Connect the HoneyBook calendar on Calendar first."
-          : "Ask an admin to connect the HoneyBook calendar on Calendar, then sync.",
+          ? "Connect the Pipeline calendar on Calendar first."
+          : "Ask an admin to connect the Pipeline calendar on Calendar, then sync.",
       };
     }
     const events = await withHubAssignments(supabase, collected.events);
@@ -196,7 +196,7 @@ export async function syncSheetReviewsAction(): Promise<{
   };
 }
 
-/** Shared LRE HoneyBook (or mirrored company) iCal — never personal DJEP. */
+/** Shared LRE Pipeline (or mirrored company) iCal — never personal DJEP. */
 async function resolveIcalUrlForPackets(options: {
   role: string;
 }): Promise<{ icalUrl: string | null; error: string | null }> {
@@ -208,13 +208,13 @@ async function resolveIcalUrlForPackets(options: {
     icalUrl: null,
     error:
       options.role === "admin"
-        ? "Connect the HoneyBook calendar on Calendar settings first."
-        : "Ask an admin to connect the HoneyBook calendar on Calendar to launch packets from past events.",
+        ? "Connect the Pipeline calendar on Calendar settings first."
+        : "Ask an admin to connect the Pipeline calendar on Calendar to launch packets from past events.",
   };
 }
 
 function revalidatePacketIcalCaches() {
-  revalidateTag("honeybook-ical", "max");
+  revalidateTag("work-ical", "max");
   revalidateTag("company-ical", "max");
   revalidateTag("djep-ical", "max");
 }
@@ -268,7 +268,7 @@ export async function listLaunchablePastEventsAction(): Promise<{
       if (!isManualPacketEligible(event)) continue;
       if (!event.uid?.trim() || havePacket.has(event.uid.trim())) continue;
 
-      // Shared LRE HoneyBook calendar only (no DJEP / Y Ent feeds).
+      // Shared LRE Pipeline calendar only (no DJEP / Y Ent feeds).
       launchable.push({
         uid: event.uid,
         eventDate: event.start.slice(0, 10),

@@ -71,12 +71,12 @@ export function CalendarAvailability({ staff, timeOff, events }: Props) {
     return m;
   }, [timeOff]);
 
-  // Assigned-staff strings per day (work + HoneyBook events with Hub assignees).
+  // Assigned-staff strings per day (work + Pipeline events with Hub assignees).
   const assignedByDay = useMemo(() => {
     const m = new Map<string, string[]>();
     for (const e of events) {
       if (
-        (e.source !== "work" && e.source !== "honeybook") ||
+        (e.source !== "work" && e.source !== "pipeline") ||
         !e.assignedStaff
       ) {
         continue;
@@ -122,7 +122,7 @@ export function CalendarAvailability({ staff, timeOff, events }: Props) {
   const conflicts = useMemo(() => {
     const out: string[] = [];
     const staffed = (e: CalendarEvent) =>
-      (e.source === "work" || e.source === "honeybook") && e.assignedStaff;
+      (e.source === "work" || e.source === "pipeline") && e.assignedStaff;
 
     // Booked while on approved time off.
     for (const e of events) {
@@ -305,7 +305,7 @@ export function CalendarAvailability({ staff, timeOff, events }: Props) {
               No conflicts detected this week.
               {events.filter(
                 (e) =>
-                  (e.source === "work" || e.source === "honeybook") &&
+                  (e.source === "work" || e.source === "pipeline") &&
                   e.assignedStaff,
               ).length === 0
                 ? " Assign staff on event cards to detect booking conflicts."

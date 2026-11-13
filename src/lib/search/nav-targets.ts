@@ -445,7 +445,7 @@ export const SEARCH_NAV_TARGETS: SearchNavTarget[] = [
       "proposals",
       "pdf",
       "drive",
-      "honeybook attach",
+      "pipeline attach",
       "branded",
     ],
   },
@@ -502,17 +502,16 @@ export const SEARCH_NAV_TARGETS: SearchNavTarget[] = [
     keywords: ["notification", "preferences", "mute", "alert settings"],
   },
   {
-    href: "/honeybook",
-    label: "HoneyBook",
+    href: "/pipeline",
+    label: "Pipeline",
     keywords: [
-      "honeybook",
+      "pipeline",
       "crm",
       "clients",
       "projects",
       "payments",
       "pipeline",
       "inquiries",
-      "zapier",
       "assignees",
     ],
   },
@@ -524,7 +523,7 @@ export const SEARCH_NAV_TARGETS: SearchNavTarget[] = [
   {
     href: "/services",
     label: "Services Catalog",
-    keywords: ["services", "catalog", "price list", "pricing", "rentals", "rates", "line items", "honeybook services"],
+    keywords: ["services", "catalog", "price list", "pricing", "rentals", "rates", "line items", "pipeline services"],
   },
   {
     href: "/floor-plans",

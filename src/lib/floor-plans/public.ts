@@ -46,7 +46,7 @@ export async function loadPublicFloorPlan(
   let projectName: string | null = null;
   if (row.project_id) {
     const { data: p } = await supabase
-      .from("honeybook_projects")
+      .from("pipeline_projects")
       .select("name")
       .eq("id", row.project_id)
       .maybeSingle();

@@ -181,7 +181,7 @@ export async function getForYouQueue(
     my1099Res,
     myW9Res,
     adminQuoteApprovalRes,
-    adminHoneyBookAssignRes,
+    adminPipelineAssignRes,
   ] = await Promise.all([
       supabase
         .from("contractor_payment_requests")
@@ -220,7 +220,7 @@ export async function getForYouQueue(
         : Promise.resolve({ count: 0, error: null }),
       isAdmin
         ? supabase
-            .from("honeybook_assignment_requests")
+            .from("pipeline_assignment_requests")
             .select("id", { count: "exact", head: true })
             .eq("status", "pending")
         : Promise.resolve({ count: 0, error: null }),
@@ -240,8 +240,8 @@ export async function getForYouQueue(
     (adminPayPaidRes as { count?: number | null }).count ?? 0;
   const pendingQuoteApprovals =
     (adminQuoteApprovalRes as { count?: number | null }).count ?? 0;
-  const pendingHoneyBookAssign =
-    (adminHoneyBookAssignRes as { count?: number | null }).count ?? 0;
+  const pendingPipelineAssign =
+    (adminPipelineAssignRes as { count?: number | null }).count ?? 0;
 
   if (
     isAdmin &&
@@ -252,7 +252,7 @@ export async function getForYouQueue(
       awaitingContractorPaid > 0 ||
       pendingQuoteApprovals > 0 ||
       pendingMarketing > 0 ||
-      pendingHoneyBookAssign > 0)
+      pendingPipelineAssign > 0)
   ) {
     const items: ForYouQueueItem[] = [];
     if (pendingTimeOff > 0) {
@@ -290,9 +290,9 @@ export async function getForYouQueue(
         label: `${pendingMarketing} social post${pendingMarketing > 1 ? "s" : ""} awaiting approval`,
       });
     }
-    if (pendingHoneyBookAssign > 0) {
+    if (pendingPipelineAssign > 0) {
       items.push({
-        label: `${pendingHoneyBookAssign} HoneyBook assignment${pendingHoneyBookAssign > 1 ? "s" : ""} to approve`,
+        label: `${pendingPipelineAssign} Pipeline assignment${pendingPipelineAssign > 1 ? "s" : ""} to approve`,
       });
     }
     const counts = [
@@ -304,7 +304,7 @@ export async function getForYouQueue(
         href: "/contractor-pay",
       },
       { n: pendingQuoteApprovals, href: "/quoting" },
-      { n: pendingHoneyBookAssign, href: "/honeybook?tab=projects" },
+      { n: pendingPipelineAssign, href: "/pipeline?tab=projects" },
     ];
     counts.sort((a, b) => b.n - a.n);
     const href = counts[0]?.href ?? "/for-you";

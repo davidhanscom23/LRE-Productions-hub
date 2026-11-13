@@ -3,7 +3,7 @@
 import { validateCustomerEsign } from "@/lib/av-erp/customer-esign";
 import { COMPANY } from "@/lib/company";
 import { sendEmailDetailed } from "@/lib/email/send";
-import { textToEmailHtml } from "@/lib/honeybook/project-email";
+import { textToEmailHtml } from "@/lib/pipeline/project-email";
 import { buildContractPdf } from "@/lib/project-contracts/pdf";
 import {
   CONTRACT_BUCKET,
@@ -70,10 +70,10 @@ export async function respondToContractAction(input: {
     .select("id");
   if (!updated?.length) return { ok: false, error: "This contract was already answered." };
 
-  const { data: project } = await db.from("honeybook_projects").select("name").eq("id", c.project_id).maybeSingle();
+  const { data: project } = await db.from("pipeline_projects").select("name").eq("id", c.project_id).maybeSingle();
   const projectName = String(project?.name ?? "");
 
-  await db.from("honeybook_project_notes").insert({
+  await db.from("pipeline_project_notes").insert({
     project_id: c.project_id,
     source: "system",
     category: "status",

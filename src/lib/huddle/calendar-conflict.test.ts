@@ -8,7 +8,7 @@ import {
 function ev(partial: Partial<CalendarEvent> & { start: string }): CalendarEvent {
   return {
     uid: partial.uid ?? "1",
-    source: partial.source ?? "honeybook",
+    source: partial.source ?? "pipeline",
     title: partial.title ?? "Event",
     start: partial.start,
     end: partial.end ?? null,

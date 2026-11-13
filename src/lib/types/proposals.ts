@@ -29,14 +29,14 @@ export type Proposal = {
   drive_file_id: string | null;
   drive_web_view_link: string;
   drive_folder_path: string;
-  honeybook_project_id: string | null;
-  honeybook_linked_at: string | null;
+  pipeline_project_id: string | null;
+  pipeline_linked_at: string | null;
   generated_at: string | null;
   uploaded_at: string | null;
   created_at: string;
   updated_at: string;
   creator_name?: string;
-  honeybook_project_name?: string | null;
+  pipeline_project_name?: string | null;
 };
 
 export function proposalStatusLabel(status: ProposalStatus): string {
@@ -46,7 +46,7 @@ export function proposalStatusLabel(status: ProposalStatus): string {
     case "uploaded":
       return "On Drive";
     case "linked":
-      return "Linked to HoneyBook";
+      return "Linked to Pipeline";
     default:
       return "Draft";
   }

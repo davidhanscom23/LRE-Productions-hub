@@ -67,10 +67,10 @@ export default async function ProposalsPage() {
     drive_file_id: r.drive_file_id ? String(r.drive_file_id) : null,
     drive_web_view_link: String(r.drive_web_view_link ?? ""),
     drive_folder_path: String(r.drive_folder_path ?? ""),
-    honeybook_project_id: r.honeybook_project_id
-      ? String(r.honeybook_project_id)
+    pipeline_project_id: r.pipeline_project_id
+      ? String(r.pipeline_project_id)
       : null,
-    honeybook_linked_at: (r.honeybook_linked_at as string) ?? null,
+    pipeline_linked_at: (r.pipeline_linked_at as string) ?? null,
     generated_at: (r.generated_at as string) ?? null,
     uploaded_at: (r.uploaded_at as string) ?? null,
     created_at: String(r.created_at ?? ""),

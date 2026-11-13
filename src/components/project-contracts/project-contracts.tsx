@@ -7,7 +7,7 @@ import {
   saveProjectContract,
   sendProjectContract,
   voidProjectContract,
-} from "@/app/(app)/honeybook/contract-actions";
+} from "@/app/(app)/pipeline/contract-actions";
 import { leftoverTokens } from "@/lib/project-contracts/text";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";

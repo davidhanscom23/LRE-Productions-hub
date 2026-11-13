@@ -165,10 +165,10 @@ export function StaffingClient({
         </div>
         <p className="mt-2 text-xs text-[var(--muted)]">
           {!icalConfigured
-            ? "HoneyBook calendar is not connected — event load will be empty. Set it on Calendar."
+            ? "Pipeline calendar is not connected — event load will be empty. Set it on Calendar."
             : icalError
               ? `Calendar feed error: ${icalError}`
-              : "Event load from the shared HoneyBook calendar."}{" "}
+              : "Event load from the shared Pipeline calendar."}{" "}
           {unmatchedDjepTimeOff > 0 ? (
             <span className="text-amber-800 dark:text-amber-200">
               {unmatchedDjepTimeOff} feed time-off row

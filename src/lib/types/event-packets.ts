@@ -42,8 +42,8 @@ export type EventPacketAssignee = {
 export type EventPacket = {
   id: string;
   calendar_uid: string | null;
-  /** Optional Hub CRM (HoneyBook mirror) project for deep links. */
-  honeybook_project_id: string | null;
+  /** Optional Hub CRM (Pipeline mirror) project for deep links. */
+  pipeline_project_id: string | null;
   assignee_id: string;
   event_date: string;
   client_name: string;

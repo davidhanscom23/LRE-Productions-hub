@@ -1,5 +1,5 @@
 import { getCurrentProfile } from "@/lib/auth/profile";
-import { canAccessHoneyBook } from "@/lib/honeybook/access";
+import { canAccessPipeline } from "@/lib/pipeline/access";
 import { FLOOR_PLAN_BUCKET } from "@/lib/floor-plans/public";
 import { buildFloorPlanPdf } from "@/lib/floor-plans/pdf";
 import { sanitizePlanData } from "@/lib/floor-plans/types";
@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> }) {
   const profile = await getCurrentProfile();
-  if (!profile || !canAccessHoneyBook(profile.role)) {
+  if (!profile || !canAccessPipeline(profile.role)) {
     return new Response("Unauthorized", { status: 401 });
   }
   const { id } = await ctx.params;
@@ -27,7 +27,7 @@ export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> 
 
   let projectName = "";
   if (row.project_id) {
-    const { data: p } = await supabase.from("honeybook_projects").select("name").eq("id", row.project_id).maybeSingle();
+    const { data: p } = await supabase.from("pipeline_projects").select("name").eq("id", row.project_id).maybeSingle();
     projectName = (p?.name as string | undefined) ?? "";
   }
 

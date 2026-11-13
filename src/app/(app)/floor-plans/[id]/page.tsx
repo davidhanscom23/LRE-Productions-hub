@@ -1,6 +1,6 @@
 import { FloorPlanEditor } from "@/components/floor-plans/floor-plan-editor";
 import { getCurrentProfile } from "@/lib/auth/profile";
-import { canAccessHoneyBook, canManageHoneyBookCrm } from "@/lib/honeybook/access";
+import { canAccessPipeline, canManagePipelineCrm } from "@/lib/pipeline/access";
 import { floorPlanShareUrl } from "@/lib/floor-plans/public";
 import { sanitizePlanData } from "@/lib/floor-plans/types";
 import { createClient } from "@/lib/supabase/server";
@@ -11,7 +11,7 @@ type Props = { params: Promise<{ id: string }> };
 export default async function FloorPlanEditorPage({ params }: Props) {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessHoneyBook(profile.role)) redirect("/");
+  if (!canAccessPipeline(profile.role)) redirect("/");
   const { id } = await params;
   if (!/^[0-9a-f-]{36}$/i.test(id)) notFound();
 
@@ -33,8 +33,8 @@ export default async function FloorPlanEditorPage({ params }: Props) {
         initialData={sanitizePlanData(row.data)}
         isTemplate={Boolean(row.is_template)}
         initialPublishedUrl={published ? floorPlanShareUrl(row.share_token as string) : null}
-        canSaveTemplate={canManageHoneyBookCrm(profile.role)}
-        backHref={row.project_id ? `/honeybook/projects/${row.project_id}` : "/floor-plans"}
+        canSaveTemplate={canManagePipelineCrm(profile.role)}
+        backHref={row.project_id ? `/pipeline/projects/${row.project_id}` : "/floor-plans"}
       />
     </div>
   );

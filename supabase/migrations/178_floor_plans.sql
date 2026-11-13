@@ -1,4 +1,4 @@
--- Floor plans: a 2D floor plan designer for HoneyBook projects, plus reusable templates.
+-- Floor plans: a 2D floor plan designer for Pipeline projects, plus reusable templates.
 -- A plan with project_id set belongs to a project; project_id null + is_template = true is a template.
 
 insert into storage.buckets (id, name, public, file_size_limit)
@@ -7,7 +7,7 @@ on conflict (id) do nothing;
 
 create table if not exists public.floor_plans (
   id            uuid primary key default gen_random_uuid(),
-  project_id    uuid references public.honeybook_projects (id) on delete cascade,
+  project_id    uuid references public.pipeline_projects (id) on delete cascade,
   is_template   boolean not null default false,
   name          text not null default 'Untitled floor plan',
   space_name    text not null default '',
@@ -52,7 +52,7 @@ create policy "floor_plans assignee write"
     public.current_user_role() = 'staff'
     and is_template = false
     and exists (
-      select 1 from public.honeybook_project_assignees a
+      select 1 from public.pipeline_project_assignees a
       where a.project_id = floor_plans.project_id
         and a.profile_id = auth.uid()
     )
@@ -61,7 +61,7 @@ create policy "floor_plans assignee write"
     public.current_user_role() = 'staff'
     and is_template = false
     and exists (
-      select 1 from public.honeybook_project_assignees a
+      select 1 from public.pipeline_project_assignees a
       where a.project_id = floor_plans.project_id
         and a.profile_id = auth.uid()
     )

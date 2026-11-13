@@ -8,12 +8,12 @@ import {
   CRM_MAX_FILES_PER_PROJECT,
   isCrmFileItemKey,
   type CrmFileItemKey,
-} from "@/lib/honeybook/file-requests";
+} from "@/lib/pipeline/file-requests";
 import {
   sanitizeCrmAnswers,
   type CrmQuestionnaireAnswers,
-} from "@/lib/honeybook/questionnaire";
-import { loadSharedProjectRow } from "@/lib/honeybook/public-project";
+} from "@/lib/pipeline/questionnaire";
+import { loadSharedProjectRow } from "@/lib/pipeline/public-project";
 
 export type CrmFileActionResult<T = undefined> =
   | { ok: true; data?: T }
@@ -49,7 +49,7 @@ export async function prepareCrmUploadAction(input: {
 
   const { supabase, project } = loaded;
   const { count } = await supabase
-    .from("honeybook_project_files")
+    .from("pipeline_project_files")
     .select("id", { count: "exact", head: true })
     .eq("project_id", project.id);
   if ((count ?? 0) >= CRM_MAX_FILES_PER_PROJECT) {
@@ -94,7 +94,7 @@ export async function registerCrmUploadAction(input: {
     return fail("The upload did not finish. Please try again.");
   }
 
-  const { error } = await supabase.from("honeybook_project_files").insert({
+  const { error } = await supabase.from("pipeline_project_files").insert({
     project_id: project.id,
     item_key: input.itemKey,
     storage_path: input.path,
@@ -103,7 +103,7 @@ export async function registerCrmUploadAction(input: {
     size_bytes: Math.max(0, Math.round(input.size)),
   });
   if (error) {
-    if (/does not exist|schema cache|honeybook_project_files/i.test(error.message)) {
+    if (/does not exist|schema cache|pipeline_project_files/i.test(error.message)) {
       return fail(
         "Uploads aren’t set up yet — ask the team to run migration 164.",
       );
@@ -123,7 +123,7 @@ export async function removeCrmUploadAction(input: {
   if (!loaded) return fail("This project link is no longer active.");
   const { supabase, project } = loaded;
   const { data: file } = await supabase
-    .from("honeybook_project_files")
+    .from("pipeline_project_files")
     .select("id, storage_path")
     .eq("id", input.fileId)
     .eq("project_id", project.id)
@@ -132,7 +132,7 @@ export async function removeCrmUploadAction(input: {
   await supabase.storage
     .from(CRM_FILE_BUCKET)
     .remove([file.storage_path as string]);
-  await supabase.from("honeybook_project_files").delete().eq("id", file.id);
+  await supabase.from("pipeline_project_files").delete().eq("id", file.id);
   revalidatePath(`/project/${input.token}`);
   return { ok: true };
 }
@@ -149,7 +149,7 @@ export async function saveCrmQuestionnaireAction(input: {
   );
   const now = new Date().toISOString();
   const { error } = await supabase
-    .from("honeybook_project_questionnaire_answers")
+    .from("pipeline_project_questionnaire_answers")
     .upsert(
       {
         project_id: project.id,
@@ -161,7 +161,7 @@ export async function saveCrmQuestionnaireAction(input: {
     );
   if (error) {
     if (
-      /does not exist|schema cache|honeybook_project_questionnaire/i.test(
+      /does not exist|schema cache|pipeline_project_questionnaire/i.test(
         error.message,
       )
     ) {

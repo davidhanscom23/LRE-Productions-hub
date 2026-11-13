@@ -13,7 +13,7 @@ describe("isInquiryPublicPage", () => {
     expect(isInquiryPublicPage("/inquiry-forms/settings")).toBe(false);
     expect(isInquiryPublicPage("/inquiry-forms/123")).toBe(false);
     expect(isInquiryPublicPage("/inquire")).toBe(false);
-    expect(isInquiryPublicPage("/honeybook")).toBe(false);
+    expect(isInquiryPublicPage("/pipeline")).toBe(false);
     expect(isInquiryPublicPage("/api/inquire/start")).toBe(false);
   });
 });

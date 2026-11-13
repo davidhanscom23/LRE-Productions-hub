@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 import {
   deleteProposalAction,
   generateProposalPdfAction,
-  linkProposalToHoneyBookAction,
-  searchHoneyBookProjectsAction,
+  linkProposalToPipelineAction,
+  searchPipelineProjectsAction,
   updateProposalMetaAction,
   uploadProposalToDriveAction,
 } from "@/app/(app)/proposals/actions";
@@ -67,7 +67,7 @@ export function ProposalsDetailClient({
     { id: string; name: string; stage: string; client_name: string | null }[]
   >([]);
   const [selectedHb, setSelectedHb] = useState(
-    proposal.honeybook_project_id ?? "",
+    proposal.pipeline_project_id ?? "",
   );
 
   function saveMeta(event: FormEvent) {
@@ -142,7 +142,7 @@ export function ProposalsDetailClient({
     event.preventDefault();
     setActionError(null);
     startTransition(async () => {
-      const r = await searchHoneyBookProjectsAction(hbQuery);
+      const r = await searchPipelineProjectsAction(hbQuery);
       if (r.error) {
         setActionError(r.error);
         return;
@@ -153,22 +153,22 @@ export function ProposalsDetailClient({
 
   function linkHb() {
     if (!selectedHb) {
-      setActionError("Pick a HoneyBook project first.");
+      setActionError("Pick a Pipeline project first.");
       return;
     }
     setActionError(null);
     setActionMsg(null);
     startTransition(async () => {
-      const r = await linkProposalToHoneyBookAction({
+      const r = await linkProposalToPipelineAction({
         proposalId: proposal.id,
-        honeybookProjectId: selectedHb,
+        pipelineProjectId: selectedHb,
       });
       if (r.error) {
         setActionError(r.error);
         return;
       }
       setActionMsg(
-        "Drive link written onto the HoneyBook project details in the Hub.",
+        "Drive link written onto the Pipeline project details in the Hub.",
       );
       router.refresh();
     });
@@ -378,7 +378,7 @@ export function ProposalsDetailClient({
                 onClick={copyLink}
                 className="text-xs font-medium text-[var(--muted)] underline-offset-2 hover:underline"
               >
-                {copied ? "Copied!" : "Copy Drive link for HoneyBook"}
+                {copied ? "Copied!" : "Copy Drive link for Pipeline"}
               </button>
             </div>
           </div>
@@ -387,18 +387,18 @@ export function ProposalsDetailClient({
 
       <Card>
         <h2 className="text-sm font-semibold text-[var(--foreground)]">
-          HoneyBook
+          Pipeline
         </h2>
         <p className="mt-1 text-sm text-[var(--muted)]">
-          HoneyBook has no outbound file API in the Hub. After Drive upload,
-          copy the link into HoneyBook, or (admins) write it onto the mirrored
+          Pipeline has no outbound file API in the Hub. After Drive upload,
+          copy the link into Pipeline, or (admins) write it onto the mirrored
           project details here.
         </p>
-        {proposal.honeybook_project_name ? (
+        {proposal.pipeline_project_name ? (
           <p className="mt-2 text-sm text-emerald-700 dark:text-emerald-300">
-            Linked to {proposal.honeybook_project_name}
-            {proposal.honeybook_linked_at
-              ? ` · ${new Date(proposal.honeybook_linked_at).toLocaleString()}`
+            Linked to {proposal.pipeline_project_name}
+            {proposal.pipeline_linked_at
+              ? ` · ${new Date(proposal.pipeline_linked_at).toLocaleString()}`
               : ""}
           </p>
         ) : null}
@@ -409,7 +409,7 @@ export function ProposalsDetailClient({
               <input
                 value={hbQuery}
                 onChange={(e) => setHbQuery(e.target.value)}
-                placeholder="Search HoneyBook projects"
+                placeholder="Search Pipeline projects"
                 className="h-10 min-w-[200px] flex-1 rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 text-sm outline-none focus:border-[var(--brand)]"
               />
               <button
@@ -452,13 +452,13 @@ export function ProposalsDetailClient({
               onClick={linkHb}
               className="inline-flex h-9 items-center rounded-lg bg-[var(--brand)] px-4 text-sm font-semibold text-white disabled:opacity-50"
             >
-              Write Drive link on HoneyBook project
+              Write Drive link on Pipeline project
             </button>
           </div>
         ) : (
           <p className="mt-2 text-sm text-[var(--muted)]">
             Ask an admin to link the Hub CRM project, or paste the copied Drive
-            link into HoneyBook yourself.
+            link into Pipeline yourself.
           </p>
         )}
       </Card>

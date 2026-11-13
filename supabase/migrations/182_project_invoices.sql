@@ -1,11 +1,11 @@
--- Project invoices: bill HoneyBook projects from the Hub (line items, installment plans,
+-- Project invoices: bill Pipeline projects from the Hub (line items, installment plans,
 -- Stripe pay link, manual payments). Separate from the AV ERP invoices (av_invoices).
 
 create sequence if not exists public.project_invoice_number_seq;
 
 create table if not exists public.project_invoices (
   id               uuid primary key default gen_random_uuid(),
-  project_id       uuid not null references public.honeybook_projects (id) on delete cascade,
+  project_id       uuid not null references public.pipeline_projects (id) on delete cascade,
   number           text not null unique,
   title            text not null default '',
   status           text not null default 'draft'

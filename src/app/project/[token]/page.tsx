@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ProjectPublicFiles } from "@/components/honeybook/project-public-files";
-import { ProjectPublicQuestionnaire } from "@/components/honeybook/project-public-questionnaire";
+import { ProjectPublicFiles } from "@/components/pipeline/project-public-files";
+import { ProjectPublicQuestionnaire } from "@/components/pipeline/project-public-questionnaire";
 import { COMPANY } from "@/lib/company";
-import { loadPortalItems } from "@/lib/honeybook/portal-server";
-import { isEmptyPortal, portalActionItems } from "@/lib/honeybook/portal";
-import { formatHoneyBookMoney } from "@/lib/types/honeybook";
-import { formatHoneyBookStageLabel } from "@/lib/honeybook/pipeline-board";
+import { loadPortalItems } from "@/lib/pipeline/portal-server";
+import { isEmptyPortal, portalActionItems } from "@/lib/pipeline/portal";
+import { formatPipelineMoney } from "@/lib/types/pipeline";
+import { formatPipelineStageLabel } from "@/lib/pipeline/pipeline-board";
 import {
   loadPublicProjectByToken,
   PROJECT_TOKEN_RE,
-} from "@/lib/honeybook/public-project";
+} from "@/lib/pipeline/public-project";
 
 type Props = { params: Promise<{ token: string }> };
 
@@ -61,7 +61,7 @@ export default async function PublicCrmProjectPage({ params }: Props) {
         </h1>
         {project.stage ? (
           <p className="mt-3 inline-block rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs font-medium text-[var(--muted)]">
-            {formatHoneyBookStageLabel(project.stage)}
+            {formatPipelineStageLabel(project.stage)}
           </p>
         ) : null}
 
@@ -71,7 +71,7 @@ export default async function PublicCrmProjectPage({ params }: Props) {
 
         {project.budget != null ? (
           <p className="mt-2 text-sm text-[var(--foreground)]">
-            Budget {formatHoneyBookMoney(project.budget)}
+            Budget {formatPipelineMoney(project.budget)}
           </p>
         ) : null}
 

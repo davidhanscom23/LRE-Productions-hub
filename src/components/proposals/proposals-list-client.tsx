@@ -87,7 +87,7 @@ export function ProposalsListClient({
         </h1>
         <p className="mt-1 text-sm text-[var(--muted)]">
           Turn a Ready quote into a branded PDF, upload it to Google Drive, and
-          (admins) attach the Drive link on a HoneyBook project in the Hub.
+          (admins) attach the Drive link on a Pipeline project in the Hub.
         </p>
         {!driveConfigured ? (
           <p className="mt-2 text-sm text-amber-800 dark:text-amber-200">

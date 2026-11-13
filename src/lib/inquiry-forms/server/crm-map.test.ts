@@ -72,7 +72,7 @@ describe("buildClientInsert", () => {
     });
   });
 
-  it("always satisfies honeybook_clients_name_or_email (full_name or email non-blank)", () => {
+  it("always satisfies pipeline_clients_name_or_email (full_name or email non-blank)", () => {
     const cases = [summary(), summary({ email: null }), summary({ name: "", email: null, phone: "904-555-0100" })];
     for (const s of cases) {
       const row = buildClientInsert(s, "sub-1");
@@ -85,8 +85,8 @@ describe("buildClientInsert", () => {
 
 describe("clientBlankFills (an existing client is never overwritten)", () => {
   it("never writes onto a client the website did not create (the visitor's email is not verified)", () => {
-    // A HoneyBook-synced client with a blank phone: a stranger who knows the email must not plant theirs.
-    expect(clientBlankFills({ id: "c1", full_name: "", phone: "", source_event: "honeybook" }, summary())).toBeNull();
+    // A Pipeline-synced client with a blank phone: a stranger who knows the email must not plant theirs.
+    expect(clientBlankFills({ id: "c1", full_name: "", phone: "", source_event: "pipeline" }, summary())).toBeNull();
     expect(clientBlankFills({ id: "c1", full_name: "", phone: "", source_event: null }, summary())).toBeNull();
   });
 
@@ -257,7 +257,7 @@ describe("committed work on a date (bookingsOn)", () => {
     ...over,
   });
 
-  it("counts booked, retainer paid, planning and in progress, in HoneyBook or Hub spelling", () => {
+  it("counts booked, retainer paid, planning and in progress, in Pipeline or Hub spelling", () => {
     for (const stage of ["Booked", "_BOOKED_", "_RETAINER_PAID_", "Retainer Paid", "_PAID_IN_FULL_", "Paid in Full", "_PLANNING_", "In Progress", "in_progress"]) {
       expect(isCommittedProject(row({ stage })), stage).toBe(true);
     }

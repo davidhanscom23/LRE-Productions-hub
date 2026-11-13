@@ -17,9 +17,9 @@ export type CalendarEvent = {
   /**
    * "work" = DJEP company/staff feed.
    * "timeoff" = approved staff time off.
-   * "honeybook" = HoneyBook CRM projects and/or HoneyBook→Google Calendar iCal.
+   * "pipeline" = CRM projects (dated projects overlaid on the calendar).
    */
-  source: "work" | "timeoff" | "honeybook";
+  source: "work" | "timeoff" | "pipeline";
   /** Display title: Client Name + Event Type */
   title: string;
   /** ISO DTSTART (UTC) — use for calendar placement */
@@ -35,7 +35,7 @@ export type CalendarEvent = {
    * Used by the event detail assignee editor; names are also in assignedStaff.
    */
   assignedProfileIds?: string[];
-  /** HoneyBook board project id when this event is backed by a CRM card (board staff sync into the calendar). */
+  /** Pipeline board project id when this event is backed by a CRM card (board staff sync into the calendar). */
   crmProjectId?: string | null;
   venue: string | null;
   clientName: string | null;
@@ -61,8 +61,8 @@ export type CalendarEvent = {
 };
 
 export const COMPANY_ICAL_SETTING_KEY = "company_ical_url";
-/** Google Calendar (or other) iCal URL for the HoneyBook-synced calendar. */
-export const HONEYBOOK_ICAL_SETTING_KEY = "honeybook_ical_url";
+/** Google Calendar (or other) iCal URL for the shared team calendar. */
+export const WORK_ICAL_SETTING_KEY = "work_ical_url";
 
 const CACHE_SECONDS = 15 * 60;
 
@@ -1274,7 +1274,7 @@ async function fetchIcsData(url: string) {
 
 /**
  * Parse a remote ICS feed into work events (server-only).
- * Uses the generic Google/HoneyBook-friendly parser (SUMMARY as title).
+ * Uses the generic Google-friendly parser (SUMMARY as title).
  */
 export async function fetchCompanyCalendarEvents(
   icalUrl: string,
@@ -1301,7 +1301,7 @@ export function getCachedDjepIcalPartition(icalUrl: string) {
 }
 
 export function getCachedDjepCalendarEvents(icalUrl: string) {
-  // Shared HoneyBook/Google feeds use the generic parser (SUMMARY as title).
+  // Shared Google feeds use the generic parser (SUMMARY as title).
   return getCachedGenericIcalEvents(icalUrl, "work");
 }
 
@@ -1310,13 +1310,13 @@ export function getCachedDjepTimeOffAbsences(icalUrl: string) {
 }
 
 /**
- * Generic ICS → CalendarEvent (Google Calendar / HoneyBook sync, etc.).
+ * Generic ICS → CalendarEvent (Google Calendar, etc.).
  * Uses SUMMARY as the title — unlike the DJEP parser, which expects
  * "date - status - type - staff" summaries.
  */
 export async function fetchGenericIcalEvents(
   icalUrl: string,
-  source: "honeybook" | "work" = "honeybook",
+  source: "work" = "work",
 ): Promise<CalendarEvent[]> {
   const data = await fetchIcsData(icalUrl);
   const events: CalendarEvent[] = [];
@@ -1374,7 +1374,7 @@ export async function fetchGenericIcalEvents(
 
 export function getCachedGenericIcalEvents(
   icalUrl: string,
-  source: "honeybook" | "work" = "honeybook",
+  source: "work" = "work",
 ) {
   const urlHash = createHash("sha256")
     .update(`${source}:${icalUrl}`)
@@ -1384,7 +1384,7 @@ export function getCachedGenericIcalEvents(
   return unstable_cache(
     async () => fetchGenericIcalEvents(icalUrl, source),
     ["generic-ical-v1", urlHash],
-    { revalidate: CACHE_SECONDS, tags: ["company-ical", "honeybook-ical"] },
+    { revalidate: CACHE_SECONDS, tags: ["company-ical", "work-ical"] },
   )();
 }
 

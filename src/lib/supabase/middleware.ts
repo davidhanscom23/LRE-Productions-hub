@@ -29,8 +29,6 @@ export async function updateSession(request: NextRequest) {
       // session; auth is the Twilio request signature, validated in the route.
       (p === "/api/sms/webhook" && m === "POST") ||
       (p === "/api/sms/status" && m === "POST") ||
-      // Zapier → HoneyBook CRM mirror (shared-secret auth in the route).
-      (p === "/api/webhooks/honeybook" && m === "POST") ||
       // Stripe Venue Quotes Book Now deposit (signature verified in the route).
       (p === "/api/webhooks/stripe" && m === "POST") ||
       // AV Show Control phone / Stream Deck remote (PIN / control token auth).

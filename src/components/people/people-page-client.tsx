@@ -31,7 +31,7 @@ type PeoplePageClientProps = {
   viewerRole: UserRole;
   viewerDepartments: Department[];
   departmentManagers?: DepartmentManagerMap;
-  /** @deprecated Unused — LRE uses a shared HoneyBook calendar. */
+  /** @deprecated Unused — LRE uses a shared Pipeline calendar. */
   awardSummaries?: Record<string, PersonAwardSummary>;
   initialTab?: Tab;
 };

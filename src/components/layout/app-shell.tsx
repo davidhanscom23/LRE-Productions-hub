@@ -28,7 +28,7 @@ type AppShellProps = {
   profile: Profile;
   teamColors: StaffColorEntry[];
   showHandbook?: boolean;
-  /** Shared HoneyBook/work calendar configured (all non-guests can open Calendar). */
+  /** Shared Pipeline/work calendar configured (all non-guests can open Calendar). */
   showCalendar?: boolean;
   /** Real admins can preview the hub as staff; `viewing` = currently doing so. */
   viewAs?: { canSwitch: boolean; viewing: boolean };

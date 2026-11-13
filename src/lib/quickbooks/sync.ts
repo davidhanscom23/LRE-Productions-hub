@@ -44,11 +44,11 @@ export async function syncProjectInvoice(invoiceId: string): Promise<SyncOutcome
   if (inv.status === "draft" || inv.status === "void") return { invoiceId, number, ok: false, message: "Only sent invoices are synced." };
 
   try {
-    const { data: project } = await db.from("honeybook_projects").select("name, client_id").eq("id", inv.project_id).maybeSingle();
+    const { data: project } = await db.from("pipeline_projects").select("name, client_id").eq("id", inv.project_id).maybeSingle();
     let clientName: string | null = null;
     let clientEmail = "";
     if (project?.client_id) {
-      const { data: c } = await db.from("honeybook_clients").select("full_name, email").eq("id", project.client_id).maybeSingle();
+      const { data: c } = await db.from("pipeline_clients").select("full_name, email").eq("id", project.client_id).maybeSingle();
       clientName = (c?.full_name as string | null) ?? null;
       clientEmail = String(c?.email ?? "");
     }

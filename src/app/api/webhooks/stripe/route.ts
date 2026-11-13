@@ -40,7 +40,7 @@ async function applyInvoiceCheckoutPaid(session: Stripe.Checkout.Session) {
   return true;
 }
 
-/** Payment on a project invoice (the non-AV invoices sent from a HoneyBook project card). */
+/** Payment on a project invoice (the non-AV invoices sent from a Pipeline project card). */
 async function applyProjectInvoiceCheckoutPaid(session: Stripe.Checkout.Session) {
   const invoiceId = session.metadata?.hb_invoice_id;
   if (!invoiceId) return false;
@@ -78,7 +78,7 @@ async function applyProjectInvoiceCheckoutPaid(session: Stripe.Checkout.Session)
     .eq("id", invoiceId)
     .maybeSingle();
   if (inv) {
-    await db.from("honeybook_project_notes").insert({
+    await db.from("pipeline_project_notes").insert({
       project_id: inv.project_id,
       source: "system",
       category: "status",

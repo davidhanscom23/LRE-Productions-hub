@@ -2,7 +2,7 @@ import "server-only";
 
 import {
   COMPANY_ICAL_SETTING_KEY,
-  HONEYBOOK_ICAL_SETTING_KEY,
+  WORK_ICAL_SETTING_KEY,
   getCachedDjepCalendarEvents,
 } from "@/lib/calendar/events";
 import { withHubAssignments } from "@/lib/calendar/load-assignments";
@@ -58,7 +58,7 @@ export async function runCompanyPacketAutoSync(options?: {
   }
 
   let icalUrl = "";
-  for (const key of [HONEYBOOK_ICAL_SETTING_KEY, COMPANY_ICAL_SETTING_KEY]) {
+  for (const key of [WORK_ICAL_SETTING_KEY, COMPANY_ICAL_SETTING_KEY]) {
     const { data: icalRow } = await supabase
       .from("app_settings")
       .select("value")
@@ -75,7 +75,7 @@ export async function runCompanyPacketAutoSync(options?: {
       updated: 0,
       skipped: 0,
       unmatchedStaff: [],
-      error: "HoneyBook / company calendar iCal URL is not configured.",
+      error: "Team / company calendar iCal URL is not configured.",
     };
   }
 

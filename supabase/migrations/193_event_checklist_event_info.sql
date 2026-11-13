@@ -39,7 +39,7 @@ begin
   end if;
 
   select id, name, project_date, location, client_id into v_proj
-  from public.honeybook_projects where id = p_project;
+  from public.pipeline_projects where id = p_project;
   if not found then
     return null;
   end if;
@@ -48,7 +48,7 @@ begin
 
   select o.id, o.reference, o.customer_id, o.venue_id into v_opp
   from public.av_opportunities o
-  where o.honeybook_project_id = p_project and coalesce(o.is_template, false) = false
+  where o.pipeline_project_id = p_project and coalesce(o.is_template, false) = false
   order by o.created_at desc limit 1;
 
   select * into v_venue
@@ -56,7 +56,7 @@ begin
   where id = coalesce(v_cl.venue_id, v_opp.venue_id);
 
   select full_name, email, phone into v_client
-  from public.honeybook_clients where id = v_proj.client_id;
+  from public.pipeline_clients where id = v_proj.client_id;
 
   select name, contact_name, email, phone into v_cust
   from public.av_customers where id = v_opp.customer_id;
@@ -68,7 +68,7 @@ begin
            'email', coalesce(pr.email, '')
          ) order by (a.role = 'lead') desc, pr.full_name), '[]'::jsonb)
     into v_staff
-  from public.honeybook_project_assignees a
+  from public.pipeline_project_assignees a
   join public.profiles pr on pr.id = a.profile_id
   where a.project_id = p_project;
 

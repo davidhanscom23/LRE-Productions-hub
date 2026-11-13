@@ -32,7 +32,7 @@ import type {
   AvSupplier,
 } from "@/lib/av-erp/types";
 import { isGeminiConfigured } from "@/lib/gemini/credentials";
-import { canManageHoneyBookCrm } from "@/lib/honeybook/access";
+import { canManagePipelineCrm } from "@/lib/pipeline/access";
 import { mergeCategories } from "@/lib/services-catalog/category-list";
 import { createClient } from "@/lib/supabase/server";
 import { canAccessVidentAv } from "@/lib/vident-av-access";
@@ -374,7 +374,7 @@ export default async function AvQuoteDetailPage({ params }: Props) {
     }
   }
 
-  // HoneyBook services catalog (migration 180/188). Tolerant: no table just means no catalog picker yet.
+  // Pipeline services catalog (migration 180/188). Tolerant: no table just means no catalog picker yet.
   const [catalogRes, customCatRes] = await Promise.all([
     supabase
       .from("service_catalog_items")
@@ -415,11 +415,11 @@ export default async function AvQuoteDetailPage({ params }: Props) {
     <QuoteEditorClient
       catalogItems={catalogItems}
       catalogCategories={catalogCategories}
-      canEditCatalog={canManageHoneyBookCrm(profile.role)}
+      canEditCatalog={canManagePipelineCrm(profile.role)}
       opportunity={{
         ...(opportunity as AvOpportunity),
         billing_type: await loadBillingType(supabase, "av_opportunities", id),
-        honeybook_project_id: linkedProjectId,
+        pipeline_project_id: linkedProjectId,
       }}
       projects={linkableProjects}
       groups={(groupsRes.data ?? []) as AvOpportunityGroup[]}

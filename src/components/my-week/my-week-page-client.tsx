@@ -7,7 +7,6 @@ import { Check, ClipboardList, Mail, MapPin, Phone, Plus, Trash2 } from "lucide-
 import {
   createTaskAction,
   deleteTaskAction,
-  toggleHoneyBookTaskHubDoneAction,
   toggleTaskDoneAction,
 } from "@/app/(app)/my-week/actions";
 import { StatusBadge } from "@/components/calendar/event-detail-modal";
@@ -20,10 +19,6 @@ import {
   matchStaffColor,
   type StaffColorEntry,
 } from "@/lib/people/color";
-import {
-  honeyBookTaskIsOpen,
-  type HoneyBookTask,
-} from "@/lib/types/honeybook-tasks";
 import type { Task } from "@/lib/types/tasks";
 
 type DailyQuoteProp = {
@@ -40,7 +35,6 @@ type MyWeekPageClientProps = {
   isAdmin: boolean;
   calendarError: string | null;
   tasks: Task[];
-  honeyBookTasks?: HoneyBookTask[];
   staffColors?: StaffColorEntry[];
 };
 
@@ -53,7 +47,6 @@ export function MyWeekPageClient({
   isAdmin,
   calendarError,
   tasks: initialTasks,
-  honeyBookTasks = [],
   staffColors = [],
 }: MyWeekPageClientProps) {
   return (
@@ -105,7 +98,7 @@ export function MyWeekPageClient({
           <p className="mt-1 text-sm text-[var(--muted)]">
             {isAdmin
               ? "Next 7 days from the company calendar."
-              : "Next 7 days from the shared HoneyBook calendar."}
+              : "Next 7 days from the shared Pipeline calendar."}
           </p>
 
           {calendarError ? (
@@ -120,7 +113,7 @@ export function MyWeekPageClient({
               <p className="mt-1 text-sm text-[var(--muted)]">
                 {isAdmin
                   ? "Add the company iCal URL on Calendar to see upcoming Events here."
-                  : "Ask an admin to connect the HoneyBook calendar on Calendar."}
+                  : "Ask an admin to connect the Pipeline calendar on Calendar."}
               </p>
             </div>
           ) : events.length === 0 ? (
@@ -267,160 +260,6 @@ export function MyWeekPageClient({
         <TasksPanel initialTasks={initialTasks} />
       </div>
 
-      <HoneyBookTasksPanel tasks={honeyBookTasks} />
-    </div>
-  );
-}
-
-function HoneyBookTasksPanel({ tasks }: { tasks: HoneyBookTask[] }) {
-  const router = useRouter();
-  const [pending, startTransition] = useTransition();
-  const [error, setError] = useState<string | null>(null);
-
-  const openTasks = useMemo(
-    () => tasks.filter((t) => honeyBookTaskIsOpen(t)),
-    [tasks],
-  );
-  const doneTasks = useMemo(
-    () => tasks.filter((t) => !honeyBookTaskIsOpen(t)),
-    [tasks],
-  );
-
-  function handleToggle(task: HoneyBookTask) {
-    setError(null);
-    const nextDone = honeyBookTaskIsOpen(task);
-    startTransition(async () => {
-      const result = await toggleHoneyBookTaskHubDoneAction(task.id, nextDone);
-      if (result.error) {
-        setError(result.error);
-        return;
-      }
-      router.refresh();
-    });
-  }
-
-  return (
-    <section className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 shadow-sm">
-      <h2 className="text-lg font-semibold text-[var(--foreground)]">
-        HoneyBook tasks
-      </h2>
-      <p className="mt-1 text-sm text-[var(--muted)]">
-        Tasks assigned to you in HoneyBook (via Zapier). Checking them off here
-        only updates the Hub — complete them in HoneyBook to sync status back.
-      </p>
-
-      {error ? (
-        <p className="mt-3 text-sm text-red-700 dark:text-red-300">{error}</p>
-      ) : null}
-
-      {tasks.length === 0 ? (
-        <div className="mt-6 rounded-xl border border-dashed border-[var(--border)] bg-[var(--background)] px-4 py-8 text-center">
-          <p className="text-sm font-medium text-[var(--foreground)]">
-            No HoneyBook tasks assigned to you
-          </p>
-          <p className="mt-1 text-sm text-[var(--muted)]">
-            Ask an admin to add a HoneyBook → Zapier task Zap (see HoneyBook →
-            Zapier setup). Your Hub email must match the HoneyBook assignee.
-          </p>
-        </div>
-      ) : (
-        <div className="mt-5 space-y-5">
-          <HoneyBookTaskGroup
-            label="To do"
-            empty="You’re caught up on open HoneyBook tasks."
-            tasks={openTasks}
-            pending={pending}
-            onToggle={handleToggle}
-          />
-          <HoneyBookTaskGroup
-            label="Done"
-            empty="Completed HoneyBook tasks will show up here."
-            tasks={doneTasks}
-            pending={pending}
-            onToggle={handleToggle}
-          />
-        </div>
-      )}
-    </section>
-  );
-}
-
-function HoneyBookTaskGroup({
-  label,
-  empty,
-  tasks,
-  pending,
-  onToggle,
-}: {
-  label: string;
-  empty: string;
-  tasks: HoneyBookTask[];
-  pending: boolean;
-  onToggle: (task: HoneyBookTask) => void;
-}) {
-  return (
-    <div>
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-        {label}
-        <span className="ml-2 font-normal normal-case tracking-normal">
-          ({tasks.length})
-        </span>
-      </p>
-      {tasks.length === 0 ? (
-        <p className="mt-2 text-sm text-[var(--muted)]">{empty}</p>
-      ) : (
-        <ul className="mt-2 space-y-2">
-          {tasks.map((task) => {
-            const isOpen = honeyBookTaskIsOpen(task);
-            return (
-              <li
-                key={task.id}
-                className="flex items-start gap-2 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2.5"
-              >
-                <button
-                  type="button"
-                  disabled={pending}
-                  onClick={() => onToggle(task)}
-                  className={[
-                    "mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border transition-colors",
-                    !isOpen
-                      ? "border-[var(--brand)] bg-[var(--brand)] text-white"
-                      : "border-[var(--border)] text-transparent hover:border-[var(--brand)]",
-                  ].join(" ")}
-                  aria-label={isOpen ? "Mark as done in Hub" : "Mark as not done"}
-                >
-                  <Check className="h-3 w-3" />
-                </button>
-                <div className="min-w-0 flex-1">
-                  <p
-                    className={[
-                      "text-sm text-[var(--foreground)]",
-                      !isOpen ? "line-through text-[var(--muted)]" : "",
-                    ].join(" ")}
-                  >
-                    {task.title}
-                  </p>
-                  <p className="mt-0.5 text-xs text-[var(--muted)]">
-                    {task.project_name ? `${task.project_name}` : "HoneyBook"}
-                    {task.due_date
-                      ? ` · Due ${new Date(`${task.due_date}T12:00:00`).toLocaleDateString(undefined, { month: "short", day: "numeric" })}`
-                      : ""}
-                    {task.status === "done" && !task.hub_done
-                      ? " · Done in HoneyBook"
-                      : ""}
-                    {task.hub_done ? " · Done in Hub" : ""}
-                  </p>
-                  {task.notes ? (
-                    <p className="mt-1 text-xs text-[var(--muted)]">
-                      {task.notes}
-                    </p>
-                  ) : null}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      )}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use server";
 
 import { getCurrentProfile } from "@/lib/auth/profile";
-import { canManageHoneyBookCrm } from "@/lib/honeybook/access";
+import { canManagePipelineCrm } from "@/lib/pipeline/access";
 import { DAYS, parseWindowsText, type Weekly } from "@/lib/scheduling/slots";
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
@@ -25,7 +25,7 @@ const int = (n: number, lo: number, hi: number) => Number.isFinite(n) && n >= lo
 
 export async function saveMeetingTypeAction(i: TypeInput): Promise<{ error: string | null }> {
   const profile = await getCurrentProfile();
-  if (!profile || !canManageHoneyBookCrm(profile.role)) return { error: "Only admins and Leads can edit scheduling." };
+  if (!profile || !canManagePipelineCrm(profile.role)) return { error: "Only admins and Leads can edit scheduling." };
   const slug = i.slug.trim().toLowerCase();
   if (!/^[a-z0-9][a-z0-9-]{1,48}$/.test(slug)) return { error: "The link name needs 2 to 49 letters, numbers or dashes." };
   if (!i.title.trim()) return { error: "Add a title." };
@@ -69,7 +69,7 @@ export async function saveMeetingTypeAction(i: TypeInput): Promise<{ error: stri
 
 export async function cancelBookingAdminAction(id: string): Promise<{ error: string | null }> {
   const profile = await getCurrentProfile();
-  if (!profile || !canManageHoneyBookCrm(profile.role)) return { error: "Only admins and Leads can cancel bookings." };
+  if (!profile || !canManagePipelineCrm(profile.role)) return { error: "Only admins and Leads can cancel bookings." };
   if (!/^[0-9a-f-]{36}$/i.test(id)) return { error: "Booking not found." };
   const supabase = await createClient();
   const { error } = await supabase

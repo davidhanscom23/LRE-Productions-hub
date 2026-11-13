@@ -69,7 +69,7 @@ function syntheticEventFromReview(row: ReviewBridgeRow): CalendarEvent | null {
 /**
  * Create Event Packets for website-review Event_IDs.
  *
- * 1) Prefer live shared HoneyBook calendar events.
+ * 1) Prefer live shared Pipeline calendar events.
  * 2) Fall back to the review row itself (date + staff names) for Event_IDs
  *    within the last 24 months when the event isn't on the feed.
  * Assignees come from calendar assigned-staff and/or sheet Staff Member(s).

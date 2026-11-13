@@ -148,7 +148,7 @@ export type AvOpportunity = {
   /** direct = we bill the client; venue = the venue pays us (migration 187). */
   billing_type?: "direct" | "venue";
   /** Hub project (event card) this estimate belongs to (migration 192). */
-  honeybook_project_id?: string | null;
+  pipeline_project_id?: string | null;
   transport_notes: string;
   notes: string;
   is_template: boolean;

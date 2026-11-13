@@ -8,7 +8,7 @@
 -- model as 134_venue_quote_portals.sql). Admins read and manage the tables through the
 -- is_admin() policies below.
 --
--- A finished inquiry becomes a HoneyBook board project at stage 'Inquiry' (source_event
+-- A finished inquiry becomes a Pipeline board project at stage 'Inquiry' (source_event
 -- 'web_form', client matched by email or created); unfinished ones stay in inquiry_submissions
 -- only, so the board never fills up with half-filled forms. The What's New entry lives in
 -- src/lib/changelog.ts (this hub has no changelog table).
@@ -164,10 +164,10 @@ create table if not exists public.inquiry_submissions (
 );
 
 comment on table public.inquiry_submissions is
-  'Inquiry Forms: one row per visitor run. Raw answers + server verdicts live here; the HoneyBook project is created at completion (crm_ref links it).';
+  'Inquiry Forms: one row per visitor run. Raw answers + server verdicts live here; the Pipeline project is created at completion (crm_ref links it).';
 
--- CRM write claim. Completion, the sweep re-drive and the staff "Add to HoneyBook" button each
--- claim the submission through inquiry_crm_claim (below) before creating a HoneyBook project, so
+-- CRM write claim. Completion, the sweep re-drive and the staff "Add to Pipeline" button each
+-- claim the submission through inquiry_crm_claim (below) before creating a Pipeline project, so
 -- two of them can never create two projects for one inquiry. A failed write clears it again.
 alter table public.inquiry_submissions
   add column if not exists crm_claimed_at timestamptz;

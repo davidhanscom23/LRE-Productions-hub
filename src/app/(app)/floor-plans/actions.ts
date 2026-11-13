@@ -1,7 +1,7 @@
 "use server";
 
 import { getCurrentProfile } from "@/lib/auth/profile";
-import { canAccessHoneyBook } from "@/lib/honeybook/access";
+import { canAccessPipeline } from "@/lib/pipeline/access";
 import {
   FLOOR_PLAN_BUCKET,
   floorPlanShareUrl,
@@ -23,7 +23,7 @@ const UUID_RE = /^[0-9a-f-]{36}$/i;
 async function requireStaff() {
   const profile = await getCurrentProfile();
   if (!profile) return { profile: null, error: "Sign in first." };
-  if (!canAccessHoneyBook(profile.role)) {
+  if (!canAccessPipeline(profile.role)) {
     return { profile: null, error: "Only admins, Leads, and staff can use floor plans." };
   }
   return { profile, error: null as string | null };
@@ -70,7 +70,7 @@ export async function createFloorPlan(input: {
     .select("id")
     .single();
   if (insErr || !row) return { error: insErr?.message ?? "Could not create the plan." };
-  if (input.projectId) revalidatePath(`/honeybook/projects/${input.projectId}`);
+  if (input.projectId) revalidatePath(`/pipeline/projects/${input.projectId}`);
   revalidatePath("/floor-plans");
   return { error: null, id: row.id as string };
 }
@@ -122,7 +122,7 @@ export async function deleteFloorPlan(id: string): Promise<Result> {
   if (path && isServiceRoleConfigured()) {
     await createServiceClient().storage.from(FLOOR_PLAN_BUCKET).remove([path]);
   }
-  if (plan?.project_id) revalidatePath(`/honeybook/projects/${plan.project_id}`);
+  if (plan?.project_id) revalidatePath(`/pipeline/projects/${plan.project_id}`);
   revalidatePath("/floor-plans");
   return { error: null };
 }
@@ -152,7 +152,7 @@ export async function duplicateFloorPlan(id: string): Promise<Result<{ id: strin
     .single();
   if (insErr || !row) return { error: insErr?.message ?? "Could not duplicate." };
   revalidatePath("/floor-plans");
-  if (src.project_id) revalidatePath(`/honeybook/projects/${src.project_id}`);
+  if (src.project_id) revalidatePath(`/pipeline/projects/${src.project_id}`);
   return { error: null, id: row.id as string };
 }
 

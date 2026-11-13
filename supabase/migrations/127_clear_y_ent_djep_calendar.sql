@@ -1,4 +1,4 @@
--- Vident uses HoneyBook→Google iCal only. Clear leftover Y Entertainment
+-- Vident uses Pipeline→Google iCal only. Clear leftover Y Entertainment
 -- DJEP calendar URLs and any Event Packets / Hub assignments synced from them.
 
 -- Personal DJEP Calendar Links (Y Entertainment staff feeds).
@@ -13,8 +13,8 @@ where djep_ical_url is not null;
 alter table public.profiles enable trigger user;
 
 -- Drop legacy company_ical_url when it is a DJEP / Y Ent host, or when it
--- diverges from the HoneyBook URL (HoneyBook save used to mirror both keys;
--- an old Y Ent company URL can still sit beside a Vident HoneyBook URL).
+-- diverges from the Pipeline URL (Pipeline save used to mirror both keys;
+-- an old Y Ent company URL can still sit beside a Vident Pipeline URL).
 delete from public.app_settings as company
 where company.key = 'company_ical_url'
   and (
@@ -24,21 +24,21 @@ where company.key = 'company_ical_url'
     or exists (
       select 1
       from public.app_settings as hb
-      where hb.key = 'honeybook_ical_url'
+      where hb.key = 'work_ical_url'
         and nullif(btrim(hb.value), '') is not null
         and nullif(btrim(company.value), '')
           is distinct from nullif(btrim(hb.value), '')
     )
   );
 
--- Keep the mirrored company key in sync with HoneyBook when present.
+-- Keep the mirrored company key in sync with Pipeline when present.
 insert into public.app_settings (key, value, updated_at)
 select
   'company_ical_url',
   btrim(hb.value),
   now()
 from public.app_settings as hb
-where hb.key = 'honeybook_ical_url'
+where hb.key = 'work_ical_url'
   and nullif(btrim(hb.value), '') is not null
 on conflict (key) do update
 set

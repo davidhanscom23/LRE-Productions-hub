@@ -17,7 +17,7 @@ import {
   StatusBadge,
   useEventDetail,
 } from "@/components/calendar/event-detail-modal";
-import { HoneybookIcalSettingsForm } from "@/components/calendar/honeybook-ical-settings-form";
+import { WorkIcalSettingsForm } from "@/components/calendar/work-ical-settings-form";
 import { CalendarStats } from "@/components/calendar/calendar-stats";
 import { CalendarAvailability } from "@/components/calendar/calendar-availability";
 import type {
@@ -60,8 +60,8 @@ type CalendarPageClientProps = {
   staffColors?: StaffColorEntry[];
   staff?: StaffAvailabilityEntry[];
   teamTimeOff?: TeamTimeOffRow[];
-  /** HoneyBook→Google iCal feed configured */
-  honeybookIcalConfigured?: boolean;
+  /** Shared team iCal feed configured */
+  workIcalConfigured?: boolean;
 };
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -78,7 +78,7 @@ const TIME_OFF_CHIP = {
   borderColor: "var(--border)",
 };
 
-const HONEYBOOK_CHIP = {
+const PIPELINE_CHIP = {
   backgroundColor: "color-mix(in srgb, var(--brand) 18%, transparent)",
   color: "var(--brand)",
   borderColor: "color-mix(in srgb, var(--brand) 35%, transparent)",
@@ -86,7 +86,7 @@ const HONEYBOOK_CHIP = {
 
 function chipStyleFor(event: CalendarEvent, staffColors: StaffColorEntry[]) {
   if (event.source === "timeoff") return TIME_OFF_CHIP;
-  if (event.source === "honeybook") return HONEYBOOK_CHIP;
+  if (event.source === "pipeline") return PIPELINE_CHIP;
   const color = matchStaffColor(event.assignedStaff, staffColors);
   const chip = staffChipStyle(color);
   return {
@@ -110,7 +110,7 @@ export function CalendarPageClient({
   staffColors = [],
   staff = [],
   teamTimeOff = [],
-  honeybookIcalConfigured = false,
+  workIcalConfigured = false,
 }: CalendarPageClientProps) {
   const [view, setView] = useState<CalendarView>("month");
   const [selected, setSelected] = useState<Date>(() => todayLocal());
@@ -211,8 +211,8 @@ export function CalendarPageClient({
 
   const title = isAdmin ? "Company Events" : "Work Calendar";
   const subtitle = isAdmin
-    ? "HoneyBook projects and events for the team"
-    : "Shared team calendar from HoneyBook";
+    ? "Projects and events for the team"
+    : "Shared team calendar";
 
   return (
     <div className="mx-auto max-w-6xl space-y-6">
@@ -231,7 +231,7 @@ export function CalendarPageClient({
           <div className="rounded-2xl border border-dashed border-[var(--border)] bg-[var(--surface)]/60 px-6 py-10 text-center">
             <p className="font-medium text-[var(--foreground)]">
               {isAdmin
-                ? "Connect the HoneyBook calendar"
+                ? "Connect the team calendar"
                 : "No calendar connected yet"}
             </p>
             <p className="mx-auto mt-2 max-w-md text-sm text-[var(--muted)]">
@@ -239,18 +239,18 @@ export function CalendarPageClient({
                 <>
                   Paste the Google Calendar{" "}
                   <span className="font-medium">secret iCal URL</span> for
-                  HoneyBook Calendar — LRE Productions (from Google Calendar
+                  the LRE Productions team calendar (from Google Calendar
                   → Settings and sharing → Integrate calendar).
                 </>
               ) : (
                 <>
-                  Ask an admin to connect the HoneyBook calendar on this page.
+                  Ask an admin to connect the team calendar on this page.
                 </>
               )}
             </p>
           </div>
           {isAdmin ? (
-            <HoneybookIcalSettingsForm configured={false} />
+            <WorkIcalSettingsForm configured={false} />
           ) : null}
         </div>
       ) : (
@@ -511,7 +511,7 @@ export function CalendarPageClient({
 
           {isAdmin ? (
             <div className="mt-6 space-y-4">
-              <HoneybookIcalSettingsForm configured={honeybookIcalConfigured} />
+              <WorkIcalSettingsForm configured={workIcalConfigured} />
             </div>
           ) : null}
         </>
@@ -831,7 +831,7 @@ function EventRow({
   const accent =
     event.source === "timeoff"
       ? "var(--border)"
-      : event.source === "honeybook"
+      : event.source === "pipeline"
         ? "var(--brand)"
         : staffColor;
 
