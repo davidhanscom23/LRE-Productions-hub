@@ -9,7 +9,7 @@ type Props = { searchParams: Promise<{ connected?: string; error?: string }> };
 export default async function QuickBooksPage({ searchParams }: Props) {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (profile.role !== "admin") redirect("/honeybook");
+  if (profile.role !== "admin") redirect("/pipeline");
   const sp = await searchParams;
   const cfg = qbConfig();
   const connection = await qbConnection().catch(() => null);
@@ -17,7 +17,7 @@ export default async function QuickBooksPage({ searchParams }: Props) {
   return (
     <div className="mx-auto max-w-3xl space-y-4 p-4 sm:p-6">
       <div>
-        <a href="/honeybook" className="text-xs text-[var(--muted)] underline">← HoneyBook</a>
+        <a href="/pipeline" className="text-xs text-[var(--muted)] underline">← Pipeline</a>
         <h1 className="text-xl font-semibold">QuickBooks sync</h1>
         <p className="mt-1 text-sm text-[var(--muted)]">
           Send Hub invoices and payments to QuickBooks Online so your bookkeeping stays in one place.

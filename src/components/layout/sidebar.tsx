@@ -435,8 +435,8 @@ export const NAV_GROUPS: NavGroup[] = [
         toolsCategory: "vident-av",
       },
       {
-        href: "/honeybook",
-        label: "HoneyBook",
+        href: "/pipeline",
+        label: "Pipeline",
         icon: Handshake,
         toolsCategory: "quotes",
       },
@@ -746,7 +746,7 @@ function NavLink({
 }
 
 type SidebarProps = {
-  /** Admins always; staff when the shared HoneyBook calendar is connected. */
+  /** Admins always; staff when the shared Pipeline calendar is connected. */
   showCalendar?: boolean;
   /** Admins or anyone with the AV department. */
   showVidentAv?: boolean;

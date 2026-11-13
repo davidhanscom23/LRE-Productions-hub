@@ -81,7 +81,7 @@ export async function runChecklistAlerts(now: Date = new Date()): Promise<AlertR
           .from("event_checklist_item_progress")
           .select("item_id, qty_out, qty_back")
           .eq("checklist_id", list.id),
-      supabase.from("honeybook_projects").select("name").eq("id", list.project_id).maybeSingle(),
+      supabase.from("pipeline_projects").select("name").eq("id", list.project_id).maybeSingle(),
       ]);
       const byItem = new Map((progress ?? []).map((p) => [p.item_id as string, p]));
       const totals = passTotals(
@@ -106,7 +106,7 @@ export async function runChecklistAlerts(now: Date = new Date()): Promise<AlertR
 
       const [{ data: assigned }, { data: admins }] = await Promise.all([
         supabase
-          .from("honeybook_project_assignees")
+          .from("pipeline_project_assignees")
           .select("profile_id")
           .eq("project_id", list.project_id),
         supabase.from("profiles").select("id").eq("role", "admin"),

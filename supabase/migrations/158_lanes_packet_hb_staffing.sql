@@ -1,22 +1,22 @@
 -- Wedding/Social + Staffing lane bridges:
--- 1) Event Packets ↔ HoneyBook CRM project FK (Hub deep links)
+-- 1) Event Packets ↔ Pipeline CRM project FK (Hub deep links)
 -- 2) Leads (trainer) may mark/clear Staffing unavailable rows
 -- 3) Seed Wedding & Social quoting pricing notes (defaults staff can edit)
 
 -- ---------------------------------------------------------------------------
--- event_packets.honeybook_project_id
+-- event_packets.pipeline_project_id
 -- ---------------------------------------------------------------------------
 
 alter table public.event_packets
-  add column if not exists honeybook_project_id uuid
-    references public.honeybook_projects (id) on delete set null;
+  add column if not exists pipeline_project_id uuid
+    references public.pipeline_projects (id) on delete set null;
 
-create index if not exists event_packets_honeybook_project_idx
-  on public.event_packets (honeybook_project_id)
-  where honeybook_project_id is not null;
+create index if not exists event_packets_pipeline_project_idx
+  on public.event_packets (pipeline_project_id)
+  where pipeline_project_id is not null;
 
-comment on column public.event_packets.honeybook_project_id is
-  'Optional Hub CRM (HoneyBook mirror) project linked to this packet for deep links.';
+comment on column public.event_packets.pipeline_project_id is
+  'Optional Hub CRM (Pipeline mirror) project linked to this packet for deep links.';
 
 -- ---------------------------------------------------------------------------
 -- Staffing: Leads (trainer) can insert/update Hub time-off like admins
@@ -68,7 +68,7 @@ from (
     (
       'Wedding & Social',
       'Deposit & terms reminder',
-      E'• Deposit and final balance timing (align with HoneyBook contract)\n• Overtime, travel, and lodging when applicable\n• Hub Proposal PDF → Drive; paste link into the HoneyBook project',
+      E'• Deposit and final balance timing (align with the signed contract)\n• Overtime, travel, and lodging when applicable\n• Hub Proposal PDF → Drive; paste link into the project',
       30
     )
 ) as v(department, title, body, sort_order)

@@ -37,14 +37,14 @@ export default async function ProposalDetailPage({ params }: Props) {
   if (!row) notFound();
   if (row.created_by !== profile.id && !isAdmin) redirect("/proposals");
 
-  let honeybookProjectName: string | null = null;
-  if (row.honeybook_project_id && isAdmin) {
+  let pipelineProjectName: string | null = null;
+  if (row.pipeline_project_id && isAdmin) {
     const { data: project } = await supabase
-      .from("honeybook_projects")
+      .from("pipeline_projects")
       .select("name")
-      .eq("id", row.honeybook_project_id)
+      .eq("id", row.pipeline_project_id)
       .maybeSingle();
-    honeybookProjectName = project?.name ? String(project.name) : null;
+    pipelineProjectName = project?.name ? String(project.name) : null;
   }
 
   const proposal: Proposal = {
@@ -67,15 +67,15 @@ export default async function ProposalDetailPage({ params }: Props) {
     drive_file_id: row.drive_file_id ? String(row.drive_file_id) : null,
     drive_web_view_link: String(row.drive_web_view_link ?? ""),
     drive_folder_path: String(row.drive_folder_path ?? ""),
-    honeybook_project_id: row.honeybook_project_id
-      ? String(row.honeybook_project_id)
+    pipeline_project_id: row.pipeline_project_id
+      ? String(row.pipeline_project_id)
       : null,
-    honeybook_linked_at: (row.honeybook_linked_at as string) ?? null,
+    pipeline_linked_at: (row.pipeline_linked_at as string) ?? null,
     generated_at: (row.generated_at as string) ?? null,
     uploaded_at: (row.uploaded_at as string) ?? null,
     created_at: String(row.created_at ?? ""),
     updated_at: String(row.updated_at ?? ""),
-    honeybook_project_name: honeybookProjectName,
+    pipeline_project_name: pipelineProjectName,
   };
 
   return (

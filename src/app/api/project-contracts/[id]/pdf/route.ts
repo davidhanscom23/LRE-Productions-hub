@@ -1,6 +1,6 @@
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { COMPANY } from "@/lib/company";
-import { canAccessHoneyBook } from "@/lib/honeybook/access";
+import { canAccessPipeline } from "@/lib/pipeline/access";
 import { buildContractPdf } from "@/lib/project-contracts/pdf";
 import { CONTRACT_BUCKET } from "@/lib/project-contracts/server";
 import { createServiceClient, isServiceRoleConfigured } from "@/lib/supabase/admin";
@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 /** Staff download: the archived signed PDF when there is one, otherwise a preview of the current text. */
 export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> }) {
   const profile = await getCurrentProfile();
-  if (!profile || !canAccessHoneyBook(profile.role)) return new Response("Unauthorized", { status: 401 });
+  if (!profile || !canAccessPipeline(profile.role)) return new Response("Unauthorized", { status: 401 });
   const { id } = await ctx.params;
   if (!/^[0-9a-f-]{36}$/i.test(id)) return new Response("Not found", { status: 404 });
 
@@ -29,7 +29,7 @@ export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> 
     if (file) bytes = new Uint8Array(await file.arrayBuffer());
   }
   if (!bytes) {
-    const { data: p } = await supabase.from("honeybook_projects").select("name").eq("id", c.project_id).maybeSingle();
+    const { data: p } = await supabase.from("pipeline_projects").select("name").eq("id", c.project_id).maybeSingle();
     bytes = await buildContractPdf({
       companyName: COMPANY.displayName,
       title: String(c.title),

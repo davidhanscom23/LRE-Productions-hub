@@ -2,9 +2,9 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import {
-  findHoneyBookProjectsForPacket,
-  type HoneyBookProjectMatch,
-} from "@/lib/event-packets/honeybook-link";
+  findPipelineProjectsForPacket,
+  type PipelineProjectMatch,
+} from "@/lib/event-packets/pipeline-link";
 import { createClient } from "@/lib/supabase/server";
 
 export const metadata = { title: "Open gear checklist — LRE" };
@@ -36,12 +36,12 @@ export default async function OpenChecklistPage({ searchParams }: Props) {
   if (sp.packet || sp.uid) {
     const q = supabase
       .from("event_packets")
-      .select("id, event_date, client_name, honeybook_project_id");
+      .select("id, event_date, client_name, pipeline_project_id");
     const { data: packet } = sp.packet
       ? await q.eq("id", sp.packet).maybeSingle()
       : await q.eq("calendar_uid", sp.uid ?? "").maybeSingle();
-    if (packet?.honeybook_project_id) {
-      redirect(`/event-checklist/${packet.honeybook_project_id}`);
+    if (packet?.pipeline_project_id) {
+      redirect(`/event-checklist/${packet.pipeline_project_id}`);
     }
     if (packet) {
       eventDate = String(packet.event_date ?? eventDate);
@@ -49,9 +49,9 @@ export default async function OpenChecklistPage({ searchParams }: Props) {
     }
   }
 
-  let matches: HoneyBookProjectMatch[] = [];
+  let matches: PipelineProjectMatch[] = [];
   if (eventDate) {
-    matches = await findHoneyBookProjectsForPacket(supabase, { eventDate, clientName });
+    matches = await findPipelineProjectsForPacket(supabase, { eventDate, clientName });
   }
 
   if (matches.length === 1) redirect(`/event-checklist/${matches[0].id}`);
@@ -83,7 +83,7 @@ export default async function OpenChecklistPage({ searchParams }: Props) {
           </p>
         )}
         <p className="mt-4">
-          <Link href="/honeybook" className="font-medium underline">
+          <Link href="/pipeline" className="font-medium underline">
             Go to events
           </Link>
         </p>

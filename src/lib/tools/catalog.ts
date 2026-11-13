@@ -71,7 +71,7 @@ export const EXTRA_DESCRIPTIONS: Record<string, string> = {
   "/my-calendar": "Your personal calendar feed.",
   "/venue-quotes": "Public instant-quote pages per venue.",
   "/inquiry-forms":
-    "Multi-step website inquiry forms that check the date and add each inquiry to the HoneyBook board.",
+    "Multi-step website inquiry forms that check the date and add each inquiry to the Pipeline board.",
   "/page-map": "Every page in the hub and who can open it.",
   "/quoting": "Build a custom event quote.",
   "/proposals": "Branded proposals and PDFs.",
@@ -124,7 +124,7 @@ export const TOOL_ADDED_ON: Record<string, string> = {
   "/scheduling": "2026-11-07",
   "/services": "2026-11-07",
   "/floor-plans": "2026-11-07",
-  "/honeybook": "2026-11-06",
+  "/pipeline": "2026-11-06",
   "/inquiry-forms": "2026-11-04",
   "/av-show": "2026-11-01",
 };

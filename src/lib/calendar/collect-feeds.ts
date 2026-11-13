@@ -3,7 +3,7 @@ import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import {
   COMPANY_ICAL_SETTING_KEY,
-  HONEYBOOK_ICAL_SETTING_KEY,
+  WORK_ICAL_SETTING_KEY,
   fetchCompanyCalendarEvents,
   type CalendarEvent,
 } from "@/lib/calendar/events";
@@ -16,7 +16,7 @@ export type CollectedCalendarFeeds = {
 };
 
 /**
- * Load the shared LRE work calendar only (HoneyBook→Google iCal, with
+ * Load the shared LRE work calendar only (shared Google iCal, with
  * legacy company_ical_url as fallback). Personal DJEP feeds are intentionally
  * ignored — LRE does not use DJEP / Y Entertainment calendars.
  */
@@ -24,7 +24,7 @@ export async function collectAllDjepWorkEvents(
   supabase: SupabaseClient,
 ): Promise<CollectedCalendarFeeds> {
   let icalUrl = "";
-  for (const key of [HONEYBOOK_ICAL_SETTING_KEY, COMPANY_ICAL_SETTING_KEY]) {
+  for (const key of [WORK_ICAL_SETTING_KEY, COMPANY_ICAL_SETTING_KEY]) {
     const { data: row } = await supabase
       .from("app_settings")
       .select("value")

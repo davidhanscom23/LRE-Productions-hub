@@ -144,7 +144,7 @@ const SHORTCUT_ICONS: Record<string, { icon: LucideIcon; iconClass: string }> = 
   "/inquiry-forms": { icon: FormInput, iconClass: "bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300" },
   "/hub-health": { icon: Stethoscope, iconClass: "bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300" },
   "/page-map": { icon: MapIcon, iconClass: "bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300" },
-  "/honeybook": { icon: Handshake, iconClass: "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300" },
+  "/pipeline": { icon: Handshake, iconClass: "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300" },
   "/staffing": { icon: UsersRound, iconClass: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300" },
   "/content-sla": { icon: Clock, iconClass: "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300" },
   "/client-reviews": { icon: MessageSquare, iconClass: "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300" },

@@ -1,24 +1,24 @@
 /**
  * Inquiry Forms - LRE hub CRM mapping. PURE (row builders and counting rules; adapter.ts runs the
- * queries). Spec section 4: a finished inquiry becomes a honeybook_projects row at stage 'Inquiry'
- * (source_event 'web_form', shown with a Website badge on the board) linked to a honeybook_clients
- * row matched by exact lowercased email, plus one honeybook_project_stage_events row ('' to
+ * queries). Spec section 4: a finished inquiry becomes a pipeline_projects row at stage 'Inquiry'
+ * (source_event 'web_form', shown with a Website badge on the board) linked to a pipeline_clients
+ * row matched by exact lowercased email, plus one pipeline_project_stage_events row ('' to
  * 'Inquiry'). An existing client is never overwritten: the form only fills its blank name or phone.
  */
-import { honeyBookStageMatchKey } from "@/lib/honeybook/pipeline-board";
+import { pipelineStageMatchKey } from "@/lib/pipeline/pipeline-board";
 import type { CrmSummary } from "../types";
 import { normalizeEmail } from "./lifecycle-core";
 import { isCalendarDate } from "./schema-core";
 
 export { normalizeEmail };
 
-/** honeybook_clients / honeybook_projects source_event of every row this module creates. */
+/** pipeline_clients / pipeline_projects source_event of every row this module creates. */
 export const WEB_FORM_SOURCE = "web_form";
-/** The board's first column (HONEYBOOK_STAGE_HINTS[0]); Zapier inquiries and Hub "New project" use it too. */
+/** The board's first column (PIPELINE_STAGE_HINTS[0]); Hub "New project" uses it too. */
 export const INQUIRY_STAGE = "Inquiry";
-/** honeybook_projects.details stays short: Proposals appends Drive links to it (8000 character cap). */
+/** pipeline_projects.details stays short: Proposals appends Drive links to it (8000 character cap). */
 export const PROJECT_DETAILS_MAX = 3500;
-/** Unique violation (honeybook_clients_email_uidx on lower(email)). */
+/** Unique violation (pipeline_clients_email_uidx on lower(email)). */
 export const UNIQUE_VIOLATION = "23505";
 
 const NAME_MAX = 200;
@@ -68,7 +68,7 @@ export interface ClientInsert {
   raw: { submission_id: string };
 }
 
-/** A new honeybook_clients row (full_name is never blank: the summary name has fallbacks). */
+/** A new pipeline_clients row (full_name is never blank: the summary name has fallbacks). */
 export function buildClientInsert(summary: CrmSummary, submissionId: string): ClientInsert {
   return {
     full_name: clean(summary.name, NAME_MAX) ?? NO_NAME,
@@ -84,7 +84,7 @@ export interface ExistingClient {
   id: string;
   full_name: string | null;
   phone: string | null;
-  /** Who made the row ("web_form" = an earlier website inquiry; HoneyBook sync rows say otherwise). */
+  /** Who made the row ("web_form" = an earlier website inquiry; Pipeline sync rows say otherwise). */
   source_event: string | null;
 }
 
@@ -113,14 +113,14 @@ export function projectName(summary: CrmSummary): string {
   return name.slice(0, PROJECT_NAME_MAX);
 }
 
-/** honeybook_projects.budget: the tier's low bound or the amount, when it fits numeric(12,2). */
+/** pipeline_projects.budget: the tier's low bound or the amount, when it fits numeric(12,2). */
 export function toBudget(value: number | null | undefined): number | null {
   if (typeof value !== "number" || !Number.isFinite(value) || value < 0 || value > BUDGET_MAX) return null;
   return Math.round(value * 100) / 100;
 }
 
 /**
- * honeybook_projects.details: names the form (and a waitlist or unfinished inquiry), the one-line
+ * pipeline_projects.details: names the form (and a waitlist or unfinished inquiry), the one-line
  * qualification summary, then every answer as "Label: value". At most PROJECT_DETAILS_MAX characters.
  */
 export function buildProjectDetails(input: {
@@ -153,7 +153,7 @@ export interface ProjectInsert {
   raw: { form_slug: string; submission_id: string };
 }
 
-/** The new honeybook_projects row (external_id stays NULL: the project was made in the Hub). */
+/** The new pipeline_projects row (external_id stays NULL: the project was made in the Hub). */
 export function buildProjectInsert(input: {
   summary: CrmSummary;
   clientId: string | null;
@@ -191,7 +191,7 @@ export function buildStageEventInsert(projectId: string): {
 // capacity number exists), so this count feeds reporting and any later "bookings" mode only.
 // ---------------------------------------------------------------------------
 
-/** Stage keys (honeyBookStageMatchKey) that mean the date is taken: _BOOKED_, _RETAINER_PAID_, ... */
+/** Stage keys (pipelineStageMatchKey) that mean the date is taken: _BOOKED_, _RETAINER_PAID_, ... */
 export const COMMITTED_STAGE_KEYS: ReadonlySet<string> = new Set(["booked", "retainer paid", "paid in full", "planning", "in progress"]);
 /** Stages that release the date even when the project was once booked (booked_at stays set). */
 export const RELEASED_STAGE_KEYS: ReadonlySet<string> = new Set(["lost", "archived", "cancelled", "canceled", "not booked"]);
@@ -205,7 +205,7 @@ export interface ProjectDayRow {
 
 /** Committed work: a booked-type stage, or booked_at set while the project is not lost or archived. */
 export function isCommittedProject(row: Pick<ProjectDayRow, "stage" | "booked_at">): boolean {
-  const key = honeyBookStageMatchKey(row.stage);
+  const key = pipelineStageMatchKey(row.stage);
   if (COMMITTED_STAGE_KEYS.has(key)) return true;
   return !blank(row.booked_at) && !RELEASED_STAGE_KEYS.has(key);
 }

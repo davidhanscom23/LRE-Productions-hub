@@ -63,11 +63,11 @@ export async function loadPublicContract(token: string): Promise<PublicContract 
     .maybeSingle();
   // Drafts are never public.
   if (!c || c.status === "draft") return null;
-  const { data: p } = await db.from("honeybook_projects").select("name, client_id").eq("id", c.project_id).maybeSingle();
+  const { data: p } = await db.from("pipeline_projects").select("name, client_id").eq("id", c.project_id).maybeSingle();
   let clientName = "";
   let clientEmail = "";
   if (p?.client_id) {
-    const { data: cl } = await db.from("honeybook_clients").select("full_name, email").eq("id", p.client_id).maybeSingle();
+    const { data: cl } = await db.from("pipeline_clients").select("full_name, email").eq("id", p.client_id).maybeSingle();
     clientName = String(cl?.full_name ?? "");
     clientEmail = String(cl?.email ?? "");
   }

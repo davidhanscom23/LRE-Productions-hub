@@ -1,16 +1,16 @@
 "use server";
 
 import { getCurrentProfile } from "@/lib/auth/profile";
-import { canManageHoneyBookCrm } from "@/lib/honeybook/access";
+import { canManagePipelineCrm } from "@/lib/pipeline/access";
 import { categoryOf, SERVICE_CATEGORIES } from "@/lib/services-catalog/categories";
 import { cleanCategoryName } from "@/lib/services-catalog/category-list";
-import { HONEYBOOK_SERVICES_SEED } from "@/lib/services-catalog/seed";
+import { PIPELINE_SERVICES_SEED } from "@/lib/services-catalog/seed";
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 
 async function requireEditor() {
   const profile = await getCurrentProfile();
-  if (!profile || !canManageHoneyBookCrm(profile.role)) return null;
+  if (!profile || !canManagePipelineCrm(profile.role)) return null;
   return profile;
 }
 
@@ -40,15 +40,15 @@ export async function saveServiceAction(input: Input): Promise<{ error: string |
   return { error: null };
 }
 
-/** Add every HoneyBook service that isn't already in the catalog. Safe to run twice. */
-export async function importHoneyBookServicesAction(): Promise<{ error: string | null; added: number; skipped: number }> {
+/** Add every Pipeline service that isn't already in the catalog. Safe to run twice. */
+export async function importPipelineServicesAction(): Promise<{ error: string | null; added: number; skipped: number }> {
   const profile = await requireEditor();
   if (!profile) return { error: "Only admins and Leads can import.", added: 0, skipped: 0 };
   const supabase = await createClient();
   const { data: existing, error: readErr } = await supabase.from("service_catalog_items").select("name");
   if (readErr) return { error: readErr.message, added: 0, skipped: 0 };
   const have = new Set((existing ?? []).map((r) => String(r.name).trim().toLowerCase()));
-  const fresh = HONEYBOOK_SERVICES_SEED.filter(([n]) => !have.has(n.trim().toLowerCase())).map(([name, price]) => ({
+  const fresh = PIPELINE_SERVICES_SEED.filter(([n]) => !have.has(n.trim().toLowerCase())).map(([name, price]) => ({
     name,
     category: categoryOf(name),
     unit_price: price,
@@ -59,7 +59,7 @@ export async function importHoneyBookServicesAction(): Promise<{ error: string |
     if (error) return { error: error.message, added: 0, skipped: 0 };
   }
   revalidatePath("/services");
-  return { error: null, added: fresh.length, skipped: HONEYBOOK_SERVICES_SEED.length - fresh.length };
+  return { error: null, added: fresh.length, skipped: PIPELINE_SERVICES_SEED.length - fresh.length };
 }
 
 const categoryMissing = "Categories need migration 188_service_categories_invoice_sections.sql.";

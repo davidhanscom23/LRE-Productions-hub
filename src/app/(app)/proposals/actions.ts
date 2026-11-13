@@ -294,7 +294,7 @@ export async function uploadProposalToDriveAction(
   });
   if (uploaded.error) return { error: uploaded.error };
 
-  const keepLinked = proposal.status === "linked" && proposal.honeybook_project_id;
+  const keepLinked = proposal.status === "linked" && proposal.pipeline_project_id;
   const { error: updateError } = await supabase
     .from("proposals")
     .update({
@@ -313,16 +313,16 @@ export async function uploadProposalToDriveAction(
   return { error: null };
 }
 
-export async function linkProposalToHoneyBookAction(input: {
+export async function linkProposalToPipelineAction(input: {
   proposalId: string;
-  honeybookProjectId: string;
+  pipelineProjectId: string;
 }): Promise<Result> {
   const { profile, error } = await requireStaff();
   if (error || !profile) return { error: error ?? "Sign in first." };
   if (profile.role !== "admin") {
     return {
       error:
-        "Only admins can write the Drive link onto a HoneyBook project in the Hub. Upload to Drive, then copy the link into HoneyBook, or ask an admin to link it here.",
+        "Only admins can write the Drive link onto a Pipeline project in the Hub. Upload to Drive, then copy the link into Pipeline, or ask an admin to link it here.",
     };
   }
 
@@ -337,16 +337,16 @@ export async function linkProposalToHoneyBookAction(input: {
 
   if (!proposal.drive_web_view_link) {
     return {
-      error: "Upload the PDF to Google Drive first, then link HoneyBook.",
+      error: "Upload the PDF to Google Drive first, then link Pipeline.",
     };
   }
 
   const { data: project } = await supabase
-    .from("honeybook_projects")
+    .from("pipeline_projects")
     .select("id, name, details")
-    .eq("id", input.honeybookProjectId)
+    .eq("id", input.pipelineProjectId)
     .maybeSingle();
-  if (!project) return { error: "HoneyBook project not found in the Hub." };
+  if (!project) return { error: "Pipeline project not found in the Hub." };
 
   const marker = "LRE Hub proposal:";
   const linkLine = `${marker} ${proposal.drive_web_view_link}`;
@@ -364,7 +364,7 @@ export async function linkProposalToHoneyBookAction(input: {
   }
 
   const { error: projectError } = await supabase
-    .from("honeybook_projects")
+    .from("pipeline_projects")
     .update({
       details: nextDetails.slice(0, 8000),
       updated_at: new Date().toISOString(),
@@ -375,8 +375,8 @@ export async function linkProposalToHoneyBookAction(input: {
   const { error: updateError } = await supabase
     .from("proposals")
     .update({
-      honeybook_project_id: project.id,
-      honeybook_linked_at: new Date().toISOString(),
+      pipeline_project_id: project.id,
+      pipeline_linked_at: new Date().toISOString(),
       status: "linked",
       updated_at: new Date().toISOString(),
     })
@@ -384,23 +384,23 @@ export async function linkProposalToHoneyBookAction(input: {
   if (updateError) return { error: updateError.message };
 
   revalidateProposals(input.proposalId);
-  revalidatePath("/honeybook");
+  revalidatePath("/pipeline");
   return { error: null };
 }
 
-export async function searchHoneyBookProjectsAction(
+export async function searchPipelineProjectsAction(
   query: string,
 ): Promise<{ error: string | null; projects?: { id: string; name: string; stage: string; client_name: string | null }[] }> {
   const { profile, error } = await requireStaff();
   if (error || !profile) return { error: error ?? "Sign in first." };
   if (profile.role !== "admin") {
-    return { error: "Admins only can browse HoneyBook projects." };
+    return { error: "Admins only can browse Pipeline projects." };
   }
 
   const supabase = await createClient();
   const q = query.trim();
   let req = supabase
-    .from("honeybook_projects")
+    .from("pipeline_projects")
     .select("id, name, stage, client_id")
     .order("updated_at", { ascending: false })
     .limit(25);
@@ -419,7 +419,7 @@ export async function searchHoneyBookProjectsAction(
   );
   const { data: clients } = clientIds.length
     ? await supabase
-        .from("honeybook_clients")
+        .from("pipeline_clients")
         .select("id, full_name")
         .in("id", clientIds)
     : { data: [] as { id: string; full_name: string }[] };

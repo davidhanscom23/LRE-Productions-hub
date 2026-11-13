@@ -97,34 +97,3 @@ export async function deleteTaskAction(
   revalidatePath("/my-week");
   return { error: null };
 }
-
-/** Local Hub mark-done for a HoneyBook task (does not write back to HoneyBook). */
-export async function toggleHoneyBookTaskHubDoneAction(
-  id: string,
-  hubDone: boolean,
-): Promise<{ error: string | null }> {
-  const { supabase, user, error } = await requireUser();
-  if (error || !user) return { error: error ?? "Unauthorized" };
-
-  const { error: updateError } = await supabase
-    .from("honeybook_tasks")
-    .update({
-      hub_done: hubDone,
-      hub_done_at: hubDone ? new Date().toISOString() : null,
-      updated_at: new Date().toISOString(),
-    })
-    .eq("id", id);
-
-  if (updateError) {
-    if (/honeybook_tasks|schema cache|does not exist/i.test(updateError.message)) {
-      return {
-        error:
-          "HoneyBook tasks need a database update. Run migration 124_honeybook_tasks.sql in Supabase.",
-      };
-    }
-    return { error: updateError.message };
-  }
-
-  revalidatePath("/my-week");
-  return { error: null };
-}

@@ -37,7 +37,7 @@ function StatCard({
 export function CalendarStats({ events }: { events: CalendarEvent[] }) {
   const stats = useMemo(() => {
     const work = events.filter(
-      (e) => e.source === "work" || e.source === "honeybook",
+      (e) => e.source === "work" || e.source === "pipeline",
     );
     const now = new Date();
     const todayKey = eventDayKey(now.toISOString());

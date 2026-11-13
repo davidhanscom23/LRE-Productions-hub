@@ -212,7 +212,7 @@ export function AvTimeTracker({
                     </>
                   ) : isAdmin ? (
                     <>
-                      Set the HoneyBook calendar on{" "}
+                      Set the Pipeline calendar on{" "}
                       <Link
                         href="/calendar"
                         className="font-medium text-[var(--brand)] hover:underline"
@@ -223,7 +223,7 @@ export function AvTimeTracker({
                     </>
                   ) : (
                     <>
-                      Ask an admin to connect the HoneyBook calendar on Calendar so
+                      Ask an admin to connect the Pipeline calendar on Calendar so
                       upcoming events appear here, or use Manual Entry.
                     </>
                   )}

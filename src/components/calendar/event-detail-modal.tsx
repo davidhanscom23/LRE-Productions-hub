@@ -51,7 +51,7 @@ export function EventDetailModal({
     event.source === "work" && isManualPacketEligible(event);
   const showAssign =
     canAssignStaff &&
-    (event.source === "work" || event.source === "honeybook") &&
+    (event.source === "work" || event.source === "pipeline") &&
     assignableStaff.length > 0;
 
   useEffect(() => {
@@ -218,8 +218,8 @@ export function EventDetailModal({
               Assign staff
             </p>
             <p className="mt-1 text-xs text-[var(--muted)]">
-              HoneyBook doesn’t send who is working the event — pick team
-              members here. Staff already assigned on the HoneyBook board
+              The calendar doesn’t say who is working the event — pick team
+              members here. Staff already assigned on the Pipeline board
               show up here automatically. They show as Booked on Staff
               Availability.
             </p>

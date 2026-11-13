@@ -38,7 +38,7 @@ export async function GET() {
   const [{ data: items }, { data: progress }, { data: projects }] = await Promise.all([
     admin.from("event_checklist_items").select("id, checklist_id, qty_needed, returns, removed_at").in("checklist_id", ids),
     admin.from("event_checklist_item_progress").select("item_id, qty_out, qty_back").in("checklist_id", ids),
-    admin.from("honeybook_projects").select("id, name").in("id", lists.map((l) => l.project_id as string)),
+    admin.from("pipeline_projects").select("id, name").in("id", lists.map((l) => l.project_id as string)),
   ]);
   const byItem = new Map((progress ?? []).map((p) => [p.item_id as string, p]));
   const names = new Map((projects ?? []).map((p) => [p.id as string, String(p.name ?? "Event")]));

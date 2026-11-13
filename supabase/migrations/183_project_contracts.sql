@@ -1,4 +1,4 @@
--- Contracts and e-sign for HoneyBook projects (non-AV). Templates are reusable wording;
+-- Contracts and e-sign for Pipeline projects (non-AV). Templates are reusable wording;
 -- a contract is a frozen copy for one project, sent as a /sign/<token> link.
 
 insert into storage.buckets (id, name, public, file_size_limit)
@@ -18,7 +18,7 @@ create unique index if not exists contract_templates_name_uidx on public.contrac
 
 create table if not exists public.project_contracts (
   id                 uuid primary key default gen_random_uuid(),
-  project_id         uuid not null references public.honeybook_projects (id) on delete cascade,
+  project_id         uuid not null references public.pipeline_projects (id) on delete cascade,
   title              text not null default 'Agreement',
   body               text not null default '',
   status             text not null default 'draft'

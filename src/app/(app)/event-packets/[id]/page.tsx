@@ -133,36 +133,36 @@ export default async function EventPacketDetailPage({ params }: PageProps) {
     (packet as EventPacket).calendar_uid,
   );
 
-  let honeybookProjectId =
-    (packet as { honeybook_project_id?: string | null }).honeybook_project_id ??
+  let pipelineProjectId =
+    (packet as { pipeline_project_id?: string | null }).pipeline_project_id ??
     null;
-  let honeybookProjectName: string | null = null;
+  let pipelineProjectName: string | null = null;
 
-  // HoneyBook mirror: admins + Leads (trainer) can SELECT after mig 159.
+  // Pipeline mirror: admins + Leads (trainer) can SELECT after mig 159.
   if (isAdmin || isTrainer) {
     try {
-      const { ensurePacketHoneyBookLink } = await import(
-        "@/lib/event-packets/honeybook-link"
+      const { ensurePacketPipelineLink } = await import(
+        "@/lib/event-packets/pipeline-link"
       );
-      const ensured = await ensurePacketHoneyBookLink(supabase, {
+      const ensured = await ensurePacketPipelineLink(supabase, {
         id,
         event_date: String(packet.event_date ?? ""),
         client_name: String(packet.client_name ?? ""),
-        honeybook_project_id: honeybookProjectId,
+        pipeline_project_id: pipelineProjectId,
       });
-      if (ensured.projectId) honeybookProjectId = ensured.projectId;
+      if (ensured.projectId) pipelineProjectId = ensured.projectId;
     } catch {
       // CRM link is optional; page still loads.
     }
 
-    if (honeybookProjectId) {
+    if (pipelineProjectId) {
       const { data: hb } = await supabase
-        .from("honeybook_projects")
+        .from("pipeline_projects")
         .select("id, name, stage")
-        .eq("id", honeybookProjectId)
+        .eq("id", pipelineProjectId)
         .maybeSingle();
       if (hb) {
-        honeybookProjectName = `${hb.name}${hb.stage ? ` · ${hb.stage}` : ""}`;
+        pipelineProjectName = `${hb.name}${hb.stage ? ` · ${hb.stage}` : ""}`;
       }
     }
   }
@@ -180,7 +180,7 @@ export default async function EventPacketDetailPage({ params }: PageProps) {
         packet={
           {
             ...(packet as EventPacket),
-            honeybook_project_id: honeybookProjectId,
+            pipeline_project_id: pipelineProjectId,
           } as EventPacket
         }
         media={mediaWithUrls}
@@ -188,7 +188,7 @@ export default async function EventPacketDetailPage({ params }: PageProps) {
         currentUserId={profile.id}
         isAdmin={isAdmin}
         isTrainer={isTrainer}
-        honeybookProjectName={honeybookProjectName}
+        pipelineProjectName={pipelineProjectName}
       />
     </div>
   );

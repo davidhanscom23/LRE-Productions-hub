@@ -2,7 +2,7 @@ import "server-only";
 
 /**
  * Inquiry Forms - the LRE hub adapter (spec section 6). Everything hub-specific the shared module
- * needs: the CRM write (HoneyBook board client + Inquiry project + stage history row), committed
+ * needs: the CRM write (Pipeline board client + Inquiry project + stage history row), committed
  * work and staff capacity for the availability check, staff alerts, email, the real-admin check,
  * the page-gate role and the public origin.
  */
@@ -106,13 +106,13 @@ function toExistingClient(row: unknown): ExistingClient {
  * unique index is on lower(email), so such a row is the one an insert collides with).
  */
 async function findClientByEmail(sb: SupabaseClient, email: string, anyCase: boolean): Promise<ExistingClient | null> {
-  const exact = await sb.from("honeybook_clients").select(CLIENT_COLUMNS).eq("email", email).limit(1).maybeSingle();
+  const exact = await sb.from("pipeline_clients").select(CLIENT_COLUMNS).eq("email", email).limit(1).maybeSingle();
   if (exact.error) throw new CrmWriteError(`client lookup: ${exact.error.message}`);
   if (exact.data) return toExistingClient(exact.data);
   // PostgREST reads "*" in an ilike value as a wildcard (no escape exists): exact match only then.
   if (!anyCase || email.includes("*")) return null;
   const loose = await sb
-    .from("honeybook_clients")
+    .from("pipeline_clients")
     .select(CLIENT_COLUMNS)
     .ilike("email", escapeIlike(email))
     .limit(1)
@@ -130,7 +130,7 @@ async function fillClientBlanks(sb: SupabaseClient, client: ExistingClient, summ
   const fills = clientBlankFills(client, summary);
   if (!fills) return;
   let update = sb
-    .from("honeybook_clients")
+    .from("pipeline_clients")
     .update({ ...fills, updated_at: new Date().toISOString() })
     .eq("id", client.id);
   if (fills.full_name !== undefined) update = update.eq("full_name", client.full_name ?? "");
@@ -217,7 +217,7 @@ export const hubAdapter: HubAdapter = {
     }
     if (!clientId) {
       const { data, error } = await sb
-        .from("honeybook_clients")
+        .from("pipeline_clients")
         .insert({ ...buildClientInsert(summary, submission.id), updated_at: new Date().toISOString() })
         .select("id")
         .single();
@@ -250,7 +250,7 @@ export const hubAdapter: HubAdapter = {
     // A writer that died after the insert (sweep or after() past its time limit) left the project
     // without a logged ref: find it by the submission id it carries before inserting a second one.
     const { data: prior, error: priorError } = await sb
-      .from("honeybook_projects")
+      .from("pipeline_projects")
       .select("id, client_id")
       .eq("source_event", WEB_FORM_SOURCE)
       .eq("raw->>submission_id", submission.id)
@@ -268,7 +268,7 @@ export const hubAdapter: HubAdapter = {
 
     const project = buildProjectInsert({ summary, clientId, details, formSlug: form.slug, submissionId: submission.id });
     const { data: created, error: projectError } = await sb
-      .from("honeybook_projects")
+      .from("pipeline_projects")
       .insert({ ...project, updated_at: new Date().toISOString() })
       .select("id")
       .single();
@@ -279,7 +279,7 @@ export const hubAdapter: HubAdapter = {
 
     // 3. Stage history row, the same shape as the Hub "New project" button writes. History only
     // (the board reads the project's own stage), so a failure is logged and the write still counts.
-    const { error: stageError } = await sb.from("honeybook_project_stage_events").insert(buildStageEventInsert(projectId));
+    const { error: stageError } = await sb.from("pipeline_project_stage_events").insert(buildStageEventInsert(projectId));
     if (stageError) console.error("[inquiry-forms] stage history row failed", projectId, stageError.message);
 
     // 4. Routed owner (form settings ownerByEventType) becomes the project lead, the same row the
@@ -287,7 +287,7 @@ export const hubAdapter: HubAdapter = {
     const ownerId = await ownerProfileId(sb, ownerEmail);
     if (ownerId) {
       const { error: leadError } = await sb
-        .from("honeybook_project_assignees")
+        .from("pipeline_project_assignees")
         .insert({ project_id: projectId, profile_id: ownerId, role: "lead", assigned_by: null });
       if (leadError) console.error("[inquiry-forms] project lead row failed", projectId, leadError.message);
     }
@@ -297,14 +297,14 @@ export const hubAdapter: HubAdapter = {
 
   staffRecordHref(crmRef) {
     return crmRef.project_id && crmRef.partial !== "true"
-      ? `/honeybook/projects/${encodeURIComponent(crmRef.project_id)}`
+      ? `/pipeline/projects/${encodeURIComponent(crmRef.project_id)}`
       : null;
   },
 
   async bookingsOn(sb, date) {
     // project_date is a wall-calendar date (the CRM and Calendar treat it as the New York day).
     const { data, error } = await sb
-      .from("honeybook_projects")
+      .from("pipeline_projects")
       .select("id, stage, booked_at, project_date")
       .eq("project_date", date)
       .limit(1000);

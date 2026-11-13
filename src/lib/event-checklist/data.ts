@@ -66,7 +66,7 @@ export async function loadChecklistBoard(
   let project: ChecklistProject | null = info?.project ?? null;
   if (!project) {
     const { data: direct, error: projectError } = await supabase
-      .from("honeybook_projects")
+      .from("pipeline_projects")
       .select("id, name, project_date, location")
       .eq("id", projectId)
       .maybeSingle();

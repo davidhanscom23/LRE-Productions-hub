@@ -7,7 +7,7 @@ import {
   saveProjectInvoice,
   sendProjectInvoice,
   voidProjectInvoice,
-} from "@/app/(app)/honeybook/invoice-actions";
+} from "@/app/(app)/pipeline/invoice-actions";
 import { computeTotals, type PlanKind } from "@/lib/project-invoices/math";
 import { DEFAULT_SECTION, groupBySection, moveItem, moveSection, renameSection } from "@/lib/project-invoices/sections";
 import { useRouter } from "next/navigation";

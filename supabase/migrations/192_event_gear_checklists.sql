@@ -6,14 +6,14 @@
 -- 1. Link an AV estimate to the Hub project (event) it belongs to
 -- ---------------------------------------------------------------------------
 alter table public.av_opportunities
-  add column if not exists honeybook_project_id uuid
-    references public.honeybook_projects (id) on delete set null;
+  add column if not exists pipeline_project_id uuid
+    references public.pipeline_projects (id) on delete set null;
 
 create index if not exists av_opportunities_project_idx
-  on public.av_opportunities (honeybook_project_id)
-  where honeybook_project_id is not null;
+  on public.av_opportunities (pipeline_project_id)
+  where pipeline_project_id is not null;
 
-comment on column public.av_opportunities.honeybook_project_id is
+comment on column public.av_opportunities.pipeline_project_id is
   'Hub project (event card) this estimate belongs to; supplies the gear list for its checklist.';
 
 -- ---------------------------------------------------------------------------
@@ -32,7 +32,7 @@ comment on column public.av_products.last_used_event is
 -- ---------------------------------------------------------------------------
 create table if not exists public.event_checklists (
   id                  uuid primary key default gen_random_uuid(),
-  project_id          uuid not null references public.honeybook_projects (id) on delete cascade,
+  project_id          uuid not null references public.pipeline_projects (id) on delete cascade,
   opportunity_id      uuid references public.av_opportunities (id) on delete set null,
   -- Scheduled leave-the-warehouse and back-in-the-warehouse times (approximate is fine).
   depart_at           timestamptz,
@@ -127,7 +127,7 @@ as $$
   select
     public.current_user_role()::text in ('admin', 'trainer')
     or exists (
-      select 1 from public.honeybook_project_assignees a
+      select 1 from public.pipeline_project_assignees a
       where a.project_id = p_project and a.profile_id = auth.uid()
     );
 $$;
@@ -223,7 +223,7 @@ begin
   where i.id = new.item_id;
 
   select p.name, p.project_date into v_proj
-  from public.honeybook_projects p where p.id = v_item.project_id;
+  from public.pipeline_projects p where p.id = v_item.project_id;
 
   new.item_name    := coalesce(v_item.name, '');
   new.product_id   := v_item.product_id;
@@ -406,7 +406,7 @@ begin
   select id into v_id from public.event_checklists where project_id = p_project;
   select o.id, o.gear_starts_at, o.gear_ends_at into v_opp
   from public.av_opportunities o
-  where o.honeybook_project_id = p_project and coalesce(o.is_template, false) = false
+  where o.pipeline_project_id = p_project and coalesce(o.is_template, false) = false
   order by o.created_at desc limit 1;
 
   if v_id is null then

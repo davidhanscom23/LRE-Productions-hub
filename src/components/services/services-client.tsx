@@ -3,7 +3,7 @@
 import {
   addCategoryAction,
   deleteCategoryAction,
-  importHoneyBookServicesAction,
+  importPipelineServicesAction,
   renameCategoryAction,
   saveServiceAction,
 } from "@/app/(app)/services/actions";
@@ -95,8 +95,8 @@ export function ServicesClient({
 
   const doImport = () =>
     start(async () => {
-      const res = await importHoneyBookServicesAction();
-      setMsg(res.error ?? `Added ${res.added} services from HoneyBook${res.skipped ? ` (${res.skipped} were already here)` : ""}.`);
+      const res = await importPipelineServicesAction();
+      setMsg(res.error ?? `Added ${res.added} services from Pipeline${res.skipped ? ` (${res.skipped} were already here)` : ""}.`);
       if (!res.error) router.refresh();
     });
 
@@ -118,7 +118,7 @@ export function ServicesClient({
           <>
             <button className={btn} onClick={() => setDraft({ ...blank })}>+ Add service</button>
             <button className={btn} onClick={() => setShowCats((v) => !v)}>Categories</button>
-            <button className={btn} onClick={doImport} disabled={pending}>Import from HoneyBook</button>
+            <button className={btn} onClick={doImport} disabled={pending}>Import from Pipeline</button>
           </>
         )}
       </div>
@@ -243,7 +243,7 @@ export function ServicesClient({
             {shown.length === 0 && (
               <tr>
                 <td colSpan={4} className="px-3 py-6 text-center text-sm text-[var(--muted)]">
-                  {rows.length === 0 ? "The catalog is empty. Admins and Leads can use Import from HoneyBook." : "No services match."}
+                  {rows.length === 0 ? "The catalog is empty. Admins and Leads can use Import from Pipeline." : "No services match."}
                 </td>
               </tr>
             )}

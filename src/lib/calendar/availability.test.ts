@@ -8,8 +8,8 @@ import type { CalendarEvent } from "./events";
 
 function baseEvent(overrides: Partial<CalendarEvent> = {}): CalendarEvent {
   return {
-    uid: "honeybook-1",
-    source: "honeybook",
+    uid: "pipeline-1",
+    source: "pipeline",
     title: "Test Event",
     start: "2026-08-12T16:00:00.000Z",
     end: null,

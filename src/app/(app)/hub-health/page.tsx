@@ -194,11 +194,11 @@ export default async function HubHealthPage() {
   const checks: CheckItem[] = [
     {
       id: "ical",
-      label: "HoneyBook calendar feed",
+      label: "Pipeline calendar feed",
       status: companyIcal ? "ok" : "missing",
       detail: companyIcal
-        ? "Shared HoneyBook Google Calendar iCal is saved (URL hidden)."
-        : "Paste the HoneyBook Google Calendar secret iCal URL on Calendar so Event Packets and My Week can sync.",
+        ? "Shared Pipeline Google Calendar iCal is saved (URL hidden)."
+        : "Paste the Pipeline Google Calendar secret iCal URL on Calendar so Event Packets and My Week can sync.",
       href: "/calendar",
       hrefLabel: "Open Calendar",
     },

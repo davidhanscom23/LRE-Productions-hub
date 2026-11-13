@@ -8,7 +8,7 @@ import {
 function ev(uid: string, crmProjectId?: string): CalendarEvent {
   return {
     uid,
-    source: "honeybook",
+    source: "pipeline",
     title: uid,
     start: "2026-12-01T12:00:00Z",
     end: "2026-12-01T12:00:00Z",

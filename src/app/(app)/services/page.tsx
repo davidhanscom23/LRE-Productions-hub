@@ -1,6 +1,6 @@
 import { ServicesClient, type ServiceRow } from "@/components/services/services-client";
 import { getCurrentProfile } from "@/lib/auth/profile";
-import { canAccessHoneyBook, canManageHoneyBookCrm } from "@/lib/honeybook/access";
+import { canAccessPipeline, canManagePipelineCrm } from "@/lib/pipeline/access";
 import { mergeCategories } from "@/lib/services-catalog/category-list";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 export default async function ServicesPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessHoneyBook(profile.role)) redirect("/");
+  if (!canAccessPipeline(profile.role)) redirect("/");
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("service_catalog_items")
@@ -34,7 +34,7 @@ export default async function ServicesPage() {
           The catalog needs migration 180_service_catalog.sql. {error.message}
         </p>
       ) : (
-        <ServicesClient rows={rows} categories={categories} customCategories={customNames} canEdit={canManageHoneyBookCrm(profile.role)} />
+        <ServicesClient rows={rows} categories={categories} customCategories={customNames} canEdit={canManagePipelineCrm(profile.role)} />
       )}
     </div>
   );

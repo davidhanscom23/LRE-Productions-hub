@@ -1,7 +1,7 @@
 import { SchedulingClient, type BookingRow, type TypeRow } from "@/components/scheduling/scheduling-client";
 import { getPublicBaseUrl } from "@/lib/av-portals/emails";
 import { getCurrentProfile } from "@/lib/auth/profile";
-import { canAccessHoneyBook, canManageHoneyBookCrm } from "@/lib/honeybook/access";
+import { canAccessPipeline, canManagePipelineCrm } from "@/lib/pipeline/access";
 import { sanitizeWeekly } from "@/lib/scheduling/slots";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
@@ -9,7 +9,7 @@ import { redirect } from "next/navigation";
 export default async function SchedulingPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessHoneyBook(profile.role)) redirect("/");
+  if (!canAccessPipeline(profile.role)) redirect("/");
   const supabase = await createClient();
   const { data: types, error } = await supabase
     .from("meeting_types")
@@ -17,7 +17,7 @@ export default async function SchedulingPage() {
     .order("created_at");
   const { data: bookings } = await supabase
     .from("meeting_bookings")
-    .select("id, start_at, name, email, phone, notes, honeybook_project_id, meeting_types:meeting_type_id ( title, timezone )")
+    .select("id, start_at, name, email, phone, notes, pipeline_project_id, meeting_types:meeting_type_id ( title, timezone )")
     .eq("status", "booked")
     .gte("start_at", new Date().toISOString())
     .order("start_at")
@@ -35,7 +35,7 @@ export default async function SchedulingPage() {
       notes: (b.notes as string) ?? "",
       type_title: mt?.title ?? "",
       timezone: mt?.timezone ?? "America/New_York",
-      project_id: (b.honeybook_project_id as string | null) ?? null,
+      project_id: (b.pipeline_project_id as string | null) ?? null,
     };
   });
 
@@ -51,7 +51,7 @@ export default async function SchedulingPage() {
         <p className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950">
           Scheduling needs migration 181_meeting_scheduler.sql. {error.message}
         </p>
-      ) : canManageHoneyBookCrm(profile.role) ? (
+      ) : canManagePipelineCrm(profile.role) ? (
         <SchedulingClient types={typeRows} bookings={bookingRows} baseUrl={getPublicBaseUrl()} />
       ) : (
         <p className="text-sm text-[var(--muted)]">Admins and Leads manage booking pages. Ask one of them for the booking link.</p>

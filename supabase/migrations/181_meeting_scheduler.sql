@@ -32,7 +32,7 @@ create table if not exists public.meeting_bookings (
   notes                 text not null default '',
   status                text not null default 'booked' check (status in ('booked', 'cancelled')),
   cancel_token          text not null unique,
-  honeybook_project_id  uuid references public.honeybook_projects (id) on delete set null,
+  pipeline_project_id  uuid references public.pipeline_projects (id) on delete set null,
   created_at            timestamptz not null default now(),
   cancelled_at          timestamptz,
   constraint meeting_bookings_end_after_start check (end_at > start_at)

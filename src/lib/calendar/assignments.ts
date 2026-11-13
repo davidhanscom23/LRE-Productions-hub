@@ -43,7 +43,7 @@ export function applyHubAssignmentsToEvents(
 export type BoardAssigneeRow = { project_id: string; profile_id: string };
 
 /**
- * Union HoneyBook board assignees (lead + support) into the per-event-uid
+ * Union Pipeline board assignees (lead + support) into the per-event-uid
  * assignment map, for events backed by a CRM card. Calendar-only assignments
  * stay as they are; nothing is removed.
  */

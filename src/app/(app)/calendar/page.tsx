@@ -5,12 +5,11 @@ import {
   type CalendarEvent,
 } from "@/lib/calendar/events";
 import {
-  honeybookProjectsToEvents,
-  mergeHoneybookIcalWithCrm,
-} from "@/lib/calendar/honeybook";
+  pipelineProjectsToEvents,
+} from "@/lib/calendar/pipeline";
 import {
   getSharedWorkIcalUrl,
-  isHoneybookIcalConfigured,
+  isWorkIcalConfigured,
   isSharedCalendarConfigured,
 } from "@/lib/calendar/settings";
 import { normalizeHexColor, type StaffColorEntry } from "@/lib/people/color";
@@ -31,7 +30,7 @@ import {
   isServiceRoleConfigured,
 } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
-import type { HoneyBookClient, HoneyBookProject } from "@/lib/types/honeybook";
+import type { PipelineClient, PipelineProject } from "@/lib/types/pipeline";
 
 async function loadStaffColors(): Promise<StaffColorEntry[]> {
   const supabase = await createClient();
@@ -49,14 +48,12 @@ async function loadStaffColors(): Promise<StaffColorEntry[]> {
   }));
 }
 
-/** Shared HoneyBook→Google (or company) iCal for every calendar user. */
+/** Shared Google (or company) iCal for every calendar user. */
 async function loadSharedWorkFeed(): Promise<{
   configured: boolean;
   events: CalendarEvent[];
   fetchError: string | null;
-  honeybookConfigured: boolean;
 }> {
-  const honeybookConfigured = await isHoneybookIcalConfigured();
   const workUrl = await getSharedWorkIcalUrl();
 
   if (!workUrl) {
@@ -64,19 +61,15 @@ async function loadSharedWorkFeed(): Promise<{
       configured: false,
       events: [],
       fetchError: null,
-      honeybookConfigured,
     };
   }
 
   try {
-    // Prefer honeybook source when the HoneyBook setting is set; otherwise work.
-    const source = honeybookConfigured ? "honeybook" : "work";
-    const events = await getCachedGenericIcalEvents(workUrl, source);
+    const events = await getCachedGenericIcalEvents(workUrl, "work");
     return {
       configured: true,
       events,
       fetchError: null,
-      honeybookConfigured,
     };
   } catch (error) {
     return {
@@ -86,7 +79,6 @@ async function loadSharedWorkFeed(): Promise<{
         error instanceof Error
           ? error.message
           : "Couldn’t load the work calendar.",
-      honeybookConfigured,
     };
   }
 }
@@ -103,9 +95,9 @@ async function loadTimeOff(): Promise<TeamTimeOff[]> {
 }
 
 /**
- * CRM project-date overlay when no live HoneyBook iCal is configured.
+ * CRM project-date overlay for dated projects.
  */
-async function loadHoneyBookProjects() {
+async function loadPipelineProjects() {
   try {
     const supabase = isServiceRoleConfigured()
       ? createServiceClient()
@@ -115,7 +107,7 @@ async function loadHoneyBookProjects() {
     let projectRows: Record<string, unknown>[] | null;
     let error: { message: string } | null;
     ({ data: projectRows, error } = await supabase
-      .from("honeybook_projects")
+      .from("pipeline_projects")
       .select(
         "id, name, stage, project_type, project_date, location, client_id, merged_into",
       )
@@ -123,7 +115,7 @@ async function loadHoneyBookProjects() {
       .is("merged_into", null));
     if (error) {
       ({ data: projectRows, error } = await supabase
-        .from("honeybook_projects")
+        .from("pipeline_projects")
         .select(
           "id, name, stage, project_type, project_date, location, client_id",
         )
@@ -133,29 +125,29 @@ async function loadHoneyBookProjects() {
 
     const clientIds = Array.from(
       new Set(
-        (projectRows as HoneyBookProject[])
+        (projectRows as PipelineProject[])
           .map((p) => p.client_id)
           .filter((id): id is string => Boolean(id)),
       ),
     );
     const clientById = new Map<
       string,
-      Pick<HoneyBookClient, "id" | "full_name" | "email" | "phone">
+      Pick<PipelineClient, "id" | "full_name" | "email" | "phone">
     >();
     if (clientIds.length) {
       const { data: clients } = await supabase
-        .from("honeybook_clients")
+        .from("pipeline_clients")
         .select("id, full_name, email, phone")
         .in("id", clientIds);
       for (const c of (clients ?? []) as Pick<
-        HoneyBookClient,
+        PipelineClient,
         "id" | "full_name" | "email" | "phone"
       >[]) {
         clientById.set(c.id, c);
       }
     }
 
-    return (projectRows as HoneyBookProject[]).map((p) => {
+    return (projectRows as PipelineProject[]).map((p) => {
       const c = p.client_id ? clientById.get(p.client_id) : undefined;
       return {
         id: p.id,
@@ -256,7 +248,7 @@ async function loadEventAssignments(): Promise<{
   }
 }
 
-/** HoneyBook board assignees for the given CRM cards; also fills in missing names. */
+/** Pipeline board assignees for the given CRM cards; also fills in missing names. */
 async function loadBoardAssignees(
   projectIds: string[],
   nameById: Map<string, string>,
@@ -265,7 +257,7 @@ async function loadBoardAssignees(
   try {
     const supabase = await createClient();
     const { data: rows, error } = await supabase
-      .from("honeybook_project_assignees")
+      .from("pipeline_project_assignees")
       .select("project_id, profile_id")
       .in("project_id", Array.from(new Set(projectIds)));
     if (error || !rows?.length) return [];
@@ -316,22 +308,19 @@ export default async function CalendarPage() {
     loadEventAssignments(),
   ]);
 
-  // Always load CRM projects: enrich iCal events (status/client/type) and
-  // keep unmatched dated projects as overlays.
-  const hbFromCrm = await loadHoneyBookProjects();
-  const honeybookEvents = feed.honeybookConfigured
-    ? mergeHoneybookIcalWithCrm(feed.events, hbFromCrm).events
-    : [
-        ...feed.events,
-        ...honeybookProjectsToEvents(hbFromCrm),
-      ];
+  // Dated CRM projects show as overlays next to the shared iCal events.
+  const hbFromCrm = await loadPipelineProjects();
+  const pipelineEvents = [
+    ...feed.events,
+    ...pipelineProjectsToEvents(hbFromCrm),
+  ];
 
   const sortedEvents = [
-    ...honeybookEvents,
+    ...pipelineEvents,
     ...teamTimeOffToEvents(timeOffRows),
   ].sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
 
-  // Staff assigned on the HoneyBook board (lead + support) show on the calendar too.
+  // Staff assigned on the Pipeline board (lead + support) show on the calendar too.
   const board = await loadBoardAssignees(
     sortedEvents
       .map((e) => e.crmProjectId)
@@ -359,7 +348,7 @@ export default async function CalendarPage() {
       staffColors={staffColors}
       staff={staffAvailability}
       teamTimeOff={timeOffRows}
-      honeybookIcalConfigured={feed.honeybookConfigured}
+      workIcalConfigured={feed.configured}
     />
   );
 }

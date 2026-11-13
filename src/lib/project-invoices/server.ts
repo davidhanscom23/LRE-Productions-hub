@@ -81,12 +81,12 @@ export async function loadPublicProjectInvoice(token: string): Promise<PublicPro
   const [{ data: lines }, { data: inst }, { data: project }] = await Promise.all([
     db.from("project_invoice_lines").select("*").eq("invoice_id", inv.id).order("sort_order"),
     db.from("project_invoice_installments").select("label, amount, due_at").eq("invoice_id", inv.id).order("sort_order"),
-    db.from("honeybook_projects").select("name, client_id").eq("id", inv.project_id).maybeSingle(),
+    db.from("pipeline_projects").select("name, client_id").eq("id", inv.project_id).maybeSingle(),
   ]);
   let clientName = "";
   let clientEmail = "";
   if (project?.client_id) {
-    const { data: c } = await db.from("honeybook_clients").select("full_name, email").eq("id", project.client_id).maybeSingle();
+    const { data: c } = await db.from("pipeline_clients").select("full_name, email").eq("id", project.client_id).maybeSingle();
     clientName = String(c?.full_name ?? "");
     clientEmail = String(c?.email ?? "");
   }

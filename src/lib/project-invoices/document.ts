@@ -37,7 +37,7 @@ function paymentDetails(i: ProjectInvoiceDocInput): string {
   return parts.join("\n");
 }
 
-/** Customer invoice / receipt model for a HoneyBook project invoice. Items show quantity only; prices are per section. */
+/** Customer invoice / receipt model for a Pipeline project invoice. Items show quantity only; prices are per section. */
 export function rmsDocumentFromProjectInvoice(input: ProjectInvoiceDocInput, kind: "invoice" | "receipt"): RmsDocument {
   const sections = groupBySection(input.lines).map((g) => ({
     name: g.name,

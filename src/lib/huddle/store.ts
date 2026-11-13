@@ -175,7 +175,7 @@ export async function scheduleHuddle(
       );
       const icalUrl = await getSharedWorkIcalUrl();
       if (icalUrl) {
-        const events = await getCachedGenericIcalEvents(icalUrl, "honeybook");
+        const events = await getCachedGenericIcalEvents(icalUrl, "work");
         const conflicts = findHuddleCalendarConflicts(
           when.toISOString(),
           events,

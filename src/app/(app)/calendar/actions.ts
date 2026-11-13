@@ -4,7 +4,7 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import {
   COMPANY_ICAL_SETTING_KEY,
-  HONEYBOOK_ICAL_SETTING_KEY,
+  WORK_ICAL_SETTING_KEY,
 } from "@/lib/calendar/events";
 
 async function requireAdmin() {
@@ -95,7 +95,7 @@ export async function clearCompanyIcalUrlAction(): Promise<{
   return { error: null };
 }
 
-export async function saveHoneybookIcalUrlAction(
+export async function saveWorkIcalUrlAction(
   url: string,
 ): Promise<{ error: string | null }> {
   const { supabase, error } = await requireAdmin();
@@ -107,7 +107,7 @@ export async function saveHoneybookIcalUrlAction(
 
   const { error: upsertError } = await supabase.from("app_settings").upsert(
     {
-      key: HONEYBOOK_ICAL_SETTING_KEY,
+      key: WORK_ICAL_SETTING_KEY,
       value: trimmed,
       updated_at: new Date().toISOString(),
     },
@@ -117,7 +117,7 @@ export async function saveHoneybookIcalUrlAction(
   if (upsertError) return { error: upsertError.message };
 
   // Keep legacy company_ical_url in sync so Event Packets / My Week / Teams
-  // that still read the company key get the same HoneyBook feed.
+  // that still read the company key get the same feed.
   await supabase.from("app_settings").upsert(
     {
       key: COMPANY_ICAL_SETTING_KEY,
@@ -127,7 +127,7 @@ export async function saveHoneybookIcalUrlAction(
     { onConflict: "key" },
   );
 
-  revalidateTag("honeybook-ical", "max");
+  revalidateTag("work-ical", "max");
   revalidateTag("company-ical", "max");
   revalidateTag("djep-ical", "max");
   revalidatePath("/calendar");
@@ -136,7 +136,7 @@ export async function saveHoneybookIcalUrlAction(
   return { error: null };
 }
 
-export async function clearHoneybookIcalUrlAction(): Promise<{
+export async function clearWorkIcalUrlAction(): Promise<{
   error: string | null;
 }> {
   const { supabase, error } = await requireAdmin();
@@ -145,17 +145,17 @@ export async function clearHoneybookIcalUrlAction(): Promise<{
   const { error: deleteError } = await supabase
     .from("app_settings")
     .delete()
-    .eq("key", HONEYBOOK_ICAL_SETTING_KEY);
+    .eq("key", WORK_ICAL_SETTING_KEY);
 
   if (deleteError) return { error: deleteError.message };
 
-  // Clear the mirrored company key when it matches HoneyBook-only setup.
+  // Clear the mirrored company key when it matches the team feed.
   await supabase
     .from("app_settings")
     .delete()
     .eq("key", COMPANY_ICAL_SETTING_KEY);
 
-  revalidateTag("honeybook-ical", "max");
+  revalidateTag("work-ical", "max");
   revalidateTag("company-ical", "max");
   revalidateTag("djep-ical", "max");
   revalidatePath("/calendar");

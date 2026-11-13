@@ -61,12 +61,12 @@ export async function createBookingAction(input: {
   const endIso = new Date(start.getTime() + type.durationMin * 60_000).toISOString();
   const cancelToken = newCancelToken();
 
-  // Attach to the client's latest HoneyBook project when the email matches one.
+  // Attach to the client's latest Pipeline project when the email matches one.
   let projectId: string | null = null;
-  const { data: client } = await db.from("honeybook_clients").select("id").ilike("email", email).limit(1).maybeSingle();
+  const { data: client } = await db.from("pipeline_clients").select("id").ilike("email", email).limit(1).maybeSingle();
   if (client) {
     const { data: proj } = await db
-      .from("honeybook_projects")
+      .from("pipeline_projects")
       .select("id")
       .eq("client_id", client.id)
       .is("merged_into", null)
@@ -88,7 +88,7 @@ export async function createBookingAction(input: {
       phone,
       notes,
       cancel_token: cancelToken,
-      honeybook_project_id: projectId,
+      pipeline_project_id: projectId,
     })
     .select("id")
     .single();
@@ -104,7 +104,7 @@ export async function createBookingAction(input: {
     booking: { id: row.id as string, startIso, endIso, name, email, phone, notes, cancelToken },
   });
   if (projectId) {
-    await db.from("honeybook_project_notes").insert({
+    await db.from("pipeline_project_notes").insert({
       project_id: projectId,
       source: "system",
       category: "note",
@@ -119,7 +119,7 @@ export async function cancelBookingAction(token: string): Promise<{ error: strin
   const db = createServiceClient();
   const { data: b } = await db
     .from("meeting_bookings")
-    .select("id, status, start_at, name, email, host_id, meeting_type_id, honeybook_project_id")
+    .select("id, status, start_at, name, email, host_id, meeting_type_id, pipeline_project_id")
     .eq("cancel_token", token)
     .maybeSingle();
   if (!b) return { error: "This link isn't valid." };
@@ -138,9 +138,9 @@ export async function cancelBookingAction(token: string): Promise<{ error: strin
       text: `${b.name} (${b.email}) cancelled their meeting on ${new Date(b.start_at as string).toUTCString()}.`,
     });
   }
-  if (b.honeybook_project_id) {
-    await db.from("honeybook_project_notes").insert({
-      project_id: b.honeybook_project_id,
+  if (b.pipeline_project_id) {
+    await db.from("pipeline_project_notes").insert({
+      project_id: b.pipeline_project_id,
       source: "system",
       category: "note",
       body: `${b.name} cancelled their meeting booking.`,

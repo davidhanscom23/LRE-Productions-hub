@@ -1,4 +1,4 @@
--- Proposals: branded PDF from Ready quotes → Drive + HoneyBook project link.
+-- Proposals: branded PDF from Ready quotes → Drive + Pipeline project link.
 
 create table if not exists public.proposals (
   id                    uuid primary key default gen_random_uuid(),
@@ -24,8 +24,8 @@ create table if not exists public.proposals (
   drive_file_id         text,
   drive_web_view_link   text not null default '',
   drive_folder_path     text not null default '',
-  honeybook_project_id  uuid references public.honeybook_projects(id) on delete set null,
-  honeybook_linked_at   timestamptz,
+  pipeline_project_id  uuid references public.pipeline_projects(id) on delete set null,
+  pipeline_linked_at   timestamptz,
   generated_at          timestamptz,
   uploaded_at           timestamptz,
   created_at            timestamptz not null default now(),
@@ -35,7 +35,7 @@ create table if not exists public.proposals (
 create index if not exists proposals_created_by_idx on public.proposals (created_by);
 create index if not exists proposals_quote_idx on public.proposals (quote_id);
 create index if not exists proposals_status_idx on public.proposals (status);
-create index if not exists proposals_hb_idx on public.proposals (honeybook_project_id);
+create index if not exists proposals_hb_idx on public.proposals (pipeline_project_id);
 create index if not exists proposals_updated_idx on public.proposals (updated_at desc);
 
 alter table public.proposals enable row level security;
@@ -64,4 +64,4 @@ create policy "proposals delete own or admin"
 grant select, insert, update, delete on public.proposals to authenticated;
 
 comment on table public.proposals is
-  'Branded proposals generated from Ready quotes; PDF stored on Google Drive and optionally linked to a HoneyBook project.';
+  'Branded proposals generated from Ready quotes; PDF stored on Google Drive and optionally linked to a Pipeline project.';

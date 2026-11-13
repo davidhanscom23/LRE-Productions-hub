@@ -1,5 +1,5 @@
 import { getCurrentProfile } from "@/lib/auth/profile";
-import { canAccessHoneyBook, canManageHoneyBookCrm } from "@/lib/honeybook/access";
+import { canAccessPipeline, canManagePipelineCrm } from "@/lib/pipeline/access";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { NewTemplateButton } from "@/components/floor-plans/new-template-button";
@@ -7,11 +7,11 @@ import { NewTemplateButton } from "@/components/floor-plans/new-template-button"
 export default async function FloorPlansPage() {
   const profile = await getCurrentProfile();
   if (!profile) redirect("/login");
-  if (!canAccessHoneyBook(profile.role)) redirect("/");
+  if (!canAccessPipeline(profile.role)) redirect("/");
   const supabase = await createClient();
   const { data: rows } = await supabase
     .from("floor_plans")
-    .select("id, name, space_name, is_template, status, updated_at, project_id, honeybook_projects:project_id ( name )")
+    .select("id, name, space_name, is_template, status, updated_at, project_id, pipeline_projects:project_id ( name )")
     .order("updated_at", { ascending: false })
     .limit(300);
 
@@ -23,13 +23,13 @@ export default async function FloorPlansPage() {
     status: string;
     updated_at: string;
     project_id: string | null;
-    honeybook_projects: { name: string } | { name: string }[] | null;
+    pipeline_projects: { name: string } | { name: string }[] | null;
   };
   const all = (rows ?? []) as unknown as Row[];
   const templates = all.filter((r) => r.is_template);
   const plans = all.filter((r) => !r.is_template);
   const projectName = (r: Row) =>
-    (Array.isArray(r.honeybook_projects) ? r.honeybook_projects[0] : r.honeybook_projects)?.name ?? "Project";
+    (Array.isArray(r.pipeline_projects) ? r.pipeline_projects[0] : r.pipeline_projects)?.name ?? "Project";
 
   return (
     <div className="mx-auto flex max-w-4xl flex-col gap-5">
@@ -43,7 +43,7 @@ export default async function FloorPlansPage() {
       <section className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4">
         <div className="flex items-center justify-between gap-2">
           <h2 className="text-sm font-semibold">Templates</h2>
-          {canManageHoneyBookCrm(profile.role) && <NewTemplateButton />}
+          {canManagePipelineCrm(profile.role) && <NewTemplateButton />}
         </div>
         {templates.length === 0 ? (
           <p className="mt-2 text-sm text-[var(--muted)]">No templates yet. Build one, or save any project plan as a template.</p>
@@ -75,7 +75,7 @@ export default async function FloorPlansPage() {
                   </p>
                 </div>
                 {p.project_id && (
-                  <a className="text-xs underline" href={`/honeybook/projects/${p.project_id}`}>Open project</a>
+                  <a className="text-xs underline" href={`/pipeline/projects/${p.project_id}`}>Open project</a>
                 )}
               </li>
             ))}

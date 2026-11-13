@@ -1,5 +1,5 @@
--- Hub-side staff assignment for calendar events (HoneyBook/Google iCal, etc.).
--- HoneyBook has no native assignee field the Hub can read, so admins assign
+-- Hub-side staff assignment for calendar events (Pipeline/Google iCal, etc.).
+-- Pipeline has no native assignee field the Hub can read, so admins assign
 -- people on the event card; Availability uses those names as Booked.
 
 create table if not exists public.calendar_event_assignments (
@@ -67,4 +67,4 @@ create policy "calendar_event_assignments_deny_guests"
   );
 
 comment on table public.calendar_event_assignments is
-  'Hub-assigned staff for a calendar event uid (HoneyBook/Google iCal). Feeds Availability Booked status.';
+  'Hub-assigned staff for a calendar event uid (Pipeline/Google iCal). Feeds Availability Booked status.';

@@ -15,11 +15,11 @@ export async function loadEstimateProjectLink(
   try {
     const { data, error } = await supabase
       .from("av_opportunities")
-      .select("honeybook_project_id")
+      .select("pipeline_project_id")
       .eq("id", opportunityId)
       .maybeSingle();
     if (error) return null;
-    return (data as { honeybook_project_id?: string | null } | null)?.honeybook_project_id ?? null;
+    return (data as { pipeline_project_id?: string | null } | null)?.pipeline_project_id ?? null;
   } catch {
     return null;
   }
@@ -31,7 +31,7 @@ export async function loadLinkableProjects(
   alsoInclude?: string | null,
 ): Promise<LinkableProject[]> {
   const { data, error } = await supabase
-    .from("honeybook_projects")
+    .from("pipeline_projects")
     .select("id, name, project_date")
     .order("project_date", { ascending: false, nullsFirst: false })
     .limit(400);
@@ -39,7 +39,7 @@ export async function loadLinkableProjects(
   const rows = (data ?? []) as LinkableProject[];
   if (alsoInclude && !rows.some((r) => r.id === alsoInclude)) {
     const { data: extra } = await supabase
-      .from("honeybook_projects")
+      .from("pipeline_projects")
       .select("id, name, project_date")
       .eq("id", alsoInclude)
       .maybeSingle();

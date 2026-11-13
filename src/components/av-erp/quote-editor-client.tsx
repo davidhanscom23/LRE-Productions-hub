@@ -73,7 +73,7 @@ import {
 const fieldClass =
   "w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm";
 
-/** A saved HoneyBook service from the Hub Services catalog, offered as a pick-list item on estimates. */
+/** A saved Pipeline service from the Hub Services catalog, offered as a pick-list item on estimates. */
 export type EstimateCatalogItem = {
   id: string;
   name: string;
@@ -214,7 +214,7 @@ export function QuoteEditorClient({
     venue_markup_enabled: opportunity.venue_markup_enabled,
     venue_markup_pct: String(opportunity.venue_markup_pct),
     billing_type: opportunity.billing_type ?? "direct",
-    honeybook_project_id: opportunity.honeybook_project_id ?? "",
+    pipeline_project_id: opportunity.pipeline_project_id ?? "",
     transport_notes: opportunity.transport_notes,
     notes: opportunity.notes,
   });
@@ -1350,8 +1350,8 @@ export function QuoteEditorClient({
         <label className="block max-w-md text-sm">
           <span className="mb-1 block text-[var(--muted)]">Event (for the gear checklist)</span>
           <select
-            value={header.honeybook_project_id}
-            onChange={(e) => setHeader({ ...header, honeybook_project_id: e.target.value })}
+            value={header.pipeline_project_id}
+            onChange={(e) => setHeader({ ...header, pipeline_project_id: e.target.value })}
             className={fieldClass}
           >
             <option value="">Not linked</option>
@@ -1487,7 +1487,7 @@ export function QuoteEditorClient({
               <option value="package">Packages</option>
               <option value="service">Services / labor</option>
               {catalogItems.length > 0 ? (
-                <option value="catalog">HoneyBook services (rentals, DMC, golf)</option>
+                <option value="catalog">Pipeline services (rentals, DMC, golf)</option>
               ) : null}
             </select>
           </label>
@@ -1571,7 +1571,7 @@ export function QuoteEditorClient({
           {catalogItems.length > 0 && (pickType === "all" || pickType === "catalog") ? (
             <div className="grid gap-2 rounded-lg border border-dashed border-[var(--border)] p-2 sm:col-span-6 sm:grid-cols-6">
               <label className="block text-sm sm:col-span-2">
-                <span className="mb-1 block text-[var(--muted)]">Or HoneyBook service: category</span>
+                <span className="mb-1 block text-[var(--muted)]">Or Pipeline service: category</span>
                 <select
                   value={pickCatalogCategory}
                   onChange={(e) => setPickCatalogCategory(e.target.value)}
@@ -1586,7 +1586,7 @@ export function QuoteEditorClient({
                 </select>
               </label>
               <label className="block text-sm sm:col-span-4">
-                <span className="mb-1 block text-[var(--muted)]">HoneyBook service</span>
+                <span className="mb-1 block text-[var(--muted)]">Pipeline service</span>
                 <select
                   value={pickCatalogId}
                   onChange={(e) => pickCatalogItem(e.target.value)}

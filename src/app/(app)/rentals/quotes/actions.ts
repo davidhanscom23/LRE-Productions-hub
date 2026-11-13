@@ -176,11 +176,11 @@ export async function updateOpportunityHeaderAction(
   }
 
   // Event link has its own update so the rest still saves before migration 192 is run.
-  if (formData.has("honeybook_project_id")) {
-    const projectId = nullableId(formData, "honeybook_project_id");
+  if (formData.has("pipeline_project_id")) {
+    const projectId = nullableId(formData, "pipeline_project_id");
     const { error: linkError } = await supabase
       .from("av_opportunities")
-      .update({ honeybook_project_id: projectId })
+      .update({ pipeline_project_id: projectId })
       .eq("id", id);
     if (linkError && projectId) {
       return {
