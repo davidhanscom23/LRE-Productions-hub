@@ -39,7 +39,9 @@ Expenses list: filter by person and by status (To reimburse or Reimbursed), and 
 
 Who can change what: only the partner who entered an expense can edit it or void it. The other partner can Flag a question on it, which shows a note on the expense until it is cleared. Expenses can never be deleted. Voiding needs a reason and the expense stays on the record, crossed out. A voided expense is final, so fix a mistake by voiding it and adding a new one.
 
-Activity log: /partner-expenses/activity lists every add, edit, void, reimbursement, flag and receipt change with who did it and when, plus any change to who is on the ledger, even one made directly in the database. Nobody can edit or delete the log, and each entry is sealed to the one before it. Tap Verify the log is untouched to re-check the whole chain; if anything was altered it says which entry. The other partner also gets a notification when you add, edit, void, reimburse or flag an expense.`,
+Activity log: /partner-expenses/activity lists every add, edit, void, reimbursement, flag and receipt change with who did it and when, plus any change to who is on the ledger, even one made directly in the database. Nobody can edit or delete the log, and each entry is sealed to the one before it. Tap Verify the log is untouched to re-check the whole chain; if anything was altered it says which entry. The other partner also gets a notification when you add, edit, void, reimburse or flag an expense.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "event-gear-checklist",

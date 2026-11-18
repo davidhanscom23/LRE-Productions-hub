@@ -37,6 +37,22 @@ export type HowToVideo = {
 };
 
 export const HOW_TO_VIDEOS: HowToVideo[] = [
+  {
+    slug: "services-catalog",
+    route: "/services",
+    title: "Services Catalog",
+    file: "services.mp4",
+    guideSlug: "services-catalog",
+    audience: "all",
+  },
+  {
+    slug: "partner-expenses",
+    route: "/partner-expenses",
+    title: "Partner Expenses",
+    file: "partner-expenses.mp4",
+    guideSlug: "partner-expenses",
+    audience: "admin",
+  },
 ];
 
 type AccessProfile = Pick<Profile, "role" | "departments">;

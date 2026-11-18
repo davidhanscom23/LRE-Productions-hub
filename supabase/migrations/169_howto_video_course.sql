@@ -6,3 +6,25 @@ values ('how-to-videos', 'How-to videos',
 on conflict (slug) do update set
   title = excluded.title, blurb = excluded.blurb, audience = excluded.audience,
   status = 'published', updated_at = now();
+
+-- 1. Services Catalog
+update public.training_lessons l set
+  title = 'Services Catalog how-to', body = 'A short how-to for Services Catalog. You can also open it any time from the Watch how-to video link at the top of the page (/services).', sort_order = 10, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/services.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 10, 'Services Catalog how-to', 'A short how-to for Services Catalog. You can also open it any time from the Watch how-to video link at the top of the page (/services).', 'https://lre-productions.b-cdn.net/lre-howto/services.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/services.mp4');
+
+-- 2. Partner Expenses
+update public.training_lessons l set
+  title = 'Partner Expenses how-to', body = 'A short how-to for Partner Expenses. You can also open it any time from the Watch how-to video link at the top of the page (/partner-expenses).', sort_order = 20, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/partner-expenses.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 20, 'Partner Expenses how-to', 'A short how-to for Partner Expenses. You can also open it any time from the Watch how-to video link at the top of the page (/partner-expenses).', 'https://lre-productions.b-cdn.net/lre-howto/partner-expenses.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/partner-expenses.mp4');
