@@ -2,13 +2,13 @@
 # Upload how-to videos to the LRE Bunny storage zone.
 #   usage: scripts/upload-howto.sh path/to/video.mp4 [more.mp4 ...]
 # Reads the storage-zone password from a local file on your Mac (never pasted,
-# never committed): ~/.config/vident-bunny/storage-key  (one line, the zone password).
-# LRE only: zone "vident-productions", folder "vident-howto", CDN vident-productions.b-cdn.net.
+# never committed): ~/.config/lre-bunny/storage-key  (one line, the zone password).
+# LRE only: zone "lre-productions", folder "lre-howto", CDN lre-productions.b-cdn.net.
 set -euo pipefail
-ZONE="vident-productions"
-FOLDER="vident-howto"
-CDN="https://vident-productions.b-cdn.net"
-KEYFILE="${VIDENT_BUNNY_KEYFILE:-$HOME/.config/vident-bunny/storage-key}"
+ZONE="lre-productions"
+FOLDER="lre-howto"
+CDN="https://lre-productions.b-cdn.net"
+KEYFILE="${LRE_BUNNY_KEYFILE:-$HOME/.config/lre-bunny/storage-key}"
 [ -f "$KEYFILE" ] || { echo "Missing key file: $KEYFILE"; exit 1; }
 KEY="$(tr -d '[:space:]' < "$KEYFILE")"
 [ $# -ge 1 ] || { echo "usage: $0 file.mp4 [...]"; exit 1; }

@@ -16,15 +16,4 @@ export type PendingHowToVideo = {
   since: string;
 };
 
-export const PENDING_HOW_TO_VIDEOS: PendingHowToVideo[] = [
-  {
-    route: "/partner-expenses",
-    reason: "New private expense ledger for David and Luke: add expenses, receipts, dashboard, activity log. Admin-only (audience admin).",
-    since: "2026-11-17",
-  },
-  {
-    route: "/services",
-    reason: "The Import from Pipeline button was removed; services are now added one at a time with + Add service.",
-    since: "2026-11-13",
-  },
-];
+export const PENDING_HOW_TO_VIDEOS: PendingHowToVideo[] = [];
