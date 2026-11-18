@@ -84,6 +84,7 @@ export const SHORTCUT_DEFS: ShortcutDef[] = [
   { href: "/communications", label: "Communications", description: "Automated client and staff emails.", gate: "admin" },
   { href: "/inquiry-forms", label: "Inquiry Forms", description: "Website inquiry forms that feed the Pipeline board.", gate: "admin" },
   { href: "/hub-switcher", label: "Hub Switcher", description: "Choose who sees which hub.", gate: "admin" },
+  { href: "/partner-expenses", label: "Partner Expenses", description: "David and Luke's startup expense ledger, with an activity log.", gate: "admin" },
   { href: "/hub-health", label: "Hub Health", description: "Checks and errors.", gate: "admin" },
   { href: "/page-map", label: "Page Map", description: "Every page in the hub and who can open it.", gate: "admin" },
   { href: "/rentals/quotes", label: "AV Estimates", description: "Hub opportunities, holds, estimates, and share links.", gate: "av" },

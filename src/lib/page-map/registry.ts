@@ -185,6 +185,8 @@ export const PAGE_REGISTRY: PageEntry[] = [
   // Admin
   { path: "/reports", label: "Reports", group: "Admin", kind: "page", audience: "admin" },
   { path: "/hub-switcher", label: "Hub switcher", group: "Admin", kind: "page", audience: "admin" },
+  { path: "/partner-expenses", label: "Partner expenses", group: "Admin", kind: "page", audience: "admin" },
+  { path: "/partner-expenses/activity", label: "Partner expenses activity log", group: "Admin", kind: "page", audience: "admin" },
   { path: "/hub-health", label: "Hub health", group: "Admin", kind: "page", audience: "admin" },
   { path: "/page-map", label: "Page Map", group: "Admin", kind: "page", audience: "admin" },
 
