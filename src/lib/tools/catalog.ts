@@ -120,6 +120,7 @@ export const EXTRA_DESCRIPTIONS: Record<string, string> = {
  * Old entries can stay: they stop counting after the window.
  */
 export const TOOL_ADDED_ON: Record<string, string> = {
+  "/partner-expenses": "2026-11-17",
   "/hub-switcher": "2026-11-08",
   "/scheduling": "2026-11-07",
   "/services": "2026-11-07",

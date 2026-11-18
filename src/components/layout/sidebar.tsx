@@ -656,6 +656,13 @@ export const NAV_GROUPS: NavGroup[] = [
         toolsCategory: "admin",
       },
       {
+        href: "/partner-expenses",
+        label: "Partner expenses",
+        icon: Handshake,
+        adminOnly: true,
+        toolsCategory: "admin",
+      },
+      {
         href: "/hub-switcher",
         label: "Hub switcher",
         icon: LayoutGrid,

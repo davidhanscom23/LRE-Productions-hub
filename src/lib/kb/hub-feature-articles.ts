@@ -27,6 +27,21 @@ export type HubFeatureArticle = {
 
 export const HUB_FEATURE_ARTICLES: HubFeatureArticle[] = [
   {
+    slug: "partner-expenses",
+    title: "Partner expenses (David and Luke's startup expense ledger)",
+    body: `Partner expenses (/partner-expenses, under Admin) is a private ledger for the startup costs David and Luke pay personally for LRE Productions before the company bank account is built. It is only for the two partners. A hub admin who is not one of them cannot open it or see anything in it.
+
+Adding an expense: tap + Add, choose whose expense it is (David or Luke, it starts on you), then enter the amount, what it was for, the date, a category and an optional note. You can attach a receipt photo or PDF up to 12 MB. Receipts are stored privately and only the two partners can open them.
+
+Dashboard: shows the total spent together, each partner's total, how much each is still owed back, which of you has paid more and by how much, and breakdowns by category and by month. Voided expenses are never counted.
+
+Expenses list: filter by person and by status (To reimburse or Reimbursed), and tap Show voided to include voided ones. Either partner can tap Mark reimbursed once the money has been paid back from the company account, and can undo it.
+
+Who can change what: only the partner who entered an expense can edit it or void it. The other partner can Flag a question on it, which shows a note on the expense until it is cleared. Expenses can never be deleted. Voiding needs a reason and the expense stays on the record, crossed out. A voided expense is final, so fix a mistake by voiding it and adding a new one.
+
+Activity log: /partner-expenses/activity lists every add, edit, void, reimbursement, flag and receipt change with who did it and when, plus any change to who is on the ledger, even one made directly in the database. Nobody can edit or delete the log, and each entry is sealed to the one before it. Tap Verify the log is untouched to re-check the whole chain; if anything was altered it says which entry. The other partner also gets a notification when you add, edit, void, reimburse or flag an expense.`,
+  },
+  {
     slug: "event-gear-checklist",
     title: "Event gear checklist (check out and check back in)",
     body: `Every event can have a gear checklist (/event-checklist/<event>). It shows two progress bars: Out of the warehouse and Back in the warehouse. The checklist is the list of equipment for that event, and it is built from the AV estimate linked to the event, so the estimate stays the source of truth. When the estimate changes (an item is added, removed or its quantity changes), the checklist updates by itself. Items already checked stay checked, and anything new shows as unchecked.

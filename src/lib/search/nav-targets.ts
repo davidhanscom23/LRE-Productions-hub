@@ -592,6 +592,12 @@ export const SEARCH_NAV_TARGETS: SearchNavTarget[] = [
     adminOnly: true,
   },
   {
+    href: "/partner-expenses",
+    label: "Partner expenses",
+    keywords: ["partner expenses", "partner", "david", "luke", "startup costs", "ledger", "reimbursement", "receipts", "audit", "activity log"],
+    adminOnly: true,
+  },
+  {
     href: "/hub-health",
     label: "Hub health",
     keywords: [

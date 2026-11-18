@@ -24,6 +24,16 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    date: "2026-11-17",
+    category: "new",
+    area: "Partner expenses",
+    title: "A private expense ledger for David and Luke",
+    description:
+      "David and Luke can now log what they pay personally for LRE Productions, tag each expense as David's or Luke's, attach a receipt, and see a dashboard of where each of you and the two of you together stand. Only the two partners can open it, and every change is kept in an activity log that nobody can edit.",
+    howTo:
+      "Open Partner expenses under Admin. Tap + Add, pick whose expense it is, enter the amount and what it was for. Use Mark reimbursed when the money has been paid back, or Flag a question on your partner's entry.",
+  },
+  {
     date: "2026-11-13",
     category: "improved",
     area: "Wording",
