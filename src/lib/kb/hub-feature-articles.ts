@@ -155,7 +155,9 @@ Opening Home once per day (America/New_York) awards daily check-in points and ad
 
 Anyone signed in can post and comment on The Feed. Admins can delete any post; trainers can delete their own posts; staff can post but not delete posts; anyone can delete their own comments (admins can delete any). On someone’s birthday or company anniversary (hire date), their People card shows a celebration badge and Home auto-posts a Feed announcement so the team can leave comments.
 
-Use the top-bar search to find pages, people, resources, event packets, and published training courses you can access. Type at least two characters; arrow keys and Enter navigate results. Open People → Birthdays or Anniversaries (or Home’s View all on People) for the full lists.`,
+Use the top-bar search to find pages, people, resources, event packets, and published training courses you can access. Type at least two characters; arrow keys and Enter navigate results. Open People → Birthdays or Anniversaries (or Home’s View all on People) for the full lists.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "for-you",
@@ -166,7 +168,9 @@ It groups approvals (time off, expenses, contractor payments, quote discounts, r
 
 Home’s “What needs you” teaser always deep-links here. Prefer For You over hunting across modules when something is waiting on you. My Week is for your calendar and private personal tasks only.
 
-When Resend email is configured, a daily Field digest cron emails you a short summary if you have actionable items (open For You in the Hub to clear them).`,
+When Resend email is configured, a daily Field digest cron emails you a short summary if you have actionable items (open For You in the Hub to clear them).
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "hub-points",
@@ -181,7 +185,9 @@ Earn by doing real work: sign the Staff Handbook; finish Training Portal courses
 
 Social: giving your first kudos awards a medium one-time bonus.
 
-Home shows your total points, current streak, and a scrolling top-three leaderboard with a How to earn more link. Open Hub points (/points) anytime from the sidebar or search for How to earn, Standings (team totals plus David’s separate Mark to beat score — he’s not eligible for monthly trophies), and Activity (staff see only their own awards; trainers and admins see the full team ledger — David’s Activity entries stay admin-only). Monthly trophies (Overall Leader = highest total; Monthly MVP = most points earned that month) are awarded on the 1st for the prior month; David is excluded from monthly wins. See current and past monthly winners on Winners, Home’s Winners of the Month strip, People badges, and the winner’s For You (the trophy card clears once dismissed). Admins can open any person on People and use Award Hub points to grant (or subtract) any amount with a required reason; the teammate gets an in-app notification. Guests cannot earn points. Run migrations 075–088 in Supabase as needed (including 084 website reviews, 085 Client Reviews milestones, 087 For You dismissals, and 088 points Activity staff-own RLS). After docs change, Ask Hub → Rebuild index.`,
+Home shows your total points, current streak, and a scrolling top-three leaderboard with a How to earn more link. Open Hub points (/points) anytime from the sidebar or search for How to earn, Standings (team totals plus David’s separate Mark to beat score — he’s not eligible for monthly trophies), and Activity (staff see only their own awards; trainers and admins see the full team ledger — David’s Activity entries stay admin-only). Monthly trophies (Overall Leader = highest total; Monthly MVP = most points earned that month) are awarded on the 1st for the prior month; David is excluded from monthly wins. See current and past monthly winners on Winners, Home’s Winners of the Month strip, People badges, and the winner’s For You (the trophy card clears once dismissed). Admins can open any person on People and use Award Hub points to grant (or subtract) any amount with a required reason; the teammate gets an in-app notification. Guests cannot earn points. Run migrations 075–088 in Supabase as needed (including 084 website reviews, 085 Client Reviews milestones, 087 For You dismissals, and 088 points Activity staff-own RLS). After docs change, Ask Hub → Rebuild index.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "ask-the-hub",
@@ -196,7 +202,9 @@ Admins manage knowledge lower on the page: add articles, edit existing articles,
 
 Anything indexed from Drive is searchable by all signed-in staff (same as other Ask knowledge). Keep sensitive HR-only material out of the shared company Drive root, or in a folder the Hub service account cannot see.
 
-Needs migration 126_kb_drive_sync.sql for incremental Drive sync state. The assistant needs OPENAI_API_KEY configured. If it isn’t connected, ask an admin. If an answer isn’t documented yet, ask a manager and consider adding an article.`,
+Needs migration 126_kb_drive_sync.sql for incremental Drive sync state. The assistant needs OPENAI_API_KEY configured. If it isn’t connected, ask an admin. If an answer isn’t documented yet, ask a manager and consider adding an article.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "team-huddle",
@@ -214,7 +222,9 @@ It shows a daily quote (“Today’s spark”), upcoming events from your calend
 
 Approvals, overdue Event Packets, handbook acknowledgement, and unfinished training live on For You (/for-you) — the canonical personal inbox — not on My Week.
 
-Events come from the shared Pipeline→Google work calendar. If you see no events, ask an admin to set the company Calendar feed.`,
+Events come from the shared Pipeline→Google work calendar. If you see no events, ask an admin to set the company Calendar feed.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "notifications",
@@ -526,7 +536,9 @@ Weekly availability: pick typical days you’re free (defaults to every day unti
 
 Who’s off: everyone can see approved Hub time off (name, dates, and type) for scheduling. Approved Hub time off also appears on the Calendar as a neutral all-day entry spanning the date range. Admins see Hub + calendar-feed time off (de-duped) on Staffing when the company iCal includes Time Off.
 
-Admins: review pending requests with Approve or Deny at the top of the page, see recently reviewed requests, and get a notification when a new request comes in. When you approve or deny, the staffer is notified of the outcome (in-app, plus email if configured).`,
+Admins: review pending requests with Approve or Deny at the top of the page, see recently reviewed requests, and get a notification when a new request comes in. When you approve or deny, the staffer is notified of the outcome (in-app, plus email if configured).
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "action-center",
@@ -539,7 +551,9 @@ The board groups tasks into Assigned to me, Other open tasks, and Completed. Ove
 
 Every task has comments (the 💬 link on the task). The task's creator, its assignees, and admins can comment; a new comment notifies the others on the task. You can delete your own comments; admins can delete any.
 
-When you assign a task to someone, they get a notification (in-app, plus email if configured). Open tasks you haven't checked off also appear on For You. A daily cron reminds assignees who still have their part open about overdue tasks when CRON_SECRET and the service role key are set.`,
+When you assign a task to someone, they get a notification (in-app, plus email if configured). Open tasks you haven't checked off also appear on For You. A daily cron reminds assignees who still have their part open about overdue tasks when CRON_SECRET and the service role key are set.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "reviews",
@@ -652,7 +666,9 @@ Current winners shows this month’s leaders at a glance. Overall Leader has the
     title: "My Calendar — Hub events in your phone",
     body: `My Calendar puts your Hub events in your own phone calendar.
 
-Copy your private link, then paste it into your calendar app. Or tap Add to Apple Calendar, or Add to Google Calendar. Keep the link private. If it’s ever shared, Reset link makes a new one.`,
+Copy your private link, then paste it into your calendar app. Or tap Add to Apple Calendar, or Add to Google Calendar. Keep the link private. If it’s ever shared, Reset link makes a new one.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "forum",
