@@ -70,14 +70,14 @@ export async function respondToPublicEstimateAction(
     if (opp.contract_response) {
       return {
         ok: false,
-        error: `This contract was already ${opp.contract_response}.`,
+        error: `This agreement was already ${opp.contract_response}.`,
       };
     }
-    // Contract signing requires a prior accepted estimate (or already Order).
+    // Agreement signing requires a prior accepted estimate (or already Order).
     if (opp.estimate_response !== "accepted" && opp.status !== "order") {
       return {
         ok: false,
-        error: "Accept the estimate before signing the contract.",
+        error: "Accept the estimate before signing the agreement.",
       };
     }
   }

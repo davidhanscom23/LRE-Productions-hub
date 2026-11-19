@@ -661,7 +661,7 @@ export function QuoteEditorClient({
           ) : null}
           {opportunity.contract_response ? (
             <p className="mt-1 text-sm">
-              Contract{" "}
+              Agreement{" "}
               <span className="font-semibold">
                 {opportunity.contract_response}
               </span>
@@ -684,7 +684,7 @@ export function QuoteEditorClient({
                   sig.doc_kind === "estimate"
                     ? "Estimate"
                     : sig.doc_kind === "contract"
-                      ? "Contract"
+                      ? "Agreement"
                       : "Change order";
                 const emailed = sig.signed_pdf_emailed_at
                   ? `Emailed ${new Date(sig.signed_pdf_emailed_at).toLocaleString("en-US", { timeZone: "America/New_York" })} ET${sig.signed_pdf_email_to ? ` → ${sig.signed_pdf_email_to}` : ""}`
@@ -781,12 +781,12 @@ export function QuoteEditorClient({
                 a.download = result.fileName;
                 a.click();
                 URL.revokeObjectURL(url);
-                setMessage("Contract PDF downloaded.");
+                setMessage("Agreement PDF downloaded.");
               });
             }}
             className="h-9 rounded-lg border border-[var(--border)] px-3 text-sm"
           >
-            Download contract PDF
+            Download agreement PDF
           </button>
           <button
             type="button"

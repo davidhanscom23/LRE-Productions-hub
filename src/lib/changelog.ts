@@ -26,6 +26,16 @@ export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-18",
     category: "new",
+    area: "Estimates",
+    title: "Terms and Conditions now print on the Event Agreement",
+    description:
+      "The Terms and Conditions now print on the Event Agreement and show above the signature line on the signing page. Estimates keep their own terms. The word Agreement now replaces Contract throughout the estimate flow.",
+    howTo:
+      "Open Rentals > Templates, add or edit a template, set the type to Agreement and mark it as the default. That default prints on every Event Agreement.",
+  },
+  {
+    date: "2026-11-18",
+    category: "new",
     area: "Home",
     title: "How-to video for Home",
     description: "A short how-to video now plays from the Home page, and it is a lesson in the Training Portal.",

@@ -186,7 +186,7 @@ export type AvContractor = {
 export type AvDocumentTemplate = {
   id: string;
   name: string;
-  kind: "estimate" | "invoice" | "other";
+  kind: "estimate" | "invoice" | "contract" | "other";
   terms: string;
   is_default: boolean;
   is_active: boolean;

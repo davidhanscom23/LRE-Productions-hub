@@ -26,7 +26,7 @@ export async function saveDefaultSalesTaxRateAction(
   return { ok: true };
 }
 
-const KINDS = new Set(["estimate", "invoice", "other"]);
+const KINDS = new Set(["estimate", "invoice", "contract", "other"]);
 
 export async function createDocumentTemplateAction(
   formData: FormData,

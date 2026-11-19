@@ -70,7 +70,7 @@ export type RmsDocument = {
   paymentDetails?: string;
   /** Receipts: the payments received. */
   payments?: RmsDocPayment[];
-  /** Signature block on estimate + contract. */
+  /** Signature block on estimate + agreement. */
   showSignature: boolean;
   /** When set, draws the customer e-sign PNG onto the signature block. */
   signatureStamp?: {
@@ -87,7 +87,7 @@ export function rmsDocTitle(kind: RmsDocumentKind): string {
     case "receipt":
       return "Receipt";
     case "contract":
-      return "Contract";
+      return "Agreement";
     case "invoice":
       return "Invoice";
   }

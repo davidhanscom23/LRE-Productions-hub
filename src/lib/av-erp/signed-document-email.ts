@@ -198,7 +198,7 @@ export async function emailSignedDocumentCopy(input: {
   );
   if (!pdf) return { ok: false, error: "Could not build signed PDF." };
 
-  const label = input.docKind === "estimate" ? "estimate" : "contract";
+  const label = input.docKind === "estimate" ? "estimate" : "agreement";
   const sent = await sendEmailDetailed({
     to: recipient.to,
     subject: `Signed ${label} — ${COMPANY.displayName}`,

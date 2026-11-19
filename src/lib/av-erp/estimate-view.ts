@@ -90,7 +90,9 @@ export type CustomerEstimate = {
   contactEmail?: string;
   contactName?: string;
   terms?: string;
-  /** Opportunity status for Contract PDF labeling. */
+  /** Terms printed only on the Event Agreement (default Agreement template). */
+  contractTerms?: string;
+  /** Opportunity status for Agreement PDF labeling. */
   statusLabel?: string;
   billingType?: "direct" | "venue";
 };
@@ -135,6 +137,7 @@ export function buildCustomerEstimate(input: {
   billingType?: "direct" | "venue";
   statusLabel?: string;
   terms?: string;
+  contractTerms?: string;
   /** Sales tax % (0 when exempt / unset). */
   taxRatePct?: number;
   groups: EstimateGroupInput[];
@@ -241,5 +244,6 @@ export function buildCustomerEstimate(input: {
     statusLabel: input.statusLabel,
     billingType,
     terms: input.terms ?? "",
+    contractTerms: input.contractTerms ?? "",
   };
 }

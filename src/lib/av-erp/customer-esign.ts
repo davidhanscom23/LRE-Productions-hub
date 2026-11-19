@@ -1,4 +1,4 @@
-/** Shared validation for customer e-sign on estimates, contracts, change orders. */
+/** Shared validation for customer e-sign on estimates, agreements, change orders. */
 
 export type CustomerDocKind = "estimate" | "contract" | "change_order";
 export type CustomerDocResponse = "accepted" | "declined";
@@ -84,7 +84,7 @@ export function customerDocKindLabel(kind: CustomerDocKind): string {
     case "estimate":
       return "Estimate";
     case "contract":
-      return "Contract";
+      return "Agreement";
     case "change_order":
       return "Change order";
   }

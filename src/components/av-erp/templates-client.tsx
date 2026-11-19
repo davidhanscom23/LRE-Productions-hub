@@ -56,8 +56,9 @@ export function TemplatesClient({
     <AvErpPage maxWidthClassName="max-w-3xl">
       <h1 className="text-xl font-semibold">Document templates</h1>
       <p className="mt-1 text-sm text-[var(--muted)]">
-        Terms and boilerplate for estimates and invoices. The default estimate
-        template prints on the public estimate page.
+        Terms and boilerplate for estimates, agreements and invoices. The default estimate
+        template prints on the public estimate page; the default Agreement template
+        prints only on the Event Agreement.
       </p>
 
       {error ? (
@@ -114,7 +115,7 @@ export function TemplatesClient({
           <select name="kind" defaultValue="estimate" className={fieldClass}>
             <option value="estimate">Estimate</option>
             <option value="invoice">Invoice</option>
-            <option value="other">Other</option>
+__AGR__            <option value="other">Other</option>
           </select>
         </label>
         <label className="block text-sm">
@@ -165,7 +166,7 @@ export function TemplatesClient({
                   >
                     <option value="estimate">Estimate</option>
                     <option value="invoice">Invoice</option>
-                    <option value="other">Other</option>
+__AGR__                    <option value="other">Other</option>
                   </select>
                   <textarea
                     name="terms"
