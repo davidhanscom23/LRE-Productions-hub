@@ -194,7 +194,7 @@ export async function buildRmsDocumentPdf(doc: RmsDocument): Promise<Uint8Array>
     left.push(["Receipt For", doc.reference]);
     if (doc.issuedAt) left.push(["Receipt Date", fmtDate(doc.issuedAt)]);
   } else {
-    left.push([doc.kind === "contract" ? "Contract Number" : "Estimate Number", doc.reference]);
+    left.push([doc.kind === "contract" ? "Agreement Number" : "Estimate Number", doc.reference]);
     if (doc.validUntil) left.push(["Valid Until", fmtDate(doc.validUntil)]);
     if (doc.statusLabel) left.push(["Status", doc.statusLabel]);
   }
@@ -397,8 +397,8 @@ export async function buildRmsDocumentPdf(doc: RmsDocument): Promise<Uint8Array>
     const stamp = doc.signatureStamp;
     const intro =
       doc.kind === "contract"
-        ? "I, the undersigned, accept the terms and conditions of rental and agree to this contract."
-        : "I agree to the terms of this estimate and understand that LRE Productions will provide me with a contract to secure the rental items and services included in it. Any additions will be reflected in my final invoice.";
+        ? "I, the undersigned, accept the terms and conditions of rental and agree to be bound by this agreement."
+        : "I agree to the terms of this estimate and understand that LRE Productions will provide me with an agreement to secure the rental items and services included in it. Any additions will be reflected in my final invoice.";
     const introLines = wrapText(t(intro), CW - 20, (s) => font.widthOfTextAtSize(s, 8));
     const boxH = 30 + introLines.length * 10.5 + (stamp ? 62 : 46);
     ensure(boxH + 10);

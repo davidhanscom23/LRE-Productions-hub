@@ -153,7 +153,15 @@ async function assembleEstimate(
   opp: OppRow,
   supabase: ReturnType<typeof createServiceClient>,
 ): Promise<CustomerEstimate> {
-  const [groupsRes, linesRes, customerRes, venueRes, termsRes, shopTaxRate] =
+  const [
+    groupsRes,
+    linesRes,
+    customerRes,
+    venueRes,
+    termsRes,
+    contractTermsRes,
+    shopTaxRate,
+  ] =
     await Promise.all([
       supabase
         .from("av_opportunity_groups")
@@ -189,6 +197,14 @@ async function assembleEstimate(
         .from("av_document_templates")
         .select("terms")
         .eq("kind", "estimate")
+        .eq("is_active", true)
+        .eq("is_default", true)
+        .limit(1)
+        .maybeSingle(),
+      supabase
+        .from("av_document_templates")
+        .select("terms")
+        .eq("kind", "contract")
         .eq("is_active", true)
         .eq("is_default", true)
         .limit(1)
@@ -270,6 +286,10 @@ async function assembleEstimate(
     !termsRes.error && termsRes.data
       ? String(termsRes.data.terms ?? "")
       : "";
+  const contractTerms =
+    !contractTermsRes.error && contractTermsRes.data
+      ? String(contractTermsRes.data.terms ?? "")
+      : "";
 
   return {
     ...estimate,
@@ -284,5 +304,6 @@ async function assembleEstimate(
     contactName: customer?.contactName || customer?.name || "",
     contactEmail: customer?.email || "",
     terms,
+    contractTerms,
   };
 }

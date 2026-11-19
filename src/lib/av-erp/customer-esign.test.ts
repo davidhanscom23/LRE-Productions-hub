@@ -42,7 +42,7 @@ describe("validateCustomerEsign", () => {
 
   it("labels document kinds for UI copy", () => {
     expect(customerDocKindLabel("estimate")).toBe("Estimate");
-    expect(customerDocKindLabel("contract")).toBe("Contract");
+    expect(customerDocKindLabel("contract")).toBe("Agreement");
     expect(customerDocKindLabel("change_order")).toBe("Change order");
   });
 });

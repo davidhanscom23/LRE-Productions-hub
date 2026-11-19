@@ -16,8 +16,10 @@ type Props = {
   estimateSignerName?: string;
   contractResponse: "accepted" | "declined" | null;
   contractNote: string;
+  /** Terms & Conditions shown above the agreement signature only. */
+  contractTerms?: string;
   contractSignerName?: string;
-  /** When true, show contract panel after estimate accepted (or already Order). */
+  /** When true, show agreement panel after estimate accepted (or already Order). */
   allowContractSign: boolean;
 };
 
@@ -59,6 +61,7 @@ export function EstimateResponseClient({
   estimateSignerName = "",
   contractResponse,
   contractNote,
+  contractTerms = "",
   contractSignerName = "",
   allowContractSign,
 }: Props) {
@@ -128,8 +131,8 @@ export function EstimateResponseClient({
           <DoneBanner
             title={
               contractDone === "accepted"
-                ? "Contract signed"
-                : "Contract declined"
+                ? "Agreement signed"
+                : "Agreement declined"
             }
             note={conNote}
             signerName={
@@ -137,15 +140,25 @@ export function EstimateResponseClient({
             }
           />
         ) : (
+          <>
+            {contractTerms.trim() ? (
+              <section className="mt-8">
+                <h3 className="text-sm font-semibold">Terms &amp; Conditions</h3>
+                <p className="mt-1 whitespace-pre-wrap text-sm text-[var(--muted)]">
+                  {contractTerms}
+                </p>
+              </section>
+            ) : null}
           <CustomerEsignForm
             docKind="contract"
             pending={pending}
             error={error}
             defaultName={estSigner || defaultName}
             defaultEmail={defaultEmail}
-            acceptLabel="Sign contract"
+            acceptLabel="Sign agreement"
             onSubmit={(values) => submit("contract", values)}
           />
+          </>
         )
       ) : null}
     </div>

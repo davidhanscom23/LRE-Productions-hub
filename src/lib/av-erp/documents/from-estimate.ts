@@ -57,7 +57,8 @@ export function rmsDocumentFromEstimate(
     amountCredited: 0,
     notes: estimate.notes,
     transportNotes: estimate.transportNotes,
-    terms: estimate.terms ?? "",
+    // Agreement terms print only on the Event Agreement; estimates use the normal terms.
+    terms: kind === "contract" ? (estimate.contractTerms ?? "") : (estimate.terms ?? ""),
     showSignature: true,
   };
 }

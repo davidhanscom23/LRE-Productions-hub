@@ -12,7 +12,7 @@ export async function buildEstimatePdf(
   return buildRmsDocumentPdf(rmsDocumentFromEstimate(estimate, "estimate"));
 }
 
-/** Confirmed-order / quotation Contract PDF (same body + signature block). */
+/** Confirmed-order / quotation Agreement PDF (same body + signature block). */
 export async function buildContractPdf(
   estimate: CustomerEstimate,
 ): Promise<Uint8Array> {

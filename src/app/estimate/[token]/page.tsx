@@ -296,6 +296,7 @@ export default async function PublicEstimatePage({ params }: Props) {
           contractResponse={estimate.contractResponse ?? null}
           contractNote={estimate.contractResponseNote ?? ""}
           contractSignerName={estimate.contractSignerName ?? ""}
+          contractTerms={estimate.contractTerms ?? ""}
           allowContractSign
         />
 

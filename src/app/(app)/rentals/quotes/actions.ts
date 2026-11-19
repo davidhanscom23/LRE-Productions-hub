@@ -882,7 +882,7 @@ export async function downloadEstimatePdfAction(
   };
 }
 
-/** Contract PDF (same RMS layout as estimate, labeled Contract + signature). */
+/** Contract PDF (same RMS layout as estimate, labeled Agreement + signature). */
 export async function downloadContractPdfAction(
   opportunityId: string,
 ): Promise<DownloadEstimateResult> {
