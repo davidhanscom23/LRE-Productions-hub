@@ -84,6 +84,8 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: "/event-packets/[id]", label: "Event Packet", group: "Work", kind: "reachable", audience: "staff", note: "Reached from the Event Packets list." },
   { path: "/event-checklist/open", label: "Find an event's gear checklist", group: "Work", kind: "reachable", audience: "staff", note: "Lookup page: sends you to the right checklist from a calendar card or Event Packet." },
   { path: "/event-checklist/[projectId]", label: "Event gear checklist", group: "Work", kind: "reachable", audience: "staff", note: "Check gear out of and back into the warehouse. Assigned staff and admins only; opened from an event." },
+  { path: "/gear-scan", label: "Gear scan", group: "Work", kind: "page", audience: "staff", note: "Scan LRE gear tags to check equipment out to an event and back in. Admins, Leads and staff; only admins edit tagged gear. Needs migration 200_gear_tags.sql." },
+  { path: "/t/[tag]", label: "Gear tag link", group: "Work", kind: "reachable", audience: "staff", note: "The short link inside a gear tag's QR code. Opens that piece in Gear scan after sign-in." },
   { path: "/end-of-event-report", label: "End-of-event report", group: "Work", kind: "page", audience: "staff" },
   { path: "/submit-event-photos", label: "Submit event photos", group: "Work", kind: "page", audience: "staff" },
   { path: "/event-media/thumbnails", label: "Event media thumbnails", group: "Work", kind: "reachable", audience: "admin", note: "Reached from event media tools." },

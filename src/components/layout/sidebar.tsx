@@ -18,6 +18,7 @@ import {
   CalendarClock,
   CalendarPlus,
   ClipboardCheck,
+  ScanLine,
   ClipboardList,
   Clock,
   GraduationCap,
@@ -589,6 +590,12 @@ export const NAV_GROUPS: NavGroup[] = [
         href: "/event-packets",
         label: "Event Packets",
         icon: ClipboardCheck,
+        toolsCategory: "events",
+      },
+      {
+        href: "/gear-scan",
+        label: "Gear scan",
+        icon: ScanLine,
         toolsCategory: "events",
       },
       {

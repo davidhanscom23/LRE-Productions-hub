@@ -61,6 +61,8 @@ export function toolMatchesQuery(
 
 /** Descriptions for links the Home shortcut catalog does not already describe. */
 export const EXTRA_DESCRIPTIONS: Record<string, string> = {
+  "/gear-scan":
+    "Scan the LRE tag on a piece of gear to check it out to an event or back in, and see what is still out.",
   "/scheduling":
     "Create booking links so clients can pick an open time for a call, with confirmations and calendar invites.",
   "/services":
@@ -120,6 +122,7 @@ export const EXTRA_DESCRIPTIONS: Record<string, string> = {
  * Old entries can stay: they stop counting after the window.
  */
 export const TOOL_ADDED_ON: Record<string, string> = {
+  "/gear-scan": "2026-11-20",
   "/partner-expenses": "2026-11-17",
   "/hub-switcher": "2026-11-08",
   "/scheduling": "2026-11-07",

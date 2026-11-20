@@ -73,6 +73,8 @@ export const ASK_EXAMPLE_QUESTION_GROUPS: ExampleQuestionGroup[] = [
       "What timezone do AV quote gear and charge windows use?",
       "What happens when I add a product that has accessories on an AV quote?",
       "How do I check AV gear out of the warehouse and back in?",
+      "How do I scan a gear tag to check equipment out to an event?",
+      "How do I link a new LRE tag to a piece of gear?",
       "Where do I see Hub stock still out on rent?",
       "Where is the AV gear calendar and planner?",
       "How do I track pre-job AV activities?",

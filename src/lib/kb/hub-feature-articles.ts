@@ -44,6 +44,33 @@ Activity log: /partner-expenses/activity lists every add, edit, void, reimbursem
 A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
+    slug: "gear-scan",
+    title: "Gear scan (LRE gear tags, check out and check in by scanning)",
+    body: `Gear scan (/gear-scan) checks equipment out to an event and back in by scanning the LRE Productions tag on the gear with a phone camera. Every admin, Lead and staff member can scan. Guests cannot open it.
+
+The tags: each tagged piece has a small label that reads LRE Productions with a number (0001, 0002 and so on) and a QR code. Higher-value pieces and every case, rack or bin get their own tag. Cables, stands and small adapters are not tagged; they stay counted by quantity on the event gear checklist. The tag says LRE Productions on every piece no matter who owns it. The owner (Vident, Luke's company or LRE Productions) is kept in the hub.
+
+Check out: open Gear scan, choose Check out, pick the event the gear is going to, tap Start camera and point it at the tag. The piece is marked Out, and that event's gear checklist is ticked for it. If the item was not on the checklist, a line is added. Choose No event when gear is only leaving the warehouse.
+
+Check in: choose Check in and scan. There is no event to pick, because each piece remembers the event it went out to. The piece is marked In and the checklist's Back count goes up.
+
+Cases: scanning the tag on a case moves the case and every piece assigned to it in one scan. A piece is assigned to a case when its tag is linked (Lives in case) or later by an admin.
+
+Damaged or missing: before scanning, open Damaged or missing, choose which and add a note. It is saved with the scan and shows in the piece's history and on the event checklist history.
+
+No signal: Check out and Check in still work. The scan is saved on the phone and sent by itself when the phone is back online. A banner shows how many scans are waiting. Look up needs a connection.
+
+Look up: choose Look up and scan to see what a tag is on, its owner, where it is now, what is inside a case, and its history (every scan with the person, time and event). Nothing changes. The phone's normal camera app also works when the tag's code holds a hub link: it opens the same piece after you sign in. Someone who is not signed in only sees the login page.
+
+Linking a new tag: scan a tag the hub has not seen and it asks which inventory item it is on, with an optional name for that one piece (for example Speaker 3), serial number, owner, and whether it is a case. An admin's link is live right away. A link from anyone else goes to an admin for approval first.
+
+Who can change what: admins can edit any tagged piece (name, serial, owner, case, replace a damaged sticker with a new tag number, or retire it). Leads and staff cannot edit; they use Suggest a change on a piece or the Requests tab to suggest an addition, a change or a removal. Nothing changes until an admin approves. Approving a new-tag link applies it. Approving any other suggestion records the decision, and the admin then makes the edit.
+
+Tabs: Scan, Still out (every piece that has not come back, grouped by event, with a link to the event checklist), Tagged gear (every linked tag with a filter), and Requests (suggestions waiting for an admin, and reviewed ones).
+
+A tagged piece also shows on LRE AV > Serials with its In or Out status. Needs migration 200_gear_tags.sql.`,
+  },
+  {
     slug: "event-gear-checklist",
     title: "Event gear checklist (check out and check back in)",
     body: `Every event can have a gear checklist (/event-checklist/<event>). It shows two progress bars: Out of the warehouse and Back in the warehouse. The checklist is the list of equipment for that event, and it is built from the AV estimate linked to the event, so the estimate stays the source of truth. When the estimate changes (an item is added, removed or its quantity changes), the checklist updates by itself. Items already checked stay checked, and anything new shows as unchecked.
