@@ -27,9 +27,9 @@ export const CHANGELOG: ChangelogEntry[] = [
     date: "2026-11-20",
     category: "improved",
     area: "Gear scan",
-    title: "Gear owner now reads LukesENT",
+    title: "Gear owners read Vident, LRE Pro and LukesENT everywhere",
     description:
-      "On Gear scan, Luke's company now shows as LukesENT, the same name the AV Catalog uses. Nothing else about the gear changed.",
+      "Gear scan and the AV Catalog now use the same three owner names: Vident, LRE Pro and LukesENT. Nothing else about the gear changed.",
   },
   {
     date: "2026-11-20",
