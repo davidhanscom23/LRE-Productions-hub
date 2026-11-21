@@ -187,6 +187,9 @@ export const HOW_TO_VIDEOS: HowToVideo[] = [
   { slug: "av-catalog", route: "/rentals/catalog", title: "LRE AV: Catalog", file: "av-catalog.mp4", guideSlug: "lre-av", audience: "vident-av" },
   { slug: "av-event-portals", route: "/av-portals", title: "AV Event Portals", file: "av-event-portals.mp4", guideSlug: "av-event-portals", audience: "vident-av" },
   { slug: "av-show-control", route: "/av-show", title: "AV Show Control", file: "av-show-control.mp4", guideSlug: "av-show-control", audience: "vident-av" },
+  { slug: "event-gear-checklist", route: "/event-checklist", title: "Event gear checklist", file: "event-gear-checklist.mp4", guideSlug: "event-gear-checklist", audience: "all" },
+  { slug: "notifications", route: "/notifications", title: "Notifications", file: "notifications.mp4", guideSlug: "notifications", audience: "all", alsoRoutes: ["/notification-settings"] },
+  { slug: "appearance", route: "/appearance", title: "Appearance", file: "appearance.mp4", guideSlug: "appearance", audience: "all" },
 ];
 
 type AccessProfile = Pick<Profile, "role" | "departments">;

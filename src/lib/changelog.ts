@@ -27,6 +27,16 @@ export const CHANGELOG: ChangelogEntry[] = [
     date: "2026-11-21",
     category: "new",
     area: "How-to videos",
+    title: "How-to videos for the gear checklist, Notifications and Appearance",
+    description:
+      "The event gear checklist and Notifications (including Preferences) each have a short how-to video, and a new Appearance video shows how to switch between Light, Dark and System.",
+    howTo:
+      "Open a gear checklist or Notifications and click Watch how-to video at the top. The Appearance video is in the Training Portal, in the How-to videos course.",
+  },
+  {
+    date: "2026-11-21",
+    category: "new",
+    area: "How-to videos",
     title: "How-to videos for the rest of the Hub",
     description:
       "59 more pages now have a short how-to video, including Tools, Pipeline, Quoting, Proposals, Expenses, People, Kudos, Polls, every LRE AV tab, and the admin pages. Calendar and Google Drive will get theirs once they are connected.",

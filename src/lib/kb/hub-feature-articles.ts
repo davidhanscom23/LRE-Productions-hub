@@ -27,6 +27,13 @@ export type HubFeatureArticle = {
 
 export const HUB_FEATURE_ARTICLES: HubFeatureArticle[] = [
   {
+    slug: "appearance",
+    title: "Appearance: light, dark or system theme",
+    body: `The moon button at the top of the Hub, next to the hub switcher, opens Appearance. Choose Light or Dark, or pick System so the Hub follows your device setting. Your choice is saved to your profile, so it follows you to other devices.
+
+A short how-to video for Appearance is in the Training Portal, in the How-to videos course.`,
+  },
+  {
     slug: "partner-expenses",
     title: "Partner expenses (David and Luke's startup expense ledger)",
     body: `Partner expenses (/partner-expenses, under Admin) is a private ledger for the startup costs David and Luke pay personally for LRE Productions before the company bank account is built. It is only for the two partners. A hub admin who is not one of them cannot open it or see anything in it.
@@ -270,7 +277,9 @@ A short how-to video is linked at the top of the page: click Watch how-to video,
 
 Unread items are highlighted. Open one to mark it read and jump to the linked page. Use Mark all read to clear the badge. Each row shows a relative timestamp (for example “2 hours ago”).
 
-For a longer history, open View all notifications (or /notifications / search “Notifications”). The inbox lists up to the latest 100 items with the same mark-read controls. Notifications are private to you — other staff cannot see your list.`,
+For a longer history, open View all notifications (or /notifications / search “Notifications”). The inbox lists up to the latest 100 items with the same mark-read controls. Notifications are private to you — other staff cannot see your list.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "calendar",
@@ -886,7 +895,9 @@ A short how-to video is linked at the top of the page: click Watch how-to video,
 
 Notifications from admins are always on and can’t be turned off by staff — that includes Announcements, time-off and expense approve/deny outcomes, shared performance reviews, and task assignments. Staff can mute optional types like Kudos. Admins can manage all of their own.
 
-This controls in-app notifications only; email notifications, where enabled, are separate. A daily Field digest cron (/api/cron/send-field-digest) emails staff with actionable For You items when Resend is configured.`,
+This controls in-app notifications only; email notifications, where enabled, are separate. A daily Field digest cron (/api/cron/send-field-digest) emails staff with actionable For You items when Resend is configured.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "hiring",

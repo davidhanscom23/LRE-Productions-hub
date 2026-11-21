@@ -886,3 +886,36 @@ select c.id, 800, 'AV Show Control how-to', 'A short how-to for AV Show Control.
 from public.training_courses c where c.slug = 'how-to-videos'
   and not exists (select 1 from public.training_lessons l
     where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-show-control.mp4');
+
+-- 81. Event gear checklist
+update public.training_lessons l set
+  title = 'Event gear checklist how-to', body = 'A short how-to for Event gear checklist. You can also open it any time from the Watch how-to video link at the top of the page (/event-checklist).', sort_order = 810, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/event-gear-checklist.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 810, 'Event gear checklist how-to', 'A short how-to for Event gear checklist. You can also open it any time from the Watch how-to video link at the top of the page (/event-checklist).', 'https://lre-productions.b-cdn.net/lre-howto/event-gear-checklist.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/event-gear-checklist.mp4');
+
+-- 82. Notifications
+update public.training_lessons l set
+  title = 'Notifications how-to', body = 'A short how-to for Notifications. You can also open it any time from the Watch how-to video link at the top of the page (/notifications).', sort_order = 820, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/notifications.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 820, 'Notifications how-to', 'A short how-to for Notifications. You can also open it any time from the Watch how-to video link at the top of the page (/notifications).', 'https://lre-productions.b-cdn.net/lre-howto/notifications.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/notifications.mp4');
+
+-- 83. Appearance
+update public.training_lessons l set
+  title = 'Appearance how-to', body = 'A short how-to for Appearance. You can also open it any time from the Watch how-to video link at the top of the page (/appearance).', sort_order = 830, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/appearance.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 830, 'Appearance how-to', 'A short how-to for Appearance. You can also open it any time from the Watch how-to video link at the top of the page (/appearance).', 'https://lre-productions.b-cdn.net/lre-howto/appearance.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/appearance.mp4');
