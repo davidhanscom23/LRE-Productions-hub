@@ -27,9 +27,9 @@ export const CHANGELOG: ChangelogEntry[] = [
     date: "2026-11-20",
     category: "improved",
     area: "Gear scan",
-    title: "Gear owner now reads LRE DJs",
+    title: "Gear owner now reads LukesENT",
     description:
-      "On Gear scan, the owner choice that read Luke's company is now LRE DJs. Nothing else about the gear changed.",
+      "On Gear scan, Luke's company now shows as LukesENT, the same name the AV Catalog uses. Nothing else about the gear changed.",
   },
   {
     date: "2026-11-20",

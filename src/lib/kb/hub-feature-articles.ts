@@ -48,7 +48,7 @@ A short how-to video is linked at the top of the page: click Watch how-to video,
     title: "Gear scan (LRE gear tags, check out and check in by scanning)",
     body: `Gear scan (/gear-scan) checks equipment out to an event and back in by scanning the LRE Productions tag on the gear with a phone camera. Every admin, Lead and staff member can scan. Guests cannot open it.
 
-The tags: each tagged piece has a small label that reads LRE Productions with a number (0001, 0002 and so on) and a QR code. Higher-value pieces and every case, rack or bin get their own tag. Cables, stands and small adapters are not tagged; they stay counted by quantity on the event gear checklist. The tag says LRE Productions on every piece no matter who owns it. The owner (Vident, LRE DJs or LRE Productions) is kept in the hub.
+The tags: each tagged piece has a small label that reads LRE Productions with a number (0001, 0002 and so on) and a QR code. Higher-value pieces and every case, rack or bin get their own tag. Cables, stands and small adapters are not tagged; they stay counted by quantity on the event gear checklist. The tag says LRE Productions on every piece no matter who owns it. The owner (Vident, LukesENT or LRE Productions) is kept in the hub.
 
 Check out: open Gear scan, choose Check out, pick the event the gear is going to, tap Start camera and point it at the tag. The piece is marked Out, and that event's gear checklist is ticked for it. If the item was not on the checklist, a line is added. Choose No event when gear is only leaving the warehouse.
 
