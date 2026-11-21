@@ -24,6 +24,16 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    date: "2026-11-20",
+    category: "new",
+    area: "Gear scan",
+    title: "Scan gear tags to check equipment out and back in",
+    description:
+      "Gear scan reads the LRE tag on a piece of gear with your phone camera and checks it out to an event or back in. Each scan ticks that event's gear checklist, and the page shows every piece that is still out.",
+    howTo:
+      "Open Gear scan, choose Check out and the event, tap Start camera and point it at the tag. Choose Check in when the gear comes back. Scanning a new tag lets you link it to a piece of gear.",
+  },
+  {
     date: "2026-11-18",
     category: "new",
     area: "Estimates",

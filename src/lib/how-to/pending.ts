@@ -16,4 +16,10 @@ export type PendingHowToVideo = {
   since: string;
 };
 
-export const PENDING_HOW_TO_VIDEOS: PendingHowToVideo[] = [];
+export const PENDING_HOW_TO_VIDEOS: PendingHowToVideo[] = [
+  {
+    route: "/gear-scan",
+    reason: "New Gear scan module: scan LRE gear tags to check equipment out to an event and back in.",
+    since: "2026-11-20",
+  },
+];

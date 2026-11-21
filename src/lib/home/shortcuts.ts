@@ -48,6 +48,7 @@ export const SHORTCUT_DEFS: ShortcutDef[] = [
   { href: "/staff-handbook", label: "Staff Handbook", description: "Policies & handbook.", gate: "handbook" },
   { href: "/support-guide", label: "Support Guide", description: "Hub how-to playbooks.", gate: "" },
   { href: "/event-packets", label: "Event Packets", description: "Complete after events.", gate: "" },
+  { href: "/gear-scan", label: "Gear scan", description: "Scan gear tags out and in.", gate: "" },
   { href: "/client-reviews", label: "Client Reviews", description: "Website testimonials & milestones.", gate: "" },
   { href: "/social-studio", label: "Social Studio", description: "Captions & exports.", gate: "" },
   { href: "/end-of-event-report", label: "End of Event Report", description: "Post-event report.", gate: "" },

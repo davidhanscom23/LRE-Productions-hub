@@ -150,9 +150,17 @@ export function ChecklistClient({
   return (
     <div className="mx-auto max-w-3xl space-y-4 p-4">
       <div>
-        <Link href="/pipeline" className="text-xs text-[var(--muted)] hover:underline">
-          ← Events
-        </Link>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <Link href="/pipeline" className="text-xs text-[var(--muted)] hover:underline">
+            ← Events
+          </Link>
+          <Link
+            href={`/gear-scan?project=${project.id}`}
+            className="rounded-lg border border-[var(--border)] px-3 py-1 text-xs font-semibold text-[var(--brand)]"
+          >
+            Scan gear tags
+          </Link>
+        </div>
         <h1 className="mt-1 text-xl font-bold">{project.name}</h1>
         <p className="text-sm text-[var(--muted)]">
           {project.project_date ?? "No date"}

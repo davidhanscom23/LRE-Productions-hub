@@ -294,6 +294,11 @@ export const SEARCH_NAV_TARGETS: SearchNavTarget[] = [
     keywords: ["packets", "events", "field"],
   },
   {
+    href: "/gear-scan",
+    label: "Gear scan",
+    keywords: ["gear scan", "scan", "qr", "asset tag", "gear tag", "check out", "check in", "still out", "tagged gear", "label", "sticker"],
+  },
+  {
     href: "/client-reviews",
     label: "Client Reviews",
     keywords: [
