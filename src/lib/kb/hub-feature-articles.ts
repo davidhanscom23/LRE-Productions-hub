@@ -288,7 +288,9 @@ You only see channels you’re allowed to join. Channels can be open to everyone
 
 Anyone with access can send messages. You can delete your own messages; admins can delete any message. Admins create, rename, and delete channels (deleting a channel removes its messages). The channel list shows the latest message preview and relative time, and sorts channels by recent activity.
 
-If you don’t see a channel you need, ask an admin to add you.`
+If you don’t see a channel you need, ask an admin to add you.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`
   },
   {
     slug: "lre-av",
@@ -336,7 +338,9 @@ When no admin-managed links exist yet, the tab shows Hub defaults for Audiovisua
 
 On the Audiovisual tab, the AV Time Tracker lets you clock in From Calendar (upcoming calendar events for the next two weeks — events assigned to you and AV-looking titles first) or Manual Entry (type an event name), add notes, optionally capture GPS, clock out, and review recent AV time entries. Admins need the company Calendar feed; staff/trainers need a personal calendar link on People. Admins and trainers also see Team hours (last 7 days): per-person closed-shift totals and a recent team shifts list (staff only see their own tracker).
 
-Fundamental Resource Guide: on the Audiovisual tab, switch from AV Tools to Fundamental Resource Guide for a reference on connectors and signal types, IP ratings, microphone patterns, signal flow, wireless RF, DMX lighting, networked AV, and a definitions glossary. Sections open and close with a tap. Use Open full page to read it on its own at /training/av-guide. All staff can open it; guest accounts cannot.`,
+Fundamental Resource Guide: on the Audiovisual tab, switch from AV Tools to Fundamental Resource Guide for a reference on connectors and signal types, IP ratings, microphone patterns, signal flow, wireless RF, DMX lighting, networked AV, and a definitions glossary. Sections open and close with a tap. Use Open full page to read it on its own at /training/av-guide. All staff can open it; guest accounts cannot.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "breadcrumbs",
@@ -374,7 +378,9 @@ To change the wording, update src/lib/speaker-guide/content.ts and replace publi
 
 Staff see New Hire Onboarding (All staff) plus only courses whose Audience matches a department checked on their People profile (Audiovisual, Corporate, Wedding & Social, Golf, Office). Admins and trainers see the full catalog. Use the search box to filter by title, blurb, or audience. Open a published course, expand each lesson, follow any Hub links, and click Mark complete. Lessons that include a quiz require a passing score (70%+) before completion is recorded — answers are graded on the server. Progress shows on the catalog and on For You. Top-bar search only returns courses you can open.
 
-Admins and trainers see Tracking (per-staff progress) and Manage (create/edit courses and lessons, quiz questions, reorder lessons, set Audience to a department or All staff, set status to Available / Coming soon / Draft). Only admins can delete courses or lessons. Staff only update their own lesson completions. Use Teams for department tutorial videos. Quizzes need migration 064_training_quizzes.sql applied in Supabase.`,
+Admins and trainers see Tracking (per-staff progress) and Manage (create/edit courses and lessons, quiz questions, reorder lessons, set Audience to a department or All staff, set status to Available / Coming soon / Draft). Only admins can delete courses or lessons. Staff only update their own lesson completions. Use Teams for department tutorial videos. Quizzes need migration 064_training_quizzes.sql applied in Supabase.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "resources",
@@ -383,7 +389,9 @@ Admins and trainers see Tracking (per-staff progress) and Manage (create/edit co
 
 Everyone can browse items their visibility allows (everyone, staff, or admin-only). Any staff member (Staff, Lead, or Admin) can add resources — upload a file or paste a link. Leads and admins can edit title, category, description, visibility, and link URL. File uploads stay as-is when editing — replace a file by deleting and adding a new resource. Only admins can delete resources. Guests can browse but cannot add.
 
-The page also links to the Staff Handbook. Resource titles and descriptions are included when an admin rebuilds the Ask the Hub index, so the assistant can mention them.`,
+The page also links to the Staff Handbook. Resource titles and descriptions are included when an admin rebuilds the Ask the Hub index, so the assistant can mention them.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "staff-handbook",
@@ -449,7 +457,9 @@ Website testimonials sync from the LRE Client Reviews Google Sheet (including Ev
 
 Packets also auto-sync from the company calendar on a daily cron at /api/cron/sync-event-packets when CRON_SECRET + SUPABASE_SERVICE_ROLE_KEY are set, and throttled when an admin opens Event Packets.
 
-Generic End of Event Report and Submit Event Photos remain available for one-off use. The generic photo uploader now uses the same tags, rename pattern, and venue folders as packets.`,
+Generic End of Event Report and Submit Event Photos remain available for one-off use. The generic photo uploader now uses the same tags, rename pattern, and venue folders as packets.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "client-reviews",
@@ -517,7 +527,9 @@ Requires GEMINI_API_KEY for Nano Banana Pro (Google AI Studio; paid tier / billi
 
 Anyone signed in can create a report: date, client, venue, event type (when Other, describe the specific type — the report shows that description only, not “Other — …”), equipment notes, memorable moment, issues, client feedback, rating, and optional Follow-up needed by admin. Event types include Wedding, Corporate, Birthday, Anniversary, School Dance, and Other. Hours worked are not collected.
 
-Staff see their own submitted reports; admins and trainers can see everyone’s. Use All or Follow-up needed by admin above the list to triage reports marked for follow-up. Authors or admins can delete a report.`,
+Staff see their own submitted reports; admins and trainers can see everyone’s. Use All or Follow-up needed by admin above the list to triage reports marked for follow-up. Authors or admins can delete a report.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "submit-event-photos",
@@ -526,7 +538,9 @@ Staff see their own submitted reports; admins and trainers can see everyone’s.
 
 Anyone signed in can upload: enter location/venue, team member, date, optional client, and event type (when Other, describe the specific type — the photo tag stores that description only), then select image or video files. Only image and video types are accepted. Uploaders can delete their own media; admins can delete any.
 
-Files are renamed like Event Packets (“Location - Team member - Date - 01.jpg”) and tagged under the venue folder. By default storage is the Supabase event-media bucket; when EVENT_MEDIA_STORAGE_PROVIDER=bunny is set (with Bunny zone + CDN env vars), new uploads go to Bunny CDN while older Supabase files keep working.`,
+Files are renamed like Event Packets (“Location - Team member - Date - 01.jpg”) and tagged under the venue folder. By default storage is the Supabase event-media bucket; when EVENT_MEDIA_STORAGE_PROVIDER=bunny is set (with Bunny zone + CDN env vars), new uploads go to Bunny CDN while older Supabase files keep working.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "roles-and-access",
@@ -604,7 +618,9 @@ Each person shows their avatar (or initials), name, role, job title, department 
 
 The tree is built from the “reports to” field on People profiles. To shape it, an admin sets each person’s manager on their People profile. The Directory itself is read-only — there’s nothing to edit here; it always reflects the current People data.
 
-Any signed-in staffer can view the Directory. Guests cannot.`,
+Any signed-in staffer can view the Directory. Guests cannot.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "expenses",
@@ -672,7 +688,9 @@ Needs migration 123_proposals.sql plus Drive credentials for upload. After deplo
 
 Posting (admins/trainers): give it a title and body, optionally tick “Require acknowledgement,” and optionally set an expiry date. When you post, every active staffer gets a notification. If you required acknowledgement, you can see how many people have acknowledged (admins).
 
-Reading (everyone): active announcements appear at the top of Home and on the Announcements page. If an announcement requires acknowledgement, click Acknowledge to confirm you’ve read it. Expired announcements drop off the Home banner but stay on the Announcements page.`,
+Reading (everyone): active announcements appear at the top of Home and on the Announcements page. If an announcement requires acknowledgement, click Acknowledge to confirm you’ve read it. Expired announcements drop off the Home banner but stay on the Announcements page.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "kudos",
@@ -704,7 +722,9 @@ A short how-to video is linked at the top of the page: click Watch how-to video,
     title: "Forum — questions and wins",
     body: `The Forum is where the team asks questions and shares wins.
 
-Pick a category on the left to focus the conversation. Sort with Active, Newest, Unanswered, Following, or Mine. Tap New discussion to start a thread.`,
+Pick a category on the left to focus the conversation. Sort with Active, Newest, Unanswered, Following, or Mine. Tap New discussion to start a thread.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "meetings",

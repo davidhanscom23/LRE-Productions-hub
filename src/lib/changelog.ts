@@ -24,6 +24,16 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    date: "2026-11-21",
+    category: "new",
+    area: "How-to videos",
+    title: "Ten more how-to videos",
+    description:
+      "Chat, Announcements, Forum, Event Packets, End of Event Report, Submit Event Photos, Teams, Directory, Training Portal and Resources each have a short how-to video.",
+    howTo:
+      "Open any of those pages and click Watch how-to video at the top. Each one is also a lesson in the Training Portal.",
+  },
+  {
     date: "2026-11-20",
     category: "new",
     area: "Gear scan",

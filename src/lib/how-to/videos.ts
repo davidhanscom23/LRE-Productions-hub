@@ -118,6 +118,16 @@ export const HOW_TO_VIDEOS: HowToVideo[] = [
     audience: "admin",
   },
   { slug: "gear-scan", route: "/gear-scan", title: "Gear scan", file: "gear-scan.mp4", guideSlug: "gear-scan", audience: "all" },
+  { slug: "chat", route: "/chat", title: "Chat", file: "chat.mp4", guideSlug: "chat", audience: "all" },
+  { slug: "announcements", route: "/announcements", title: "Announcements", file: "announcements.mp4", guideSlug: "announcements", audience: "all" },
+  { slug: "forum", route: "/forum", title: "Forum", file: "forum.mp4", guideSlug: "forum", audience: "all" },
+  { slug: "event-packets", route: "/event-packets", title: "Event Packets", file: "event-packets.mp4", guideSlug: "event-packets", audience: "all" },
+  { slug: "end-of-event-report", route: "/end-of-event-report", title: "End of Event Report", file: "end-of-event-report.mp4", guideSlug: "end-of-event-report", audience: "all" },
+  { slug: "submit-event-photos", route: "/submit-event-photos", title: "Submit Event Photos", file: "submit-event-photos.mp4", guideSlug: "submit-event-photos", audience: "all" },
+  { slug: "teams", route: "/teams", title: "Teams", file: "teams.mp4", guideSlug: "teams", audience: "all" },
+  { slug: "directory", route: "/directory", title: "Directory", file: "directory.mp4", guideSlug: "directory", audience: "all" },
+  { slug: "training-portal", route: "/training-portal", title: "Training Portal", file: "training-portal.mp4", guideSlug: "training-portal", audience: "all" },
+  { slug: "resources", route: "/resources", title: "Resources", file: "resources.mp4", guideSlug: "resources", audience: "all" },
 ];
 
 type AccessProfile = Pick<Profile, "role" | "departments">;
