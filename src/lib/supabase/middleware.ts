@@ -33,6 +33,9 @@ export async function updateSession(request: NextRequest) {
       (p === "/api/sms/status" && m === "POST") ||
       // Stripe Venue Quotes Book Now deposit (signature verified in the route).
       (p === "/api/webhooks/stripe" && m === "POST") ||
+      // Private feedback from the public review page (review.lreproductions.com).
+      // Cross-site POST with a CORS preflight; the route checks the Origin.
+      (p === "/api/review-feedback" && (m === "POST" || m === "OPTIONS")) ||
       // AV Show Control phone / Stream Deck remote (PIN / control token auth).
       // Session create stays behind normal staff auth.
       ((p === "/api/av-show/poll" ||

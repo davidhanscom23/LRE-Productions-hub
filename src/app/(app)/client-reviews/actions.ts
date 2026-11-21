@@ -7,6 +7,7 @@ import {
   linkReviewsSpreadsheet,
 } from "@/lib/reviews/ensure-sheet";
 import { syncExternalReviewsFromSheet } from "@/lib/reviews/sync-sheet";
+import { createServiceClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 
 async function finishReviewsSheetSetup(input: {
@@ -97,4 +98,25 @@ export async function linkReviewsSheetAction(input: string): Promise<{
     spreadsheetId: linked.spreadsheetId,
     webViewLink: linked.webViewLink,
   });
+}
+
+/** Admin: mark a private feedback response (from the review page) as followed up. */
+export async function markPrivateFeedbackReviewedAction(
+  formData: FormData,
+): Promise<void> {
+  const profile = await getCurrentProfile();
+  if (!profile || profile.role !== "admin") return;
+  const id = String(formData.get("id") ?? "").trim();
+  if (!id) return;
+
+  const supabase = createServiceClient();
+  await supabase
+    .from("private_review_feedback")
+    .update({
+      status: "reviewed",
+      reviewed_at: new Date().toISOString(),
+      reviewed_by: profile.id,
+    })
+    .eq("id", id);
+  revalidatePath("/client-reviews");
 }
