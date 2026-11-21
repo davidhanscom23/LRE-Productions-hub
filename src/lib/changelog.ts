@@ -26,6 +26,16 @@ export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-21",
     category: "new",
+    area: "How-to videos",
+    title: "How-to videos for the rest of the Hub",
+    description:
+      "59 more pages now have a short how-to video, including Tools, Pipeline, Quoting, Proposals, Expenses, People, Kudos, Polls, every LRE AV tab, and the admin pages. Calendar and Google Drive will get theirs once they are connected.",
+    howTo:
+      "Open a page and click Watch how-to video at the top. Each one is also a lesson in the Training Portal, and you only see videos for pages you can open.",
+  },
+  {
+    date: "2026-11-21",
+    category: "new",
     area: "Client Reviews",
     title: "Private client feedback now lands in the Hub",
     description:

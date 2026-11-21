@@ -110,7 +110,9 @@ A short how-to video is linked at the top of the page: click Watch how-to video,
     title: "Page Map and View as staff (admins)",
     body: `Page Map (Tools > Admin > Page Map, /page-map) is an admin-only list of every page in the hub. Summary tiles show total pages, how many are linked in the sidebar, how many are reachable from another page, how many are public or token links, and how many are admin only. Search by name, path or note, or filter by Linked in nav, Reachable or Redirects. Pages are grouped (Daily, Work, People & culture, Learn & refs, Field tools, Marketing, Admin, Personal, Redirects, Public) and each card shows who can open it, its path, an Open link, and where people reach it from.
 
-View as staff: admins see a View as staff button in the top bar. Clicking it shows the hub the way a regular staff member sees it: the sidebar, Tools page and page access follow the staff role. A banner stays at the top with a Back to admin button. While previewing, admin-only actions are paused so nothing is changed by accident. Only real admins can use it, and it never changes anyone's actual role.`,
+View as staff: admins see a View as staff button in the top bar. Clicking it shows the hub the way a regular staff member sees it: the sidebar, Tools page and page access follow the staff role. A banner stays at the top with a Back to admin button. While previewing, admin-only actions are paused so nothing is changed by accident. Only real admins can use it, and it never changes anyone's actual role.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "tools-launcher",
@@ -119,7 +121,9 @@ View as staff: admins see a View as staff button in the top bar. Clicking it sho
 
 My quick tools: the Home page shows your pinned shortcuts as large icon tiles, and the same tiles appear at the top of the Tools page. Click Customize on Home to add, remove or reorder them; the choice is saved to your account.
 
-Needs your attention: Home shows up to three cards with a count of things waiting on you (for example overdue Event Packets, approvals, assigned tasks, or acknowledgements), with a View all link to For You. Admins also see a card for new venue quote requests, linking to Venue Quotes > Requests.`,
+Needs your attention: Home shows up to three cards with a count of things waiting on you (for example overdue Event Packets, approvals, assigned tasks, or acknowledgements), with a View all link to For You. Admins also see a card for new venue quote requests, linking to Venue Quotes > Requests.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "venue-quotes",
@@ -130,7 +134,9 @@ Admins only manage it: open Venue Quotes in the sidebar. Create a blank venue, u
 
 Venue savings are protected: when someone chooses "I'm the venue's event coordinator", they must enter that venue's coordinator password (set in the venue editor) before continuing, and only then does the savings line appear and apply. Clients planning their own event never see the savings. If a venue has no coordinator password, the savings are not offered to anyone. A venue is a draft until you press Publish; admins can preview drafts (submissions are saved but no emails go out). Unpublish any time to take the link offline. Requests land under Venue Quotes > Requests, where you can set status: new, contacted, quoted, booked, lost — and Create Hub quote to turn a request into a draft LRE AV quote (customer + lines from the estimate, with catalog product/service IDs when packages/add-ons are mapped). When you later draft an invoice from that quote, a paid Book Now deposit becomes the first invoice payment. A venue with requests cannot be deleted, only unpublished.
 
-Pricing: equipment is package price plus add-ons; setup fee is charged once per space per package; technician roles (for example Audio Technician and Video Technician) are set per venue, each billed hourly (rate times event hours) or daily (rate times event days), and charged for every space whose package includes that role; delivery is a flat fee once per quote; the venue savings percent applies to equipment only, not hourly labor.`,
+Pricing: equipment is package price plus add-ons; setup fee is charged once per space per package; technician roles (for example Audio Technician and Video Technician) are set per venue, each billed hourly (rate times event hours) or daily (rate times event days), and charged for every space whose package includes that role; delivery is a flat fee once per quote; the venue savings percent applies to equipment only, not hourly labor.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "inquiry-forms",
@@ -145,7 +151,9 @@ Where inquiries land: each finished inquiry becomes a project at stage Inquiry o
 
 Unfinished inquiries: when a visitor gives an email or phone and then leaves partway, admins get an Unfinished website inquiries alert about 10 minutes later. Those partial answers stay in Submissions and do not go to the board unless you open the submission and click Add to Pipeline.
 
-Business settings (/inquiry-forms/settings) apply to every form: the date check (Always open by default; Check our bookings compares Pipeline projects on that date that are Booked, Retainer Paid, Paid in Full, Planning or In Progress with a fixed daily number or the active people in chosen departments minus approved time off), blackout dates, minimum notice, the messages visitors see, the unfinished-inquiry delay, and spam limits. The optional Cloudflare Turnstile bot check needs both Turnstile keys. Requires migration 167_inquiry_forms.sql (Hub health shows whether it has run).`,
+Business settings (/inquiry-forms/settings) apply to every form: the date check (Always open by default; Check our bookings compares Pipeline projects on that date that are Booked, Retainer Paid, Paid in Full, Planning or In Progress with a fixed daily number or the active people in chosen departments minus approved time off), blackout dates, minimum notice, the messages visitors see, the unfinished-inquiry delay, and spam limits. The optional Cloudflare Turnstile bot check needs both Turnstile keys. Requires migration 167_inquiry_forms.sql (Hub health shows whether it has run).
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "hub-overview",
@@ -325,7 +333,9 @@ Estimate share / email / e-sign: On an estimate, Share estimate link, Email esti
 
 Contractors / Serials / Templates: LRE AV → Contractors is freelancers without Hub login for crew bookings. Serials tracks individual asset serial/barcode units; Warehouse has a scan/filter box for product code or name. Templates holds estimate/invoice terms. Needs migration 151_av_km_gaps.sql.
 
-Developer and API (Terminal Mode): LRE AV → Developer mints shop API keys for Claude or scripts (KM Settings → Developer and API). Keys are shown once; revoke anytime. Read: GET /api/av/terminal/v1/opportunities, /customers, /catalog. Write (optional scope): POST/PATCH /customers, POST/PATCH /opportunities, DELETE /customers (soft-retire). Catalog stays read-only. Authorization: Bearer avk_live_…. Needs migrations 148_av_integration_tokens.sql and 149_av_text_kind_venue_plan_terminal.sql.`,
+Developer and API (Terminal Mode): LRE AV → Developer mints shop API keys for Claude or scripts (KM Settings → Developer and API). Keys are shown once; revoke anytime. Read: GET /api/av/terminal/v1/opportunities, /customers, /catalog. Write (optional scope): POST/PATCH /customers, POST/PATCH /opportunities, DELETE /customers (soft-retire). Catalog stays read-only. Authorization: Bearer avk_live_…. Needs migrations 148_av_integration_tokens.sql and 149_av_text_kind_venue_plan_terminal.sql.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "teams",
@@ -400,7 +410,9 @@ A short how-to video is linked at the top of the page: click Watch how-to video,
 
 Staff Handbook: while still in draft, only admins can open it. Admins edit on the page (Edit handbook → Save updates) and publish when ready. After publish, all signed-in staff can read and digitally acknowledge it (name, email, drawn signature; IP/browser/timestamp recorded). Admins and trainers see an acknowledgement roster for the current revision.
 
-Agreements work the same way: each starts as a draft (seed content adapted for LRE Productions). Admins open Documents → agreement → Edit → Save updates → Publish for all staff. Until published, only admins see that agreement. Staff sign published agreements with the same e-sign pad. Requires migration 095_hub_documents.sql. After docs change, Ask Hub → Rebuild index.`,
+Agreements work the same way: each starts as a draft (seed content adapted for LRE Productions). Admins open Documents → agreement → Edit → Save updates → Publish for all staff. Until published, only admins see that agreement. Staff sign published agreements with the same e-sign pad. Requires migration 095_hub_documents.sql. After docs change, Ask Hub → Rebuild index.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "hub-documents-agreements",
@@ -418,21 +430,27 @@ Admins see a Directory banner and card badge when active staff/trainers are miss
 
 Org Chart is split by department. People in multiple departments appear in each chart using that department’s manager assignment.
 
-Departments control Teams visibility and LRE AV access (Audiovisual department). Onboarding cards on People: Corporate, Weddings & Social, Golf, AV, and Office forms, plus Interview Questions - AV (admin-only). Staff and trainers only see forms for their assigned departments after an admin pastes a Google URL from LRE Google Drive. Admins see every card (including missing links) with a banner counting unset URLs, and paste Form/Sheet/Doc URLs via Add link / Edit link.`,
+Departments control Teams visibility and LRE AV access (Audiovisual department). Onboarding cards on People: Corporate, Weddings & Social, Golf, AV, and Office forms, plus Interview Questions - AV (admin-only). Staff and trainers only see forms for their assigned departments after an admin pastes a Google URL from LRE Google Drive. Admins see every card (including missing links) with a banner counting unset URLs, and paste Form/Sheet/Doc URLs via Add link / Edit link.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "vendors",
     title: "Vendors — preferred suppliers directory",
     body: `Vendors (/vendors) is the Hub directory of suppliers LRE uses (balloons, catering, florals, lighting, and more).
 
-Anyone on staff can search, add, and update vendors (category, company, contact, phone, email, website, notes, preferred flag, departments). Deletes require admin approval: staff/Lead request a delete; admins Approve or Decline from the Vendors page. Every change is written to an audit log (who/when/what). Hub is the source of truth and syncs to a LRE Google Sheet (Vendors) under the company Drive folder when Drive credentials are set. After vendor changes, admins should Rebuild index on Ask the Hub so questions like “Who do we use for balloons?” pull from the live directory.`,
+Anyone on staff can search, add, and update vendors (category, company, contact, phone, email, website, notes, preferred flag, departments). Deletes require admin approval: staff/Lead request a delete; admins Approve or Decline from the Vendors page. Every change is written to an audit log (who/when/what). Hub is the source of truth and syncs to a LRE Google Sheet (Vendors) under the company Drive folder when Drive credentials are set. After vendor changes, admins should Rebuild index on Ask the Hub so questions like “Who do we use for balloons?” pull from the live directory.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "support-guide",
     title: "Support Guide — Hub how-to playbooks",
     body: `Support Guide is a browsable set of Hub how-to playbooks (Getting started, Day to day, Field tools, People & teams, Access).
 
-Anyone signed in can open Support Guide from the sidebar, search topics, and open an article. Share a topic with /support-guide?topic=slug (Ask the Hub source chips use these links). Many topics link straight into the related module. For free-form questions use Ask the Hub; for files and shared links use Resources. Admins can still add custom knowledge articles on Ask the Hub.`,
+Anyone signed in can open Support Guide from the sidebar, search topics, and open an article. Share a topic with /support-guide?topic=slug (Ask the Hub source chips use these links). Many topics link straight into the related module. For free-form questions use Ask the Hub; for files and shared links use Resources. Admins can still add custom knowledge articles on Ask the Hub.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "event-packets",
@@ -472,7 +490,9 @@ Hub points: opening Client Reviews awards a one-time discovery bonus. As your at
 
 Admins can Sync from this page or Event Packets. Daily cron /api/cron/sync-sheet-reviews also awards milestones. After docs change, Ask Hub → Rebuild index.
 
-Private feedback (admins only): our review page at review.lreproductions.com asks clients to tap a star. 4 or 5 stars sends them to Google to post a review. 1 to 3 stars opens a short private form instead (name, email, what we could have improved, and what the team could have handled better). Those answers save to the Hub, every admin gets a notification, and they appear in the Private feedback section at the top of Client Reviews, newest first, with the star rating the client tapped. Click the email to reply, and click Mark reviewed once you have followed up. Staff and trainers never see this section, and private feedback is never shown on the website.`,
+Private feedback (admins only): our review page at review.lreproductions.com asks clients to tap a star. 4 or 5 stars sends them to Google to post a review. 1 to 3 stars opens a short private form instead (name, email, what we could have improved, and what the team could have handled better). Those answers save to the Hub, every admin gets a notification, and they appear in the Private feedback section at the top of Client Reviews, newest first, with the star rating the client tapped. Click the email to reply, and click Mark reviewed once you have followed up. Staff and trainers never see this section, and private feedback is never shown on the website.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "marketing-queue",
@@ -485,7 +505,9 @@ On Instagram drafts, add up to three Instagram usernames as Collaborators before
 
 Company social posts need admin approval when a trainer submits them: Request approval notifies all admins (bell icon in the top bar). Admins Approve (publishes via Meta for Facebook/Instagram when configured, or marks posted) or Deny with an optional reason. Admins can still post immediately without requesting approval. Drafts without social consent on the packet stay blocked with a clear warning.
 
-With Meta / LinkedIn / TikTok / Threads / Pinterest / X / YouTube env vars set, those platforms show one-click Post (admins) or Request approval (trainers). LinkedIn, TikTok, Threads, and Pinterest publish through Post for Me (POSTFORME_API_KEY): each draft can use a Post as brand/page picker when multiple accounts are connected; leave unset to use POSTFORME_*_ACCOUNT_ID defaults. Post for Me requires a non-empty caption — empty drafts disable Post until you add one. Admins manage Pinterest boards on Marketing Queue; each Pinterest draft can pick a Board (stored as target_pinterest_board_id). Prefer generating captions in Social Studio first so Threads/Pinterest drafts are filled. YouTube uploads via the Data API when durable OAuth is set (YOUTUBE_CLIENT_ID + YOUTUBE_CLIENT_SECRET + YOUTUBE_REFRESH_TOKEN + YOUTUBE_CHANNEL_ID — Hub refreshes the access token on each upload) or when a short-lived YOUTUBE_ACCESS_TOKEN + CHANNEL_ID are set (default privacy unlisted; videos over ~256 MB should still use Studio + Mark posted). Without YouTube credentials, drafts use Request approval / Mark posted after Studio upload. A Vercel cron auto-publishes ready API drafts past scheduled_for several times per day (CRON_SECRET + service role; Hobby plans cannot use true hourly crons). Pending approval drafts are never auto-posted. After docs change, Ask Hub → Rebuild index.`
+With Meta / LinkedIn / TikTok / Threads / Pinterest / X / YouTube env vars set, those platforms show one-click Post (admins) or Request approval (trainers). LinkedIn, TikTok, Threads, and Pinterest publish through Post for Me (POSTFORME_API_KEY): each draft can use a Post as brand/page picker when multiple accounts are connected; leave unset to use POSTFORME_*_ACCOUNT_ID defaults. Post for Me requires a non-empty caption — empty drafts disable Post until you add one. Admins manage Pinterest boards on Marketing Queue; each Pinterest draft can pick a Board (stored as target_pinterest_board_id). Prefer generating captions in Social Studio first so Threads/Pinterest drafts are filled. YouTube uploads via the Data API when durable OAuth is set (YOUTUBE_CLIENT_ID + YOUTUBE_CLIENT_SECRET + YOUTUBE_REFRESH_TOKEN + YOUTUBE_CHANNEL_ID — Hub refreshes the access token on each upload) or when a short-lived YOUTUBE_ACCESS_TOKEN + CHANNEL_ID are set (default privacy unlisted; videos over ~256 MB should still use Studio + Mark posted). Without YouTube credentials, drafts use Request approval / Mark posted after Studio upload. A Vercel cron auto-publishes ready API drafts past scheduled_for several times per day (CRON_SECRET + service role; Hobby plans cannot use true hourly crons). Pending approval drafts are never auto-posted. After docs change, Ask Hub → Rebuild index.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`
   },
   {
     slug: "social-studio",
@@ -500,7 +522,9 @@ Admins can Generate image on a packet’s Social Studio page. The default model 
 
 Image exports let you pick a packet photo, then reframe with a clear crop box (bright area = what exports; dimmed area is cut off). Drag the photo, zoom, and pick a platform size (square feed, portrait, story/TikTok vertical, landscape link preview, X post, YouTube thumbnail). Download the crop, or Save crop to packet so Marketing Queue can post that exact framing (posts use the selected packet media as-is). Event Packet and Submit Event Photos uploads accept iPhone HEIC/HEIF files and convert them to JPEG automatically so previews and crops work in the browser.
 
-Event Packets record social consent before public posting — Social Studio shows a consent badge. Backup to Drive mirrors the venue → event folder tree (new uploads sync automatically when Drive is configured; already-synced files are skipped). Media access works for both Supabase and Bunny-backed files. Requires GOOGLE_SERVICE_ACCOUNT_EMAIL + PRIVATE_KEY in the environment, and a root folder via GOOGLE_DRIVE_ROOT_FOLDER_ID or the admin override on /drive (paste the LRE company folder URL). Caption generation needs OPENAI_API_KEY.`,
+Event Packets record social consent before public posting — Social Studio shows a consent badge. Backup to Drive mirrors the venue → event folder tree (new uploads sync automatically when Drive is configured; already-synced files are skipped). Media access works for both Supabase and Bunny-backed files. Requires GOOGLE_SERVICE_ACCOUNT_EMAIL + PRIVATE_KEY in the environment, and a root folder via GOOGLE_DRIVE_ROOT_FOLDER_ID or the admin override on /drive (paste the LRE company folder URL). Caption generation needs OPENAI_API_KEY.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "google-drive",
@@ -520,7 +544,9 @@ Only admins see Image Studio in the sidebar. Choose Nano Banana Pro (Google Gemi
 
 Save to Hub library stores the still in the studio_images library (same event-media storage provider as packet photos) so staff can reuse it later. Push to Social Studio packet attaches the image as Event Packet media using the same rename/tag flow as the in-packet generator — then open Social Studio to crop or queue Marketing drafts. The in-packet Generate image panel on Social Studio stays available and is unchanged.
 
-Requires GEMINI_API_KEY for Nano Banana Pro (Google AI Studio; paid tier / billing for gemini-3-pro-image-preview). Optional HF_API_KEY + HF_API_SECRET for Higgsfield fallbacks. If Gemini is missing, Nano Banana Pro falls back to Soul when Higgsfield is configured. Guests cannot open Image Studio. Database migration 047_studio_images.sql creates the library table.`,
+Requires GEMINI_API_KEY for Nano Banana Pro (Google AI Studio; paid tier / billing for gemini-3-pro-image-preview). Optional HF_API_KEY + HF_API_SECRET for Higgsfield fallbacks. If Gemini is missing, Nano Banana Pro falls back to Soul when Higgsfield is configured. Guests cannot open Image Studio. Database migration 047_studio_images.sql creates the library table.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "end-of-event-report",
@@ -609,7 +635,9 @@ Self-assessment: while a cycle is open, rate yourself 1–5 on each competency (
 
 Manager review: admins or your People-directory manager (legacy reports_to or department manager) open a person’s review to see their self-assessment next to rating fields, an overall rating, overall notes, and goals. Save keeps it private; Save & share releases it to the staffer, who is then notified. Manager feedback stays hidden from the staffer until shared.
 
-Managing cycles (admins only): on the Reviews page, create a cycle (name plus optional due date), Generate reviews for all staff, and close or reopen a cycle. Department managers see only their reports and cannot create cycles.`,
+Managing cycles (admins only): on the Reviews page, create a cycle (name plus optional due date), Generate reviews for all staff, and close or reopen a cycle. Department managers see only their reports and cannot create cycles.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "directory",
@@ -631,7 +659,9 @@ A short how-to video is linked at the top of the page: click Watch how-to video,
 
 Submit an expense: enter the amount, category (Travel, Mileage, Gear / Equipment, Meals, Supplies, or Other), the expense date, an optional description, an optional receipt file upload (image or PDF stored in event-media), and/or an optional receipt link (paste a photo or Drive link). Your expense stays “pending” until an admin reviews it; you can cancel a pending expense. You only see your own expenses. Uploaded receipts and links show as View receipt for you and for admins reviewing.
 
-Admins: new expenses appear under “To review” with Approve and Deny, and admins get a notification (plus email if configured) when one is submitted. When you approve or deny, the submitter is notified of the outcome. Approved expenses move to “Awaiting reimbursement” with a “Mark reimbursed” button; marking it paid notifies the submitter and stamps it Reimbursed. The Home page and For You show admins when expenses are waiting to review. Receipt file columns need migration 065_expense_receipts_onboarding_hire.sql.`,
+Admins: new expenses appear under “To review” with Approve and Deny, and admins get a notification (plus email if configured) when one is submitted. When you approve or deny, the submitter is notified of the outcome. Approved expenses move to “Awaiting reimbursement” with a “Mark reimbursed” button; marking it paid notifies the submitter and stamps it Reimbursed. The Home page and For You show admins when expenses are waiting to review. Receipt file columns need migration 065_expense_receipts_onboarding_hire.sql.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "contractor-pay",
@@ -642,7 +672,9 @@ Who can use it: any signed-in staffer (not guests). Admins review and mark paid.
 
 Payment requests: enter amount, category (Event day, Hourly, Flat fee, Bonus, or Other), work date, optional event/job name, optional hours, and notes. Requests stay pending until an admin Approves or Denies; you can cancel while pending. Approved items move to Awaiting payment; admins Mark paid. Admins get a Hub notification (and email when configured) on submit; you get notified on approve/deny/paid.
 
-Mini 1099 hub: for the current tax year, upload a W-9 (PDF or image) and digitally sign the annual 1099 acknowledgment (drawn signature, name, email, IP/browser recorded). Admins see a roster of who has signed and the latest W-9 on file. Needs migration 121_contractor_pay.sql. After deploy, Rebuild index on Ask the Hub so answers mention this module.`,
+Mini 1099 hub: for the current tax year, upload a W-9 (PDF or image) and digitally sign the annual 1099 acknowledgment (drawn signature, name, email, IP/browser recorded). Admins see a roster of who has signed and the latest W-9 on file. Needs migration 121_contractor_pay.sql. After deploy, Rebuild index on Ask the Hub so answers mention this module.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "quoting-vs-lre-av",
@@ -668,7 +700,9 @@ Quotes: create a quote (client, event, date, department), then add line items wi
 
 When to use Quoting vs LRE AV: Quoting is for Wedding & Social, Corporate service, Golf, and other non-rental packages that become branded Proposals. LRE AV Estimates (/rentals/quotes) is for gear catalog lines, warehouse holds, crew day rates, Hub invoices, and Stripe pay links. Venue Quotes can Create Hub quote into LRE AV. See the “Quoting vs LRE AV” guide for the same decision tree.
 
-Separate from LRE AV Estimates (/rentals/quotes), the Hub rental opportunity editor. Needs migration 122_quoting.sql (and 158 for Wedding defaults). After deploy, Rebuild index on Ask the Hub. Ready quotes can become branded Proposals (/proposals).`,
+Separate from LRE AV Estimates (/rentals/quotes), the Hub rental opportunity editor. Needs migration 122_quoting.sql (and 158 for Wedding defaults). After deploy, Rebuild index on Ask the Hub. Ready quotes can become branded Proposals (/proposals).
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "proposals",
@@ -681,7 +715,9 @@ Google Drive: when the Hub service account is configured, Upload to Drive saves 
 
 Pipeline: admins can Search Pipeline projects and Write Drive link on Pipeline project — that appends the PDF link into the project’s details in the Hub.
 
-Needs migration 123_proposals.sql plus Drive credentials for upload. After deploy, Rebuild index on Ask the Hub.`,
+Needs migration 123_proposals.sql plus Drive credentials for upload. After deploy, Rebuild index on Ask the Hub.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "announcements",
@@ -701,14 +737,18 @@ A short how-to video is linked at the top of the page: click Watch how-to video,
 
 Give kudos: pick a teammate, optionally tag a company value (Integrity, Gratitude, or Teamwork), and write a short message. The person you recognize gets a notification. You can’t give kudos to yourself.
 
-Everyone can see the kudos feed. You can delete a kudo you gave; admins can delete any.`,
+Everyone can see the kudos feed. You can delete a kudo you gave; admins can delete any.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "winners",
     title: "Winners — Hub points Hall of Fame",
     body: `Winners is the Hall of Fame for monthly Hub points trophies.
 
-Current winners shows this month’s leaders at a glance. Overall Leader has the most total points. Monthly MVP earned the most that month. History lists every past month, newest first. Hub points tips shows you how to earn more.`,
+Current winners shows this month’s leaders at a glance. Overall Leader has the most total points. Monthly MVP earned the most that month. History lists every past month, newest first. Hub points tips shows you how to earn more.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "my-calendar",
@@ -733,42 +773,54 @@ A short how-to video is linked at the top of the page: click Watch how-to video,
     title: "Meetings — transcripts to action items",
     body: `Meetings turns a transcript into a summary, a score, and action items. It is for admins and trainers.
 
-Tap Add meeting and paste in a transcript. Use the tabs for the Dashboard, All Meetings, and Action Items. The top cards track quality score, meetings analyzed, and open or overdue action items.`,
+Tap Add meeting and paste in a transcript. Use the tabs for the Dashboard, All Meetings, and Action Items. The top cards track quality score, meetings analyzed, and open or overdue action items.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "pebbles-and-rocks",
     title: "Pebbles and Rocks — quarterly priorities",
     body: `Pebbles and Rocks tracks your quarterly priorities.
 
-Rocks are the big goals for the quarter. Pebbles are the small steps that move a rock forward. Choose the year and the board at the top.`,
+Rocks are the big goals for the quarter. Pebbles are the small steps that move a rock forward. Choose the year and the board at the top.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "marketing-library",
     title: "Marketing Library — links and videos to share",
     body: `Marketing Library keeps links and videos you can share with clients.
 
-Reviews holds Google review links to send clients. Photo Library holds event gallery links. Video Library holds highlight reels. Filter by category. Use Add link or Add video to add your own.`,
+Reviews holds Google review links to send clients. Photo Library holds event gallery links. Video Library holds highlight reels. Filter by category. Use Add link or Add video to add your own.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "video-archives",
     title: "Video Archives — recordings in one place",
     body: `Video Archives keeps training, meeting, and event recordings in one place.
 
-Search by title, description, or tag. Narrow the list by year, category, presenter, or topic. Add a video yourself, or import a recording from Zoom.`,
+Search by title, description, or tag. Narrow the list by year, category, presenter, or topic. Add a video yourself, or import a recording from Zoom.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "sms-portal",
     title: "SMS Portal — text and email staff and clients (admin)",
     body: `The SMS Portal is where admins text and email staff and clients. It is admin-only.
 
-Send a single text, a bulk text, or a bulk email. Texting needs Twilio connected. Bulk email works without it. Conversations show on the left. Pick one to read the messages.`,
+Send a single text, a bulk text, or a bulk email. Texting needs Twilio connected. Bulk email works without it. Conversations show on the left. Pick one to read the messages.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "communications",
     title: "Communications — how the Hub reaches staff (admin)",
     body: `Communications shows how the Hub reaches your staff. It is admin-only.
 
-Push, email, and text each show whether they are connected. Use the test center to send yourself a push, an email, or a text.`,
+Push, email, and text each show whether they are connected. Use the test center to send yourself a push, an email, or a text.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "onboarding",
@@ -779,14 +831,18 @@ Start an onboarding: enter the new hire’s name, optionally a role and start da
 
 Hiring handoff: when you move a candidate to Hired on Hiring, the Hub auto-creates an onboarding plan for that candidate (idempotent — one plan per candidate). If the candidate has an email, the Hub invites them (or links an existing profile) and attaches the plan so they can check items off themselves. You’ll get a prompt to open Onboarding. Needs migrations 065 and 066.
 
-Track it: open a plan to check items off (with a live progress bar), add custom tasks, or remove ones that don’t apply. Mark a plan complete, reopen it, archive it, or delete it. Use “Show archived” to see finished ones. Linked new hires see only their own checklist on Onboarding and For You.`,
+Track it: open a plan to check items off (with a live progress bar), add custom tasks, or remove ones that don’t apply. Mark a plan complete, reopen it, archive it, or delete it. Use “Show archived” to see finished ones. Linked new hires see only their own checklist on Onboarding and For You.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "reports",
     title: "Reports — admin snapshot",
     body: `Reports is an admin-only, read-only dashboard that aggregates the hub.
 
-It shows stat cards for active headcount, pending-expense dollars and count, dollars awaiting reimbursement, dollars reimbursed this month, upcoming approved time off, and open tasks in Action Center. Below that it charts headcount by department, the hiring pipeline by stage, and this month’s expenses by category. It’s all computed live from existing data — there’s nothing to edit.`,
+It shows stat cards for active headcount, pending-expense dollars and count, dollars awaiting reimbursement, dollars reimbursed this month, upcoming approved time off, and open tasks in Action Center. Below that it charts headcount by department, the hiring pipeline by stage, and this month’s expenses by category. It’s all computed live from existing data — there’s nothing to edit.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "hub-switcher",
@@ -808,7 +864,9 @@ A short how-to video is linked at the top of the page: click Watch how-to video,
 
 It shows present/missing status (never secret values) for the company iCal feed, CRON_SECRET + service role, OpenAI, image generation (GEMINI_API_KEY / Higgsfield HF_API_KEY + HF_API_SECRET), Resend/email (RESEND_API_KEY + EMAIL_FROM), social API publish credentials, YouTube, Google Drive, event-media storage, LRE AV migrations (140+, 144, 145, 146 credits, 147 crew→labor costs), whether retired CURRENT_RMS_* env vars are still set, and whether the Ask the Hub LRE AV guide looks freshly indexed. Confirm new migrations show Ready in production after running the SQL. Rebuild index on Ask the Hub after feature-guide or Resource changes.
 
-Use it after deploys or when Calendar, quizzes, receipts, email, integrations, or auto-publish look broken.`,
+Use it after deploys or when Calendar, quizzes, receipts, email, integrations, or auto-publish look broken.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "polls",
@@ -817,7 +875,9 @@ Use it after deploys or when Calendar, quizzes, receipts, email, integrations, o
 
 Voting (everyone): tap an option to cast your vote; you can change it while the poll is open. Results show as live bars with counts and percentages, and your own choice is marked. Your individual vote is private — only the totals are shown, never who voted for what.
 
-Creating (admins/trainers): add a question and two to ten options, then Create. You can close a poll (locks voting), reopen it, or delete it. Closed polls show final results, read-only.`,
+Creating (admins/trainers): add a question and two to ten options, then Create. You can close a poll (locks voting), reopen it, or delete it. Closed polls show final results, read-only.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "notification-preferences",
@@ -839,7 +899,9 @@ Pipeline stages: Applied → Screening → Interview → Offer → Hired / Rejec
 
 Hired → onboarding: moving a candidate to Hired creates an onboarding plan (one per candidate). If they have an email, the Hub invites them (or links an existing profile) and attaches the plan so they can check items off. You’ll get a prompt to open Onboarding. Needs migrations 065 and 066.
 
-Public applications: anyone can open /apply (no login). Featured tracks — Audiovisual, Corporate, Wedding & Social, and Golf — each include a short multiple-choice working-style assessment (real on-site scenarios). Office and other roles use the general form at /apply/general. Applications land under Public applications on Hiring (answers shown when present). Promote to candidate creates an Applied-stage candidate (optional opening link). Reject or archive applications you won’t pursue. Needs migrations 067_hiring_applications.sql and 125_hiring_assessment_answers.sql.`,
+Public applications: anyone can open /apply (no login). Featured tracks — Audiovisual, Corporate, Wedding & Social, and Golf — each include a short multiple-choice working-style assessment (real on-site scenarios). Office and other roles use the general form at /apply/general. Applications land under Public applications on Hiring (answers shown when present). Promote to candidate creates an Applied-stage candidate (optional opening link). Reject or archive applications you won’t pursue. Needs migrations 067_hiring_applications.sql and 125_hiring_assessment_answers.sql.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "staffing",
@@ -856,7 +918,9 @@ Needs crew: open LRE AV quotes in Quotation or Order status whose gear window ov
 
 Time off merges two sources and shows each person once per day: (1) approved Hub requests from Time Off, and (2) “Scheduled Day Off” rows from the company iCal when that feed includes Time Off. Those absences are used on Staffing only — they are not shown on the Hub Calendar. Rows are matched to People by name. If the same absence exists in both, Staffing shows one line labeled Hub + Feed (Hub type wins). Unmatched feed names are counted in a warning so you can fix naming.
 
-Use it with Time Off, Calendar, and AV Crew when scheduling field coverage. Staff still request Hub time off on Time Off; the scheduling system that publishes the feed remains the system of record for absences entered there. Needs migration 158_lanes_packet_hb_staffing.sql for Lead write access.`,
+Use it with Time Off, Calendar, and AV Crew when scheduling field coverage. Staff still request Hub time off on Time Off; the scheduling system that publishes the feed remains the system of record for absences entered there. Needs migration 158_lanes_packet_hb_staffing.sql for Lead write access.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "content-sla",
@@ -865,7 +929,9 @@ Use it with Time Off, Calendar, and AV Crew when scheduling field coverage. Staf
 
 It lists Event Packets from about the last 21 days with event date, hours since the event, whether media was uploaded, social consent, packet status, and a rollup of Marketing Queue draft statuses (draft / ready / pending / posted). Links open the packet, Marketing Queue, and Social Studio.
 
-Use it to catch missing media, missing consent, or stalled drafts after events.`,
+Use it to catch missing media, missing consent, or stalled drafts after events.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "scheduling",
@@ -992,7 +1058,9 @@ Emails: the hub sends a check-in automatically at 30, 14, 7 and 3 days before th
 
 Readiness: the list shows items received out of six for every show. Open a show to see the cue sheet, download the files, see which emails went out, edit details, pause the portal, or delete it.
 
-Gotchas: pausing a portal stops emails and blocks uploads. Changing the event date moves the schedule. The client email needs RESEND_API_KEY and EMAIL_FROM set in Vercel. Replying to a check-in email with attachments is not read by the hub; clients should use the portal button.`,
+Gotchas: pausing a portal stops emails and blocks uploads. Changing the event date moves the schedule. The client email needs RESEND_API_KEY and EMAIL_FROM set in Vercel. Replying to a check-in email with attachments is not read by the hub; clients should use the portal button.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "holiday-themes",
@@ -1018,7 +1086,9 @@ The What's New link in the sidebar shows a NEW tag whenever there are entries yo
 
 Entries are added automatically as part of every hub update, so the page is always current — there is nothing to maintain manually. If you spot something that changed but isn't listed, post it in the Forum's Hub Bugs topic.
 
-Change Log Videos: each month has a short What's New video above its entries (press play, then read the details below). The Change Log Videos button at the top lists every video in one place. When a newer video covers the same changes, the older one is hidden automatically. New team members see the videos from the two months before their start date onward. The LRE AV team and Leads also get a video on the changes only they can open. Needs migration 171_changelog_videos.sql.`,
+Change Log Videos: each month has a short What's New video above its entries (press play, then read the details below). The Change Log Videos button at the top lists every video in one place. When a newer video covers the same changes, the older one is hidden automatically. New team members see the videos from the two months before their start date onward. The LRE AV team and Leads also get a video on the changes only they can open. Needs migration 171_changelog_videos.sql.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "av-show-control",
@@ -1035,6 +1105,8 @@ Also in the control page: a stage timer with quick messages (5 MIN, WRAP UP and 
 
 Gotchas: keep the control page and the three output windows in the same Chrome window group on one computer. Shows, logos and media are saved in that browser, so export the show file before an event as a backup and keep the computer awake and plugged in. Use Test patterns (T) the day before to line up the green key. Avoid pure green in lower-third colors because it keys out.
 
-Phone / Stream Deck remote (Hub): on the control page click Start Hub remote to get a PIN (session shows time left; Extend session adds another ~12 hours). On a phone open /av-show/remote (no login) and enter the PIN — Panic is highlighted, timer supports custom minutes / ±1, and you can Take by item. Stream Deck / Bitfocus Companion can HTTP GET /api/av-show/cmd?pin=PIN&c=takestaged (and other commands: take, stage, next, prev, clearlt, logo, panic, test, loop, slideshow, tmmsg, tmclear, tmstart, tmstop, tmplus, tmminus). Use Open all three to launch the output windows together. Keep the control page open while the remote is in use. Needs migrations 156_invoice_pay_catalog_show_remote.sql and 157_venue_catalog_invoice_reminders.sql.`,
+Phone / Stream Deck remote (Hub): on the control page click Start Hub remote to get a PIN (session shows time left; Extend session adds another ~12 hours). On a phone open /av-show/remote (no login) and enter the PIN — Panic is highlighted, timer supports custom minutes / ±1, and you can Take by item. Stream Deck / Bitfocus Companion can HTTP GET /api/av-show/cmd?pin=PIN&c=takestaged (and other commands: take, stage, next, prev, clearlt, logo, panic, test, loop, slideshow, tmmsg, tmclear, tmstart, tmstop, tmplus, tmminus). Use Open all three to launch the output windows together. Keep the control page open while the remote is in use. Needs migrations 156_invoice_pay_catalog_show_remote.sql and 157_venue_catalog_invoice_reminders.sql.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
 ];

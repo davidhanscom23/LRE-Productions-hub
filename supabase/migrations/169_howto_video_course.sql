@@ -237,3 +237,652 @@ select c.id, 210, 'Resources how-to', 'A short how-to for Resources. You can als
 from public.training_courses c where c.slug = 'how-to-videos'
   and not exists (select 1 from public.training_lessons l
     where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/resources.mp4');
+
+-- 22. Winners
+update public.training_lessons l set
+  title = 'Winners how-to', body = 'A short how-to for Winners. You can also open it any time from the Watch how-to video link at the top of the page (/winners).', sort_order = 220, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/winners.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 220, 'Winners how-to', 'A short how-to for Winners. You can also open it any time from the Watch how-to video link at the top of the page (/winners).', 'https://lre-productions.b-cdn.net/lre-howto/winners.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/winners.mp4');
+
+-- 23. What's New
+update public.training_lessons l set
+  title = 'What''s New how-to', body = 'A short how-to for What''s New. You can also open it any time from the Watch how-to video link at the top of the page (/changelog).', sort_order = 230, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/whats-new.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 230, 'What''s New how-to', 'A short how-to for What''s New. You can also open it any time from the Watch how-to video link at the top of the page (/changelog).', 'https://lre-productions.b-cdn.net/lre-howto/whats-new.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/whats-new.mp4');
+
+-- 24. Tools
+update public.training_lessons l set
+  title = 'Tools how-to', body = 'A short how-to for Tools. You can also open it any time from the Watch how-to video link at the top of the page (/tools).', sort_order = 240, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/tools.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 240, 'Tools how-to', 'A short how-to for Tools. You can also open it any time from the Watch how-to video link at the top of the page (/tools).', 'https://lre-productions.b-cdn.net/lre-howto/tools.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/tools.mp4');
+
+-- 25. Expenses
+update public.training_lessons l set
+  title = 'Expenses how-to', body = 'A short how-to for Expenses. You can also open it any time from the Watch how-to video link at the top of the page (/expenses).', sort_order = 250, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/expenses.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 250, 'Expenses how-to', 'A short how-to for Expenses. You can also open it any time from the Watch how-to video link at the top of the page (/expenses).', 'https://lre-productions.b-cdn.net/lre-howto/expenses.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/expenses.mp4');
+
+-- 26. Contractor Pay
+update public.training_lessons l set
+  title = 'Contractor Pay how-to', body = 'A short how-to for Contractor Pay. You can also open it any time from the Watch how-to video link at the top of the page (/contractor-pay).', sort_order = 260, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/contractor-pay.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 260, 'Contractor Pay how-to', 'A short how-to for Contractor Pay. You can also open it any time from the Watch how-to video link at the top of the page (/contractor-pay).', 'https://lre-productions.b-cdn.net/lre-howto/contractor-pay.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/contractor-pay.mp4');
+
+-- 27. Quoting
+update public.training_lessons l set
+  title = 'Quoting how-to', body = 'A short how-to for Quoting. You can also open it any time from the Watch how-to video link at the top of the page (/quoting).', sort_order = 270, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/quoting.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 270, 'Quoting how-to', 'A short how-to for Quoting. You can also open it any time from the Watch how-to video link at the top of the page (/quoting).', 'https://lre-productions.b-cdn.net/lre-howto/quoting.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/quoting.mp4');
+
+-- 28. Proposals
+update public.training_lessons l set
+  title = 'Proposals how-to', body = 'A short how-to for Proposals. You can also open it any time from the Watch how-to video link at the top of the page (/proposals).', sort_order = 280, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/proposals.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 280, 'Proposals how-to', 'A short how-to for Proposals. You can also open it any time from the Watch how-to video link at the top of the page (/proposals).', 'https://lre-productions.b-cdn.net/lre-howto/proposals.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/proposals.mp4');
+
+-- 29. Pipeline
+update public.training_lessons l set
+  title = 'Pipeline how-to', body = 'A short how-to for Pipeline. You can also open it any time from the Watch how-to video link at the top of the page (/pipeline).', sort_order = 290, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/pipeline.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 290, 'Pipeline how-to', 'A short how-to for Pipeline. You can also open it any time from the Watch how-to video link at the top of the page (/pipeline).', 'https://lre-productions.b-cdn.net/lre-howto/pipeline.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/pipeline.mp4');
+
+-- 30. Floor Plans
+update public.training_lessons l set
+  title = 'Floor Plans how-to', body = 'A short how-to for Floor Plans. You can also open it any time from the Watch how-to video link at the top of the page (/floor-plans).', sort_order = 300, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/floor-plans.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 300, 'Floor Plans how-to', 'A short how-to for Floor Plans. You can also open it any time from the Watch how-to video link at the top of the page (/floor-plans).', 'https://lre-productions.b-cdn.net/lre-howto/floor-plans.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/floor-plans.mp4');
+
+-- 31. Scheduling
+update public.training_lessons l set
+  title = 'Scheduling how-to', body = 'A short how-to for Scheduling. You can also open it any time from the Watch how-to video link at the top of the page (/scheduling).', sort_order = 310, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/scheduling.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 310, 'Scheduling how-to', 'A short how-to for Scheduling. You can also open it any time from the Watch how-to video link at the top of the page (/scheduling).', 'https://lre-productions.b-cdn.net/lre-howto/scheduling.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/scheduling.mp4');
+
+-- 32. Vendors
+update public.training_lessons l set
+  title = 'Vendors how-to', body = 'A short how-to for Vendors. You can also open it any time from the Watch how-to video link at the top of the page (/vendors).', sort_order = 320, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/vendors.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 320, 'Vendors how-to', 'A short how-to for Vendors. You can also open it any time from the Watch how-to video link at the top of the page (/vendors).', 'https://lre-productions.b-cdn.net/lre-howto/vendors.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/vendors.mp4');
+
+-- 33. People
+update public.training_lessons l set
+  title = 'People how-to', body = 'A short how-to for People. You can also open it any time from the Watch how-to video link at the top of the page (/people).', sort_order = 330, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/people.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 330, 'People how-to', 'A short how-to for People. You can also open it any time from the Watch how-to video link at the top of the page (/people).', 'https://lre-productions.b-cdn.net/lre-howto/people.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/people.mp4');
+
+-- 34. Performance Reviews
+update public.training_lessons l set
+  title = 'Performance Reviews how-to', body = 'A short how-to for Performance Reviews. You can also open it any time from the Watch how-to video link at the top of the page (/reviews).', sort_order = 340, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/performance-reviews.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 340, 'Performance Reviews how-to', 'A short how-to for Performance Reviews. You can also open it any time from the Watch how-to video link at the top of the page (/reviews).', 'https://lre-productions.b-cdn.net/lre-howto/performance-reviews.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/performance-reviews.mp4');
+
+-- 35. Kudos
+update public.training_lessons l set
+  title = 'Kudos how-to', body = 'A short how-to for Kudos. You can also open it any time from the Watch how-to video link at the top of the page (/kudos).', sort_order = 350, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/kudos.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 350, 'Kudos how-to', 'A short how-to for Kudos. You can also open it any time from the Watch how-to video link at the top of the page (/kudos).', 'https://lre-productions.b-cdn.net/lre-howto/kudos.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/kudos.mp4');
+
+-- 36. Polls
+update public.training_lessons l set
+  title = 'Polls how-to', body = 'A short how-to for Polls. You can also open it any time from the Watch how-to video link at the top of the page (/polls).', sort_order = 360, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/polls.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 360, 'Polls how-to', 'A short how-to for Polls. You can also open it any time from the Watch how-to video link at the top of the page (/polls).', 'https://lre-productions.b-cdn.net/lre-howto/polls.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/polls.mp4');
+
+-- 37. Pebbles & Rocks
+update public.training_lessons l set
+  title = 'Pebbles & Rocks how-to', body = 'A short how-to for Pebbles & Rocks. You can also open it any time from the Watch how-to video link at the top of the page (/pebbles-and-rocks).', sort_order = 370, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/pebbles-and-rocks.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 370, 'Pebbles & Rocks how-to', 'A short how-to for Pebbles & Rocks. You can also open it any time from the Watch how-to video link at the top of the page (/pebbles-and-rocks).', 'https://lre-productions.b-cdn.net/lre-howto/pebbles-and-rocks.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/pebbles-and-rocks.mp4');
+
+-- 38. Marketing Library
+update public.training_lessons l set
+  title = 'Marketing Library how-to', body = 'A short how-to for Marketing Library. You can also open it any time from the Watch how-to video link at the top of the page (/marketing-library).', sort_order = 380, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/marketing-library.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 380, 'Marketing Library how-to', 'A short how-to for Marketing Library. You can also open it any time from the Watch how-to video link at the top of the page (/marketing-library).', 'https://lre-productions.b-cdn.net/lre-howto/marketing-library.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/marketing-library.mp4');
+
+-- 39. Video Archives
+update public.training_lessons l set
+  title = 'Video Archives how-to', body = 'A short how-to for Video Archives. You can also open it any time from the Watch how-to video link at the top of the page (/videos).', sort_order = 390, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/video-archives.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 390, 'Video Archives how-to', 'A short how-to for Video Archives. You can also open it any time from the Watch how-to video link at the top of the page (/videos).', 'https://lre-productions.b-cdn.net/lre-howto/video-archives.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/video-archives.mp4');
+
+-- 40. Documents
+update public.training_lessons l set
+  title = 'Documents how-to', body = 'A short how-to for Documents. You can also open it any time from the Watch how-to video link at the top of the page (/documents).', sort_order = 400, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/documents.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 400, 'Documents how-to', 'A short how-to for Documents. You can also open it any time from the Watch how-to video link at the top of the page (/documents).', 'https://lre-productions.b-cdn.net/lre-howto/documents.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/documents.mp4');
+
+-- 41. Support Guide
+update public.training_lessons l set
+  title = 'Support Guide how-to', body = 'A short how-to for Support Guide. You can also open it any time from the Watch how-to video link at the top of the page (/support-guide).', sort_order = 410, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/support-guide.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 410, 'Support Guide how-to', 'A short how-to for Support Guide. You can also open it any time from the Watch how-to video link at the top of the page (/support-guide).', 'https://lre-productions.b-cdn.net/lre-howto/support-guide.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/support-guide.mp4');
+
+-- 42. Client Reviews
+update public.training_lessons l set
+  title = 'Client Reviews how-to', body = 'A short how-to for Client Reviews. You can also open it any time from the Watch how-to video link at the top of the page (/client-reviews).', sort_order = 420, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/client-reviews.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 420, 'Client Reviews how-to', 'A short how-to for Client Reviews. You can also open it any time from the Watch how-to video link at the top of the page (/client-reviews).', 'https://lre-productions.b-cdn.net/lre-howto/client-reviews.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/client-reviews.mp4');
+
+-- 43. Social Studio
+update public.training_lessons l set
+  title = 'Social Studio how-to', body = 'A short how-to for Social Studio. You can also open it any time from the Watch how-to video link at the top of the page (/social-studio).', sort_order = 430, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/social-studio.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 430, 'Social Studio how-to', 'A short how-to for Social Studio. You can also open it any time from the Watch how-to video link at the top of the page (/social-studio).', 'https://lre-productions.b-cdn.net/lre-howto/social-studio.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/social-studio.mp4');
+
+-- 44. Onboarding
+update public.training_lessons l set
+  title = 'Onboarding how-to', body = 'A short how-to for Onboarding. You can also open it any time from the Watch how-to video link at the top of the page (/onboarding).', sort_order = 440, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/onboarding.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 440, 'Onboarding how-to', 'A short how-to for Onboarding. You can also open it any time from the Watch how-to video link at the top of the page (/onboarding).', 'https://lre-productions.b-cdn.net/lre-howto/onboarding.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/onboarding.mp4');
+
+-- 45. Meetings
+update public.training_lessons l set
+  title = 'Meetings how-to', body = 'A short how-to for Meetings. You can also open it any time from the Watch how-to video link at the top of the page (/meetings).', sort_order = 450, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/meetings.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 450, 'Meetings how-to', 'A short how-to for Meetings. You can also open it any time from the Watch how-to video link at the top of the page (/meetings).', 'https://lre-productions.b-cdn.net/lre-howto/meetings.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/meetings.mp4');
+
+-- 46. Staffing
+update public.training_lessons l set
+  title = 'Staffing how-to', body = 'A short how-to for Staffing. You can also open it any time from the Watch how-to video link at the top of the page (/staffing).', sort_order = 460, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/staffing.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 460, 'Staffing how-to', 'A short how-to for Staffing. You can also open it any time from the Watch how-to video link at the top of the page (/staffing).', 'https://lre-productions.b-cdn.net/lre-howto/staffing.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/staffing.mp4');
+
+-- 47. Marketing Queue
+update public.training_lessons l set
+  title = 'Marketing Queue how-to', body = 'A short how-to for Marketing Queue. You can also open it any time from the Watch how-to video link at the top of the page (/marketing).', sort_order = 470, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/marketing-queue.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 470, 'Marketing Queue how-to', 'A short how-to for Marketing Queue. You can also open it any time from the Watch how-to video link at the top of the page (/marketing).', 'https://lre-productions.b-cdn.net/lre-howto/marketing-queue.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/marketing-queue.mp4');
+
+-- 48. Content SLA
+update public.training_lessons l set
+  title = 'Content SLA how-to', body = 'A short how-to for Content SLA. You can also open it any time from the Watch how-to video link at the top of the page (/content-sla).', sort_order = 480, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/content-sla.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 480, 'Content SLA how-to', 'A short how-to for Content SLA. You can also open it any time from the Watch how-to video link at the top of the page (/content-sla).', 'https://lre-productions.b-cdn.net/lre-howto/content-sla.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/content-sla.mp4');
+
+-- 49. Venue Quotes
+update public.training_lessons l set
+  title = 'Venue Quotes how-to', body = 'A short how-to for Venue Quotes. You can also open it any time from the Watch how-to video link at the top of the page (/venue-quotes).', sort_order = 490, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/venue-quotes.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 490, 'Venue Quotes how-to', 'A short how-to for Venue Quotes. You can also open it any time from the Watch how-to video link at the top of the page (/venue-quotes).', 'https://lre-productions.b-cdn.net/lre-howto/venue-quotes.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/venue-quotes.mp4');
+
+-- 50. SMS Portal
+update public.training_lessons l set
+  title = 'SMS Portal how-to', body = 'A short how-to for SMS Portal. You can also open it any time from the Watch how-to video link at the top of the page (/sms).', sort_order = 500, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/sms-portal.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 500, 'SMS Portal how-to', 'A short how-to for SMS Portal. You can also open it any time from the Watch how-to video link at the top of the page (/sms).', 'https://lre-productions.b-cdn.net/lre-howto/sms-portal.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/sms-portal.mp4');
+
+-- 51. Communications
+update public.training_lessons l set
+  title = 'Communications how-to', body = 'A short how-to for Communications. You can also open it any time from the Watch how-to video link at the top of the page (/communications).', sort_order = 510, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/communications.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 510, 'Communications how-to', 'A short how-to for Communications. You can also open it any time from the Watch how-to video link at the top of the page (/communications).', 'https://lre-productions.b-cdn.net/lre-howto/communications.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/communications.mp4');
+
+-- 52. Inquiry Forms
+update public.training_lessons l set
+  title = 'Inquiry Forms how-to', body = 'A short how-to for Inquiry Forms. You can also open it any time from the Watch how-to video link at the top of the page (/inquiry-forms).', sort_order = 520, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/inquiry-forms.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 520, 'Inquiry Forms how-to', 'A short how-to for Inquiry Forms. You can also open it any time from the Watch how-to video link at the top of the page (/inquiry-forms).', 'https://lre-productions.b-cdn.net/lre-howto/inquiry-forms.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/inquiry-forms.mp4');
+
+-- 53. Hiring
+update public.training_lessons l set
+  title = 'Hiring how-to', body = 'A short how-to for Hiring. You can also open it any time from the Watch how-to video link at the top of the page (/hiring).', sort_order = 530, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/hiring.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 530, 'Hiring how-to', 'A short how-to for Hiring. You can also open it any time from the Watch how-to video link at the top of the page (/hiring).', 'https://lre-productions.b-cdn.net/lre-howto/hiring.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/hiring.mp4');
+
+-- 54. Image Studio
+update public.training_lessons l set
+  title = 'Image Studio how-to', body = 'A short how-to for Image Studio. You can also open it any time from the Watch how-to video link at the top of the page (/image-studio).', sort_order = 540, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/image-studio.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 540, 'Image Studio how-to', 'A short how-to for Image Studio. You can also open it any time from the Watch how-to video link at the top of the page (/image-studio).', 'https://lre-productions.b-cdn.net/lre-howto/image-studio.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/image-studio.mp4');
+
+-- 55. Reports
+update public.training_lessons l set
+  title = 'Reports how-to', body = 'A short how-to for Reports. You can also open it any time from the Watch how-to video link at the top of the page (/reports).', sort_order = 550, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/reports.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 550, 'Reports how-to', 'A short how-to for Reports. You can also open it any time from the Watch how-to video link at the top of the page (/reports).', 'https://lre-productions.b-cdn.net/lre-howto/reports.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/reports.mp4');
+
+-- 56. Hub switcher
+update public.training_lessons l set
+  title = 'Hub switcher how-to', body = 'A short how-to for Hub switcher. You can also open it any time from the Watch how-to video link at the top of the page (/hub-switcher).', sort_order = 560, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/hub-switcher.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 560, 'Hub switcher how-to', 'A short how-to for Hub switcher. You can also open it any time from the Watch how-to video link at the top of the page (/hub-switcher).', 'https://lre-productions.b-cdn.net/lre-howto/hub-switcher.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/hub-switcher.mp4');
+
+-- 57. Hub health
+update public.training_lessons l set
+  title = 'Hub health how-to', body = 'A short how-to for Hub health. You can also open it any time from the Watch how-to video link at the top of the page (/hub-health).', sort_order = 570, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/hub-health.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 570, 'Hub health how-to', 'A short how-to for Hub health. You can also open it any time from the Watch how-to video link at the top of the page (/hub-health).', 'https://lre-productions.b-cdn.net/lre-howto/hub-health.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/hub-health.mp4');
+
+-- 58. Page Map
+update public.training_lessons l set
+  title = 'Page Map how-to', body = 'A short how-to for Page Map. You can also open it any time from the Watch how-to video link at the top of the page (/page-map).', sort_order = 580, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/page-map.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 580, 'Page Map how-to', 'A short how-to for Page Map. You can also open it any time from the Watch how-to video link at the top of the page (/page-map).', 'https://lre-productions.b-cdn.net/lre-howto/page-map.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/page-map.mp4');
+
+-- 59. LRE AV
+update public.training_lessons l set
+  title = 'LRE AV how-to', body = 'A short how-to for LRE AV. You can also open it any time from the Watch how-to video link at the top of the page (/rentals).', sort_order = 590, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-overview.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 590, 'LRE AV how-to', 'A short how-to for LRE AV. You can also open it any time from the Watch how-to video link at the top of the page (/rentals).', 'https://lre-productions.b-cdn.net/lre-howto/av-overview.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-overview.mp4');
+
+-- 60. LRE AV: Estimates
+update public.training_lessons l set
+  title = 'LRE AV: Estimates how-to', body = 'A short how-to for LRE AV: Estimates. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/quotes).', sort_order = 600, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-estimates.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 600, 'LRE AV: Estimates how-to', 'A short how-to for LRE AV: Estimates. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/quotes).', 'https://lre-productions.b-cdn.net/lre-howto/av-estimates.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-estimates.mp4');
+
+-- 61. LRE AV: Invoices
+update public.training_lessons l set
+  title = 'LRE AV: Invoices how-to', body = 'A short how-to for LRE AV: Invoices. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/invoices).', sort_order = 610, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-invoices.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 610, 'LRE AV: Invoices how-to', 'A short how-to for LRE AV: Invoices. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/invoices).', 'https://lre-productions.b-cdn.net/lre-howto/av-invoices.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-invoices.mp4');
+
+-- 62. LRE AV: Costs
+update public.training_lessons l set
+  title = 'LRE AV: Costs how-to', body = 'A short how-to for LRE AV: Costs. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/costs).', sort_order = 620, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-costs.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 620, 'LRE AV: Costs how-to', 'A short how-to for LRE AV: Costs. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/costs).', 'https://lre-productions.b-cdn.net/lre-howto/av-costs.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-costs.mp4');
+
+-- 63. LRE AV: Reports
+update public.training_lessons l set
+  title = 'LRE AV: Reports how-to', body = 'A short how-to for LRE AV: Reports. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/reports).', sort_order = 630, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-reports.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 630, 'LRE AV: Reports how-to', 'A short how-to for LRE AV: Reports. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/reports).', 'https://lre-productions.b-cdn.net/lre-howto/av-reports.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-reports.mp4');
+
+-- 64. LRE AV: Developer
+update public.training_lessons l set
+  title = 'LRE AV: Developer how-to', body = 'A short how-to for LRE AV: Developer. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/developer).', sort_order = 640, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-developer.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 640, 'LRE AV: Developer how-to', 'A short how-to for LRE AV: Developer. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/developer).', 'https://lre-productions.b-cdn.net/lre-howto/av-developer.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-developer.mp4');
+
+-- 65. LRE AV: Warehouse
+update public.training_lessons l set
+  title = 'LRE AV: Warehouse how-to', body = 'A short how-to for LRE AV: Warehouse. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/warehouse).', sort_order = 650, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-warehouse.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 650, 'LRE AV: Warehouse how-to', 'A short how-to for LRE AV: Warehouse. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/warehouse).', 'https://lre-productions.b-cdn.net/lre-howto/av-warehouse.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-warehouse.mp4');
+
+-- 66. LRE AV: Stock
+update public.training_lessons l set
+  title = 'LRE AV: Stock how-to', body = 'A short how-to for LRE AV: Stock. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/stock).', sort_order = 660, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-stock.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 660, 'LRE AV: Stock how-to', 'A short how-to for LRE AV: Stock. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/stock).', 'https://lre-productions.b-cdn.net/lre-howto/av-stock.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-stock.mp4');
+
+-- 67. LRE AV: Gear calendar
+update public.training_lessons l set
+  title = 'LRE AV: Gear calendar how-to', body = 'A short how-to for LRE AV: Gear calendar. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/calendar).', sort_order = 670, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-gear-calendar.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 670, 'LRE AV: Gear calendar how-to', 'A short how-to for LRE AV: Gear calendar. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/calendar).', 'https://lre-productions.b-cdn.net/lre-howto/av-gear-calendar.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-gear-calendar.mp4');
+
+-- 68. LRE AV: Planner
+update public.training_lessons l set
+  title = 'LRE AV: Planner how-to', body = 'A short how-to for LRE AV: Planner. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/planner).', sort_order = 680, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-planner.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 680, 'LRE AV: Planner how-to', 'A short how-to for LRE AV: Planner. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/planner).', 'https://lre-productions.b-cdn.net/lre-howto/av-planner.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-planner.mp4');
+
+-- 69. LRE AV: Travel
+update public.training_lessons l set
+  title = 'LRE AV: Travel how-to', body = 'A short how-to for LRE AV: Travel. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/travel).', sort_order = 690, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-travel.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 690, 'LRE AV: Travel how-to', 'A short how-to for LRE AV: Travel. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/travel).', 'https://lre-productions.b-cdn.net/lre-howto/av-travel.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-travel.mp4');
+
+-- 70. LRE AV: Activities
+update public.training_lessons l set
+  title = 'LRE AV: Activities how-to', body = 'A short how-to for LRE AV: Activities. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/activities).', sort_order = 700, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-activities.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 700, 'LRE AV: Activities how-to', 'A short how-to for LRE AV: Activities. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/activities).', 'https://lre-productions.b-cdn.net/lre-howto/av-activities.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-activities.mp4');
+
+-- 71. LRE AV: Customers
+update public.training_lessons l set
+  title = 'LRE AV: Customers how-to', body = 'A short how-to for LRE AV: Customers. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/customers).', sort_order = 710, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-customers.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 710, 'LRE AV: Customers how-to', 'A short how-to for LRE AV: Customers. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/customers).', 'https://lre-productions.b-cdn.net/lre-howto/av-customers.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-customers.mp4');
+
+-- 72. LRE AV: Venues
+update public.training_lessons l set
+  title = 'LRE AV: Venues how-to', body = 'A short how-to for LRE AV: Venues. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/venues).', sort_order = 720, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-venues.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 720, 'LRE AV: Venues how-to', 'A short how-to for LRE AV: Venues. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/venues).', 'https://lre-productions.b-cdn.net/lre-howto/av-venues.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-venues.mp4');
+
+-- 73. LRE AV: Suppliers
+update public.training_lessons l set
+  title = 'LRE AV: Suppliers how-to', body = 'A short how-to for LRE AV: Suppliers. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/suppliers).', sort_order = 730, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-suppliers.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 730, 'LRE AV: Suppliers how-to', 'A short how-to for LRE AV: Suppliers. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/suppliers).', 'https://lre-productions.b-cdn.net/lre-howto/av-suppliers.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-suppliers.mp4');
+
+-- 74. LRE AV: Crew
+update public.training_lessons l set
+  title = 'LRE AV: Crew how-to', body = 'A short how-to for LRE AV: Crew. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/crew).', sort_order = 740, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-crew.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 740, 'LRE AV: Crew how-to', 'A short how-to for LRE AV: Crew. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/crew).', 'https://lre-productions.b-cdn.net/lre-howto/av-crew.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-crew.mp4');
+
+-- 75. LRE AV: Contractors
+update public.training_lessons l set
+  title = 'LRE AV: Contractors how-to', body = 'A short how-to for LRE AV: Contractors. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/contractors).', sort_order = 750, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-contractors.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 750, 'LRE AV: Contractors how-to', 'A short how-to for LRE AV: Contractors. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/contractors).', 'https://lre-productions.b-cdn.net/lre-howto/av-contractors.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-contractors.mp4');
+
+-- 76. LRE AV: Serials
+update public.training_lessons l set
+  title = 'LRE AV: Serials how-to', body = 'A short how-to for LRE AV: Serials. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/serials).', sort_order = 760, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-serials.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 760, 'LRE AV: Serials how-to', 'A short how-to for LRE AV: Serials. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/serials).', 'https://lre-productions.b-cdn.net/lre-howto/av-serials.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-serials.mp4');
+
+-- 77. LRE AV: Templates
+update public.training_lessons l set
+  title = 'LRE AV: Templates how-to', body = 'A short how-to for LRE AV: Templates. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/templates).', sort_order = 770, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-templates.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 770, 'LRE AV: Templates how-to', 'A short how-to for LRE AV: Templates. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/templates).', 'https://lre-productions.b-cdn.net/lre-howto/av-templates.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-templates.mp4');
+
+-- 78. LRE AV: Catalog
+update public.training_lessons l set
+  title = 'LRE AV: Catalog how-to', body = 'A short how-to for LRE AV: Catalog. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/catalog).', sort_order = 780, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-catalog.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 780, 'LRE AV: Catalog how-to', 'A short how-to for LRE AV: Catalog. You can also open it any time from the Watch how-to video link at the top of the page (/rentals/catalog).', 'https://lre-productions.b-cdn.net/lre-howto/av-catalog.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-catalog.mp4');
+
+-- 79. AV Event Portals
+update public.training_lessons l set
+  title = 'AV Event Portals how-to', body = 'A short how-to for AV Event Portals. You can also open it any time from the Watch how-to video link at the top of the page (/av-portals).', sort_order = 790, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-event-portals.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 790, 'AV Event Portals how-to', 'A short how-to for AV Event Portals. You can also open it any time from the Watch how-to video link at the top of the page (/av-portals).', 'https://lre-productions.b-cdn.net/lre-howto/av-event-portals.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-event-portals.mp4');
+
+-- 80. AV Show Control
+update public.training_lessons l set
+  title = 'AV Show Control how-to', body = 'A short how-to for AV Show Control. You can also open it any time from the Watch how-to video link at the top of the page (/av-show).', sort_order = 800, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-show-control.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 800, 'AV Show Control how-to', 'A short how-to for AV Show Control. You can also open it any time from the Watch how-to video link at the top of the page (/av-show).', 'https://lre-productions.b-cdn.net/lre-howto/av-show-control.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/av-show-control.mp4');
