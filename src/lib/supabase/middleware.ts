@@ -22,6 +22,8 @@ export async function updateSession(request: NextRequest) {
     if (
       // Public per-staff calendar subscription feed (token in the URL is the key).
       (p.startsWith("/api/calendar/feed/") && m === "GET") ||
+      // Read-only Command Center summary (secret token in the URL, checked by the database function).
+      (p === "/api/command-center/summary" && m === "GET") ||
       // LRE AV Terminal Mode API (Bearer avk_live_… validated in the route).
       (p.startsWith("/api/av/terminal/") &&
         (m === "GET" || m === "POST" || m === "PATCH" || m === "DELETE")) ||
