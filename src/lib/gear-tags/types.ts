@@ -6,7 +6,7 @@ export type OwnerCompany = "vident" | "lukesent" | "lre";
 
 export const OWNER_LABELS: Record<OwnerCompany, string> = {
   vident: "Vident",
-  lukesent: "Luke's company",
+  lukesent: "LRE DJs",
   lre: "LRE Productions",
 };
 

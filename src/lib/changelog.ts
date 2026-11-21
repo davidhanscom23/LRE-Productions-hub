@@ -25,6 +25,14 @@ export type ChangelogEntry = {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-20",
+    category: "improved",
+    area: "Gear scan",
+    title: "Gear owner now reads LRE DJs",
+    description:
+      "On Gear scan, the owner choice that read Luke's company is now LRE DJs. Nothing else about the gear changed.",
+  },
+  {
+    date: "2026-11-20",
     category: "new",
     area: "Gear scan",
     title: "Scan gear tags to check equipment out and back in",
