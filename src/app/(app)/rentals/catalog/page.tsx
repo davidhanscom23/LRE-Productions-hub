@@ -23,7 +23,7 @@ export default async function AvCatalogPage() {
       supabase
         .from("av_products")
         .select(
-          "id, group_id, name, code, description, kind, rental_price, sale_price, replacement_charge, qty_owned, buffer_pct, turnaround_hours, weight_lbs, photo_path, is_active, external_rms_id, last_used_event, last_used_at, last_user:profiles!last_used_by(full_name)",
+          "id, group_id, name, code, description, kind, rental_price, sale_price, replacement_charge, qty_owned, buffer_pct, turnaround_hours, weight_lbs, photo_path, is_active, external_rms_id, owner_company, last_used_event, last_used_at, last_user:profiles!last_used_by(full_name)",
         )
         .order("name"),
       supabase

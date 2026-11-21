@@ -25,6 +25,14 @@ export type ChangelogEntry = {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-20",
+    category: "fixed",
+    area: "LRE AV",
+    title: "AV Catalog shows each item's real owner",
+    description:
+      "The AV Catalog list showed LRE Pro as the owner of every item, whatever was saved. It now shows the owner that is stored for each item, and editing an item no longer resets its owner to Vident.",
+  },
+  {
+    date: "2026-11-20",
     category: "improved",
     area: "Gear scan",
     title: "Gear owners read Vident, LRE Pro and LukesENT everywhere",
