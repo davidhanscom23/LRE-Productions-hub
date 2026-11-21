@@ -23,6 +23,13 @@ export const NOTIFICATION_KINDS: {
   { kind: "invoice_overdue", label: "Overdue invoices", description: "When an overdue invoice reminder is emailed to a customer.", mandatory: false },
   { kind: "poll", label: "Polls", description: "When a new team poll is posted.", mandatory: false },
   {
+    kind: "private_feedback",
+    label: "Private client feedback",
+    description: "When a client leaves private feedback after a 1 to 3 star rating on the review page.",
+    mandatory: false,
+    adminOnly: true,
+  },
+  {
     kind: "web_inquiry",
     label: "Website inquiries",
     description:

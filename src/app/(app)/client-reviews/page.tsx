@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { ClientReviewsPageClient } from "@/components/client-reviews/client-reviews-page-client";
+import { PrivateFeedbackPanel } from "@/components/client-reviews/private-feedback-panel";
 import { getCurrentProfile } from "@/lib/auth/profile";
 import { isGuestRole } from "@/lib/auth/guest";
 import { loadClientReviews } from "@/lib/reviews/load-client-reviews";
@@ -37,15 +38,18 @@ export default async function ClientReviewsPage({
         "Staff";
 
   return (
-    <ClientReviewsPageClient
-      reviews={loaded.reviews}
-      staffOptions={loaded.staffOptions}
-      countsByStaffId={loaded.countsByStaffId}
-      canViewAll={canViewAll}
-      canSync={profile.role === "admin"}
-      selectedStaffId={staffFilter}
-      focusCount={milestoneCount}
-      focusName={milestoneName}
-    />
+    <>
+      {profile.role === "admin" ? <PrivateFeedbackPanel /> : null}
+      <ClientReviewsPageClient
+        reviews={loaded.reviews}
+        staffOptions={loaded.staffOptions}
+        countsByStaffId={loaded.countsByStaffId}
+        canViewAll={canViewAll}
+        canSync={profile.role === "admin"}
+        selectedStaffId={staffFilter}
+        focusCount={milestoneCount}
+        focusName={milestoneName}
+      />
+    </>
   );
 }

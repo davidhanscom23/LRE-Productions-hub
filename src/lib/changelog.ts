@@ -26,6 +26,16 @@ export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-21",
     category: "new",
+    area: "Client Reviews",
+    title: "Private client feedback now lands in the Hub",
+    description:
+      "When a client taps 1 to 3 stars on our review page, the short private feedback form they fill in saves to the Hub. Admins get a notification and can read every response on Client Reviews.",
+    howTo:
+      "Admins: open Client Reviews and look for the Private feedback section at the top. Click Mark reviewed once you have followed up with the client.",
+  },
+  {
+    date: "2026-11-21",
+    category: "new",
     area: "How-to videos",
     title: "Ten more how-to videos",
     description:

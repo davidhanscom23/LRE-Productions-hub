@@ -22,6 +22,7 @@ export const ASK_EXAMPLE_QUESTION_GROUPS: ExampleQuestionGroup[] = [
       "How does Guest access work, and what can guests see?",
       "How do I change Appearance to light, dark, or system?",
       "Which holidays change how the Hub looks, and how do I preview one?",
+      "Where do I see private feedback from the review page?",
     ],
   },
   {

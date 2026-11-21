@@ -470,7 +470,9 @@ Open Client Reviews from Field tools. Staff see only reviews credited to them. C
 
 Hub points: opening Client Reviews awards a one-time discovery bonus. As your attributed review count grows, milestone awards unlock at 1, 3, 5, 10, 25, 50, and 100 reviews. Progress shows at the top of Client Reviews.
 
-Admins can Sync from this page or Event Packets. Daily cron /api/cron/sync-sheet-reviews also awards milestones. After docs change, Ask Hub → Rebuild index.`,
+Admins can Sync from this page or Event Packets. Daily cron /api/cron/sync-sheet-reviews also awards milestones. After docs change, Ask Hub → Rebuild index.
+
+Private feedback (admins only): our review page at review.lreproductions.com asks clients to tap a star. 4 or 5 stars sends them to Google to post a review. 1 to 3 stars opens a short private form instead (name, email, what we could have improved, and what the team could have handled better). Those answers save to the Hub, every admin gets a notification, and they appear in the Private feedback section at the top of Client Reviews, newest first, with the star rating the client tapped. Click the email to reply, and click Mark reviewed once you have followed up. Staff and trainers never see this section, and private feedback is never shown on the website.`,
   },
   {
     slug: "marketing-queue",
