@@ -25,6 +25,16 @@ export type ChangelogEntry = {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-11-20",
+    category: "new",
+    area: "Gear scan",
+    title: "How-to video for Gear scan",
+    description:
+      "Gear scan now has a short how-to video covering Check out, Check in, Damaged or missing, Look up, Still out and Requests.",
+    howTo:
+      "Open Gear scan and click Watch how-to video at the top of the page. It is also a lesson in the Training Portal.",
+  },
+  {
+    date: "2026-11-20",
     category: "fixed",
     area: "LRE AV",
     title: "AV Catalog shows each item's real owner",

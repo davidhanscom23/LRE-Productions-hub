@@ -68,7 +68,9 @@ Who can change what: admins can edit any tagged piece (name, serial, owner, case
 
 Tabs: Scan, Still out (every piece that has not come back, grouped by event, with a link to the event checklist), Tagged gear (every linked tag with a filter), and Requests (suggestions waiting for an admin, and reviewed ones).
 
-A tagged piece also shows on LRE AV > Serials with its In or Out status. Needs migration 200_gear_tags.sql.`,
+A tagged piece also shows on LRE AV > Serials with its In or Out status. Needs migration 200_gear_tags.sql.
+
+A short how-to video is linked at the top of the page: click Watch how-to video, watch it, then close it.`,
   },
   {
     slug: "event-gear-checklist",

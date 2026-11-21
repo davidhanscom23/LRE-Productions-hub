@@ -116,3 +116,14 @@ select c.id, 100, 'Partner Expenses how-to', 'A short how-to for Partner Expense
 from public.training_courses c where c.slug = 'how-to-videos'
   and not exists (select 1 from public.training_lessons l
     where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/partner-expenses.mp4');
+
+-- 11. Gear scan
+update public.training_lessons l set
+  title = 'Gear scan how-to', body = 'A short how-to for Gear scan. You can also open it any time from the Watch how-to video link at the top of the page (/gear-scan).', sort_order = 110, updated_at = now()
+from public.training_courses c
+where c.slug = 'how-to-videos' and l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/gear-scan.mp4';
+insert into public.training_lessons (course_id, sort_order, title, body, resource_href, resource_label)
+select c.id, 110, 'Gear scan how-to', 'A short how-to for Gear scan. You can also open it any time from the Watch how-to video link at the top of the page (/gear-scan).', 'https://lre-productions.b-cdn.net/lre-howto/gear-scan.mp4', ''
+from public.training_courses c where c.slug = 'how-to-videos'
+  and not exists (select 1 from public.training_lessons l
+    where l.course_id = c.id and l.resource_href = 'https://lre-productions.b-cdn.net/lre-howto/gear-scan.mp4');

@@ -117,6 +117,7 @@ export const HOW_TO_VIDEOS: HowToVideo[] = [
     guideSlug: "partner-expenses",
     audience: "admin",
   },
+  { slug: "gear-scan", route: "/gear-scan", title: "Gear scan", file: "gear-scan.mp4", guideSlug: "gear-scan", audience: "all" },
 ];
 
 type AccessProfile = Pick<Profile, "role" | "departments">;
